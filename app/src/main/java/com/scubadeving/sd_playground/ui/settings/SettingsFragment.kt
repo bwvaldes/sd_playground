@@ -1,37 +1,30 @@
-package com.scubadeving.sd_playground.ui.dashboard
+package com.scubadeving.sd_playground.ui.settings
 
 import android.os.Bundle
 import android.view.*
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.scubadeving.sd_playground.R
-import kotlinx.android.synthetic.main.activity_main.*
 
-class DashboardFragment : Fragment() {
+class SettingsFragment : Fragment() {
 
-    private lateinit var dashboardViewModel: DashboardViewModel
+    private lateinit var settingsViewModel: SettingsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        setHasOptionsMenu(true)
-        dashboardViewModel =
-            ViewModelProvider(this).get(DashboardViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_dashboard, container, false)
-        val textView: TextView = root.findViewById(R.id.text_dashboard)
-        dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
+        settingsViewModel =
+            ViewModelProvider(this).get(SettingsViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_settings, container, false)
+        val textView: TextView = root.findViewById(R.id.text_settings)
+        settingsViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
-        activity?.fab?.setOnClickListener {
-            Toast.makeText(activity, "Search Dashboard", Toast.LENGTH_SHORT).show()
-        }
-        activity?.fab?.setImageDrawable(resources.getDrawable(R.drawable.ic_search))
         return root
     }
 

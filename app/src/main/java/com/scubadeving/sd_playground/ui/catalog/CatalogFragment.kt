@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.ui.adapters.CertLevelAdapter
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_catalog.*
 
 class CatalogFragment : Fragment() {
@@ -35,6 +37,10 @@ class CatalogFragment : Fragment() {
         homeViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
+        activity?.fab?.setOnClickListener {
+            Toast.makeText(activity, "Search Catalog", Toast.LENGTH_SHORT).show()
+        }
+        activity?.fab?.setImageDrawable(resources.getDrawable(R.drawable.ic_search))
         return root
     }
 

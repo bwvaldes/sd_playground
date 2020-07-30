@@ -15,7 +15,11 @@
         android:id="@+id/navigation_dashboard"
         android:name="com.scubadeving.sd_playground.ui.dashboard.DashboardFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/action_navigation_dashboard_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_certs"
@@ -28,4 +32,18 @@
         android:name="com.scubadeving.sd_playground.ui.logbook.LogbookFragment"
         android:label="@string/title_logbook"
         tools:layout="@layout/fragment_logbook" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.scubadeving.sd_playground.ui.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.scubadeving.sd_playground.ui.settings.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
 </navigation>

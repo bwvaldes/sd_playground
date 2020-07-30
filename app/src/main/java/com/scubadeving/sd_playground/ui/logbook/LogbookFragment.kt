@@ -5,27 +5,36 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.scubadeving.sd_playground.R
+import kotlinx.android.synthetic.main.activity_main.*
 
 class LogbookFragment : Fragment() {
 
     private lateinit var logbookViewModel: LogbookViewModel
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         logbookViewModel =
-                ViewModelProvider(this).get(LogbookViewModel::class.java)
+            ViewModelProvider(this).get(LogbookViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_logbook, container, false)
         val textView: TextView = root.findViewById(R.id.text_logbook)
         logbookViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
+        activity?.fab?.setOnClickListener {
+            Toast.makeText(activity, "Add Log", Toast.LENGTH_SHORT).show()
+        }
+        activity?.fab?.setImageDrawable(resources.getDrawable(android.R.drawable.ic_input_add))
         return root
     }
+
+
 }
