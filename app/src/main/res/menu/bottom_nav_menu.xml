@@ -1,0 +1,28 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/navigation_cert_path"
+        android:icon="@drawable/ic_path"
+        android:title="Catalog"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/navigation_certs"
+        android:icon="@drawable/ic_certs"
+        android:title="My Certs"
+        app:showAsAction="always" />
+
+
+    <item
+        android:id="@+id/navigation_logbook"
+        android:icon="@drawable/ic_logs"
+        android:title="Logbook"
+        app:showAsAction="always" />
+
+
+    <item
+        android:id="@+id/navigation_dashboard"
+        android:icon="@drawable/ic_dashboard"
+        android:title="Dashboard"
+        app:showAsAction="always" />
+</menu>
