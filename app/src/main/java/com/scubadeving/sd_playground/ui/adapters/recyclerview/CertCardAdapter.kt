@@ -1,4 +1,4 @@
-package com.scubadeving.sd_playground.ui.adapters
+package com.scubadeving.sd_playground.ui.adapters.recyclerview
 
 import android.util.Log
 import android.view.View

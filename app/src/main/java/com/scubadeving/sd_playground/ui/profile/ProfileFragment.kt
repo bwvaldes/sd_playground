@@ -8,12 +8,18 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import com.scubadeving.sd_playground.R
+import com.scubadeving.sd_playground.ui.adapters.viewpager.ProfileAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
 class ProfileFragment : Fragment() {
 
     private lateinit var profileViewModel: ProfileViewModel
+    private lateinit var profileAdapter: ProfileAdapter
+    private lateinit var viewPager: ViewPager2
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,6 +39,22 @@ class ProfileFragment : Fragment() {
         }
         activity?.fab?.setImageDrawable(resources.getDrawable(R.drawable.ic_edit))
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        profileAdapter = ProfileAdapter(this)
+        viewPager = view.findViewById(R.id.pager)
+        viewPager.adapter = profileAdapter
+        val tabLayout = view.findViewById<TabLayout>(R.id.tab_layout)
+        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+            tab.text = when (position) {
+                0 -> "My Certs"
+                1 -> "Stats"
+                2 -> "About"
+                else -> "My Certs"
+            }
+//            tab.text = "OBJECT ${(position + 1)}"
+        }.attach()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

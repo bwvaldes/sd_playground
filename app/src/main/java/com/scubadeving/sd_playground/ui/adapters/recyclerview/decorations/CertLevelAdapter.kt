@@ -1,4 +1,4 @@
-package com.scubadeving.sd_playground.ui.adapters
+package com.scubadeving.sd_playground.ui.adapters.recyclerview.decorations
 
 import android.util.Log
 import android.view.View
@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.scubadeving.sd_playground.R
-import com.scubadeving.sd_playground.ui.adapters.CertLevelAdapter.CertPathViewHolder
+import com.scubadeving.sd_playground.ui.adapters.recyclerview.SpecialtyAdapter
+import com.scubadeving.sd_playground.ui.adapters.recyclerview.decorations.CertLevelAdapter.CertPathViewHolder
 import com.scubadeving.sd_playground.utils.inflate
 import kotlinx.android.synthetic.main.item_cert_level.view.*
 
@@ -50,7 +51,10 @@ class CertLevelAdapter(private val certLevels: List<String>) :
                 cert_level_name.text = certLevel
                 layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
                 cert_level_specialty_rv.layoutManager = layoutManager
-                adapter = SpecialtyAdapter(certCards)
+                adapter =
+                    SpecialtyAdapter(
+                        certCards
+                    )
                 cert_level_specialty_rv.adapter = adapter
                 val dividerItemDecoration = DividerItemDecoration(
                     cert_level_specialty_rv.getContext(),

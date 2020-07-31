@@ -9,11 +9,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.scubadeving.sd_playground.R
-import com.scubadeving.sd_playground.ui.adapters.CertLevelAdapter
+import com.scubadeving.sd_playground.ui.adapters.recyclerview.decorations.CertLevelAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_catalog.*
 
@@ -48,7 +47,10 @@ class CatalogFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         layoutManager = LinearLayoutManager(context)
         cert_path_level_rv.layoutManager = layoutManager
-        adapter = CertLevelAdapter(certLevels)
+        adapter =
+            CertLevelAdapter(
+                certLevels
+            )
         cert_path_level_rv.adapter = adapter
         val dividerItemDecoration = DividerItemDecoration(
             cert_path_level_rv.context,

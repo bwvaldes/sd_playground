@@ -9,11 +9,10 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.decorations.GridSpacingItemDecoration
-import com.scubadeving.sd_playground.ui.adapters.CertCardAdapter
+import com.scubadeving.sd_playground.ui.adapters.recyclerview.CertCardAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_certifications.*
 
@@ -50,7 +49,10 @@ class CertificationsFragment : Fragment() {
         val includeEdge = true
         layoutManager = GridLayoutManager(context, spanCount, GridLayoutManager.VERTICAL, false)
         cert_card_rv.layoutManager = layoutManager
-        adapter = CertCardAdapter(certCards)
+        adapter =
+            CertCardAdapter(
+                certCards
+            )
         cert_card_rv.adapter = adapter
         cert_card_rv.addItemDecoration(GridSpacingItemDecoration(spanCount, spacing, includeEdge))
     }
