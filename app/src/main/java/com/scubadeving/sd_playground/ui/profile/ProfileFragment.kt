@@ -50,7 +50,8 @@ class ProfileFragment : Fragment() {
             tab.text = when (position) {
                 0 -> "My Certs"
                 1 -> "Stats"
-                2 -> "About"
+                2 -> "Gear"
+                3 -> "About"
                 else -> "My Certs"
             }
 //            tab.text = "OBJECT ${(position + 1)}"
