@@ -8,8 +8,8 @@
         app:showAsAction="always" />
     <item
         android:id="@+id/navigation_certs"
-        android:icon="@drawable/ic_certs"
-        android:title="My Certs"
+        android:icon="@drawable/ic_search"
+        android:title="Explore"
         app:showAsAction="always" />
 
 

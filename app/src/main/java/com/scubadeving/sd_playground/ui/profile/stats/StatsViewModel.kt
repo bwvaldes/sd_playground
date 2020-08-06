@@ -1,13 +1,13 @@
-package com.scubadeving.sd_playground.ui.certifications
+package com.scubadeving.sd_playground.ui.profile.stats
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class CertificationsViewModel : ViewModel() {
+class StatsViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is My Certs Fragment"
+        value = "This is Stats Fragment"
     }
     val text: LiveData<String> = _text
 }

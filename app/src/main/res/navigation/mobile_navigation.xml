@@ -23,7 +23,7 @@
 
     <fragment
         android:id="@+id/navigation_certs"
-        android:name="com.scubadeving.sd_playground.ui.certifications.CertificationsFragment"
+        android:name="com.scubadeving.sd_playground.ui.profile.certifications.CertificationsFragment"
         android:label="@string/title_certifications"
         tools:layout="@layout/fragment_certifications" />
 
