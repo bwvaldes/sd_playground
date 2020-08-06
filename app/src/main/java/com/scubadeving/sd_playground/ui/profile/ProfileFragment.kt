@@ -54,7 +54,6 @@ class ProfileFragment : Fragment() {
                 3 -> "About"
                 else -> "My Certs"
             }
-//            tab.text = "OBJECT ${(position + 1)}"
         }.attach()
     }
 
