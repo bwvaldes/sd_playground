@@ -6,7 +6,7 @@
     app:startDestination="@+id/navigation_dashboard">
 
     <fragment
-        android:id="@+id/navigation_cert_path"
+        android:id="@+id/navigation_catalog"
         android:name="com.scubadeving.sd_playground.ui.catalog.CatalogFragment"
         android:label="@string/title_catalog"
         tools:layout="@layout/fragment_catalog" />
@@ -15,17 +15,17 @@
         android:id="@+id/navigation_dashboard"
         android:name="com.scubadeving.sd_playground.ui.dashboard.DashboardFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" >
+        tools:layout="@layout/fragment_dashboard">
         <action
             android:id="@+id/action_navigation_dashboard_to_profileFragment"
             app:destination="@id/profileFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_certs"
-        android:name="com.scubadeving.sd_playground.ui.profile.certifications.CertificationsFragment"
-        android:label="@string/title_certifications"
-        tools:layout="@layout/fragment_certifications" />
+        android:id="@+id/navigation_explore"
+        android:name="com.scubadeving.sd_playground.ui.explore.ExploreFragment"
+        android:label="@string/title_explore"
+        tools:layout="@layout/fragment_explore" />
 
     <fragment
         android:id="@+id/navigation_logbook"
@@ -34,16 +34,16 @@
         tools:layout="@layout/fragment_logbook" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.scubadeving.sd_playground.ui.profile.ProfileFragment"
+        android:name="com.scubadeving.sd_playground.ui.dashboard.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" >
+        tools:layout="@layout/fragment_profile">
         <action
             android:id="@+id/action_profileFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.scubadeving.sd_playground.ui.settings.SettingsFragment"
+        android:name="com.scubadeving.sd_playground.ui.dashboard.profile.settings.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
 </navigation>

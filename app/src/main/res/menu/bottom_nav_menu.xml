@@ -2,12 +2,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/navigation_cert_path"
+        android:id="@+id/navigation_catalog"
         android:icon="@drawable/ic_path"
         android:title="Catalog"
         app:showAsAction="always" />
     <item
-        android:id="@+id/navigation_certs"
+        android:id="@+id/navigation_explore"
         android:icon="@drawable/ic_search"
         android:title="Explore"
         app:showAsAction="always" />

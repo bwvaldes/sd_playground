@@ -1,4 +1,4 @@
-package com.scubadeving.sd_playground.ui.profile.gear
+package com.scubadeving.sd_playground.ui.dashboard.profile.gear
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -10,7 +10,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import com.scubadeving.sd_playground.R
-import com.scubadeving.sd_playground.ui.logbook.LogbookViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 class GearFragment : Fragment() {

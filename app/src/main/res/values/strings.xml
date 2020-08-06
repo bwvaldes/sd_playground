@@ -2,6 +2,6 @@
     <string name="app_name">sd_playground</string>
     <string name="title_catalog">Catalog</string>
     <string name="title_dashboard">Dashboard</string>
-    <string name="title_certifications">Certifications</string>
+    <string name="title_explore">Explore</string>
     <string name="title_logbook">Logbook</string>
 </resources>

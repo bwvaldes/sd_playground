@@ -1,11 +1,11 @@
-package com.scubadeving.sd_playground.ui.profile.about
+package com.scubadeving.sd_playground.ui.dashboard.profile.gear
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class AboutViewModel : ViewModel() {
+class GearViewModel : ViewModel() {
     private val _text = MutableLiveData<String>().apply {
-        value = "This is About Fragment"
+        value = "This is Gear Fragment"
     }
     val text: LiveData<String> = _text}

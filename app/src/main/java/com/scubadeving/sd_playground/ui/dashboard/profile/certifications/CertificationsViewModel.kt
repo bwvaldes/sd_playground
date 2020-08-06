@@ -1,4 +1,4 @@
-package com.scubadeving.sd_playground.ui.profile.certifications
+package com.scubadeving.sd_playground.ui.dashboard.profile.certifications
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

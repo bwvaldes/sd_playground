@@ -1,4 +1,4 @@
-package com.scubadeving.sd_playground.ui.profile
+package com.scubadeving.sd_playground.ui.dashboard.profile
 
 import android.os.Bundle
 import android.view.*

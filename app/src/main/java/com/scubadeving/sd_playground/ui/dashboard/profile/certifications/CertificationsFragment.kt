@@ -1,4 +1,4 @@
-package com.scubadeving.sd_playground.ui.profile.stats
+package com.scubadeving.sd_playground.ui.dashboard.profile.certifications
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -16,27 +16,27 @@ import com.scubadeving.sd_playground.ui.adapters.recyclerview.CertCardAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_certifications.*
 
-class StatsFragment : Fragment() {
+class CertificationsFragment : Fragment() {
 
-    var certCards: List<String> = listOf("One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight")
+    var certCards: List<String> = listOf("One", "Two", "Three", "Four", "Five", "Six", "Seven")
     private lateinit var layoutManager: GridLayoutManager
     private lateinit var adapter: CertCardAdapter
-    private lateinit var statsViewModel: StatsViewModel
+    private lateinit var certificationsViewModel: CertificationsViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        statsViewModel =
-                ViewModelProvider(this).get(StatsViewModel::class.java)
+        certificationsViewModel =
+                ViewModelProvider(this).get(CertificationsViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_certifications, container, false)
         val textView: TextView = root.findViewById(R.id.text_certifications)
-        statsViewModel.text.observe(viewLifecycleOwner, Observer {
+        certificationsViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         activity?.fab?.setOnClickListener {
-            Toast.makeText(activity, "Search My Stats", Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, "Search My Certs", Toast.LENGTH_SHORT).show()
         }
         activity?.fab?.setImageDrawable(resources.getDrawable(R.drawable.ic_search))
         return root

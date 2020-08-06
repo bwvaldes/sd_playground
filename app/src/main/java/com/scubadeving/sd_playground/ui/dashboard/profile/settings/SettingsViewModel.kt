@@ -1,13 +1,13 @@
-package com.scubadeving.sd_playground.ui.profile.stats
+package com.scubadeving.sd_playground.ui.dashboard.profile.settings
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class StatsViewModel : ViewModel() {
+class SettingsViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is Stats Fragment"
+        value = "This is Settings Fragment"
     }
     val text: LiveData<String> = _text
 }
