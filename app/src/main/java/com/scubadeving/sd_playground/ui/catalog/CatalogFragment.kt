@@ -11,10 +11,13 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.PagerSnapHelper
+import androidx.recyclerview.widget.SnapHelper
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.decorations.CertLevelAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_catalog.*
+
 
 class CatalogFragment : Fragment() {
 
@@ -57,6 +60,5 @@ class CatalogFragment : Fragment() {
             layoutManager.orientation
         )
         cert_path_level_rv.addItemDecoration(dividerItemDecoration)
-
     }
 }

@@ -2,6 +2,7 @@ package com.scubadeving.sd_playground.ui.dashboard
 
 import android.os.Bundle
 import android.view.*
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -32,16 +33,14 @@ class DashboardFragment : Fragment() {
             Toast.makeText(activity, "Search Dashboard", Toast.LENGTH_SHORT).show()
         }
         activity?.fab?.setImageDrawable(resources.getDrawable(R.drawable.ic_search))
+        val profileIcon = root.findViewById<ImageView>(R.id.profile_icon)
+        navToProfile(profileIcon)
         return root
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.menu_profile, menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        findNavController().navigate(R.id.action_navigation_dashboard_to_profileFragment)
-        return super.onOptionsItemSelected(item)
+    fun navToProfile(view: View) {
+        view.setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_dashboard_to_profileFragment)
+        }
     }
 }

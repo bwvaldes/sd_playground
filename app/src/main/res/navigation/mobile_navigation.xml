@@ -46,4 +46,9 @@
         android:name="com.scubadeving.sd_playground.ui.dashboard.profile.settings.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/certDetailFragment"
+        android:name="com.scubadeving.sd_playground.ui.CertDetailFragment"
+        android:label="fragment_cert_detail"
+        tools:layout="@layout/fragment_cert_detail" />
 </navigation>

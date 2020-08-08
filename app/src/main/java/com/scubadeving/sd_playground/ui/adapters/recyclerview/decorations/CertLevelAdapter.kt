@@ -4,13 +4,13 @@ import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.navigation.findNavController
+import androidx.recyclerview.widget.*
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.SpecialtyAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.decorations.CertLevelAdapter.CertPathViewHolder
 import com.scubadeving.sd_playground.utils.inflate
+import kotlinx.android.synthetic.main.fragment_catalog.*
 import kotlinx.android.synthetic.main.item_cert_level.view.*
 
 
@@ -44,6 +44,7 @@ class CertLevelAdapter(private val certLevels: List<String>) :
             Log.d("RecyclerView", "CLICK!")
             Toast.makeText(itemView.context, "Just Clicked Cert Path Item!", Toast.LENGTH_SHORT)
                 .show()
+            v.findNavController().navigate(R.id.certDetailFragment)
         }
 
         fun bind(certLevel: String, position: Int) {
@@ -57,10 +58,13 @@ class CertLevelAdapter(private val certLevels: List<String>) :
                     )
                 cert_level_specialty_rv.adapter = adapter
                 val dividerItemDecoration = DividerItemDecoration(
-                    cert_level_specialty_rv.getContext(),
+                    cert_level_specialty_rv.context,
                     layoutManager.orientation
                 )
                 cert_level_specialty_rv.addItemDecoration(dividerItemDecoration)
+                cert_level_specialty_rv.onFlingListener = null
+                val snapHelper: SnapHelper = PagerSnapHelper()
+                snapHelper.attachToRecyclerView(cert_level_specialty_rv)
             }
         }
 

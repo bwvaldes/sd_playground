@@ -4,6 +4,7 @@ import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.utils.inflate
@@ -37,6 +38,7 @@ class SpecialtyAdapter(private val certCards: List<String>) :
             Log.d("RecyclerView", "CLICK!")
             Toast.makeText(itemView.context, "Just Clicked Cert Path Specialty Item!", Toast.LENGTH_SHORT)
                 .show()
+            v.findNavController().navigate(R.id.certDetailFragment)
         }
 
         fun bind(certCard: String, position: Int) {
