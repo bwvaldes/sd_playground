@@ -18,9 +18,6 @@ import kotlinx.android.synthetic.main.fragment_certifications.*
 
 class StatsFragment : Fragment() {
 
-    var certCards: List<String> = listOf("One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight")
-    private lateinit var layoutManager: GridLayoutManager
-    private lateinit var adapter: CertCardAdapter
     private lateinit var statsViewModel: StatsViewModel
 
     override fun onCreateView(
@@ -30,8 +27,8 @@ class StatsFragment : Fragment() {
     ): View? {
         statsViewModel =
                 ViewModelProvider(this).get(StatsViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_certifications, container, false)
-        val textView: TextView = root.findViewById(R.id.text_certifications)
+        val root = inflater.inflate(R.layout.fragment_stats, container, false)
+        val textView: TextView = root.findViewById(R.id.text_stats)
         statsViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
@@ -40,20 +37,5 @@ class StatsFragment : Fragment() {
         }
         activity?.fab?.setImageDrawable(resources.getDrawable(R.drawable.ic_search))
         return root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        val spanCount = 2
-        val spacing = 15
-        val includeEdge = true
-        layoutManager = GridLayoutManager(context, spanCount, GridLayoutManager.VERTICAL, false)
-        cert_card_rv.layoutManager = layoutManager
-        adapter =
-            CertCardAdapter(
-                certCards
-            )
-        cert_card_rv.adapter = adapter
-        cert_card_rv.addItemDecoration(GridSpacingItemDecoration(spanCount, spacing, includeEdge))
     }
 }

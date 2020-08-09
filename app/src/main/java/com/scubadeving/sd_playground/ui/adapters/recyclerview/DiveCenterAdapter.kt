@@ -1,5 +1,7 @@
 package com.scubadeving.sd_playground.ui.adapters.recyclerview
 
+import android.content.Intent
+import android.net.Uri
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
@@ -40,8 +42,12 @@ class DiveCenterAdapter(private val diveCenters: List<String>) :
             Log.d("RecyclerView", "CLICK!")
             Toast.makeText(itemView.context, "Just Clicked Dive Center Item!", Toast.LENGTH_SHORT)
                 .show()
-            v.findNavController().navigate(R.id.diveSiteDetailFragment)
-        }
+            // Search for restaurants in San Francisco
+            val gmmIntentUri =
+                Uri.parse("geo:33.7715323,-118.3633929?q=" + Uri.encode("Dive Center"))
+            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+            mapIntent.setPackage("com.google.android.apps.maps")
+            v.context.startActivity(mapIntent)        }
 
         fun bind(diveCenter: String, position: Int) {
             itemView.apply {

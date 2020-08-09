@@ -7,32 +7,25 @@
     tools:context=".ui.dashboard.DashboardFragment">
 
     <TextView
-        android:id="@+id/text_dashboard"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/welcome_username"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="15dp"
         android:text="Welcome John Smith"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toStartOf="@+id/profile_icon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/welcome_cert_level"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Advanced Open Water Diver"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/welcome_username"
         app:layout_constraintStart_toStartOf="@id/welcome_username"
         app:layout_constraintTop_toBottomOf="@id/welcome_username" />
 
@@ -40,47 +33,53 @@
         android:id="@+id/profile_icon"
         android:layout_width="75dp"
         android:layout_height="75dp"
+        android:layout_marginEnd="15dp"
         android:src="@drawable/ic_profile"
+        app:layout_constraintBottom_toBottomOf="@+id/welcome_cert_level"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/welcome_username" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/welcome_weather"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
+        android:layout_width="120dp"
+        android:layout_height="100dp"
         android:layout_marginTop="50dp"
-        android:padding="15dp"
         android:text="Weather"
+        app:layout_constraintEnd_toStartOf="@+id/welcome_fly"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/welcome_cert_level" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/welcome_fly"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:padding="15dp"
+        android:layout_width="120dp"
+        android:layout_height="100dp"
         android:text="No Fly Time"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/welcome_weather"
         app:layout_constraintTop_toTopOf="@id/welcome_weather" />
 
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/welcome_check"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:padding="15dp"
-        android:text="Next maintenance check:\n10 days"
+        android:layout_width="120dp"
+        android:layout_height="100dp"
+        android:text="Next check:\n10 days"
+        app:layout_constraintEnd_toStartOf="@+id/welcome_eligibility"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/welcome_weather" />
 
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/welcome_eligibility"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:padding="15dp"
+        android:layout_width="120dp"
+        android:layout_height="100dp"
         android:text="Next Eligible Cert:\n15 dives"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/welcome_check"
         app:layout_constraintTop_toTopOf="@id/welcome_check" />
 
     <TextView
@@ -98,4 +97,18 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="?attr/actionBarSize"
         app:layout_constraintTop_toBottomOf="@id/upcoming_dives" />
+
+    <TextView
+        android:id="@+id/text_dashboard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
