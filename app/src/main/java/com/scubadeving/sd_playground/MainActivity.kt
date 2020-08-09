@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.certDetailFragment,
+                R.id.diveSiteDetailFragment,
                 R.id.settingsFragment -> {
                     nav_view.visibility = View.GONE
                     bottomBar.visibility = View.GONE

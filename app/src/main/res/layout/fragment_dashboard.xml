@@ -20,11 +20,82 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/welcome_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome John Smith"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/welcome_cert_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Advanced Open Water Diver"
+        app:layout_constraintStart_toStartOf="@id/welcome_username"
+        app:layout_constraintTop_toBottomOf="@id/welcome_username" />
+
     <ImageView
         android:id="@+id/profile_icon"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:src="@drawable/ic_profile"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/welcome_username" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/welcome_weather"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:padding="15dp"
+        android:text="Weather"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/welcome_cert_level" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/welcome_fly"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:text="No Fly Time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/welcome_weather" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/welcome_check"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:text="Next maintenance check:\n10 days"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/welcome_weather" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/welcome_eligibility"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:text="Next Eligible Cert:\n15 dives"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/welcome_check" />
+
+    <TextView
+        android:id="@+id/upcoming_dives"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@android:color/darker_gray"
+        android:text="Upcoming Dives"
+        app:layout_constraintTop_toBottomOf="@id/welcome_check" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/upcoming_dives_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="?attr/actionBarSize"
+        app:layout_constraintTop_toBottomOf="@id/upcoming_dives" />
 </androidx.constraintlayout.widget.ConstraintLayout>

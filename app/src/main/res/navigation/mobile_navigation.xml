@@ -51,4 +51,9 @@
         android:name="com.scubadeving.sd_playground.ui.CertDetailFragment"
         android:label="fragment_cert_detail"
         tools:layout="@layout/fragment_cert_detail" />
+    <fragment
+        android:id="@+id/diveSiteDetailFragment"
+        android:name="com.scubadeving.sd_playground.ui.DiveSiteDetailFragment"
+        android:label="fragment_dive_site_detail"
+        tools:layout="@layout/fragment_dive_site_detail" />
 </navigation>

@@ -83,7 +83,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:background="@android:color/darker_gray"
-                android:text="Pre-Requisites" />
+                android:text="Prerequisites" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/prerequisites_rv"

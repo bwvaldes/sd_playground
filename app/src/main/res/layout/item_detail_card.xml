@@ -6,7 +6,7 @@
     android:layout_width="115dp"
     android:layout_height="125dp"
     android:elevation="@dimen/cardview_default_elevation"
-    app:cardBackgroundColor="@color/black"
+    app:cardBackgroundColor="@android:color/holo_red_dark"
     app:cardCornerRadius="5dp"
     app:cardPreventCornerOverlap="true"
     app:cardUseCompatPadding="true">

@@ -18,18 +18,34 @@ import kotlinx.android.synthetic.main.fragment_certifications.*
 
 class CertificationsFragment : Fragment() {
 
-    var certCards: List<String> = listOf("One", "Two", "Three", "Four", "Five", "Six", "Seven")
+    var certCards: List<String> = listOf(
+        "Discover Diver",
+        "Project AWARE Diver",
+        "Open Water Diver",
+        "Advanced Open Water Diver",
+        "Equipment Specialist",
+        "Night Dive",
+        "Nitrox Diver",
+        "Deep Diver",
+        "Public Safety Diver",
+        "Cavern Diver",
+        "Against Debris",
+        "Rebreather Diver",
+        "Sidemount Diver",
+        "Peak Performance Buoyancy",
+        "Search and Recovery"
+    )
     private lateinit var layoutManager: GridLayoutManager
     private lateinit var adapter: CertCardAdapter
     private lateinit var certificationsViewModel: CertificationsViewModel
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         certificationsViewModel =
-                ViewModelProvider(this).get(CertificationsViewModel::class.java)
+            ViewModelProvider(this).get(CertificationsViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_certifications, container, false)
         val textView: TextView = root.findViewById(R.id.text_certifications)
         certificationsViewModel.text.observe(viewLifecycleOwner, Observer {
