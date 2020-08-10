@@ -9,12 +9,21 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
+import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import com.scubadeving.sd_playground.R
+import com.scubadeving.sd_playground.ui.adapters.viewpager.LogbookViewPagerAdapter
+import com.scubadeving.sd_playground.ui.adapters.viewpager.ProfileViewPagerAdapter
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_logbook.*
 
 class LogbookFragment : Fragment() {
 
+    private lateinit var logbookViewPagerAdapter: LogbookViewPagerAdapter
+    private lateinit var viewPager: ViewPager2
     private lateinit var logbookViewModel: LogbookViewModel
 
     override fun onCreateView(
@@ -36,5 +45,24 @@ class LogbookFragment : Fragment() {
         return root
     }
 
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        logbook_pager.isUserInputEnabled = false;
+        scan_log.setOnClickListener {
+            Toast.makeText(activity, "Scan Log", Toast.LENGTH_SHORT).show()
+        }
+        logbookViewPagerAdapter = LogbookViewPagerAdapter(this)
+        viewPager = view.findViewById(R.id.logbook_pager)
+        viewPager.adapter = logbookViewPagerAdapter
+        val tabLayout = view.findViewById<TabLayout>(R.id.logbook_tab_layout)
+        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+            tab.text = when (position) {
+                0 -> "Dives"
+                1 -> "Wildlife"
+                2 -> "Map"
+                else -> "Dives"
+            }
+        }.attach()
+    }
 
 }

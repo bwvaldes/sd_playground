@@ -24,7 +24,7 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="/private/var/folders/tz/w0844bqx1kb0wtxq8hkn_zjc0000gn/T/baseline_arrow_forward_24.xml" />
+                                                <entry key="imagePath" value="/private/var/folders/tz/w0844bqx1kb0wtxq8hkn_zjc0000gn/T/baseline_add_to_home_screen_24.xml" />
                                                 <entry key="opacityPercent" value="60" />
                                               </map>
                                             </option>
@@ -36,7 +36,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="url" value="jar:file:/Applications/Android%20Studio%204.1%20Preview.app/Contents/plugins/android/lib/android.jar!/images/material/icons/materialicons/arrow_forward/baseline_arrow_forward_24.xml" />
+                                                <entry key="url" value="jar:file:/Applications/Android%20Studio%204.1%20Preview.app/Contents/plugins/android/lib/android.jar!/images/material/icons/materialicons/add_to_home_screen/baseline_add_to_home_screen_24.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -68,7 +68,7 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="outputName" value="ic_arrow_forward" />
+                                      <entry key="outputName" value="ic_scan_log" />
                                     </map>
                                   </option>
                                 </PersistentState>
