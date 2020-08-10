@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="?attr/colorSurface"
     android:fitsSystemWindows="true"
-    tools:context=".ui.CertDetailFragment"
+    tools:context=".ui.details.certifications.CertDetailFragment"
     tools:ignore="MergeRootFrame">
 
     <com.google.android.material.appbar.AppBarLayout

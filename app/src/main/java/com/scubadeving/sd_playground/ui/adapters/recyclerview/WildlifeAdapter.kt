@@ -39,7 +39,7 @@ class WildlifeAdapter(private val wildlife: List<String>) :
             Log.d("RecyclerView", "CLICK!")
             Toast.makeText(itemView.context, "Just Clicked Wildlife Item!", Toast.LENGTH_SHORT)
                 .show()
-//            v.findNavController().navigate(R.id.wildlifeDetailFragment)
+            v.findNavController().navigate(R.id.wildlifeFragment)
         }
 
         fun bind(wildlife: String, position: Int) {

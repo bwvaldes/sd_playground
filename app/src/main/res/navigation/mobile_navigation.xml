@@ -48,12 +48,17 @@
         tools:layout="@layout/fragment_settings" />
     <fragment
         android:id="@+id/certDetailFragment"
-        android:name="com.scubadeving.sd_playground.ui.CertDetailFragment"
+        android:name="com.scubadeving.sd_playground.ui.details.certifications.CertDetailFragment"
         android:label="fragment_cert_detail"
         tools:layout="@layout/fragment_cert_detail" />
     <fragment
         android:id="@+id/diveSiteDetailFragment"
-        android:name="com.scubadeving.sd_playground.ui.DiveSiteDetailFragment"
+        android:name="com.scubadeving.sd_playground.ui.details.divesite.DiveSiteDetailFragment"
         android:label="fragment_dive_site_detail"
         tools:layout="@layout/fragment_dive_site_detail" />
+    <fragment
+        android:id="@+id/wildlifeFragment"
+        android:name="com.scubadeving.sd_playground.ui.details.wildlife.WildlifeFragment"
+        android:label="fragment_wildlife"
+        tools:layout="@layout/fragment_wildlife" />
 </navigation>

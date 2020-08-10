@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.*
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -17,14 +16,13 @@ import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.scubadeving.sd_playground.R
-import com.scubadeving.sd_playground.ui.adapters.viewpager.ProfileAdapter
+import com.scubadeving.sd_playground.ui.adapters.viewpager.ProfileViewPagerAdapter
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_profile.*
 
 class ProfileFragment : Fragment() {
 
     private lateinit var profileViewModel: ProfileViewModel
-    private lateinit var profileAdapter: ProfileAdapter
+    private lateinit var profileViewPagerAdapter: ProfileViewPagerAdapter
     private lateinit var viewPager: ViewPager2
 
     override fun onCreateView(
@@ -83,9 +81,9 @@ class ProfileFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        profileAdapter = ProfileAdapter(this)
+        profileViewPagerAdapter = ProfileViewPagerAdapter(this)
         viewPager = view.findViewById(R.id.pager)
-        viewPager.adapter = profileAdapter
+        viewPager.adapter = profileViewPagerAdapter
         val tabLayout = view.findViewById<TabLayout>(R.id.tab_layout)
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = when (position) {
