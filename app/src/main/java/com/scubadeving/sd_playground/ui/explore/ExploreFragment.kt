@@ -9,12 +9,21 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import com.scubadeving.sd_playground.R
+import com.scubadeving.sd_playground.ui.adapters.viewpager.ExploreViewPagerAdapter
+import com.scubadeving.sd_playground.ui.adapters.viewpager.LogbookViewPagerAdapter
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_explore.*
+import kotlinx.android.synthetic.main.fragment_logbook.*
 
 class ExploreFragment : Fragment() {
 
+    private lateinit var exploreViewPagerAdapter: ExploreViewPagerAdapter
+    private lateinit var viewPager: ViewPager2
     private lateinit var exploreViewModel: ExploreViewModel
 
     override fun onCreateView(
@@ -36,5 +45,20 @@ class ExploreFragment : Fragment() {
         return root
     }
 
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        explore_pager.isUserInputEnabled = false
+        exploreViewPagerAdapter = ExploreViewPagerAdapter(this)
+        viewPager = view.findViewById(R.id.explore_pager)
+        viewPager.adapter = exploreViewPagerAdapter
+        val tabLayout = view.findViewById<TabLayout>(R.id.explore_tab_layout)
+        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+            tab.text = when (position) {
+                0 -> "Sites"
+                1 -> "Wildlife"
+                2 -> "Buddies"
+                else -> "Sites"
+            }
+        }.attach()
+    }
 }
