@@ -39,48 +39,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/welcome_username" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/welcome_weather"
-        android:layout_width="120dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="50dp"
-        android:text="Weather"
-        app:layout_constraintEnd_toStartOf="@+id/welcome_fly"
-        app:layout_constraintHorizontal_bias="0.5"
+    <include
+        android:id="@+id/welcome_dash"
+        layout="@layout/item_dashboard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/welcome_cert_level" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/welcome_fly"
-        android:layout_width="120dp"
-        android:layout_height="100dp"
-        android:text="No Fly Time"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/welcome_weather"
-        app:layout_constraintTop_toTopOf="@id/welcome_weather" />
-
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/welcome_check"
-        android:layout_width="120dp"
-        android:layout_height="100dp"
-        android:text="Next check:\n10 days"
-        app:layout_constraintEnd_toStartOf="@+id/welcome_eligibility"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/welcome_weather" />
-
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/welcome_eligibility"
-        android:layout_width="120dp"
-        android:layout_height="100dp"
-        android:text="Next Eligible Cert:\n15 dives"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/welcome_check"
-        app:layout_constraintTop_toTopOf="@id/welcome_check" />
 
     <TextView
         android:id="@+id/upcoming_dives"
@@ -89,7 +55,7 @@
         android:layout_marginTop="15dp"
         android:background="@android:color/darker_gray"
         android:text="Upcoming Dives"
-        app:layout_constraintTop_toBottomOf="@id/welcome_check" />
+        app:layout_constraintTop_toBottomOf="@id/welcome_dash" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/upcoming_dives_rv"

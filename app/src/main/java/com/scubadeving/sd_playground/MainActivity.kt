@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.certDetailFragment,
                 R.id.diveSiteDetailFragment,
                 R.id.wildlifeFragment,
+                R.id.logbookEntryFragment,
                 R.id.settingsFragment -> {
                     nav_view.visibility = View.GONE
                     bottomBar.visibility = View.GONE

@@ -4,6 +4,7 @@ import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.utils.inflate
@@ -37,7 +38,9 @@ class LoggedDivesAdapter(private val loggedDives: List<String>) :
         override fun onClick(v: View) {
             Log.d("RecyclerView", "CLICK!")
             Toast.makeText(itemView.context, "Just Clicked Logged Dive Item!", Toast.LENGTH_SHORT)
-                .show()   }
+                .show()
+            v.findNavController().navigate(R.id.logbookEntryFragment)
+        }
 
         fun bind(loggedDive: String, position: Int) {
             itemView.apply {

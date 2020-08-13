@@ -36,7 +36,6 @@ class CertCardAdapter(private val certCards: List<String>) :
             Log.d("RecyclerView", "CLICK!")
             Toast.makeText(itemView.context, "Just Clicked Cert Card Item!", Toast.LENGTH_SHORT)
                 .show()
-            // Pass args certId to nav and populate UI properly using navDirections
             v.findNavController().navigate(R.id.certDetailFragment)
         }
 
