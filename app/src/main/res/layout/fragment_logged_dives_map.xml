@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.logbook.LogbookFragment">
+    tools:context=".ui.main.logbook.LogbookFragment">
 
     <TextView
         android:id="@+id/text_logged_dives_map"

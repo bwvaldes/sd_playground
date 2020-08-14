@@ -16,7 +16,7 @@ class DiveSiteAdapter(private val diveSites: List<String>) :
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DiveSiteViewHolder {
-        val inflatedView = parent.inflate(R.layout.item_dive_site, false)
+        val inflatedView = parent.inflate(R.layout.item_dive_site_card, false)
         return DiveSiteViewHolder(inflatedView)
     }
 

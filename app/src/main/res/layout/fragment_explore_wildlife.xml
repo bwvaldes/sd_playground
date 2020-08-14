@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.explore.wildlife.ExploreWildlifeFragment">
+    tools:context=".ui.main.explore.wildlife.ExploreWildlifeFragment">
 
     <TextView
         android:id="@+id/text_explore_wildlife"

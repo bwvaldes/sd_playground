@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginBottom="?attr/actionBarSize"
-    tools:context=".ui.logbook.LogbookFragment">
+    tools:context=".ui.main.logbook.LogbookFragment">
 
 
     <com.google.android.material.tabs.TabLayout

@@ -57,7 +57,7 @@ class DiveSiteDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         diveSiteDetailViewModel = ViewModelProvider(this).get(DiveSiteDetailViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_dive_site_detail, container, false)
+        val root = inflater.inflate(R.layout.fragment_detail_dive_site, container, false)
         val textView: TextView = root.findViewById(R.id.text_dive_site_detail)
         diveSiteDetailViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it

@@ -41,7 +41,7 @@ class CertDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         certDetailViewModel = ViewModelProvider(this).get(CertDetailViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_cert_detail, container, false)
+        val root = inflater.inflate(R.layout.fragment_detail_cert, container, false)
         val textView: TextView = root.findViewById(R.id.text_cert_detail)
         certDetailViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it

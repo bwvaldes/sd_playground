@@ -2,10 +2,10 @@ package com.scubadeving.sd_playground.ui.adapters.viewpager
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.scubadeving.sd_playground.ui.dashboard.profile.about.AboutFragment
-import com.scubadeving.sd_playground.ui.dashboard.profile.certifications.CertificationsFragment
-import com.scubadeving.sd_playground.ui.dashboard.profile.gear.GearFragment
-import com.scubadeving.sd_playground.ui.dashboard.profile.stats.StatsFragment
+import com.scubadeving.sd_playground.ui.main.dashboard.profile.about.AboutFragment
+import com.scubadeving.sd_playground.ui.main.dashboard.profile.certifications.CertificationsFragment
+import com.scubadeving.sd_playground.ui.main.dashboard.profile.gear.GearFragment
+import com.scubadeving.sd_playground.ui.main.dashboard.profile.stats.StatsFragment
 
 class ProfileViewPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
 
