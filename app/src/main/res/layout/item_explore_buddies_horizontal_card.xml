@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cert_card_container"
+    android:layout_width="375dp"
+    android:layout_height="wrap_content"
+    android:elevation="8dp"
+    app:cardBackgroundColor="@android:color/holo_red_dark"
+    app:cardCornerRadius="5dp"
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:padding="15dp"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/buddy_image"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:src="@drawable/ic_profile"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/buddy_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="15dp"
+            android:text="Buddy 1"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@id/buddy_image"
+            app:layout_constraintEnd_toStartOf="@+id/materialButton"
+            app:layout_constraintStart_toEndOf="@id/buddy_image"
+            app:layout_constraintTop_toTopOf="@id/buddy_image" />
+
+        <TextView
+            android:id="@+id/buddy_level"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="15dp"
+            android:text="Open Water"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toStartOf="@+id/materialButton"
+            app:layout_constraintStart_toEndOf="@id/buddy_image"
+            app:layout_constraintTop_toBottomOf="@id/buddy_name" />
+
+        <TextView
+            android:id="@+id/buddy_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="32 Buddies"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/buddy_image"
+            app:layout_constraintStart_toStartOf="@id/buddy_image"
+            app:layout_constraintTop_toBottomOf="@id/buddy_image" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/materialButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/nearby_diver_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
+        tools:text="1" />
+</androidx.cardview.widget.CardView>
