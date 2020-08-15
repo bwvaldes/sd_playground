@@ -16,6 +16,7 @@ import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.ui.adapters.viewpager.ExploreViewPagerAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_explore.*
+import kotlinx.android.synthetic.main.fragment_logbook.*
 
 class ExploreFragment : Fragment() {
 
@@ -44,6 +45,9 @@ class ExploreFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        explore_search.setOnClickListener {
+            Toast.makeText(activity, "Search", Toast.LENGTH_SHORT).show()
+        }
         explore_pager.isUserInputEnabled = false
         exploreViewPagerAdapter = ExploreViewPagerAdapter(this)
         viewPager = view.findViewById(R.id.explore_pager)

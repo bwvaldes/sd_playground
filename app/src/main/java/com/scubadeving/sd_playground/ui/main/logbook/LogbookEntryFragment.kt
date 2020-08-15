@@ -16,13 +16,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.scubadeving.sd_playground.R
-import com.scubadeving.sd_playground.ui.adapters.recyclerview.DiveCenterAdapter
-import com.scubadeving.sd_playground.ui.adapters.recyclerview.ItemDetailAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.WildlifeAdapter
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_dive_site_detail.*
 import kotlinx.android.synthetic.main.fragment_logbook_entry.*
-import kotlinx.android.synthetic.main.fragment_logbook_entry.wildlife_rv
 
 
 class LogbookEntryFragment : Fragment() {

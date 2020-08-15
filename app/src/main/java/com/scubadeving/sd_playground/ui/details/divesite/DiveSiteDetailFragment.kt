@@ -17,7 +17,7 @@ import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.DiveCenterAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.ItemDetailAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.WildlifeAdapter
-import kotlinx.android.synthetic.main.fragment_dive_site_detail.*
+import kotlinx.android.synthetic.main.fragment_detail_dive_site.*
 
 class DiveSiteDetailFragment : Fragment() {
 

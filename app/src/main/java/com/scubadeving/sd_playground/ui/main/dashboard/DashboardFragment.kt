@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.SnapHelper
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.DiveSiteAdapter
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_cert_detail.*
 import kotlinx.android.synthetic.main.fragment_dashboard.*
 
 class DashboardFragment : Fragment() {

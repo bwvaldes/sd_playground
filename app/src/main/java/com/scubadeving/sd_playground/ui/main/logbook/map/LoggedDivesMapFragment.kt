@@ -14,8 +14,6 @@ import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.LoggedDivesAdapter
-import com.scubadeving.sd_playground.ui.adapters.recyclerview.WildlifeAdapter
-import kotlinx.android.synthetic.main.fragment_dive_site_detail.*
 import kotlinx.android.synthetic.main.fragment_logged_dives_map.*
 
 class LoggedDivesMapFragment : Fragment() {
