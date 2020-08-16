@@ -6,6 +6,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.scubadeving.sd_playground.R
 
@@ -25,6 +26,10 @@ class SettingsFragment : Fragment() {
         settingsViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
+        val toolbar: androidx.appcompat.widget.Toolbar = root.findViewById(R.id.toolbar)
+        toolbar.setNavigationOnClickListener { view ->
+            view.findNavController().navigateUp()
+        }
         return root
     }
 
