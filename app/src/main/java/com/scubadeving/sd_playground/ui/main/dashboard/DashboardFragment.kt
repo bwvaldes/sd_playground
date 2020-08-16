@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,6 +18,7 @@ import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.DiveSiteAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_dashboard.*
+import kotlinx.android.synthetic.main.view_dashboard_items.*
 
 class DashboardFragment : Fragment() {
 
@@ -61,6 +63,24 @@ class DashboardFragment : Fragment() {
         upcoming_dives_rv.addItemDecoration(dividerItemDecoration)
         val snapHelper: SnapHelper = PagerSnapHelper()
         snapHelper.attachToRecyclerView(upcoming_dives_rv)
+        configureDashItems()
+    }
+
+    private fun configureDashItems() {
+        dash_weather_card.setOnClickListener {
+            Toast.makeText(activity, "Weather Detail", Toast.LENGTH_SHORT).show()
+        }
+        dash_fly_card.setOnClickListener {
+            // TODO: Nav to most recently logged dive
+            it.findNavController().navigate(R.id.navigation_logbook)
+        }
+        dash_maintenance_card.setOnClickListener {
+            // TODO: Use safeArgs to hit gear fragment
+            it.findNavController().navigate(R.id.profileFragment)
+        }
+        dash_next_card.setOnClickListener {
+            it.findNavController().navigate(R.id.certDetailFragment)
+        }
     }
 
     fun navToProfile(view: View) {
@@ -68,4 +88,6 @@ class DashboardFragment : Fragment() {
             findNavController().navigate(R.id.action_navigation_dashboard_to_profileFragment)
         }
     }
+
+
 }

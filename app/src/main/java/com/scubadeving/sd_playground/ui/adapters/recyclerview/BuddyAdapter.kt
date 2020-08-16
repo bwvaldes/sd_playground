@@ -4,6 +4,7 @@ import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.utils.inflate
@@ -45,6 +46,8 @@ class BuddyAdapter(private val divers: List<String>, val orientation: Boolean) :
                 Toast.LENGTH_SHORT
             )
                 .show()
+            // Todo: Should navigate to specific user and react whether it is current user
+            v.findNavController().navigate(R.id.profileFragment)
         }
 
         fun bind(diver: String, position: Int) {

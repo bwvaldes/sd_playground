@@ -59,7 +59,7 @@ class LoggedDivesMapFragment : Fragment() {
         loggedDivesMapLayoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         logged_dives_map_rv.layoutManager = loggedDivesMapLayoutManager
-        loggedDivesMapAdapter = LoggedDivesAdapter(loggedDives)
+        loggedDivesMapAdapter = LoggedDivesAdapter(loggedDives, false)
         logged_dives_map_rv.adapter = loggedDivesMapAdapter
         val dividerItemDecoration = DividerItemDecoration(
             logged_dives_map_rv.context,

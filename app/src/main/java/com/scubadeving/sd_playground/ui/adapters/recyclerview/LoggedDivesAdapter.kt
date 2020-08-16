@@ -8,16 +8,21 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.utils.inflate
-import kotlinx.android.synthetic.main.item_dive_center_card.view.*
-import kotlinx.android.synthetic.main.item_logged_dive_card.view.*
+import kotlinx.android.synthetic.main.item_logged_dive_card_horizontal.view.*
+import kotlinx.android.synthetic.main.item_logged_dive_card_vertical.view.*
 
-class LoggedDivesAdapter(private val loggedDives: List<String>) :
+class LoggedDivesAdapter(private val loggedDives: List<String>, val orientation: Boolean) :
     RecyclerView.Adapter<LoggedDivesAdapter.LoggedDiveViewHolder>() {
 
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LoggedDiveViewHolder {
-        val inflatedView = parent.inflate(R.layout.item_logged_dive_card, false)
+        val inflatedView = if (orientation) {
+            parent.inflate(R.layout.item_logged_dive_card_vertical, false)
+        } else {
+            parent.inflate(R.layout.item_logged_dive_card_horizontal, false)
+
+        }
         return LoggedDiveViewHolder(inflatedView)
     }
 
@@ -44,7 +49,11 @@ class LoggedDivesAdapter(private val loggedDives: List<String>) :
 
         fun bind(loggedDive: String, position: Int) {
             itemView.apply {
-                logged_dive_text.text = loggedDive
+                if (orientation) {
+                    logged_dive_text.text = loggedDive
+                } else {
+                    logged_dive_map_text.text = loggedDive
+                }
             }
         }
 
