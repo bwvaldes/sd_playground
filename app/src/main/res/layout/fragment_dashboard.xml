@@ -77,4 +77,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.scubadeving.sd_playground.ui.InfoView
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@android:color/holo_orange_light"
+        app:dataText="74˚F"
+        app:dataTextColor="@android:color/white"
+        app:dataTextSize="16sp"
+        app:headingText="Weather"
+        app:headingTextColor="@android:color/white"
+        app:headingTextSize="18sp"
+        app:icon="@drawable/ic_weather"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

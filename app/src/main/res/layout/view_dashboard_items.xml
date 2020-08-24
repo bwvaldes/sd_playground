@@ -40,7 +40,7 @@
             android:padding="15dp">
 
             <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/weather_card_vgl"
+                android:id="@+id/info_view_vgl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -54,7 +54,7 @@
                 android:src="@drawable/ic_weather"
                 android:tint="@color/white"
                 app:layout_constraintBottom_toTopOf="@id/weather_card_text"
-                app:layout_constraintEnd_toStartOf="@+id/weather_card_vgl"
+                app:layout_constraintEnd_toStartOf="@+id/info_view_vgl"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -83,7 +83,7 @@
                 android:textSize="18sp"
                 app:layout_constraintBottom_toTopOf="@+id/weather_card_text"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/weather_card_vgl"
+                app:layout_constraintStart_toStartOf="@+id/info_view_vgl"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0" />
         </androidx.constraintlayout.widget.ConstraintLayout>

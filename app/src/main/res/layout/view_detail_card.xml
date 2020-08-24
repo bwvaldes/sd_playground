@@ -38,7 +38,7 @@
             android:padding="15dp">
 
             <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/weather_card_vgl"
+                android:id="@+id/info_view_vgl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -76,7 +76,7 @@
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/weather_card_vgl"
+                app:layout_constraintStart_toStartOf="@+id/info_view_vgl"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -102,7 +102,7 @@
             android:padding="15dp">
 
             <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/weather_card_vgl"
+                android:id="@+id/info_view_vgl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -140,7 +140,7 @@
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/weather_card_vgl"
+                app:layout_constraintStart_toStartOf="@+id/info_view_vgl"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -166,7 +166,7 @@
             android:padding="15dp">
 
             <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/weather_card_vgl"
+                android:id="@+id/info_view_vgl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -204,7 +204,7 @@
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/weather_card_vgl"
+                app:layout_constraintStart_toStartOf="@+id/info_view_vgl"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -230,7 +230,7 @@
             android:padding="15dp">
 
             <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/weather_card_vgl"
+                android:id="@+id/info_view_vgl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -268,7 +268,7 @@
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/weather_card_vgl"
+                app:layout_constraintStart_toStartOf="@+id/info_view_vgl"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -293,7 +293,7 @@
             android:padding="15dp">
 
             <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/weather_card_vgl"
+                android:id="@+id/info_view_vgl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -331,7 +331,7 @@
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/weather_card_vgl"
+                app:layout_constraintStart_toStartOf="@+id/info_view_vgl"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -357,7 +357,7 @@
             android:padding="15dp">
 
             <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/weather_card_vgl"
+                android:id="@+id/info_view_vgl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -395,7 +395,7 @@
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/weather_card_vgl"
+                app:layout_constraintStart_toStartOf="@+id/info_view_vgl"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -422,7 +422,7 @@
             android:padding="15dp">
 
             <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/weather_card_vgl"
+                android:id="@+id/info_view_vgl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -460,7 +460,7 @@
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/weather_card_vgl"
+                app:layout_constraintStart_toStartOf="@+id/info_view_vgl"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -486,7 +486,7 @@
             android:padding="15dp">
 
             <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/weather_card_vgl"
+                android:id="@+id/info_view_vgl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -524,7 +524,7 @@
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/weather_card_vgl"
+                app:layout_constraintStart_toStartOf="@+id/info_view_vgl"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -551,7 +551,7 @@
             android:padding="15dp">
 
             <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/weather_card_vgl"
+                android:id="@+id/info_view_vgl"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -589,7 +589,7 @@
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/weather_card_vgl"
+                app:layout_constraintStart_toStartOf="@+id/info_view_vgl"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 

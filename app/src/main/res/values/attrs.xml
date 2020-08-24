@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="InfoView">
+
+        <!-- Heading -->
+        <attr name="headingText" format="string|reference" />
+        <attr name="headingTextSize" format="dimension|reference" />
+        <attr name="headingTextColor" format="color|reference" />
+        <attr name="headingTextStyle">
+            <enum name="normal" value="0"/>
+            <enum name="bold" value="1"/>
+            <enum name="italic" value="2"/>
+        </attr>
+
+        <!-- Data -->
+        <attr name="dataText" format="string|reference" />
+        <attr name="dataTextSize" format="dimension|reference" />
+        <attr name="dataTextColor" format="color|reference" />
+        <attr name="dataTextStyle">
+            <enum name="normal" value="0"/>
+            <enum name="bold" value="1"/>
+            <enum name="italic" value="2"/>
+        </attr>
+
+        <!-- Icon -->
+        <attr name="icon" format="reference" />
+        <attr name="iconTint" format="color|reference" />
+        <attr name="iconSize" format="dimension|reference" />
+
+    </declare-styleable>
+</resources>
