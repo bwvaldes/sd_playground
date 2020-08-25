@@ -18,581 +18,187 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent=".66" />
 
-    <androidx.cardview.widget.CardView
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/hg1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".33" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/hg2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".66" />
+
+    <com.scubadeving.sd_playground.ui.InfoView
         android:id="@+id/log_entry_difficulty"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_margin="15dp"
         android:backgroundTint="@android:color/holo_red_light"
-        android:clickable="true"
-        android:elevation="5dp"
         app:cardCornerRadius="5dp"
+        app:dataText="74˚F"
+        app:dataTextColor="@android:color/white"
+        app:dataTextSize="16sp"
+        app:headingText="Difficulty"
+        app:headingTextColor="@android:color/white"
+        app:headingTextSize="18sp"
+        app:icon="@drawable/ic_weather"
+        app:layout_constraintBottom_toTopOf="@+id/hg1"
         app:layout_constraintEnd_toStartOf="@+id/vg1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent" />
 
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="15dp">
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/info_view_vgl"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent=".5" />
-
-            <ImageView
-                android:id="@+id/weather_card_image"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_gravity="start|top"
-                android:src="@drawable/ic_weather"
-                android:tint="@color/white"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/weather_card_text"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:text="Difficulty"
-                android:textColor="@android:color/white"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/weather_card_image" />
-
-            <TextView
-                android:id="@+id/weather_card_data"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="4/10"
-                android:textColor="@android:color/white"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/info_view_vgl"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
+    <com.scubadeving.sd_playground.ui.InfoView
         android:id="@+id/dash_weather_card"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_margin="15dp"
         android:backgroundTint="@android:color/holo_red_light"
-        android:clickable="true"
-        android:elevation="5dp"
         app:cardCornerRadius="5dp"
+        app:dataText="74˚F"
+        app:dataTextColor="@android:color/white"
+        app:dataTextSize="16sp"
+        app:headingText="Gas Type"
+        app:headingTextColor="@android:color/white"
+        app:headingTextSize="18sp"
+        app:icon="@drawable/ic_weather"
+        app:layout_constraintBottom_toTopOf="@+id/hg1"
         app:layout_constraintEnd_toStartOf="@id/vg2"
         app:layout_constraintStart_toEndOf="@+id/vg1"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent" />
 
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="15dp">
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/info_view_vgl"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent=".5" />
-
-            <ImageView
-                android:id="@+id/weather_card_image"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_gravity="start|top"
-                android:src="@drawable/ic_weather"
-                android:tint="@color/white"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/weather_card_text"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:text="Gas Type"
-                android:textColor="@android:color/white"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/weather_card_image" />
-
-            <TextView
-                android:id="@+id/weather_card_data"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="4/10"
-                android:textColor="@android:color/white"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/info_view_vgl"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/dash_weather_card"
+    <com.scubadeving.sd_playground.ui.InfoView
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_margin="15dp"
         android:backgroundTint="@android:color/holo_red_light"
-        android:clickable="true"
-        android:elevation="5dp"
         app:cardCornerRadius="5dp"
+        app:dataText="74˚F"
+        app:dataTextColor="@android:color/white"
+        app:dataTextSize="16sp"
+        app:headingText="Entry"
+        app:headingTextColor="@android:color/white"
+        app:headingTextSize="18sp"
+        app:icon="@drawable/ic_weather"
+        app:layout_constraintBottom_toTopOf="@+id/hg1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/vg2"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent" />
 
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="15dp">
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/info_view_vgl"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent=".5" />
-
-            <ImageView
-                android:id="@+id/weather_card_image"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_gravity="start|top"
-                android:src="@drawable/ic_weather"
-                android:tint="@color/white"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/weather_card_text"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:text="Entry"
-                android:textColor="@android:color/white"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/weather_card_image" />
-
-            <TextView
-                android:id="@+id/weather_card_data"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="4/10"
-                android:textColor="@android:color/white"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/info_view_vgl"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
+    <com.scubadeving.sd_playground.ui.InfoView
         android:id="@+id/depth"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_margin="15dp"
         android:backgroundTint="@android:color/holo_red_light"
-        android:clickable="true"
-        android:elevation="5dp"
         app:cardCornerRadius="5dp"
+        app:dataText="74˚F"
+        app:dataTextColor="@android:color/white"
+        app:dataTextSize="16sp"
+        app:headingText="Depth"
+        app:headingTextColor="@android:color/white"
+        app:headingTextSize="18sp"
+        app:icon="@drawable/ic_weather"
+        app:layout_constraintBottom_toTopOf="@+id/hg2"
         app:layout_constraintEnd_toStartOf="@+id/vg1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/log_entry_difficulty">
+        app:layout_constraintTop_toBottomOf="@+id/hg1" />
 
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="15dp">
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/info_view_vgl"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent=".5" />
-
-            <ImageView
-                android:id="@+id/weather_card_image"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_gravity="start|top"
-                android:src="@drawable/ic_weather"
-                android:tint="@color/white"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/weather_card_text"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:text="Depth"
-                android:textColor="@android:color/white"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/weather_card_image" />
-
-            <TextView
-                android:id="@+id/weather_card_data"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="4/10"
-                android:textColor="@android:color/white"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/info_view_vgl"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
+    <com.scubadeving.sd_playground.ui.InfoView
+        android:id="@+id/infoView"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_margin="15dp"
         android:backgroundTint="@android:color/holo_red_light"
-        android:clickable="true"
-        android:elevation="5dp"
         app:cardCornerRadius="5dp"
+        app:dataText="74˚F"
+        app:dataTextColor="@android:color/white"
+        app:dataTextSize="16sp"
+        app:headingText="Time In"
+        app:headingTextColor="@android:color/white"
+        app:headingTextSize="18sp"
+        app:icon="@drawable/ic_weather"
+        app:layout_constraintBottom_toTopOf="@+id/hg2"
         app:layout_constraintEnd_toStartOf="@id/vg2"
         app:layout_constraintStart_toEndOf="@+id/vg1"
-        app:layout_constraintTop_toBottomOf="@+id/log_entry_difficulty">
+        app:layout_constraintTop_toBottomOf="@+id/hg1" />
 
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="15dp">
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/info_view_vgl"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent=".5" />
-
-            <ImageView
-                android:id="@+id/weather_card_image"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_gravity="start|top"
-                android:src="@drawable/ic_weather"
-                android:tint="@color/white"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/weather_card_text"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:text="Time In"
-                android:textColor="@android:color/white"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/weather_card_image" />
-
-            <TextView
-                android:id="@+id/weather_card_data"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="4/10"
-                android:textColor="@android:color/white"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/info_view_vgl"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/dash_weather_card"
+    <com.scubadeving.sd_playground.ui.InfoView
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_margin="15dp"
         android:backgroundTint="@android:color/holo_red_light"
-        android:clickable="true"
-        android:elevation="5dp"
         app:cardCornerRadius="5dp"
+        app:dataText="74˚F"
+        app:dataTextColor="@android:color/white"
+        app:dataTextSize="16sp"
+        app:headingText="Time Out"
+        app:headingTextColor="@android:color/white"
+        app:headingTextSize="18sp"
+        app:icon="@drawable/ic_weather"
+        app:layout_constraintBottom_toTopOf="@+id/hg2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/vg2"
-        app:layout_constraintTop_toBottomOf="@id/log_entry_difficulty">
+        app:layout_constraintTop_toBottomOf="@id/hg1" />
 
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="15dp">
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/info_view_vgl"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent=".5" />
-
-            <ImageView
-                android:id="@+id/weather_card_image"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_gravity="start|top"
-                android:src="@drawable/ic_weather"
-                android:tint="@color/white"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/weather_card_text"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:text="Time Out"
-                android:textColor="@android:color/white"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/weather_card_image" />
-
-            <TextView
-                android:id="@+id/weather_card_data"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="4/10"
-                android:textColor="@android:color/white"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/info_view_vgl"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
+    <com.scubadeving.sd_playground.ui.InfoView
         android:id="@+id/air_in"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_margin="15dp"
         android:backgroundTint="@android:color/holo_red_light"
-        android:clickable="true"
-        android:elevation="5dp"
         app:cardCornerRadius="5dp"
+        app:dataText="74˚F"
+        app:dataTextColor="@android:color/white"
+        app:dataTextSize="16sp"
+        app:headingText="Weight"
+        app:headingTextColor="@android:color/white"
+        app:headingTextSize="18sp"
+        app:icon="@drawable/ic_weather"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/vg1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/depth">
+        app:layout_constraintTop_toBottomOf="@+id/hg2" />
 
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="15dp">
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/info_view_vgl"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent=".5" />
-
-            <ImageView
-                android:id="@+id/weather_card_image"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_gravity="start|top"
-                android:src="@drawable/ic_weather"
-                android:tint="@color/white"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/weather_card_text"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:text="Weight"
-                android:textColor="@android:color/white"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/weather_card_image" />
-
-            <TextView
-                android:id="@+id/weather_card_data"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="4/10"
-                android:textColor="@android:color/white"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/info_view_vgl"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
+    <com.scubadeving.sd_playground.ui.InfoView
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_margin="15dp"
         android:backgroundTint="@android:color/holo_red_light"
-        android:clickable="true"
-        android:elevation="5dp"
         app:cardCornerRadius="5dp"
+        app:dataText="74˚F"
+        app:dataTextColor="@android:color/white"
+        app:dataTextSize="16sp"
+        app:headingText="Air In"
+        app:headingTextColor="@android:color/white"
+        app:headingTextSize="18sp"
+        app:icon="@drawable/ic_weather"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/vg2"
         app:layout_constraintStart_toEndOf="@+id/vg1"
-        app:layout_constraintTop_toBottomOf="@+id/depth">
+        app:layout_constraintTop_toBottomOf="@+id/hg2" />
 
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="15dp">
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/info_view_vgl"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent=".5" />
-
-            <ImageView
-                android:id="@+id/weather_card_image"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_gravity="start|top"
-                android:src="@drawable/ic_weather"
-                android:tint="@color/white"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/weather_card_text"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:text="Air In"
-                android:textColor="@android:color/white"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/weather_card_image" />
-
-            <TextView
-                android:id="@+id/weather_card_data"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="4/10"
-                android:textColor="@android:color/white"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/info_view_vgl"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/dash_weather_card"
+    <com.scubadeving.sd_playground.ui.InfoView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
         android:backgroundTint="@android:color/holo_red_light"
-        android:clickable="true"
-        android:elevation="5dp"
         app:cardCornerRadius="5dp"
+        app:dataText="74˚F"
+        app:dataTextColor="@android:color/white"
+        app:dataTextSize="16sp"
+        app:headingText="Air Out"
+        app:headingTextColor="@android:color/white"
+        app:headingTextSize="18sp"
+        app:icon="@drawable/ic_weather"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/vg2"
-        app:layout_constraintTop_toBottomOf="@id/depth">
+        app:layout_constraintTop_toBottomOf="@id/hg2" />
 
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="15dp">
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/info_view_vgl"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent=".5" />
-
-            <ImageView
-                android:id="@+id/weather_card_image"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_gravity="start|top"
-                android:src="@drawable/ic_weather"
-                android:tint="@color/white"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/weather_card_text"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:text="Air Out"
-                android:textColor="@android:color/white"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/weather_card_image" />
-
-            <TextView
-                android:id="@+id/weather_card_data"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="4/10"
-                android:textColor="@android:color/white"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/info_view_vgl"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

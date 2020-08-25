@@ -13,7 +13,9 @@ import androidx.core.content.ContextCompat
 import androidx.core.widget.ImageViewCompat
 import com.google.android.material.card.MaterialCardView
 import com.scubadeving.sd_playground.R
-import kotlinx.android.synthetic.main.view_custom_card.view.*
+import kotlinx.android.synthetic.main.view_infoview.view.info_view_icon
+import kotlinx.android.synthetic.main.view_infoview.view.info_view_heading_text
+import kotlinx.android.synthetic.main.view_infoview.view.info_view_data_text
 
 class InfoView @JvmOverloads constructor(
     context: Context,
@@ -22,7 +24,7 @@ class InfoView @JvmOverloads constructor(
 ) : MaterialCardView(context, attrs, defStyleAttr) {
 
     init {
-        inflate(context, R.layout.view_custom_card, this)
+        inflate(context, R.layout.view_infoview, this)
 
         attrs?.let {
             val styledAttributes = context.obtainStyledAttributes(

@@ -4,11 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="@android:color/holo_orange_light"
-    android:clickable="true"
-    android:elevation="5dp"
-    android:focusable="true"
-    app:cardCornerRadius="5dp">
+    android:backgroundTint="@android:color/darker_gray">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
