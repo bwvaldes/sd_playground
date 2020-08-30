@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- TODO: Extract this out to own lib-->
+<resources>
+
+    <style name="Widget.AppTheme.InfoView" parent="">
+        <item name="cardCornerRadius">20dp</item>
+        <item name="cardElevation">5dp</item>
+        <item name="cardBackgroundColor">@android:color/darker_gray</item>
+        <item name="iconTint">@android:color/white</item>
+        <item name="headingTextAppearance">@style/TextAppearance.AppTheme.InfoView.Headline</item>
+        <item name="dataTextAppearance">@style/TextAppearance.AppTheme.InfoView.Body</item>
+    </style>
+
+    <style name="TextAppearance.AppTheme.InfoView.Headline" parent="android:TextAppearance">
+        <item name="headingTextColor">@android:color/white</item>
+        <item name="headingTextSize">18sp</item>
+        <item name="headingTextStyle">bold</item>
+<!--        <item name="android:lineSpacingMultiplier">0</item>-->
+<!--        <item name="android:textSize">32sp</item>-->
+<!--        <item name="android:lineSpacingExtra">40sp</item>-->
+<!--        <item name="android:textStyle">bold</item>-->
+    </style>
+
+    <style name="TextAppearance.AppTheme.InfoView.Body" parent="android:TextAppearance">
+        <item name="dataTextColor">@android:color/white</item>
+        <item name="dataTextSize">16sp</item>
+        <item name="dataTextStyle">italic</item>
+    </style>
+</resources>

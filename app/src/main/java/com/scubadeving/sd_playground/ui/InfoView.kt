@@ -11,6 +11,7 @@ import android.util.TypedValue
 import androidx.annotation.ColorInt
 import androidx.core.content.ContextCompat
 import androidx.core.widget.ImageViewCompat
+import androidx.core.widget.TextViewCompat
 import com.google.android.material.card.MaterialCardView
 import com.scubadeving.sd_playground.R
 import kotlinx.android.synthetic.main.view_infoview.view.info_view_icon
@@ -18,9 +19,9 @@ import kotlinx.android.synthetic.main.view_infoview.view.info_view_heading_text
 import kotlinx.android.synthetic.main.view_infoview.view.info_view_data_text
 
 class InfoView @JvmOverloads constructor(
-    context: Context,
-    attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0
+        context: Context,
+        attrs: AttributeSet? = null,
+        defStyleAttr: Int = 0
 ) : MaterialCardView(context, attrs, defStyleAttr) {
 
     init {
@@ -28,57 +29,63 @@ class InfoView @JvmOverloads constructor(
 
         attrs?.let {
             val styledAttributes = context.obtainStyledAttributes(
-                it,
-                R.styleable.InfoView,
-                DEFAULT_STYLE_ATTR,
-                DEFAULT_STYLE_RES
+                    it,
+                    R.styleable.InfoView,
+                    R.attr.infoViewStyle,
+                    R.style.Widget_AppTheme_InfoView
             )
 
             val icon = styledAttributes.getDrawable(R.styleable.InfoView_icon)
             val iconSize =
-                styledAttributes.getDimension(R.styleable.InfoView_iconSize, DEFAULT_ICON_SIZE)
+                    styledAttributes.getDimension(R.styleable.InfoView_iconSize, DEFAULT_ICON_SIZE)
             val iconTintColorResource = styledAttributes.getResourceId(
-                R.styleable.InfoView_iconTint,
-                android.R.color.white
+                    R.styleable.InfoView_iconTint,
+                    android.R.color.white
             )
             val iconTintColor = ContextCompat.getColor(context, iconTintColorResource)
 
             val headingText = styledAttributes.getString(R.styleable.InfoView_headingText)
             val headingTextSize = styledAttributes.getDimensionPixelSize(
-                R.styleable.InfoView_headingTextSize,
-                DEFAULT_TEXT_SIZE
+                    R.styleable.InfoView_headingTextSize,
+                    DEFAULT_TEXT_SIZE
             )
             val headingTextColor =
-                styledAttributes.getColor(R.styleable.InfoView_headingTextColor, DEFAULT_TEXT_COLOR)
+                    styledAttributes.getColor(R.styleable.InfoView_headingTextColor, DEFAULT_TEXT_COLOR)
             val headingTextStyle =
-                styledAttributes.getInt(R.styleable.InfoView_headingTextStyle, DEFAULT_TEXT_STYLE)
+                    styledAttributes.getInt(R.styleable.InfoView_headingTextStyle, DEFAULT_TEXT_STYLE)
+            val headingStyleRes = styledAttributes.getResourceId(R.styleable.InfoView_headingTextAppearance,
+                    R.style.TextAppearance_MaterialComponents_Headline1)
+            TextViewCompat.setTextAppearance(info_view_heading_text, headingStyleRes)
 
             val dataText = styledAttributes.getString(R.styleable.InfoView_dataText)
             val dataTextSize = styledAttributes.getDimensionPixelSize(
-                R.styleable.InfoView_dataTextSize,
-                DEFAULT_TEXT_SIZE
+                    R.styleable.InfoView_dataTextSize,
+                    DEFAULT_TEXT_SIZE
             )
             val dataTextColor = styledAttributes.getColor(
-                R.styleable.InfoView_dataTextColor,
-                headingTextColor
+                    R.styleable.InfoView_dataTextColor,
+                    headingTextColor
             )
             val dataTextStyle =
-                styledAttributes.getInt(R.styleable.InfoView_dataTextStyle, DEFAULT_TEXT_STYLE)
+                    styledAttributes.getInt(R.styleable.InfoView_dataTextStyle, DEFAULT_TEXT_STYLE)
+            val dataStyleRes = styledAttributes.getResourceId(R.styleable.InfoView_dataTextAppearance,
+                    R.style.TextAppearance_MaterialComponents_Body1)
+            TextViewCompat.setTextAppearance(info_view_data_text, dataStyleRes)
 
             configureIcon(icon, iconSize, iconTintColor)
 
             configureInfoViewHeading(
-                headingText,
-                headingTextSize,
-                headingTextColor,
-                headingTextStyle
+                    headingText,
+                    headingTextSize,
+                    headingTextColor,
+                    headingTextStyle
             )
 
             configureInfoViewData(
-                dataText,
-                dataTextSize,
-                dataTextColor,
-                dataTextStyle
+                    dataText,
+                    dataTextSize,
+                    dataTextColor,
+                    dataTextStyle
             )
 
             styledAttributes.recycle()
@@ -92,10 +99,10 @@ class InfoView @JvmOverloads constructor(
     }
 
     private fun configureInfoViewHeading(
-        text: String?,
-        textSize: Int,
-        textColor: Int,
-        textStyle: Int
+            text: String?,
+            textSize: Int,
+            textColor: Int,
+            textStyle: Int
     ) {
         setHeadingText(text)
         setHeadingTextSize(textSize)
@@ -104,10 +111,10 @@ class InfoView @JvmOverloads constructor(
     }
 
     private fun configureInfoViewData(
-        text: String?,
-        textSize: Int,
-        textColor: Int,
-        textStyle: Int
+            text: String?,
+            textSize: Int,
+            textColor: Int,
+            textStyle: Int
     ) {
         setDataText(text)
         setDataTextSize(textSize)
@@ -121,9 +128,9 @@ class InfoView @JvmOverloads constructor(
 
     private fun setIconSize(dimensions: Float) {
         val dimensionInDp = TypedValue.applyDimension(
-            TypedValue.COMPLEX_UNIT_DIP,
-            dimensions,
-            resources.displayMetrics
+                TypedValue.COMPLEX_UNIT_DIP,
+                dimensions,
+                resources.displayMetrics
         ).toInt()
         info_view_icon.apply {
             layoutParams.height = dimensionInDp
@@ -169,8 +176,6 @@ class InfoView @JvmOverloads constructor(
     }
 
     companion object {
-        private const val DEFAULT_STYLE_ATTR = 0
-        private const val DEFAULT_STYLE_RES = 0
         private const val DEFAULT_TEXT_SIZE = 18
         private const val DEFAULT_TEXT_COLOR = WHITE
         private const val DEFAULT_TEXT_STYLE = NORMAL

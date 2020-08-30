@@ -2,7 +2,10 @@
 <resources>
     <declare-styleable name="InfoView">
 
+        <attr name="infoviewTextAppearance" format="reference"/>
+
         <!-- Heading -->
+        <attr name="headingTextAppearance" format="reference"/>
         <attr name="headingText" format="string|reference" />
         <attr name="headingTextSize" format="dimension|reference" />
         <attr name="headingTextColor" format="color|reference" />
@@ -13,6 +16,7 @@
         </attr>
 
         <!-- Data -->
+        <attr name="dataTextAppearance" format="reference"/>
         <attr name="dataText" format="string|reference" />
         <attr name="dataTextSize" format="dimension|reference" />
         <attr name="dataTextColor" format="color|reference" />
@@ -27,5 +31,9 @@
         <attr name="iconTint" format="color|reference" />
         <attr name="iconSize" format="dimension|reference" />
 
+    </declare-styleable>
+
+    <declare-styleable name="AppTheme">
+        <attr name="infoViewStyle" format="reference"/>
     </declare-styleable>
 </resources>
