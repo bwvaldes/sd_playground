@@ -5,19 +5,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.main.dashboard.DashboardFragment">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/transparent"
+        app:contentInsetStartWithNavigation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
+        <ImageView
+            android:id="@+id/profile_icon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="15dp"
+            android:src="@drawable/ic_profile" />
+    </androidx.appcompat.widget.Toolbar>
     <TextView
         android:id="@+id/welcome_username"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="50dp"
         android:layout_marginEnd="15dp"
         android:text="Welcome John Smith"
         android:textSize="28sp"
-        app:layout_constraintEnd_toStartOf="@+id/profile_icon"
+        app:layout_constraintEnd_toStartOf="@+id/notifications_icon"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
     <TextView
         android:id="@+id/welcome_cert_level"
@@ -30,11 +46,11 @@
         app:layout_constraintTop_toBottomOf="@id/welcome_username" />
 
     <ImageView
-        android:id="@+id/profile_icon"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
+        android:id="@+id/notifications_icon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginEnd="15dp"
-        android:src="@drawable/ic_profile"
+        android:src="@drawable/ic_notifications"
         app:layout_constraintBottom_toBottomOf="@+id/welcome_cert_level"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/welcome_username" />
