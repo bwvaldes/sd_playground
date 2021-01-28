@@ -3,6 +3,12 @@
     <declare-styleable name="InfoView">
 
         <attr name="infoviewTextAppearance" format="reference"/>
+        <attr name="tint" format="color|reference"/>
+
+        <!-- Icon -->
+        <attr name="icon" format="reference" />
+        <attr name="iconTint" format="color|reference" />
+        <attr name="iconSize" format="dimension|reference" />
 
         <!-- Heading -->
         <attr name="headingTextAppearance" format="reference"/>
@@ -25,11 +31,6 @@
             <enum name="bold" value="1"/>
             <enum name="italic" value="2"/>
         </attr>
-
-        <!-- Icon -->
-        <attr name="icon" format="reference" />
-        <attr name="iconTint" format="color|reference" />
-        <attr name="iconSize" format="dimension|reference" />
 
     </declare-styleable>
 

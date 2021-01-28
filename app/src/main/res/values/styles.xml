@@ -4,7 +4,7 @@
 <resources>
 
     <style name="Widget.AppTheme.InfoView" parent="">
-        <item name="cardCornerRadius">20dp</item>
+        <item name="cardCornerRadius">5dp</item>
         <item name="cardElevation">5dp</item>
         <item name="cardBackgroundColor">@android:color/darker_gray</item>
         <item name="iconTint">@android:color/white</item>
@@ -16,10 +16,6 @@
         <item name="headingTextColor">@android:color/white</item>
         <item name="headingTextSize">18sp</item>
         <item name="headingTextStyle">bold</item>
-<!--        <item name="android:lineSpacingMultiplier">0</item>-->
-<!--        <item name="android:textSize">32sp</item>-->
-<!--        <item name="android:lineSpacingExtra">40sp</item>-->
-<!--        <item name="android:textStyle">bold</item>-->
     </style>
 
     <style name="TextAppearance.AppTheme.InfoView.Body" parent="android:TextAppearance">

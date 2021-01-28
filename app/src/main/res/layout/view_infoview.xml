@@ -1,66 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:backgroundTint="@android:color/darker_gray">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="15dp">
+        android:backgroundTint="@android:color/darker_gray">
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/info_view_vgl"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent=".5" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="15dp">
 
-        <ImageView
-            android:id="@+id/info_view_icon"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_gravity="start|top"
-            android:tint="@color/white"
-            app:layout_constraintBottom_toTopOf="@id/info_view_heading_text"
-            app:layout_constraintEnd_toStartOf="@+id/info_view_vgl"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
-            tools:src="@drawable/ic_weather" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/info_view_vgl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent=".5" />
 
-        <TextView
-            android:id="@+id/info_view_heading_text"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:ellipsize="end"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/info_view_icon"
-            tools:text="Weather" />
+            <ImageView
+                android:id="@+id/info_view_icon"
+                android:layout_width="@dimen/infoview_icon_size"
+                android:layout_height="@dimen/infoview_icon_size"
+                android:layout_gravity="start|top"
+                android:contentDescription="@string/infoview_content_description"
+                app:layout_constraintBottom_toTopOf="@id/info_view_heading_text"
+                app:layout_constraintEnd_toStartOf="@+id/info_view_vgl"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0"
+                tools:src="@drawable/ic_weather" />
 
-        <TextView
-            android:id="@+id/info_view_data_text"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:gravity="center"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@+id/info_view_icon"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="@+id/info_view_vgl"
-            app:layout_constraintTop_toTopOf="@+id/info_view_icon"
-            app:layout_constraintVertical_bias="0.0"
-            tools:text="74˚F" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/info_view_heading_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:ellipsize="end"
+                android:textSize="@dimen/infoview_heading_text_size"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/info_view_icon"
+                tools:text="Weather" />
 
-</com.google.android.material.card.MaterialCardView>
+            <TextView
+                android:id="@+id/info_view_data_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:textSize="@dimen/infoview_data_text_size"
+                app:layout_constraintBottom_toBottomOf="@+id/info_view_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/info_view_vgl"
+                app:layout_constraintTop_toTopOf="@+id/info_view_icon"
+                app:layout_constraintVertical_bias="0.0"
+                tools:text="74˚F" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</merge>
