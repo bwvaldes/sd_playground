@@ -70,7 +70,7 @@ class DashboardFragment : Fragment() {
 
     private fun configureDashItems() {
         dash_weather_card.setOnClickListener {
-            Toast.makeText(activity, "Weather Detail", Toast.LENGTH_SHORT).show()
+            it.findNavController().navigate(R.id.weatherDetailFragment)
         }
         dash_fly_card.setOnClickListener {
             // TODO: Nav to most recently logged dive
@@ -93,7 +93,7 @@ class DashboardFragment : Fragment() {
 
     private fun navToNotifications(view: View) {
         view.setOnClickListener {
-            Toast.makeText(activity, "Notifications", Toast.LENGTH_SHORT).show()
+            it.findNavController().navigate(R.id.notificationsFragment)
         }
     }
 }

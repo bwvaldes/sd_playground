@@ -66,4 +66,14 @@
         android:name="com.scubadeving.sd_playground.ui.main.logbook.LogbookEntryFragment"
         android:label="fragment_logbook_entry"
         tools:layout="@layout/fragment_logbook_entry" />
+    <fragment
+        android:id="@+id/notificationsFragment"
+        android:name="com.scubadeving.sd_playground.ui.details.notifications.NotificationsFragment"
+        android:label="NotificationsFragment"
+        tools:layout="@layout/fragment_detail_notifications"/>
+    <fragment
+        android:id="@+id/weatherDetailFragment"
+        android:name="com.scubadeving.sd_playground.ui.details.weather.WeatherDetailFragment"
+        android:label="WeatherDetailFragment"
+        tools:layout="@layout/fragment_detail_weather"/>
 </navigation>
