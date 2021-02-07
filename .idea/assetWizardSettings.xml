@@ -356,7 +356,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/Applications/Android%20Studio%20Preview.app/Contents/plugins/android/lib/android.jar!/images/material/icons/materialicons/arrow_downward/baseline_arrow_downward_24.xml" />
+                                      <entry key="url" value="jar:file:/Applications/Android%20Studio%20Preview.app/Contents/plugins/android/lib/android.jar!/images/material/icons/materialicons/clear/baseline_clear_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -366,7 +366,7 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_sort_descending" />
+                            <entry key="outputName" value="ic_clear" />
                           </map>
                         </option>
                       </PersistentState>

@@ -7,11 +7,12 @@ import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.scubadeving.sd_playground.R
+import com.scubadeving.sd_playground.data.Diver
 import com.scubadeving.sd_playground.utils.inflate
 import kotlinx.android.synthetic.main.item_explore_buddies_horizontal_card.view.*
 import kotlinx.android.synthetic.main.item_explore_buddies_vertical_card.view.*
 
-class BuddyAdapter(private val divers: List<String>, val orientation: Boolean) :
+class BuddyAdapter(private val divers: List<Diver>, val orientation: Boolean) :
     RecyclerView.Adapter<BuddyAdapter.BuddyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BuddyViewHolder {
@@ -50,12 +51,25 @@ class BuddyAdapter(private val divers: List<String>, val orientation: Boolean) :
             v.findNavController().navigate(R.id.profileFragment)
         }
 
-        fun bind(diver: String, position: Int) {
+        fun bind(diver: Diver, position: Int) {
             itemView.apply {
                 if (orientation) {
-                    nearby_diver_text.text = diver
+                    diver_card_horizontal_avatar.setImageResource(R.drawable.ic_profile)
+                    diver_card_horizontal_background.setImageResource(R.color.purple_200)
+                    diver_card_horizontal_name.text = diver.name
+                    diver_card_horizontal_level.text = diver.certLevel
+                    if (diver.buddyCount != 1) {
+                        diver_card_horizontal_buddy_count.text =
+                            diver.buddyCount.toString().plus(" Buddies")
+                    } else {
+                        diver_card_horizontal_buddy_count.text =
+                            diver.buddyCount.toString().plus(" Buddy")
+                    }
                 } else {
-                    diver_text.text = diver
+                    diver_card_vertical_avatar.setImageResource(R.drawable.ic_profile)
+                    diver_card_vertical_background.setImageResource(R.color.teel_200)
+                    diver_card_vertical_name.text = diver.name
+                    diver_card_vertical_level.text = diver.certLevel
                 }
             }
         }

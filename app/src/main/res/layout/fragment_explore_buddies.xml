@@ -66,6 +66,7 @@
             android:id="@+id/dive_center_divers_all"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="start"
             android:text="See All"
             android:textAlignment="viewStart"
             android:textAllCaps="false"
@@ -98,6 +99,7 @@
         <com.google.android.material.button.MaterialButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="start"
             android:text="See All"
             android:textAlignment="viewStart"
             android:textAllCaps="false"

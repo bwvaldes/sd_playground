@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.*
 import com.scubadeving.sd_playground.R
+import com.scubadeving.sd_playground.data.Diver
 import com.scubadeving.sd_playground.decorations.GridSpacingItemDecoration
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.BuddyAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.ItemDetailAdapter
@@ -20,34 +21,34 @@ import kotlinx.android.synthetic.main.fragment_profile_certifications.*
 
 class ExploreBuddiesFragment : Fragment() {
 
-    private var nearbyDivers: List<String> =
+    private var nearbyDivers: List<Diver> =
         listOf(
-            "Bob",
-            "Billy",
-            "Jill",
-            "Karen",
-            "Molly",
-            "Don",
-            "Bill",
-            "Greg"
+            Diver("Bob", "Open Water", 1),
+            Diver("Billy", "Rescue Diver", (0..100).random()),
+            Diver("Jill", "Advanced Open Water", (0..100).random()),
+            Diver("Karen", "Open Water", 0),
+            Diver("Molly", "Night Diver", (0..100).random()),
+            Diver("Don", "Open Water", (0..100).random()),
+            Diver("Bill", "Open Water", (0..100).random()),
+            Diver("Greg", "Open Water", (0..100).random())
         )
 
-    private var diveCenterDivers: List<String> =
+    private var diveCenterDivers: List<Diver> =
         listOf(
-            "Karen",
-            "Molly",
-            "Chad",
-            "Stuart"
+            Diver("Jill", "Open Water", (0..100).random()),
+            Diver("Jack", "Open Water", (0..100).random()),
+            Diver("Pedro", "Open Water", (0..100).random()),
+            Diver("Nick", "Open Water", (0..100).random())
         )
 
 
-    private var pastDivers: List<String> =
+    private var pastDivers: List<Diver> =
         listOf(
-            "Mike",
-            "Don",
-            "Bill",
-            "Greg"
-        )
+            Diver("Lia", "Discover Diver", (0..100).random()),
+            Diver("Arnold", "Open Water", (0..100).random()),
+            Diver("Richard", "Open Water", (0..100).random()),
+            Diver("Brandon", "Open Water", (0..100).random())
+            )
     private lateinit var nearbyDiversLayoutManager: LinearLayoutManager
     private lateinit var diveCenterDiversLayoutManager: GridLayoutManager
     private lateinit var pastDiversDiversLayoutManager: GridLayoutManager
