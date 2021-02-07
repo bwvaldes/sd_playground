@@ -189,8 +189,21 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/wildlife_rv"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="?attr/actionBarSize" />
+                android:layout_marginTop="15dp"
+                android:background="@android:color/darker_gray"
+                android:drawableStart="@drawable/ic_rating"
+                android:drawableLeft="@drawable/ic_rating"
+                android:text="4.5 Reviews (23)" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pulvinar metus in massa aliquam placerat. Suspendisse congue dui velit, quis maximus" />
 
         </LinearLayout>
 

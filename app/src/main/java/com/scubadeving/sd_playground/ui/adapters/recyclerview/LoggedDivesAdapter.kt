@@ -15,7 +15,6 @@ class LoggedDivesAdapter(private val loggedDives: List<String>, val orientation:
     RecyclerView.Adapter<LoggedDivesAdapter.LoggedDiveViewHolder>() {
 
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LoggedDiveViewHolder {
         val inflatedView = if (orientation) {
             parent.inflate(R.layout.item_logged_dive_card_vertical, false)
@@ -48,11 +47,22 @@ class LoggedDivesAdapter(private val loggedDives: List<String>, val orientation:
         }
 
         fun bind(loggedDive: String, position: Int) {
+            val logId = (position + 1).toString().plus(". ")
             itemView.apply {
                 if (orientation) {
-                    logged_dive_text.text = loggedDive
+                    logged_dive_site_image.setBackgroundResource(R.drawable.ic_next_steps)
+                    logged_dive_rating.text = "3.75 (14)"
+                    logged_dive_details.text = logId.plus(loggedDive)
+                    logged_dive_date.text = "January 23rd, 2020"
+                    logged_dive_depth.text = "44ft"
+                    logged_dive_bottom_time.text = "38min"
                 } else {
-                    logged_dive_map_text.text = loggedDive
+                    logged_dive_map_site_image.setBackgroundResource(R.drawable.ic_next_steps)
+                    logged_dive_map_rating.text = "3.75 (14)"
+                    logged_dive_map_details.text = logId.plus(loggedDive)
+                    logged_dive_map_date.text = "January 23rd, 2020"
+                    logged_dive_map_depth.text = "44ft"
+                    logged_dive_map_bottom_time.text = "38min"
                 }
             }
         }

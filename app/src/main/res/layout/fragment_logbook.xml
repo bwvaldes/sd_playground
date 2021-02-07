@@ -17,13 +17,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageButton
-            android:id="@+id/scan_log"
+        <ToggleButton
+            android:id="@+id/logbook_sort"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_gravity="end"
             android:layout_marginEnd="15dp"
-            android:src="@drawable/ic_scan_log" />
+            android:layout_marginRight="15dp"
+            android:background="@drawable/selector_sort"
+            android:checked="false"
+            android:src="@drawable/selector_sort"
+            android:text=""
+            android:textOff=""
+            android:textOn="" />
     </androidx.appcompat.widget.Toolbar>
 
     <TextView
