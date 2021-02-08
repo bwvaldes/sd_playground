@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.chip.Chip
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.Certification
 import com.scubadeving.sd_playground.data.Specialty
@@ -19,12 +20,12 @@ import kotlinx.android.synthetic.main.fragment_catalog.*
 
 class CatalogFragment : Fragment() {
 
-    private var beginnerSpecialties = listOf(
+    private val beginnerSpecialties: List<Specialty> = listOf(
         Specialty("AWARE - Coral Reef Conservation"),
         Specialty("Project AWARE Specialist"),
         Specialty("Digital Underwater Photographer (for Snorkelers)")
     )
-    private var intermediateSpecialties = listOf(
+    private val intermediateSpecialties: List<Specialty> = listOf(
         Specialty("Avanced Rebreather Diver"),
         Specialty("Altitude Diver"),
         Specialty("AWARE - Fish Identification"),
@@ -47,35 +48,71 @@ class CatalogFragment : Fragment() {
         Specialty("Underwater Photographer"),
         Specialty("Underwater Videographer")
     )
-    private var adventureSpecialties = listOf(
+    private val adventureSpecialties: List<Specialty> = listOf(
         Specialty("Deep Diver"),
         Specialty("Wreck Diver")
     )
-    private var advancedSpecialties = listOf(
+    private val advancedSpecialties: List<Specialty> = listOf(
         Specialty("Cavern Diver"),
         Specialty("Ice Diver"),
         Specialty("Search and Recovery Diver"),
-        Specialty("Semiclosed Rebreather - Dolphin/Atlantis")
+        Specialty("Semiclosed Rebreather - Dolphin/Atlantis"),
+        Specialty("Scuba Review")
     )
-    private var emergencySpecialties = listOf(
+    private val emergencySpecialties: List<Specialty> = listOf(
+        Specialty("Emergency First Response Provider"),
         Specialty("Emergency First Response Instructor"),
         Specialty("Emergency First Response Instructor Trainer")
     )
-    private var padiCertifications: List<Certification> = listOf(
+    private val rescueSpecialties: List<Specialty> = listOf(
+        Specialty("Divemaster"),
+        Specialty("Open Water Scuba Instructor"),
+        Specialty("Assistant Instructor"),
+        Specialty("Specialty Instructor"),
+        Specialty("Master Scuba Diver Trainer"),
+        Specialty("ICF Staff Instructor"),
+        Specialty("Master Instructor"),
+        Specialty("Course Director")
+    )
+    private val padiCertifications: List<Certification> = listOf(
+        Certification("Discover Snorkeling", listOf(Specialty("Discover Snorkeling"))),
         Certification("Seal Team", beginnerSpecialties),
         Certification("Bubble Maker", beginnerSpecialties),
         Certification("Discover Scuba Diving", beginnerSpecialties),
         Certification("Skin Diver", beginnerSpecialties),
-        Certification("Discover Snorkeling", emptyList()),
         Certification("Open Water Diver", intermediateSpecialties),
         Certification("Scuba Diver", intermediateSpecialties),
         Certification("Adventure Diver", adventureSpecialties),
-        Certification("Advanced Open Water Diver", advancedSpecialties),
-        Certification("Scuba Review", emptyList()),
-        Certification("Emergency First Response Provider", emergencySpecialties),
-        Certification("Rescue Diver", emptyList()),
-        Certification("Master Scuba Diver", emptyList())
+        Certification("Advanced Open Water Diver", advancedSpecialties.plus(emergencySpecialties)),
+//        Certification("Emergency First Response Provider", emergencySpecialties),
+        Certification("Rescue Diver", rescueSpecialties),
+        Certification("Master Scuba Diver", listOf(Specialty("Master Scuba Diver")))
     )
+
+    private val sdiIntermediateSpecialties: List<Specialty> = listOf(
+        Specialty("Advanced Adventure"),
+        Specialty("Advanced Buoyancy"),
+        Specialty("Altitude"),
+        Specialty("Boat")
+    )
+
+    private val sdiCertifications: List<Certification> = listOf(
+        Certification("Open Water Scuba Diver", sdiIntermediateSpecialties),
+        Certification("Advanced Diver", sdiIntermediateSpecialties),
+        Certification("Rescue Diver", sdiIntermediateSpecialties)
+    )
+
+    private val ssiCertifications: List<Certification> = listOf(
+        Certification("Try Scuba Diving", listOf(Specialty("Try Scuba Diving"))),
+        Certification("Scuba Diver", listOf(Specialty("Altitude Diving"))),
+        Certification("Open Water Diver", listOf(Specialty("Ice Diving")))
+    )
+
+    private val tdiCertifications: List<Certification> = listOf(
+        Certification("Open Circuit", listOf(Specialty("Nitrox"))),
+        Certification("Rebreather", listOf(Specialty("Semi Closed rebreather")))
+    )
+
     private lateinit var layoutManager: LinearLayoutManager
     private lateinit var adapter: CertificationLevelAdapter
     private lateinit var homeViewModel: CatalogViewModel
@@ -98,11 +135,31 @@ class CatalogFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        layoutManager = LinearLayoutManager(context)
-        cert_path_level_rv.layoutManager = layoutManager
-        adapter = CertificationLevelAdapter(padiCertifications)
-        cert_path_level_rv.adapter = adapter
-        val dividerItemDecoration = DividerItemDecoration(cert_path_level_rv.context, layoutManager.orientation)
-        cert_path_level_rv.addItemDecoration(dividerItemDecoration)
+        configureRecyclerView()
+        configureAgencyFilter()
+    }
+
+    private fun configureRecyclerView() {
+        cert_path_level_rv.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = CertificationLevelAdapter(padiCertifications)
+            val dividerItemDecoration = DividerItemDecoration(context, LinearLayoutManager.VERTICAL)
+            addItemDecoration(dividerItemDecoration)
+        }
+    }
+
+    private fun configureAgencyFilter() {
+        agency_filters.setOnCheckedChangeListener { chipGroup, checkedId ->
+            val selectedChipText = chipGroup.findViewById<Chip>(checkedId)?.text
+            Toast.makeText(chipGroup.context, selectedChipText ?: "No Choice", Toast.LENGTH_LONG)
+                .show()
+            cert_path_level_rv.adapter = when (checkedId) {
+                R.id.chip_padi -> CertificationLevelAdapter(padiCertifications)
+                R.id.chip_sdi -> CertificationLevelAdapter(sdiCertifications)
+                R.id.chip_ssi -> CertificationLevelAdapter(ssiCertifications)
+                R.id.chip_tdi -> CertificationLevelAdapter(tdiCertifications)
+                else -> CertificationLevelAdapter(padiCertifications)
+            }
+        }
     }
 }

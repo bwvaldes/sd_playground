@@ -38,11 +38,11 @@ class DiveSiteAdapter(private val diveSites: List<DiveSite>) :
             itemView.setOnClickListener(this)
         }
 
-        override fun onClick(v: View) {
+        override fun onClick(view: View) {
             Log.d("RecyclerView", "CLICK!")
             Toast.makeText(itemView.context, "Just Clicked Dive Site Item!", Toast.LENGTH_SHORT)
                 .show()
-            v.findNavController().navigate(R.id.diveSiteDetailFragment)
+            view.findNavController().navigate(R.id.diveSiteDetailFragment)
         }
 
         @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
@@ -50,7 +50,11 @@ class DiveSiteAdapter(private val diveSites: List<DiveSite>) :
             itemView.apply {
                 dive_site_card_favorite.apply {
                     setOnCheckedChangeListener { _, isFavorite ->
-                        // TODO: Magic
+                        if (isFavorite) {
+                            Toast.makeText(context, "Favorited!", Toast.LENGTH_LONG).show()
+                        } else {
+                            Toast.makeText(context, "Unfavorited!", Toast.LENGTH_LONG).show()
+                        }
                     }
                 }
                 when (position) {

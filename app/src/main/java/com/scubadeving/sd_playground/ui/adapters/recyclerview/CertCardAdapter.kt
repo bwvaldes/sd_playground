@@ -32,11 +32,11 @@ class CertCardAdapter(private val certCards: List<String>) :
             itemView.setOnClickListener(this)
         }
 
-        override fun onClick(v: View) {
+        override fun onClick(view: View) {
             Log.d("RecyclerView", "CLICK!")
             Toast.makeText(itemView.context, "Just Clicked Cert Card Item!", Toast.LENGTH_SHORT)
                 .show()
-            v.findNavController().navigate(R.id.certDetailFragment)
+            view.findNavController().navigate(R.id.certDetailFragment)
         }
 
         fun bind(certCard: String, position: Int) {

@@ -40,11 +40,11 @@ class LoggedDivesAdapter(private val loggedDives: List<DiveLog>, val orientation
             itemView.setOnClickListener(this)
         }
 
-        override fun onClick(v: View) {
+        override fun onClick(view: View) {
             Log.d("RecyclerView", "CLICK!")
             Toast.makeText(itemView.context, "Just Clicked Logged Dive Item!", Toast.LENGTH_SHORT)
                 .show()
-            v.findNavController().navigate(R.id.logbookEntryFragment)
+            view.findNavController().navigate(R.id.logbookEntryFragment)
         }
 
         fun bind(loggedDive: DiveLog, position: Int) {

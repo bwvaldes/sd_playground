@@ -33,11 +33,11 @@ class WildlifeAdapter(private val wildlife: List<Wildlife>) :
             itemView.setOnClickListener(this)
         }
 
-        override fun onClick(v: View) {
+        override fun onClick(view: View) {
             Log.d("RecyclerView", "CLICK!")
             Toast.makeText(itemView.context, "Just Clicked Wildlife Item!", Toast.LENGTH_SHORT)
                 .show()
-            v.findNavController().navigate(R.id.wildlifeFragment)
+            view.findNavController().navigate(R.id.wildlifeFragment)
         }
 
         fun bind(wildlife: Wildlife, position: Int) {

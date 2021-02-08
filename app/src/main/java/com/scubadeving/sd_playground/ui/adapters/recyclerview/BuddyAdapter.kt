@@ -39,7 +39,7 @@ class BuddyAdapter(private val divers: List<Diver>, val orientation: Boolean) :
             itemView.setOnClickListener(this)
         }
 
-        override fun onClick(v: View) {
+        override fun onClick(view: View) {
             Log.d("RecyclerView", "CLICK!")
             Toast.makeText(
                 itemView.context,
@@ -48,7 +48,7 @@ class BuddyAdapter(private val divers: List<Diver>, val orientation: Boolean) :
             )
                 .show()
             // Todo: Should navigate to specific user and react whether it is current user
-            v.findNavController().navigate(R.id.profileFragment)
+            view.findNavController().navigate(R.id.profileFragment)
         }
 
         fun bind(diver: Diver, position: Int) {

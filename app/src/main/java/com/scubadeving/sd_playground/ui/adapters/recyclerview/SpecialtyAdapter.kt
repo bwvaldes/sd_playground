@@ -33,15 +33,14 @@ class SpecialtyAdapter(private val specialties: List<Specialty>) :
             itemView.setOnClickListener(this)
         }
 
-        override fun onClick(v: View) {
+        override fun onClick(view: View) {
             Log.d("RecyclerView", "CLICK!")
             Toast.makeText(
                 itemView.context,
                 "Just Clicked Cert Path Specialty Item!",
                 Toast.LENGTH_SHORT
-            )
-                .show()
-            v.findNavController().navigate(R.id.certDetailFragment)
+            ).show()
+            view.findNavController().navigate(R.id.certDetailFragment)
         }
 
         fun bind(specialty: Specialty, position: Int) {

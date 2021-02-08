@@ -39,6 +39,7 @@
                 app:chipCornerRadius="5dp" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip_sdi"
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="75dp"
                 android:layout_height="wrap_content"
@@ -48,6 +49,7 @@
                 app:chipCornerRadius="5dp" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip_ssi"
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="75dp"
                 android:layout_height="wrap_content"
@@ -57,6 +59,7 @@
                 app:chipCornerRadius="5dp" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip_tdi"
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="75dp"
                 android:layout_height="wrap_content"
@@ -66,11 +69,22 @@
                 app:chipCornerRadius="5dp" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip_erdi"
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="75dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="ERDI"
+                android:textAlignment="center"
+                app:chipCornerRadius="5dp" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_pfi"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="PFI"
                 android:textAlignment="center"
                 app:chipCornerRadius="5dp" />
 
