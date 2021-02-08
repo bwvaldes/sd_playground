@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.Certification
+import com.scubadeving.sd_playground.data.Specialty
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.ItemDetailAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.SpecialtyAdapter
 import kotlinx.android.synthetic.main.fragment_detail_cert.*
@@ -30,11 +31,11 @@ class CertDetailFragment : Fragment() {
             "EFR Primary",
             "EFR Secondary"
         )
-    private var certCards: List<Certification> = listOf(
-        Certification("Adaptive Support"),
-        Certification("Cave"),
-        Certification("Ice"),
-        Certification("DiveMaster")
+    private var specialties: List<Specialty> = listOf(
+        Specialty("Adaptive Support"),
+        Specialty("Cave"),
+        Specialty("Ice"),
+        Specialty("DiveMaster")
     )
     private lateinit var prerequisitesLayoutManager: LinearLayoutManager
     private lateinit var specialtyLayoutManager: LinearLayoutManager
@@ -84,7 +85,7 @@ class CertDetailFragment : Fragment() {
     private fun configureNextSteps() {
         specialtyLayoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         next_steps_rv.layoutManager = specialtyLayoutManager
-        specialtyAdapter = SpecialtyAdapter(certCards)
+        specialtyAdapter = SpecialtyAdapter(specialties)
         next_steps_rv.adapter = specialtyAdapter
         val dividerItemDecoration = DividerItemDecoration(
             next_steps_rv.context,

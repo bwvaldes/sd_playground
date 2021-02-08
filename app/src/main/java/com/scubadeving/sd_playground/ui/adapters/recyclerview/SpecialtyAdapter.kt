@@ -7,26 +7,26 @@ import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.scubadeving.sd_playground.R
-import com.scubadeving.sd_playground.data.Certification
+import com.scubadeving.sd_playground.data.Specialty
 import com.scubadeving.sd_playground.utils.inflate
 import kotlinx.android.synthetic.main.item_cert_card.view.cert_card_text
 
-class SpecialtyAdapter(private val certCards: List<Certification>) :
-    RecyclerView.Adapter<SpecialtyAdapter.CertSpecialtyViewHolder>() {
+class SpecialtyAdapter(private val specialties: List<Specialty>) :
+    RecyclerView.Adapter<SpecialtyAdapter.SpecialtyViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CertSpecialtyViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SpecialtyViewHolder {
         val inflatedView = parent.inflate(R.layout.item_cert_card, false)
-        return CertSpecialtyViewHolder(inflatedView)
+        return SpecialtyViewHolder(inflatedView)
     }
 
-    override fun getItemCount(): Int = certCards.size
+    override fun getItemCount(): Int = specialties.size
 
-    override fun onBindViewHolder(holder: CertSpecialtyViewHolder, position: Int) {
-        val cards = certCards[position]
-        holder.bind(cards, position)
+    override fun onBindViewHolder(holder: SpecialtyViewHolder, position: Int) {
+        val specialtyCards = specialties[position]
+        holder.bind(specialtyCards, position)
     }
 
-    inner class CertSpecialtyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+    inner class SpecialtyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
         View.OnClickListener {
 
         init {
@@ -44,9 +44,9 @@ class SpecialtyAdapter(private val certCards: List<Certification>) :
             v.findNavController().navigate(R.id.certDetailFragment)
         }
 
-        fun bind(certCard: Certification, position: Int) {
+        fun bind(specialty: Specialty, position: Int) {
             itemView.apply {
-                cert_card_text.text = certCard.name
+                cert_card_text.text = specialty.name
             }
         }
     }
