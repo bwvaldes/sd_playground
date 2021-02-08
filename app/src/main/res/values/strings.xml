@@ -4,26 +4,12 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_explore">Explore</string>
     <string name="title_logbook">Logbook</string>
-    <!-- Preference Titles -->
-    <string name="messages_header">Messages</string>
-    <string name="sync_header">Sync</string>
-
-    <!-- Messages Preferences -->
-    <string name="signature_title">Your signature</string>
-    <string name="reply_title">Default reply action</string>
-
-    <!-- Sync Preferences -->
-    <string name="sync_title">Sync email periodically</string>
-    <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails
-    </string>
-    <string name="attachment_summary_off">Only download attachments when manually requested</string>
-    <string name="infoview_content_description">An Icon for an InfoView</string>
 
     <!-- Logbook -->
     <string name="logbook_tab_dives">Dives</string>
     <string name="logbook_tab_wildlife">Wildlife</string>
     <string name="logbook_tab_map">Map</string>
+    <string name="logbook_details">%1$d. %2$s</string>
 
     <!-- Explore -->
     <string name="explore_tab_sites">Sites</string>
@@ -35,4 +21,11 @@
     <string name="profile_tab_stats">Stats</string>
     <string name="profile_tab_gear">Gear</string>
     <string name="profile_tab_about">About</string>
+
+    <!-- Dive Site Detail-->
+    <string name="dive_site_rating">%1$.2f (%2$d)</string>
+
+    <!-- InfoView -->
+    <string name="infoview_content_description">An Icon for an InfoView</string>
+
 </resources>

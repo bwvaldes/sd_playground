@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager.HORIZONTAL
 import androidx.recyclerview.widget.GridLayoutManager.VERTICAL
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.Diver
-import com.scubadeving.sd_playground.decorations.GridSpacingItemDecoration
+import com.scubadeving.sd_playground.ui.adapters.recyclerview.decorations.GridSpacingItemDecoration
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.BuddyAdapter
 import kotlinx.android.synthetic.main.fragment_explore_buddies.*
 

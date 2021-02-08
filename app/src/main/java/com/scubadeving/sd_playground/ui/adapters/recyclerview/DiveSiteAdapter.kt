@@ -26,6 +26,7 @@ class DiveSiteAdapter(private val diveSites: List<DiveSite>) :
 
     override fun getItemCount(): Int = diveSites.size
 
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onBindViewHolder(holder: DiveSiteViewHolder, position: Int) {
         val sites = diveSites[position]
         holder.bind(sites, position)
@@ -65,7 +66,11 @@ class DiveSiteAdapter(private val diveSites: List<DiveSite>) :
                         dive_site_card_popularity.visibility = View.VISIBLE
                     }
                 }
-                dive_site_card_rating.text = "${diveSite.rating} (${diveSite.reviews})"
+                dive_site_card_rating.text = context.getString(
+                    R.string.dive_site_rating,
+                    diveSite.rating,
+                    diveSite.reviews
+                )
                 dive_site_card_name.text = diveSite.name
                 dive_site_card_location.text = diveSite.location
             }

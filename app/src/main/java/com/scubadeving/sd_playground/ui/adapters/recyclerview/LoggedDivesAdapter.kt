@@ -52,14 +52,22 @@ class LoggedDivesAdapter(private val loggedDives: List<DiveLog>, val orientation
                 if (orientation) {
                     logged_dive_site_image.setBackgroundResource(R.drawable.ic_next_steps)
                     logged_dive_rating.text = loggedDive.rating.toString()
-                    logged_dive_details.text = "${loggedDive.id}. ${loggedDive.diveSite}"
+                    logged_dive_details.text = context.getString(
+                        R.string.logbook_details,
+                        loggedDive.id,
+                        loggedDive.diveSite
+                    )
                     logged_dive_date.text = loggedDive.date
                     logged_dive_depth.text = loggedDive.depth
                     logged_dive_bottom_time.text = loggedDive.bottomTime
                 } else {
                     logged_dive_map_site_image.setBackgroundResource(R.drawable.ic_next_steps)
                     logged_dive_map_rating.text = loggedDive.rating.toString()
-                    logged_dive_map_details.text = "${loggedDive.id}. ${loggedDive.diveSite}"
+                    logged_dive_map_details.text = context.getString(
+                        R.string.logbook_details,
+                        loggedDive.id,
+                        loggedDive.diveSite
+                    )
                     logged_dive_map_date.text = loggedDive.date
                     logged_dive_map_depth.text = loggedDive.depth
                     logged_dive_map_bottom_time.text = loggedDive.bottomTime

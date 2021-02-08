@@ -1,4 +1,4 @@
-package com.scubadeving.sd_playground.decorations
+package com.scubadeving.sd_playground.ui.adapters.recyclerview.decorations
 
 import android.graphics.Rect
 import android.view.View
