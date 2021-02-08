@@ -42,7 +42,7 @@ class ExploreBuddiesFragment : Fragment() {
             Diver("Arnold", "Open Water", (0..100).random()),
             Diver("Richard", "Open Water", (0..100).random()),
             Diver("Brandon", "Open Water", (0..100).random())
-            )
+        )
     private lateinit var nearbyDiversLayoutManager: LinearLayoutManager
     private lateinit var diveCenterDiversLayoutManager: GridLayoutManager
     private lateinit var pastDiversDiversLayoutManager: GridLayoutManager

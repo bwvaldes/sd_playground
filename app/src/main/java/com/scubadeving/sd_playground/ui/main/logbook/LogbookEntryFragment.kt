@@ -75,6 +75,7 @@ class LogbookEntryFragment : Fragment() {
         }
         configureWildlife()
     }
+
     private fun configureWildlife() {
         logbookEntryWildlifeLayoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)

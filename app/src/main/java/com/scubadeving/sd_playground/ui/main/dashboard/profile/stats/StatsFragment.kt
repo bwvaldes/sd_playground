@@ -17,12 +17,12 @@ class StatsFragment : Fragment() {
     private lateinit var statsViewModel: StatsViewModel
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         statsViewModel =
-                ViewModelProvider(this).get(StatsViewModel::class.java)
+            ViewModelProvider(this).get(StatsViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_profile_stats, container, false)
         activity?.fab?.setOnClickListener {
             Toast.makeText(activity, "Search My Stats", Toast.LENGTH_SHORT).show()

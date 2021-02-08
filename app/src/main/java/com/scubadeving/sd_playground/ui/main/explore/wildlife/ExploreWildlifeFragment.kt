@@ -43,7 +43,8 @@ class ExploreWildlifeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        exploreWildlifeLayoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        exploreWildlifeLayoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         nearby_wildlife_rv.layoutManager = exploreWildlifeLayoutManager
         exploreWildlifeAdapter = WildlifeAdapter(nearbyWildlife)
         nearby_wildlife_rv.adapter = exploreWildlifeAdapter
@@ -55,8 +56,6 @@ class ExploreWildlifeFragment : Fragment() {
         val snapHelper: SnapHelper = PagerSnapHelper()
         snapHelper.attachToRecyclerView(nearby_wildlife_rv)
     }
-
-
 
 
 }

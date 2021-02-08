@@ -38,7 +38,8 @@ class ExploreSitesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        exploreSitesLayoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        exploreSitesLayoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         nearby_sites_rv.layoutManager = exploreSitesLayoutManager
         exploreSitesAdapter = DiveSiteAdapter(nearbyDiveSites)
         nearby_sites_rv.adapter = exploreSitesAdapter
