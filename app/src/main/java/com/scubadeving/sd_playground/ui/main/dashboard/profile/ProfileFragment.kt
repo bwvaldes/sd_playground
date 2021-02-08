@@ -2,28 +2,26 @@ package com.scubadeving.sd_playground.ui.main.dashboard.profile
 
 import android.os.Build
 import android.os.Bundle
-import android.view.*
-import android.widget.TextView
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.CollapsingToolbarLayout
-import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.ui.adapters.viewpager.ProfileViewPagerAdapter
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_profile.*
 
 class ProfileFragment : Fragment() {
 
     private lateinit var profileViewModel: ProfileViewModel
-    private lateinit var profileViewPagerAdapter: ProfileViewPagerAdapter
-    private lateinit var viewPager: ViewPager2
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,7 +47,7 @@ class ProfileFragment : Fragment() {
 
         var isToolbarShown = false
 
-        val pager: ViewPager2 = root.findViewById(R.id.pager)
+        val pager: ViewPager2 = root.findViewById(R.id.profile_pager)
         val appbar: AppBarLayout = root.findViewById(R.id.profile_appbar)
         val toolbarLayout: CollapsingToolbarLayout = root.findViewById(R.id.toolbarLayout)
         // scroll change listener begins at Y = 0 when image is fully collapsed
@@ -77,18 +75,24 @@ class ProfileFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        profileViewPagerAdapter = ProfileViewPagerAdapter(this)
-        viewPager = view.findViewById(R.id.pager)
-        viewPager.adapter = profileViewPagerAdapter
-        val tabLayout = view.findViewById<TabLayout>(R.id.tab_layout)
-        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-            tab.text = when (position) {
-                0 -> "Certs"
-                1 -> "Stats"
-                2 -> "Gear"
-                3 -> "About"
-                else -> "Certs"
-            }
-        }.attach()
+        profile_pager.apply {
+            adapter = ProfileViewPagerAdapter(requireParentFragment())
+            TabLayoutMediator(profile_tab_layout, this) { tab, position ->
+                tab.text = when (position) {
+                    PROFILE_TAB_CERTS -> getString(R.string.profile_tab_certs)
+                    PROFILE_TAB_STATS -> getString(R.string.profile_tab_stats)
+                    PROFILE_TAB_GEAR -> getString(R.string.profile_tab_gear)
+                    PROFILE_TAB_ABOUT -> getString(R.string.profile_tab_about)
+                    else -> getString(R.string.profile_tab_certs)
+                }
+            }.attach()
+        }
+    }
+
+    companion object {
+        private const val PROFILE_TAB_CERTS = 0
+        private const val PROFILE_TAB_STATS = 1
+        private const val PROFILE_TAB_GEAR = 2
+        private const val PROFILE_TAB_ABOUT = 3
     }
 }

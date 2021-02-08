@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager.*
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.DiveLog
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.LoggedDivesAdapter
@@ -28,8 +29,6 @@ class LoggedDivesFragment : Fragment() {
             DiveLog(9, "Ventura", "February 18th, 2020", 4.98, "30ft", "53min"),
             DiveLog(10, "Pointe Dume", "February 20th, 2020", 4.0, "135ft", "24min")
         )
-    private lateinit var loggedDivesLayoutManager: LinearLayoutManager
-    private lateinit var loggedDivesAdapter: LoggedDivesAdapter
     private lateinit var loggedDivesViewModel: LoggedDivesViewModel
 
     override fun onCreateView(
@@ -48,17 +47,11 @@ class LoggedDivesFragment : Fragment() {
     }
 
     private fun configureLoggedDives() {
-        loggedDivesLayoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        logged_dives_rv.layoutManager = loggedDivesLayoutManager
-        loggedDivesAdapter = LoggedDivesAdapter(loggedDives, true)
-        logged_dives_rv.adapter = loggedDivesAdapter
-        val dividerItemDecoration = DividerItemDecoration(
-            logged_dives_rv.context,
-            loggedDivesLayoutManager.orientation
-        )
-        logged_dives_rv.addItemDecoration(dividerItemDecoration)
+        logged_dives_rv.apply {
+            layoutManager = LinearLayoutManager(context, VERTICAL, false)
+            adapter = LoggedDivesAdapter(loggedDives, true)
+            val dividerItemDecoration = DividerItemDecoration(context, VERTICAL)
+            logged_dives_rv.addItemDecoration(dividerItemDecoration)
+        }
     }
-
-
 }

@@ -11,13 +11,15 @@ class WildlifeViewPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragme
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
-            0 -> WildlifeOverviewFragment()
-            1 -> WildlifeDetailFragment()
+            WILDLIFE_OVERVIEW -> WildlifeOverviewFragment()
+            WILDLIFE_DETAIL -> WildlifeDetailFragment()
             else -> WildlifeOverviewFragment()
         }
     }
 
     companion object {
+        private const val WILDLIFE_OVERVIEW = 0
+        private const val WILDLIFE_DETAIL = 1
         private const val WILDLIFE_PAGES = 2
     }
 }

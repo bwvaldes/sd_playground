@@ -66,6 +66,5 @@ class LoggedDivesAdapter(private val loggedDives: List<DiveLog>, val orientation
                 }
             }
         }
-
     }
 }

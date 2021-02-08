@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.scubadeving.sd_playground.R
@@ -80,48 +81,41 @@ class DiveSiteDetailFragment : Fragment() {
     }
 
     private fun configureConditions() {
-        conditionsLayoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        site_conditions_rv.layoutManager = conditionsLayoutManager
-        conditionsAdapter = ItemDetailAdapter(conditions)
-        site_conditions_rv.adapter = conditionsAdapter
-        val dividerItemDecoration = DividerItemDecoration(
-            site_conditions_rv.context,
-            conditionsLayoutManager.orientation
-        )
-        site_conditions_rv.addItemDecoration(dividerItemDecoration)
-        val snapHelper: SnapHelper = PagerSnapHelper()
-        snapHelper.attachToRecyclerView(site_conditions_rv)
+        site_conditions_rv.apply {
+            conditionsLayoutManager = LinearLayoutManager(context, HORIZONTAL, false)
+            layoutManager = conditionsLayoutManager
+            conditionsAdapter = ItemDetailAdapter(conditions)
+            adapter = conditionsAdapter
+            val dividerItemDecoration = DividerItemDecoration(context, conditionsLayoutManager.orientation)
+            addItemDecoration(dividerItemDecoration)
+            val snapHelper: SnapHelper = PagerSnapHelper()
+            snapHelper.attachToRecyclerView(this)
+        }
     }
 
     private fun configureDiveCenters() {
-        diveCentersLayoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        dive_centers_rv.layoutManager = diveCentersLayoutManager
-        diveCentersAdapter = DiveCenterAdapter(diveCenters)
-        dive_centers_rv.adapter = diveCentersAdapter
-        val dividerItemDecoration = DividerItemDecoration(
-            dive_centers_rv.context,
-            diveCentersLayoutManager.orientation
-        )
-        dive_centers_rv.addItemDecoration(dividerItemDecoration)
-        val snapHelper: SnapHelper = PagerSnapHelper()
-        snapHelper.attachToRecyclerView(dive_centers_rv)
+        dive_centers_rv.apply {
+            diveCentersLayoutManager = LinearLayoutManager(context, HORIZONTAL, false)
+            layoutManager = diveCentersLayoutManager
+            diveCentersAdapter = DiveCenterAdapter(diveCenters)
+            adapter = diveCentersAdapter
+            val dividerItemDecoration = DividerItemDecoration(dive_centers_rv.context, diveCentersLayoutManager.orientation)
+            addItemDecoration(dividerItemDecoration)
+            val snapHelper: SnapHelper = PagerSnapHelper()
+            snapHelper.attachToRecyclerView(this)
+        }
     }
 
     private fun configureWildlife() {
-        wildlifeLayoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        wildlife_rv.layoutManager = wildlifeLayoutManager
-        wildlifeAdapter = WildlifeAdapter(wildLife)
-        wildlife_rv.adapter = wildlifeAdapter
-        val dividerItemDecoration = DividerItemDecoration(
-            wildlife_rv.context,
-            wildlifeLayoutManager.orientation
-        )
-        wildlife_rv.addItemDecoration(dividerItemDecoration)
-        val snapHelper: SnapHelper = PagerSnapHelper()
-        snapHelper.attachToRecyclerView(wildlife_rv)
+        wildlife_rv.apply {
+            wildlifeLayoutManager = LinearLayoutManager(context, HORIZONTAL, false)
+            layoutManager = wildlifeLayoutManager
+            wildlifeAdapter = WildlifeAdapter(wildLife)
+            adapter = wildlifeAdapter
+            val dividerItemDecoration = DividerItemDecoration(context, wildlifeLayoutManager.orientation)
+            addItemDecoration(dividerItemDecoration)
+            val snapHelper: SnapHelper = PagerSnapHelper()
+            snapHelper.attachToRecyclerView(this)
+        }
     }
-
 }

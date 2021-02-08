@@ -20,7 +20,6 @@ class BuddyAdapter(private val divers: List<Diver>, val orientation: Boolean) :
             parent.inflate(R.layout.item_explore_buddies_horizontal_card, false)
         } else {
             parent.inflate(R.layout.item_explore_buddies_vertical_card, false)
-
         }
         return BuddyViewHolder(inflatedView)
     }
@@ -73,6 +72,5 @@ class BuddyAdapter(private val divers: List<Diver>, val orientation: Boolean) :
                 }
             }
         }
-
     }
 }

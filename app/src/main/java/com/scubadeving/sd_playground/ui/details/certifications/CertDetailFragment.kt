@@ -11,10 +11,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager.*
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.scubadeving.sd_playground.R
-import com.scubadeving.sd_playground.data.Certification
 import com.scubadeving.sd_playground.data.Specialty
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.ItemDetailAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.SpecialtyAdapter
@@ -68,31 +68,28 @@ class CertDetailFragment : Fragment() {
     }
 
     private fun configurePrerequisites() {
-        prerequisitesLayoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        prerequisites_rv.layoutManager = prerequisitesLayoutManager
-        prerequisitesAdapter = ItemDetailAdapter(prerequisites)
-        prerequisites_rv.adapter = prerequisitesAdapter
-        val dividerItemDecoration = DividerItemDecoration(
-            prerequisites_rv.context,
-            prerequisitesLayoutManager.orientation
-        )
-        prerequisites_rv.addItemDecoration(dividerItemDecoration)
-        val snapHelper: SnapHelper = PagerSnapHelper()
-        snapHelper.attachToRecyclerView(prerequisites_rv)
+        prerequisites_rv.apply {
+            prerequisitesLayoutManager = LinearLayoutManager(context, HORIZONTAL, false)
+            layoutManager = prerequisitesLayoutManager
+            prerequisitesAdapter = ItemDetailAdapter(prerequisites)
+            adapter = prerequisitesAdapter
+            val dividerItemDecoration = DividerItemDecoration(context, prerequisitesLayoutManager.orientation)
+            addItemDecoration(dividerItemDecoration)
+            val snapHelper: SnapHelper = PagerSnapHelper()
+            snapHelper.attachToRecyclerView(this)
+        }
     }
 
     private fun configureNextSteps() {
-        specialtyLayoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        next_steps_rv.layoutManager = specialtyLayoutManager
-        specialtyAdapter = SpecialtyAdapter(specialties)
-        next_steps_rv.adapter = specialtyAdapter
-        val dividerItemDecoration = DividerItemDecoration(
-            next_steps_rv.context,
-            prerequisitesLayoutManager.orientation
-        )
-        next_steps_rv.addItemDecoration(dividerItemDecoration)
-        val snapHelper: SnapHelper = PagerSnapHelper()
-        snapHelper.attachToRecyclerView(next_steps_rv)
+        next_steps_rv.apply {
+            specialtyLayoutManager = LinearLayoutManager(context, HORIZONTAL, false)
+            layoutManager = specialtyLayoutManager
+            specialtyAdapter = SpecialtyAdapter(specialties)
+            adapter = specialtyAdapter
+            val dividerItemDecoration = DividerItemDecoration(context, prerequisitesLayoutManager.orientation)
+            addItemDecoration(dividerItemDecoration)
+            val snapHelper: SnapHelper = PagerSnapHelper()
+            snapHelper.attachToRecyclerView(this)
+        }
     }
 }

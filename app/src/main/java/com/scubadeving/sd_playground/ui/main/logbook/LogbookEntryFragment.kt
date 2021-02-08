@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager.*
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.scubadeving.sd_playground.R
@@ -34,8 +35,6 @@ class LogbookEntryFragment : Fragment() {
             Wildlife("Blennie"),
             Wildlife("Moray Eel")
         )
-    private lateinit var logbookEntryWildlifeLayoutManager: LinearLayoutManager
-    private lateinit var logbookEntryWildlifeAdapter: WildlifeAdapter
     private lateinit var logbookEntryViewModel: LogbookEntryViewModel
 
     override fun onCreateView(
@@ -77,17 +76,13 @@ class LogbookEntryFragment : Fragment() {
     }
 
     private fun configureWildlife() {
-        logbookEntryWildlifeLayoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        wildlife_rv.layoutManager = logbookEntryWildlifeLayoutManager
-        logbookEntryWildlifeAdapter = WildlifeAdapter(wildLife)
-        wildlife_rv.adapter = logbookEntryWildlifeAdapter
-        val dividerItemDecoration = DividerItemDecoration(
-            wildlife_rv.context,
-            logbookEntryWildlifeLayoutManager.orientation
-        )
-        wildlife_rv.addItemDecoration(dividerItemDecoration)
-        val snapHelper: SnapHelper = PagerSnapHelper()
-        snapHelper.attachToRecyclerView(wildlife_rv)
+        wildlife_rv.apply {
+            layoutManager = LinearLayoutManager(context, HORIZONTAL, false)
+            adapter = WildlifeAdapter(wildLife)
+            val dividerItemDecoration = DividerItemDecoration(wildlife_rv.context, HORIZONTAL)
+            wildlife_rv.addItemDecoration(dividerItemDecoration)
+            val snapHelper: SnapHelper = PagerSnapHelper()
+            snapHelper.attachToRecyclerView(wildlife_rv)
+        }
     }
 }

@@ -45,6 +45,5 @@ class ItemDetailAdapter(private val details: List<String>) :
                 item_detail_text.text = detail
             }
         }
-
     }
 }

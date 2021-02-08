@@ -44,7 +44,5 @@ class CertCardAdapter(private val certCards: List<String>) :
                 profile_cert_card_text.text = certCard
             }
         }
-
     }
-
 }

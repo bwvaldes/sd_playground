@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager.*
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.scubadeving.sd_playground.R
@@ -30,8 +31,6 @@ class LoggedDivesMapFragment : Fragment() {
             DiveLog(9, "Ventura", "February 18th, 2020", 4.98, "30ft", "53min"),
             DiveLog(10, "Pointe Dume", "February 20th, 2020", 4.0, "135ft", "24min")
         )
-    private lateinit var loggedDivesMapLayoutManager: LinearLayoutManager
-    private lateinit var loggedDivesMapAdapter: LoggedDivesAdapter
     private lateinit var loggedDivesMapViewModel: LoggedDivesMapViewModel
 
     override fun onCreateView(
@@ -50,19 +49,13 @@ class LoggedDivesMapFragment : Fragment() {
     }
 
     private fun configureLoggedDives() {
-        loggedDivesMapLayoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        logged_dives_map_rv.layoutManager = loggedDivesMapLayoutManager
-        loggedDivesMapAdapter = LoggedDivesAdapter(loggedDives, false)
-        logged_dives_map_rv.adapter = loggedDivesMapAdapter
-        val dividerItemDecoration = DividerItemDecoration(
-            logged_dives_map_rv.context,
-            loggedDivesMapLayoutManager.orientation
-        )
-        logged_dives_map_rv.addItemDecoration(dividerItemDecoration)
-        val snapHelper: SnapHelper = PagerSnapHelper()
-        snapHelper.attachToRecyclerView(logged_dives_map_rv)
+        logged_dives_map_rv.apply {
+            layoutManager = LinearLayoutManager(context, HORIZONTAL, false)
+            adapter = LoggedDivesAdapter(loggedDives, false)
+            val dividerItemDecoration = DividerItemDecoration(context, HORIZONTAL)
+            logged_dives_map_rv.addItemDecoration(dividerItemDecoration)
+            val snapHelper: SnapHelper = PagerSnapHelper()
+            snapHelper.attachToRecyclerView(logged_dives_map_rv)
+        }
     }
-
-
 }

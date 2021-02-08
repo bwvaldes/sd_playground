@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager.*
 import com.google.android.material.chip.Chip
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.Certification
@@ -84,7 +85,6 @@ class CatalogFragment : Fragment() {
         Certification("Scuba Diver", intermediateSpecialties),
         Certification("Adventure Diver", adventureSpecialties),
         Certification("Advanced Open Water Diver", advancedSpecialties.plus(emergencySpecialties)),
-//        Certification("Emergency First Response Provider", emergencySpecialties),
         Certification("Rescue Diver", rescueSpecialties),
         Certification("Master Scuba Diver", listOf(Specialty("Master Scuba Diver")))
     )
@@ -113,10 +113,7 @@ class CatalogFragment : Fragment() {
         Certification("Rebreather", listOf(Specialty("Semi Closed rebreather")))
     )
 
-    private lateinit var layoutManager: LinearLayoutManager
-    private lateinit var adapter: CertificationLevelAdapter
     private lateinit var homeViewModel: CatalogViewModel
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -143,7 +140,7 @@ class CatalogFragment : Fragment() {
         cert_path_level_rv.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = CertificationLevelAdapter(padiCertifications)
-            val dividerItemDecoration = DividerItemDecoration(context, LinearLayoutManager.VERTICAL)
+            val dividerItemDecoration = DividerItemDecoration(context, VERTICAL)
             addItemDecoration(dividerItemDecoration)
         }
     }

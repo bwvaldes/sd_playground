@@ -70,6 +70,5 @@ class DiveSiteAdapter(private val diveSites: List<DiveSite>) :
                 dive_site_card_location.text = diveSite.location
             }
         }
-
     }
 }

@@ -4,12 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager.VERTICAL
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.decorations.GridSpacingItemDecoration
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.CertCardAdapter
@@ -35,8 +34,6 @@ class CertificationsFragment : Fragment() {
         "Peak Performance Buoyancy",
         "Search and Recovery"
     )
-    private lateinit var layoutManager: GridLayoutManager
-    private lateinit var adapter: CertCardAdapter
     private lateinit var certificationsViewModel: CertificationsViewModel
 
     override fun onCreateView(
@@ -59,13 +56,10 @@ class CertificationsFragment : Fragment() {
         val spanCount = 2
         val spacing = 15
         val includeEdge = true
-        layoutManager = GridLayoutManager(context, spanCount, GridLayoutManager.VERTICAL, false)
-        cert_card_rv.layoutManager = layoutManager
-        adapter =
-            CertCardAdapter(
-                certCards
-            )
-        cert_card_rv.adapter = adapter
-        cert_card_rv.addItemDecoration(GridSpacingItemDecoration(spanCount, spacing, includeEdge))
+        cert_card_rv.apply {
+            layoutManager = GridLayoutManager(context, spanCount, VERTICAL, false)
+            adapter = CertCardAdapter(certCards)
+            addItemDecoration(GridSpacingItemDecoration(spanCount, spacing, includeEdge))
+        }
     }
 }

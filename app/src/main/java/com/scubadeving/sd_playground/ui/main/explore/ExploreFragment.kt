@@ -4,24 +4,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.ui.adapters.viewpager.ExploreViewPagerAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_explore.*
-import kotlinx.android.synthetic.main.fragment_logbook.*
 
 class ExploreFragment : Fragment() {
 
-    private lateinit var exploreViewPagerAdapter: ExploreViewPagerAdapter
-    private lateinit var viewPager: ViewPager2
     private lateinit var exploreViewModel: ExploreViewModel
 
     override fun onCreateView(
@@ -44,18 +37,23 @@ class ExploreFragment : Fragment() {
         explore_search.setOnClickListener {
             Toast.makeText(activity, "Search", Toast.LENGTH_SHORT).show()
         }
-        explore_pager.isUserInputEnabled = false
-        exploreViewPagerAdapter = ExploreViewPagerAdapter(this)
-        viewPager = view.findViewById(R.id.explore_pager)
-        viewPager.adapter = exploreViewPagerAdapter
-        val tabLayout = view.findViewById<TabLayout>(R.id.explore_tab_layout)
-        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-            tab.text = when (position) {
-                0 -> "Sites"
-                1 -> "Wildlife"
-                2 -> "Buddies"
-                else -> "Sites"
-            }
-        }.attach()
+        explore_pager.apply {
+            isUserInputEnabled = false
+            adapter = ExploreViewPagerAdapter(requireParentFragment())
+            TabLayoutMediator(explore_tab_layout, this) { tab, position ->
+                tab.text = when (position) {
+                    EXPLORE_TAB_SITES -> getString(R.string.explore_tab_sites)
+                    EXPLORE_TAB_WILDLIFE -> getString(R.string.explore_tab_wildlife)
+                    EXPLORE_TAB_BUDDIES -> getString(R.string.explore_tab_buddies)
+                    else -> getString(R.string.explore_tab_sites)
+                }
+            }.attach()
+        }
+    }
+
+    companion object {
+        private const val EXPLORE_TAB_SITES = 0
+        private const val EXPLORE_TAB_WILDLIFE = 1
+        private const val EXPLORE_TAB_BUDDIES = 2
     }
 }

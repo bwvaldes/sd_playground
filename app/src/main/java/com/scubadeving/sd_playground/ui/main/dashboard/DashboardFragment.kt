@@ -1,17 +1,18 @@
 package com.scubadeving.sd_playground.ui.main.dashboard
 
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.scubadeving.sd_playground.R
@@ -30,8 +31,6 @@ class DashboardFragment : Fragment() {
         DiveSite("Leo Carillo", "Malibu", 4.75, 42),
         DiveSite("Boat Dive 1", "Anacapa", 3.98, 8)
     )
-    private lateinit var layoutManager: LinearLayoutManager
-    private lateinit var adapter: DiveSiteAdapter
 
     private lateinit var dashboardViewModel: DashboardViewModel
 
@@ -57,17 +56,14 @@ class DashboardFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        upcoming_dives_rv.layoutManager = layoutManager
-        adapter = DiveSiteAdapter(diveSites)
-        upcoming_dives_rv.adapter = adapter
-        val dividerItemDecoration = DividerItemDecoration(
-            upcoming_dives_rv.context,
-            layoutManager.orientation
-        )
-        upcoming_dives_rv.addItemDecoration(dividerItemDecoration)
-        val snapHelper: SnapHelper = PagerSnapHelper()
-        snapHelper.attachToRecyclerView(upcoming_dives_rv)
+        upcoming_dives_rv.apply {
+            layoutManager = LinearLayoutManager(context, HORIZONTAL, false)
+            adapter = DiveSiteAdapter(diveSites)
+            val dividerItemDecoration = DividerItemDecoration(context, HORIZONTAL)
+            addItemDecoration(dividerItemDecoration)
+            val snapHelper: SnapHelper = PagerSnapHelper()
+            snapHelper.attachToRecyclerView(this)
+        }
         configureDashItems()
     }
 

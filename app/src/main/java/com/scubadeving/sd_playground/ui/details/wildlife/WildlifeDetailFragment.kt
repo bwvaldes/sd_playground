@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.scubadeving.sd_playground.R
@@ -89,33 +90,28 @@ class WildlifeDetailFragment : Fragment() {
     }
 
     private fun configureEncounters() {
-        conditionsLayoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        encounters_rv.layoutManager = conditionsLayoutManager
-        conditionsAdapter = ItemDetailAdapter(encounters)
-        encounters_rv.adapter = conditionsAdapter
-        val dividerItemDecoration = DividerItemDecoration(
-            encounters_rv.context,
-            conditionsLayoutManager.orientation
-        )
-        encounters_rv.addItemDecoration(dividerItemDecoration)
-        val snapHelper: SnapHelper = PagerSnapHelper()
-        snapHelper.attachToRecyclerView(encounters_rv)
+        encounters_rv.apply {
+            conditionsLayoutManager = LinearLayoutManager(context, HORIZONTAL, false)
+            layoutManager = conditionsLayoutManager
+            conditionsAdapter = ItemDetailAdapter(encounters)
+            adapter = conditionsAdapter
+            val dividerItemDecoration = DividerItemDecoration(context, conditionsLayoutManager.orientation)
+            addItemDecoration(dividerItemDecoration)
+            val snapHelper: SnapHelper = PagerSnapHelper()
+            snapHelper.attachToRecyclerView(this)
+        }
     }
 
     private fun configureWildlife() {
-        wildlifeLayoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        look_out_for_rv.layoutManager = wildlifeLayoutManager
-        wildlifeDetailAdapter = WildlifeAdapter(wildLife)
-        look_out_for_rv.adapter = wildlifeDetailAdapter
-        val dividerItemDecoration = DividerItemDecoration(
-            look_out_for_rv.context,
-            wildlifeLayoutManager.orientation
-        )
-        look_out_for_rv.addItemDecoration(dividerItemDecoration)
-        val snapHelper: SnapHelper = PagerSnapHelper()
-        snapHelper.attachToRecyclerView(look_out_for_rv)
+        look_out_for_rv.apply {
+            wildlifeLayoutManager = LinearLayoutManager(context, HORIZONTAL, false)
+            layoutManager = wildlifeLayoutManager
+            wildlifeDetailAdapter = WildlifeAdapter(wildLife)
+            adapter = wildlifeDetailAdapter
+            val dividerItemDecoration = DividerItemDecoration(context, wildlifeLayoutManager.orientation)
+            addItemDecoration(dividerItemDecoration)
+            val snapHelper: SnapHelper = PagerSnapHelper()
+            snapHelper.attachToRecyclerView(this)
+        }
     }
-
 }

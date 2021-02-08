@@ -19,4 +19,20 @@
     </string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="infoview_content_description">An Icon for an InfoView</string>
+
+    <!-- Logbook -->
+    <string name="logbook_tab_dives">Dives</string>
+    <string name="logbook_tab_wildlife">Wildlife</string>
+    <string name="logbook_tab_map">Map</string>
+
+    <!-- Explore -->
+    <string name="explore_tab_sites">Sites</string>
+    <string name="explore_tab_wildlife">Wildlife</string>
+    <string name="explore_tab_buddies">Buddies</string>
+
+    <!-- Profile -->
+    <string name="profile_tab_certs">Certs</string>
+    <string name="profile_tab_stats">Stats</string>
+    <string name="profile_tab_gear">Gear</string>
+    <string name="profile_tab_about">About</string>
 </resources>

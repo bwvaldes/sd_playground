@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager.*
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.Wildlife
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.WildlifeAdapter
@@ -25,8 +26,6 @@ class LoggedWildlifeFragment : Fragment() {
             Wildlife("Blennie"),
             Wildlife("Moray Eel")
         )
-    private lateinit var loggedWildlifeLayoutManager: LinearLayoutManager
-    private lateinit var loggedWildlifeAdapter: WildlifeAdapter
     private lateinit var loggedWildlifeViewModel: LoggedWildlifeViewModel
 
     override fun onCreateView(
@@ -45,15 +44,11 @@ class LoggedWildlifeFragment : Fragment() {
     }
 
     private fun configureWildlife() {
-        loggedWildlifeLayoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        logged_wildlife_rv.layoutManager = loggedWildlifeLayoutManager
-        loggedWildlifeAdapter = WildlifeAdapter(wildLife)
-        logged_wildlife_rv.adapter = loggedWildlifeAdapter
-        val dividerItemDecoration = DividerItemDecoration(
-            logged_wildlife_rv.context,
-            loggedWildlifeLayoutManager.orientation
-        )
-        logged_wildlife_rv.addItemDecoration(dividerItemDecoration)
+        logged_wildlife_rv.apply {
+            layoutManager = LinearLayoutManager(context, VERTICAL, false)
+            adapter = WildlifeAdapter(wildLife)
+            val dividerItemDecoration = DividerItemDecoration(context, VERTICAL)
+            logged_wildlife_rv.addItemDecoration(dividerItemDecoration)
+        }
     }
 }

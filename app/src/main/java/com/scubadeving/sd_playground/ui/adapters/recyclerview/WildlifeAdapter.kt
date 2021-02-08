@@ -45,6 +45,5 @@ class WildlifeAdapter(private val wildlife: List<Wildlife>) :
                 wildlife_card_name.text = wildlife.commonName
             }
         }
-
     }
 }

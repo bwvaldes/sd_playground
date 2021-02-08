@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.scubadeving.sd_playground.R
@@ -22,8 +23,6 @@ class ExploreSitesFragment : Fragment() {
         DiveSite("Leo Carillo", "Malibu", 4.75, 42),
         DiveSite("Boat Dive 1", "Anacapa", 3.98, 8)
     )
-    private lateinit var exploreSitesLayoutManager: LinearLayoutManager
-    private lateinit var exploreSitesAdapter: DiveSiteAdapter
     private lateinit var exploreSitesViewModel: ExploreSitesViewModel
 
     override fun onCreateView(
@@ -38,19 +37,13 @@ class ExploreSitesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        exploreSitesLayoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        nearby_sites_rv.layoutManager = exploreSitesLayoutManager
-        exploreSitesAdapter = DiveSiteAdapter(nearbyDiveSites)
-        nearby_sites_rv.adapter = exploreSitesAdapter
-        val dividerItemDecoration = DividerItemDecoration(
-            nearby_sites_rv.context,
-            exploreSitesLayoutManager.orientation
-        )
-        nearby_sites_rv.addItemDecoration(dividerItemDecoration)
-        val snapHelper: SnapHelper = PagerSnapHelper()
-        snapHelper.attachToRecyclerView(nearby_sites_rv)
+        nearby_sites_rv.apply {
+            layoutManager = LinearLayoutManager(context, HORIZONTAL, false)
+            adapter = DiveSiteAdapter(nearbyDiveSites)
+            val dividerItemDecoration = DividerItemDecoration(context, HORIZONTAL)
+            addItemDecoration(dividerItemDecoration)
+            val snapHelper: SnapHelper = PagerSnapHelper()
+            snapHelper.attachToRecyclerView(this)
+        }
     }
-
-
 }
