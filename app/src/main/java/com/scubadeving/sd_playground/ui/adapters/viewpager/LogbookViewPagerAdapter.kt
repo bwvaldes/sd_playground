@@ -8,14 +8,21 @@ import com.scubadeving.sd_playground.ui.main.logbook.wildlife.LoggedWildlifeFrag
 
 class LogbookViewPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
 
-    override fun getItemCount(): Int = 3
+    override fun getItemCount(): Int = LOGBOOK_PAGES
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
-            0 -> LoggedDivesFragment()
-            1 -> LoggedWildlifeFragment()
-            2 -> LoggedDivesMapFragment()
+            LOGBOOK_DIVES -> LoggedDivesFragment()
+            LOGBOOK_WILDLIFE -> LoggedWildlifeFragment()
+            LOGBOOK_DIVES_MAP -> LoggedDivesMapFragment()
             else -> LoggedDivesFragment()
         }
+    }
+
+    companion object {
+        private const val LOGBOOK_DIVES = 0
+        private const val LOGBOOK_WILDLIFE = 1
+        private const val LOGBOOK_DIVES_MAP = 2
+        private const val LOGBOOK_PAGES = 3
     }
 }

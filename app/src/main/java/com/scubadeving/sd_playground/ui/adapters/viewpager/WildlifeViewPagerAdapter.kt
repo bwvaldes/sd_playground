@@ -7,7 +7,7 @@ import com.scubadeving.sd_playground.ui.details.wildlife.WildlifeOverviewFragmen
 
 class WildlifeViewPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
 
-    override fun getItemCount(): Int = 2
+    override fun getItemCount(): Int = WILDLIFE_PAGES
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
@@ -15,5 +15,9 @@ class WildlifeViewPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragme
             1 -> WildlifeDetailFragment()
             else -> WildlifeOverviewFragment()
         }
+    }
+
+    companion object {
+        private const val WILDLIFE_PAGES = 2
     }
 }

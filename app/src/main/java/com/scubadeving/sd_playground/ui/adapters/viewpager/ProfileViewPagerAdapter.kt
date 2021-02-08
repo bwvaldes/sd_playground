@@ -9,15 +9,23 @@ import com.scubadeving.sd_playground.ui.main.dashboard.profile.stats.StatsFragme
 
 class ProfileViewPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
 
-    override fun getItemCount(): Int = 4
+    override fun getItemCount(): Int = PROFILE_PAGES
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
-            0 -> CertificationsFragment()
-            1 -> StatsFragment()
-            2 -> GearFragment()
-            3 -> AboutFragment()
+            PROFILE_CERTIFICATIONS -> CertificationsFragment()
+            PROFILE_STATS -> StatsFragment()
+            PROFILE_GEAR -> GearFragment()
+            PROFILE_ABOUT -> AboutFragment()
             else -> CertificationsFragment()
         }
+    }
+
+    companion object {
+        private const val PROFILE_CERTIFICATIONS = 0
+        private const val PROFILE_STATS = 1
+        private const val PROFILE_GEAR = 2
+        private const val PROFILE_ABOUT = 3
+        private const val PROFILE_PAGES = 4
     }
 }

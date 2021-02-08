@@ -8,14 +8,21 @@ import com.scubadeving.sd_playground.ui.main.explore.wildlife.ExploreWildlifeFra
 
 class ExploreViewPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
 
-    override fun getItemCount(): Int = 3
+    override fun getItemCount(): Int = EXPLORE_PAGES
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
-            0 -> ExploreSitesFragment()
-            1 -> ExploreWildlifeFragment()
-            2 -> ExploreBuddiesFragment()
+            EXPLORE_SITES -> ExploreSitesFragment()
+            EXPLORE_WILDLIFE -> ExploreWildlifeFragment()
+            EXPLORE_BUDDIES -> ExploreBuddiesFragment()
             else -> ExploreSitesFragment()
         }
+    }
+
+    companion object {
+        private const val EXPLORE_SITES = 0
+        private const val EXPLORE_WILDLIFE = 1
+        private const val EXPLORE_BUDDIES = 2
+        private const val EXPLORE_PAGES = 3
     }
 }
