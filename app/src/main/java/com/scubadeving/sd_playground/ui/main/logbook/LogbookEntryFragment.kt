@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.scubadeving.sd_playground.R
+import com.scubadeving.sd_playground.data.Wildlife
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.WildlifeAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_logbook_entry.*
@@ -23,15 +24,15 @@ import kotlinx.android.synthetic.main.fragment_logbook_entry.*
 
 class LogbookEntryFragment : Fragment() {
 
-    private var wildLife: List<String> =
+    private var wildLife: List<Wildlife> =
         listOf(
-            "Garibaldi",
-            "Halibut",
-            "Horn Shark",
-            "Sheephead",
-            "Bat Ray",
-            "Blennies",
-            "Moray Eel"
+            Wildlife("Garibaldi"),
+            Wildlife("Halibut"),
+            Wildlife("Horn Shark"),
+            Wildlife("Sheephead"),
+            Wildlife("Bat Ray"),
+            Wildlife("Blennie"),
+            Wildlife("Moray Eel")
         )
     private lateinit var logbookEntryWildlifeLayoutManager: LinearLayoutManager
     private lateinit var logbookEntryWildlifeAdapter: WildlifeAdapter

@@ -23,10 +23,6 @@ class WildlifeOverviewFragment : Fragment() {
         wildlifeOverviewViewModel =
             ViewModelProvider(this).get(WildlifeOverviewViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_wildlife_overview, container, false)
-        val textView: TextView = root.findViewById(R.id.text_wildlife_overview)
-        wildlifeOverviewViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
         val toolbar: androidx.appcompat.widget.Toolbar = root.findViewById(R.id.toolbar)
         toolbar.setNavigationOnClickListener { view ->
             view.findNavController().navigateUp()

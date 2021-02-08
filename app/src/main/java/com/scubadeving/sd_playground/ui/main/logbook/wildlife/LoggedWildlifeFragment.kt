@@ -4,27 +4,26 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.scubadeving.sd_playground.R
+import com.scubadeving.sd_playground.data.Wildlife
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.WildlifeAdapter
 import kotlinx.android.synthetic.main.fragment_logged_wildlife.*
 
 class LoggedWildlifeFragment : Fragment() {
 
-    private var wildLife: List<String> =
+    private var wildLife: List<Wildlife> =
         listOf(
-            "Garibaldi",
-            "Halibut",
-            "Horn Shark",
-            "Sheephead",
-            "Bat Ray",
-            "Blennies",
-            "Moray Eel"
+            Wildlife("Garibaldi"),
+            Wildlife("Halibut"),
+            Wildlife("Horn Shark"),
+            Wildlife("Sheephead"),
+            Wildlife("Bat Ray"),
+            Wildlife("Blennie"),
+            Wildlife("Moray Eel")
         )
     private lateinit var loggedWildlifeLayoutManager: LinearLayoutManager
     private lateinit var loggedWildlifeAdapter: WildlifeAdapter
@@ -37,12 +36,7 @@ class LoggedWildlifeFragment : Fragment() {
     ): View? {
         loggedWildlifeViewModel =
             ViewModelProvider(this).get(LoggedWildlifeViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_logged_wildlife, container, false)
-        val textView: TextView = root.findViewById(R.id.text_logged_wildlife)
-        loggedWildlifeViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-        return root
+        return inflater.inflate(R.layout.fragment_logged_wildlife, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -62,6 +56,4 @@ class LoggedWildlifeFragment : Fragment() {
         )
         logged_wildlife_rv.addItemDecoration(dividerItemDecoration)
     }
-
-
 }

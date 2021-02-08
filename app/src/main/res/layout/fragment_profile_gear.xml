@@ -12,13 +12,6 @@
         tools:context=".ui.main.dashboard.profile.about.AboutFragment">
 
         <TextView
-            android:id="@+id/text_gear"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:textSize="20sp" />
-
-        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"

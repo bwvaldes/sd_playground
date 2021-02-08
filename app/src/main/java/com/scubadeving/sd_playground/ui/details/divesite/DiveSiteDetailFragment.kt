@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.scubadeving.sd_playground.R
+import com.scubadeving.sd_playground.data.DiveCenter
+import com.scubadeving.sd_playground.data.Wildlife
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.DiveCenterAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.ItemDetailAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.WildlifeAdapter
@@ -29,20 +31,20 @@ class DiveSiteDetailFragment : Fragment() {
             "Visibility: 15-30ft",
             "Dive Type: Shore"
         )
-    private var diveCenters: List<String> =
+    private var diveCenters: List<DiveCenter> =
         listOf(
-            "Newport Divers",
-            "Eco Dive Center"
+            DiveCenter("Newport Divers"),
+            DiveCenter("Eco Dive Center")
         )
-    private var wildLife: List<String> =
+    private var wildLife: List<Wildlife> =
         listOf(
-            "Garibaldi",
-            "Halibut",
-            "Horn Shark",
-            "Sheephead",
-            "Bat Ray",
-            "Blennies",
-            "Moray Eel"
+            Wildlife("Garibaldi"),
+            Wildlife("Halibut"),
+            Wildlife("Horn Shark"),
+            Wildlife("Sheephead"),
+            Wildlife("Bat Ray"),
+            Wildlife("Blennie"),
+            Wildlife("Moray Eel")
         )
     private lateinit var conditionsLayoutManager: LinearLayoutManager
     private lateinit var diveCentersLayoutManager: LinearLayoutManager

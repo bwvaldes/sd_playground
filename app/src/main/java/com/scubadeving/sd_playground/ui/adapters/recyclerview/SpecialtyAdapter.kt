@@ -7,13 +7,12 @@ import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.scubadeving.sd_playground.R
+import com.scubadeving.sd_playground.data.Certification
 import com.scubadeving.sd_playground.utils.inflate
 import kotlinx.android.synthetic.main.item_cert_card.view.cert_card_text
 
-class SpecialtyAdapter(private val certCards: List<String>) :
+class SpecialtyAdapter(private val certCards: List<Certification>) :
     RecyclerView.Adapter<SpecialtyAdapter.CertSpecialtyViewHolder>() {
-
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CertSpecialtyViewHolder {
         val inflatedView = parent.inflate(R.layout.item_cert_card, false)
@@ -36,16 +35,19 @@ class SpecialtyAdapter(private val certCards: List<String>) :
 
         override fun onClick(v: View) {
             Log.d("RecyclerView", "CLICK!")
-            Toast.makeText(itemView.context, "Just Clicked Cert Path Specialty Item!", Toast.LENGTH_SHORT)
+            Toast.makeText(
+                itemView.context,
+                "Just Clicked Cert Path Specialty Item!",
+                Toast.LENGTH_SHORT
+            )
                 .show()
             v.findNavController().navigate(R.id.certDetailFragment)
         }
 
-        fun bind(certCard: String, position: Int) {
+        fun bind(certCard: Certification, position: Int) {
             itemView.apply {
-                cert_card_text.text = certCard
+                cert_card_text.text = certCard.name
             }
         }
-
     }
 }

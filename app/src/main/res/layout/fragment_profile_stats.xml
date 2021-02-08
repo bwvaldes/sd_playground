@@ -4,114 +4,75 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <GridLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <TextView
-            android:id="@+id/text_stats"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="34dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginBottom="47dp"
-            android:textAlignment="center"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
+        android:layout_height="match_parent"
+        android:columnCount="2"
+        android:padding="15dp">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/stats_total_dives"
             android:layout_width="120dp"
             android:layout_height="100dp"
-            android:text="123\nTotal Dives"
-            app:layout_constraintBottom_toTopOf="@+id/stats_bottom_time"
-            app:layout_constraintEnd_toStartOf="@+id/stats_max_depth"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_stats" />
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:text="123\nTotal Dives" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/stats_max_depth"
             android:layout_width="120dp"
             android:layout_height="100dp"
-            android:text="126ft(38.4m)\nMax Depth"
-            app:layout_constraintBottom_toTopOf="@+id/stats_countries"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/stats_total_dives"
-            app:layout_constraintTop_toBottomOf="@+id/text_stats" />
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:text="126ft(38.4m)\nMax Depth" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/stats_bottom_time"
             android:layout_width="120dp"
             android:layout_height="100dp"
-            android:text="10hrs 35m\nBottom Time"
-            app:layout_constraintBottom_toTopOf="@+id/stats_dive_time"
-            app:layout_constraintEnd_toStartOf="@+id/stats_countries"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/stats_total_dives" />
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:text="10hrs 35m\nBottom Time" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/stats_countries"
             android:layout_width="120dp"
             android:layout_height="100dp"
-            android:text="4\nCountries"
-            app:layout_constraintBottom_toTopOf="@+id/stats_air_consumptions"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/stats_bottom_time"
-            app:layout_constraintTop_toBottomOf="@+id/stats_max_depth" />
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:text="4\nCountries" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/stats_dive_time"
             android:layout_width="120dp"
             android:layout_height="100dp"
-            android:text="72m\nMax Dive Time"
-            app:layout_constraintBottom_toTopOf="@+id/stats_certifications"
-            app:layout_constraintEnd_toStartOf="@+id/stats_air_consumptions"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/stats_bottom_time" />
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:text="72m\nMax Dive Time" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/stats_air_consumptions"
             android:layout_width="120dp"
             android:layout_height="100dp"
-            android:text="Average Air Consumption"
-            app:layout_constraintBottom_toTopOf="@+id/stats_wildlife_seen"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/stats_dive_time"
-            app:layout_constraintTop_toBottomOf="@+id/stats_countries" />
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:text="Average Air Consumption" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/stats_certifications"
             android:layout_width="120dp"
             android:layout_height="100dp"
-            android:text="5\nCertifications"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/stats_wildlife_seen"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/stats_dive_time" />
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:text="5\nCertifications" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/stats_wildlife_seen"
             android:layout_width="120dp"
             android:layout_height="100dp"
-            android:text="32\nWildlife seen"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/stats_certifications"
-            app:layout_constraintTop_toBottomOf="@+id/stats_air_consumptions" />
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:text="32\nWildlife seen" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </GridLayout>
 </androidx.core.widget.NestedScrollView>

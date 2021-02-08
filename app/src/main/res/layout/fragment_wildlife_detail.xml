@@ -60,6 +60,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
                     android:layout_marginEnd="15dp"
+                    android:layout_marginRight="15dp"
                     android:text="Red List Status:\nVulnerable" />
             </androidx.appcompat.widget.Toolbar>
 
@@ -96,7 +97,6 @@
                 android:layout_height="wrap_content"
                 android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pulvinar metus in massa aliquam placerat. Suspendisse congue dui velit, quis maximus" />
 
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -120,7 +120,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pulvinar metus in massa aliquam placerat. Suspendisse congue dui velit, quis maximus" />
-
 
             <TextView
                 android:layout_width="match_parent"
@@ -148,7 +147,6 @@
                 android:layout_marginBottom="?attr/actionBarSize" />
 
         </LinearLayout>
-
     </androidx.core.widget.NestedScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

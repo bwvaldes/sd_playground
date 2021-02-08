@@ -7,14 +7,12 @@ import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.scubadeving.sd_playground.R
+import com.scubadeving.sd_playground.data.Wildlife
 import com.scubadeving.sd_playground.utils.inflate
-import kotlinx.android.synthetic.main.item_cert_card.view.cert_card_text
 import kotlinx.android.synthetic.main.item_wildlife_card_small.view.*
 
-class WildlifeAdapter(private val wildlife: List<String>) :
+class WildlifeAdapter(private val wildlife: List<Wildlife>) :
     RecyclerView.Adapter<WildlifeAdapter.WildlifeViewHolder>() {
-
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WildlifeViewHolder {
         val inflatedView = parent.inflate(R.layout.item_wildlife_card_small, false)
@@ -42,9 +40,9 @@ class WildlifeAdapter(private val wildlife: List<String>) :
             v.findNavController().navigate(R.id.wildlifeFragment)
         }
 
-        fun bind(wildlife: String, position: Int) {
+        fun bind(wildlife: Wildlife, position: Int) {
             itemView.apply {
-                wildlife_text_1.text = wildlife
+                wildlife_card_name.text = wildlife.commonName
             }
         }
 

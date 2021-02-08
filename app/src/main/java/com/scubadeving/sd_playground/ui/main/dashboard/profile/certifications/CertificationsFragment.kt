@@ -47,10 +47,6 @@ class CertificationsFragment : Fragment() {
         certificationsViewModel =
             ViewModelProvider(this).get(CertificationsViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_profile_certifications, container, false)
-        val textView: TextView = root.findViewById(R.id.text_certifications)
-        certificationsViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
         activity?.fab?.setOnClickListener {
             Toast.makeText(activity, "Search My Certs", Toast.LENGTH_SHORT).show()
         }

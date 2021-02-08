@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.main.dashboard.DashboardFragment">
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -21,8 +22,10 @@
             android:layout_height="24dp"
             android:layout_gravity="end"
             android:layout_marginEnd="15dp"
+            android:layout_marginRight="15dp"
             android:src="@drawable/ic_profile" />
     </androidx.appcompat.widget.Toolbar>
+
     <TextView
         android:id="@+id/welcome_username"
         android:layout_width="0dp"
@@ -50,6 +53,7 @@
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
         android:src="@drawable/ic_notifications"
         app:layout_constraintBottom_toBottomOf="@+id/welcome_cert_level"
         app:layout_constraintEnd_toEndOf="parent"
@@ -79,19 +83,5 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="?attr/actionBarSize"
         app:layout_constraintTop_toBottomOf="@id/upcoming_dives" />
-
-    <TextView
-        android:id="@+id/text_dashboard"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:gravity="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

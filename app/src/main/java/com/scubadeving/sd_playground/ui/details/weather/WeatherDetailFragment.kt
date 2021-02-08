@@ -24,10 +24,6 @@ class WeatherDetailFragment : Fragment() {
         weatherDetailViewModel = ViewModelProvider(this).get(WeatherDetailViewModel::class.java)
 
         val root = inflater.inflate(R.layout.fragment_detail_weather, container, false)
-        val textView: TextView = root.findViewById(R.id.text_weather_details)
-        weatherDetailViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
         activity?.fab?.setOnClickListener {
             Toast.makeText(activity, "Add Gear", Toast.LENGTH_SHORT).show()
         }

@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.scubadeving.sd_playground.R
+import com.scubadeving.sd_playground.data.ConservationStatus
+import com.scubadeving.sd_playground.data.Wildlife
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.ItemDetailAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.WildlifeAdapter
 import kotlinx.android.synthetic.main.fragment_wildlife_detail.*
@@ -25,12 +27,36 @@ class WildlifeDetailFragment : Fragment() {
             "Thailand:2",
             "Phillipines:14"
         )
-    private var wildLife: List<String> =
+    private var wildLife: List<Wildlife> =
         listOf(
-            "Whale Shark",
-            "Mola-Mola",
-            "Spotted Sting Ray",
-            "Remora"
+            Wildlife(
+                "Whale Shark",
+                "Rhincodon typus",
+                ConservationStatus.VULNERABLE,
+                "Gentle Giant",
+                "Phillipines"
+            ),
+            Wildlife(
+                "Sunfish",
+                "Mola-Mola",
+                ConservationStatus.ENDANGERED,
+                "Heavy Bony fishy",
+                "Oregon"
+            ),
+            Wildlife(
+                "Spotted Sting Ray",
+                "Taeniura lymma",
+                ConservationStatus.VULNERABLE,
+                "Poisonous looking Ray",
+                "Australia"
+            ),
+            Wildlife(
+                "Remora",
+                "Echeneidae",
+                ConservationStatus.LEAST_CONCERN,
+                "Symbiotic Fish",
+                "Dubai"
+            )
         )
     private lateinit var conditionsLayoutManager: LinearLayoutManager
     private lateinit var wildlifeLayoutManager: LinearLayoutManager

@@ -8,7 +8,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.utils.inflate
-import kotlinx.android.synthetic.main.item_cert_card.view.*
+import kotlinx.android.synthetic.main.item_cert_card_profile.view.*
 
 class CertCardAdapter(private val certCards: List<String>) :
     RecyclerView.Adapter<CertCardAdapter.CertCarViewHolder>() {
@@ -41,7 +41,7 @@ class CertCardAdapter(private val certCards: List<String>) :
 
         fun bind(certCard: String, position: Int) {
             itemView.apply {
-                cert_card_text.text = certCard
+                profile_cert_card_text.text = certCard
             }
         }
 

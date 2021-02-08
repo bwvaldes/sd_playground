@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.scubadeving.sd_playground.R
+import com.scubadeving.sd_playground.data.Certification
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.ItemDetailAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.SpecialtyAdapter
 import kotlinx.android.synthetic.main.fragment_detail_cert.*
@@ -29,7 +30,12 @@ class CertDetailFragment : Fragment() {
             "EFR Primary",
             "EFR Secondary"
         )
-    private var certCards: List<String> = listOf("Adaptive Support", "Cave", "Ice", "DiveMaster")
+    private var certCards: List<Certification> = listOf(
+        Certification("Adaptive Support"),
+        Certification("Cave"),
+        Certification("Ice"),
+        Certification("DiveMaster")
+    )
     private lateinit var prerequisitesLayoutManager: LinearLayoutManager
     private lateinit var specialtyLayoutManager: LinearLayoutManager
     private lateinit var prerequisitesAdapter: ItemDetailAdapter

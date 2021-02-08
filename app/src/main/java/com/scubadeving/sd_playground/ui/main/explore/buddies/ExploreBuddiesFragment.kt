@@ -4,20 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.*
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.Diver
 import com.scubadeving.sd_playground.decorations.GridSpacingItemDecoration
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.BuddyAdapter
-import com.scubadeving.sd_playground.ui.adapters.recyclerview.ItemDetailAdapter
-import com.scubadeving.sd_playground.ui.adapters.recyclerview.SpecialtyAdapter
-import kotlinx.android.synthetic.main.fragment_detail_cert.*
 import kotlinx.android.synthetic.main.fragment_explore_buddies.*
-import kotlinx.android.synthetic.main.fragment_profile_certifications.*
 
 class ExploreBuddiesFragment : Fragment() {
 
@@ -64,12 +58,7 @@ class ExploreBuddiesFragment : Fragment() {
     ): View? {
         exploreBuddiesViewModel =
             ViewModelProvider(this).get(ExploreBuddiesViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_explore_buddies, container, false)
-        val textView: TextView = root.findViewById(R.id.text_explore_buddies)
-        exploreBuddiesViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-        return root
+        return inflater.inflate(R.layout.fragment_explore_buddies, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

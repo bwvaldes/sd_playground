@@ -24,10 +24,6 @@ class StatsFragment : Fragment() {
         statsViewModel =
                 ViewModelProvider(this).get(StatsViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_profile_stats, container, false)
-        val textView: TextView = root.findViewById(R.id.text_stats)
-        statsViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
         activity?.fab?.setOnClickListener {
             Toast.makeText(activity, "Search My Stats", Toast.LENGTH_SHORT).show()
         }

@@ -13,9 +13,13 @@
 
     <TextView
         android:id="@+id/cert_card_text"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_gravity="start|bottom"
+        android:background="#33000000"
+        android:ellipsize="end"
+        android:padding="5dp"
         android:textColor="@color/white"
-        tools:text="1" />
+        android:textSize="24dp"
+        tools:text="Open Water Diver" />
 </com.google.android.material.card.MaterialCardView>

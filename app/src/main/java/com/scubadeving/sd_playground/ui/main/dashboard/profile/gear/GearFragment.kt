@@ -23,10 +23,6 @@ class GearFragment : Fragment() {
         gearViewModel = ViewModelProvider(this).get(GearViewModel::class.java)
 
         val root = inflater.inflate(R.layout.fragment_profile_gear, container, false)
-        val textView: TextView = root.findViewById(R.id.text_gear)
-        gearViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
         activity?.fab?.setOnClickListener {
             Toast.makeText(activity, "Add Gear", Toast.LENGTH_SHORT).show()
         }

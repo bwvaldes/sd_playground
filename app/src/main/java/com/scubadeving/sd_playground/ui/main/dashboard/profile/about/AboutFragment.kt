@@ -23,10 +23,6 @@ class AboutFragment : Fragment() {
         aboutViewModel = ViewModelProvider(this).get(AboutViewModel::class.java)
 
         val root = inflater.inflate(R.layout.fragment_profile_about, container, false)
-        val textView: TextView = root.findViewById(R.id.text_about)
-        aboutViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
         activity?.fab?.setOnClickListener {
             Toast.makeText(activity, "Edit About", Toast.LENGTH_SHORT).show()
         }

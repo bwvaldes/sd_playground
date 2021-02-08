@@ -4,22 +4,24 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.scubadeving.sd_playground.R
+import com.scubadeving.sd_playground.data.DiveSite
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.DiveSiteAdapter
-import kotlinx.android.synthetic.main.fragment_dashboard.*
 import kotlinx.android.synthetic.main.fragment_explore_sites.*
 
 class ExploreSitesFragment : Fragment() {
 
-    private var nearbyDiveSites: List<String> = listOf("Catalina", "Ventura", "Malibu", "Anacapa")
+    private var nearbyDiveSites: List<DiveSite> = listOf(
+        DiveSite("Casino Point", "Catalina", 3.2, 14),
+        DiveSite("Leo Carillo", "Malibu", 4.75, 42),
+        DiveSite("Boat Dive 1", "Anacapa", 3.98, 8)
+    )
     private lateinit var exploreSitesLayoutManager: LinearLayoutManager
     private lateinit var exploreSitesAdapter: DiveSiteAdapter
     private lateinit var exploreSitesViewModel: ExploreSitesViewModel
@@ -31,12 +33,7 @@ class ExploreSitesFragment : Fragment() {
     ): View? {
         exploreSitesViewModel =
             ViewModelProvider(this).get(ExploreSitesViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_explore_sites, container, false)
-        val textView: TextView = root.findViewById(R.id.text_explore_sites)
-        exploreSitesViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-        return root
+        return inflater.inflate(R.layout.fragment_explore_sites, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -11,10 +11,11 @@ import androidx.annotation.RequiresApi
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.scubadeving.sd_playground.R
+import com.scubadeving.sd_playground.data.DiveSite
 import com.scubadeving.sd_playground.utils.inflate
 import kotlinx.android.synthetic.main.item_dive_site_card.view.*
 
-class DiveSiteAdapter(private val diveSites: List<String>) :
+class DiveSiteAdapter(private val diveSites: List<DiveSite>) :
     RecyclerView.Adapter<DiveSiteAdapter.DiveSiteViewHolder>() {
 
 
@@ -45,7 +46,7 @@ class DiveSiteAdapter(private val diveSites: List<String>) :
         }
 
         @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-        fun bind(diveSite: String, position: Int) {
+        fun bind(diveSite: DiveSite, position: Int) {
             itemView.apply {
                 dive_site_card_favorite.apply {
                     setOnCheckedChangeListener { _, isFavorite ->
@@ -60,11 +61,9 @@ class DiveSiteAdapter(private val diveSites: List<String>) :
                         dive_site_card_popularity.visibility = View.VISIBLE
                     }
                 }
-                val ratingValue = "4.5"
-                val reviewCount = " (23)"
-                dive_site_card_rating.text = ratingValue.plus(reviewCount)
-                dive_site_card_name.text = diveSite
-                dive_site_card_location.text = "California"
+                dive_site_card_rating.text = "${diveSite.rating} (${diveSite.reviews})"
+                dive_site_card_name.text = diveSite.name
+                dive_site_card_location.text = diveSite.location
             }
         }
 

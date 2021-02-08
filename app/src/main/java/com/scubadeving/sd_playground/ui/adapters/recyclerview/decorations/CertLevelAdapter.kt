@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.*
 import com.scubadeving.sd_playground.R
+import com.scubadeving.sd_playground.data.Certification
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.SpecialtyAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.decorations.CertLevelAdapter.CertPathViewHolder
 import com.scubadeving.sd_playground.utils.inflate
@@ -17,7 +18,12 @@ import kotlinx.android.synthetic.main.item_cert_level.view.*
 class CertLevelAdapter(private val certLevels: List<String>) :
     RecyclerView.Adapter<CertPathViewHolder>() {
 
-    val certCards: List<String> = listOf("Wreck", "Ice", "Cave", "Night")
+    val certCards: List<Certification> = listOf(
+        Certification("Wreck"),
+        Certification("Ice"),
+        Certification("Cave"),
+        Certification("Night")
+    )
     private lateinit var layoutManager: LinearLayoutManager
     private lateinit var adapter: SpecialtyAdapter
 

@@ -32,10 +32,6 @@ class ExploreFragment : Fragment() {
         exploreViewModel =
             ViewModelProvider(this).get(ExploreViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_explore, container, false)
-        val textView: TextView = root.findViewById(R.id.text_explore)
-        exploreViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
         activity?.fab?.setOnClickListener {
             Toast.makeText(activity, "Explore", Toast.LENGTH_SHORT).show()
         }

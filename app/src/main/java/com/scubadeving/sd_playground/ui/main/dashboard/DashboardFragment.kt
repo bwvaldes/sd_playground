@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.scubadeving.sd_playground.R
+import com.scubadeving.sd_playground.data.DiveSite
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.DiveSiteAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_dashboard.*
@@ -22,7 +23,13 @@ import kotlinx.android.synthetic.main.view_dashboard_items.*
 
 class DashboardFragment : Fragment() {
 
-    private var diveSites: List<String> = listOf("Catalina", "Ventura", "Malibu", "Anacapa")
+    private var diveSites: List<DiveSite> = listOf(
+        DiveSite("Shaw's Cove", "Newport Beach", 4.5, 112),
+        DiveSite("Casino Point", "Catalina", 3.2, 14),
+        DiveSite("Se lion Point", "Ventura", 4.8, 86),
+        DiveSite("Leo Carillo", "Malibu", 4.75, 42),
+        DiveSite("Boat Dive 1", "Anacapa", 3.98, 8)
+    )
     private lateinit var layoutManager: LinearLayoutManager
     private lateinit var adapter: DiveSiteAdapter
 
@@ -37,10 +44,6 @@ class DashboardFragment : Fragment() {
         dashboardViewModel =
             ViewModelProvider(this).get(DashboardViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_dashboard, container, false)
-        val textView: TextView = root.findViewById(R.id.text_dashboard)
-        dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
         activity?.fab?.setOnClickListener {
             Toast.makeText(activity, "Search Dashboard", Toast.LENGTH_SHORT).show()
         }

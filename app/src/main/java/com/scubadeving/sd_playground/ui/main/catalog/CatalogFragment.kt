@@ -33,10 +33,6 @@ class CatalogFragment : Fragment() {
         homeViewModel =
             ViewModelProvider(this).get(CatalogViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_catalog, container, false)
-        val textView: TextView = root.findViewById(R.id.text_catalog)
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
         activity?.fab?.setOnClickListener {
             Toast.makeText(activity, "Search Catalog", Toast.LENGTH_SHORT).show()
         }

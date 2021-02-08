@@ -34,10 +34,6 @@ class LogbookFragment : Fragment() {
         logbookViewModel =
             ViewModelProvider(this).get(LogbookViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_logbook, container, false)
-        val textView: TextView = root.findViewById(R.id.text_logbook)
-        logbookViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
         activity?.fab?.setOnClickListener {
             Toast.makeText(activity, "Add Log", Toast.LENGTH_SHORT).show()
         }

@@ -25,18 +25,9 @@
                 android:layout_height="24dp"
                 android:layout_gravity="end"
                 android:layout_marginEnd="15dp"
+                android:layout_marginRight="15dp"
                 android:src="@drawable/ic_logout" />
         </androidx.appcompat.widget.Toolbar>
-
-        <TextView
-            android:id="@+id/text_settings"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:textAlignment="center"
-            android:textSize="20sp" />
 
         <TextView
             android:layout_width="match_parent"
@@ -46,11 +37,13 @@
             android:text="Basic Settings" />
 
         <TextView
-            android:drawableStart="@drawable/ic_notifications"
-            android:drawablePadding="15dp"
             android:layout_width="match_parent"
             android:layout_height="48dp"
+            android:drawableStart="@drawable/ic_notifications"
+            android:drawableLeft="@drawable/ic_notifications"
             android:drawableEnd="@drawable/ic_chevron_right"
+            android:drawableRight="@drawable/ic_chevron_right"
+            android:drawablePadding="15dp"
             android:gravity="start|center"
             android:text="Notifications"
             android:textSize="18sp" />
@@ -59,6 +52,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:drawableEnd="@drawable/ic_chevron_right"
+            android:drawableRight="@drawable/ic_chevron_right"
             android:gravity="start|center"
             android:text="Default Uniit of Measure"
             android:textSize="18sp" />
@@ -67,6 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:drawableEnd="@drawable/ic_chevron_right"
+            android:drawableRight="@drawable/ic_chevron_right"
             android:gravity="start|center"
             android:text="Themes"
             android:textSize="18sp" />
@@ -75,6 +70,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:drawableEnd="@drawable/ic_chevron_right"
+            android:drawableRight="@drawable/ic_chevron_right"
             android:gravity="start|center"
             android:text="Security"
             android:textSize="18sp" />
@@ -90,6 +86,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:drawableEnd="@drawable/ic_chevron_right"
+            android:drawableRight="@drawable/ic_chevron_right"
             android:gravity="start|center"
             android:text="Camera"
             android:textSize="18sp" />
@@ -98,6 +95,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:drawableEnd="@drawable/ic_chevron_right"
+            android:drawableRight="@drawable/ic_chevron_right"
             android:gravity="start|center"
             android:text="Location"
             android:textSize="18sp" />
@@ -106,6 +104,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:drawableEnd="@drawable/ic_chevron_right"
+            android:drawableRight="@drawable/ic_chevron_right"
             android:gravity="start|center"
             android:text="Storage"
             android:textSize="18sp" />
@@ -121,6 +120,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:drawableEnd="@drawable/ic_chevron_right"
+            android:drawableRight="@drawable/ic_chevron_right"
             android:gravity="start|center"
             android:text="Bug Report"
             android:textSize="18sp" />
@@ -129,6 +129,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:drawableEnd="@drawable/ic_chevron_right"
+            android:drawableRight="@drawable/ic_chevron_right"
             android:gravity="start|center"
             android:text="App Review"
             android:textSize="18sp" />
@@ -144,6 +145,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:drawableEnd="@drawable/ic_chevron_right"
+            android:drawableRight="@drawable/ic_chevron_right"
             android:gravity="start|center"
             android:text="Privacy Policy"
             android:textSize="18sp" />
@@ -152,9 +154,11 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:drawableEnd="@drawable/ic_chevron_right"
+            android:drawableRight="@drawable/ic_chevron_right"
             android:gravity="start|center"
             android:text="Terms of Service"
             android:textSize="18sp" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -166,6 +170,7 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:drawableEnd="@drawable/ic_chevron_right"
+            android:drawableRight="@drawable/ic_chevron_right"
             android:gravity="start|center"
             android:text="Mission Statement"
             android:textSize="18sp" />
@@ -174,10 +179,10 @@
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:drawableEnd="@drawable/ic_chevron_right"
+            android:drawableRight="@drawable/ic_chevron_right"
             android:gravity="start|center"
             android:text="Version"
             android:textSize="18sp" />
-
 
     </LinearLayout>
 </ScrollView>
