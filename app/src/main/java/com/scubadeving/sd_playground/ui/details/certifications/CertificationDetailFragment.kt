@@ -20,7 +20,7 @@ import com.scubadeving.sd_playground.ui.adapters.recyclerview.ItemDetailAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.SpecialtyAdapter
 import kotlinx.android.synthetic.main.fragment_detail_cert.*
 
-class CertDetailFragment : Fragment() {
+class CertificationDetailFragment : Fragment() {
 
     private var prerequisites: List<String> =
         listOf(

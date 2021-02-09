@@ -5,7 +5,8 @@ data class Wildlife(
     val scientificName: String = "Lorem Ipsum",
     val status: ConservationStatus = ConservationStatus.LEAST_CONCERN,
     val description: String = "A beautiful creature",
-    val location: String = "Earth"
+    val location: String = "Earth",
+    val encounters: Encounters? = null
 )
 
 enum class ConservationStatus {
@@ -19,3 +20,8 @@ enum class ConservationStatus {
     EXTINCT_IN_THE_WILD,
     EXTINCT
 }
+
+data class Encounters(
+    val count: Int,
+    val locations: List<String>
+)

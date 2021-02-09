@@ -34,7 +34,7 @@ class CertificationLevelAdapter(private val certifications: List<Certification>)
             specialtyLayoutManager.initialPrefetchItemCount = 4
             cert_level_specialty_rv.apply {
                 layoutManager = specialtyLayoutManager
-                adapter = SpecialtyAdapter(certifications.specialties)
+                adapter = certifications.specialties?.let { SpecialtyAdapter(it) }
                 setRecycledViewPool(viewPool)
                 val dividerItemDecoration =
                     DividerItemDecoration(context, specialtyLayoutManager.orientation)
