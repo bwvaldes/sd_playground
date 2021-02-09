@@ -29,7 +29,7 @@
 
     <fragment
         android:id="@+id/navigation_logbook"
-        android:name="com.scubadeving.sd_playground.ui.main.logbook.LogbookFragment"
+        android:name="com.scubadeving.sd_playground.ui.main.logbook.LogbookMainFragment"
         android:label="@string/title_logbook"
         tools:layout="@layout/fragment_logbook" />
     <fragment
@@ -58,12 +58,12 @@
         tools:layout="@layout/fragment_detail_dive_site" />
     <fragment
         android:id="@+id/wildlifeFragment"
-        android:name="com.scubadeving.sd_playground.ui.details.wildlife.WildlifeFragment"
+        android:name="com.scubadeving.sd_playground.ui.details.wildlife.WildlifeMainFragment"
         android:label="fragment_wildlife"
-        tools:layout="@layout/fragment_wildlife" />
+        tools:layout="@layout/fragment_detail_wildlife_main" />
     <fragment
         android:id="@+id/logbookEntryFragment"
-        android:name="com.scubadeving.sd_playground.ui.main.logbook.LogbookEntryFragment"
+        android:name="com.scubadeving.sd_playground.ui.main.logbook.entry.LogbookEntryFragment"
         android:label="fragment_logbook_entry"
         tools:layout="@layout/fragment_logbook_entry" />
     <fragment
@@ -76,4 +76,10 @@
         android:name="com.scubadeving.sd_playground.ui.details.weather.WeatherDetailFragment"
         android:label="WeatherDetailFragment"
         tools:layout="@layout/fragment_detail_weather"/>
+
+    <fragment
+        android:id="@+id/qrCodeFragment"
+        android:name="com.scubadeving.sd_playground.ui.details.codes.QRCodeMainFragment"
+        android:label="fragment_qrcode"
+        tools:layout="@layout/fragment_detail_qrcode_main" />
 </navigation>

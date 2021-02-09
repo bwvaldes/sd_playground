@@ -1,13 +1,13 @@
-package com.scubadeving.sd_playground.ui.main.logbook
+package com.scubadeving.sd_playground.ui.details.wildlife.detail
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class LogbookEntryViewModel : ViewModel() {
+class WildlifeDetailViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is Logbook Entry Fragment"
+        value = "This is Wildlife Detail Fragment"
     }
     val text: LiveData<String> = _text
 }

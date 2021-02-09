@@ -1,12 +1,10 @@
-package com.scubadeving.sd_playground.ui.details.wildlife
+package com.scubadeving.sd_playground.ui.details.wildlife.detail
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -19,7 +17,7 @@ import com.scubadeving.sd_playground.data.ConservationStatus
 import com.scubadeving.sd_playground.data.Wildlife
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.ItemDetailAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.WildlifeAdapter
-import kotlinx.android.synthetic.main.fragment_wildlife_detail.*
+import kotlinx.android.synthetic.main.fragment_detail_wildlife_details.*
 
 class WildlifeDetailFragment : Fragment() {
 
@@ -70,12 +68,7 @@ class WildlifeDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         wildlifeDetailViewModel = ViewModelProvider(this).get(WildlifeDetailViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_wildlife_detail, container, false)
-        val textView: TextView = root.findViewById(R.id.text_wildlife_detail)
-        wildlifeDetailViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-
+        val root = inflater.inflate(R.layout.fragment_detail_wildlife_details, container, false)
         val toolbar: androidx.appcompat.widget.Toolbar = root.findViewById(R.id.toolbar)
         toolbar.setNavigationOnClickListener { view ->
             view.findNavController().navigateUp()

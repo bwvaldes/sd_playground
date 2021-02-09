@@ -13,17 +13,17 @@ import com.scubadeving.sd_playground.ui.adapters.viewpager.LogbookViewPagerAdapt
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_logbook.*
 
-class LogbookFragment : Fragment() {
+class LogbookMainFragment : Fragment() {
 
-    private lateinit var logbookViewModel: LogbookViewModel
+    private lateinit var logbookMainViewModel: LogbookMainViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        logbookViewModel =
-            ViewModelProvider(this).get(LogbookViewModel::class.java)
+        logbookMainViewModel =
+            ViewModelProvider(this).get(LogbookMainViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_logbook, container, false)
         activity?.fab?.setOnClickListener {
             Toast.makeText(activity, "Add Log", Toast.LENGTH_SHORT).show()

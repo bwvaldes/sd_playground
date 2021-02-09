@@ -2,8 +2,8 @@ package com.scubadeving.sd_playground.ui.adapters.viewpager
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.scubadeving.sd_playground.ui.details.wildlife.WildlifeDetailFragment
-import com.scubadeving.sd_playground.ui.details.wildlife.WildlifeOverviewFragment
+import com.scubadeving.sd_playground.ui.details.wildlife.detail.WildlifeDetailFragment
+import com.scubadeving.sd_playground.ui.details.wildlife.overview.WildlifeOverviewFragment
 
 class WildlifeViewPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
 

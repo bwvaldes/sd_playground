@@ -25,6 +25,9 @@
     <!-- Dive Site Detail-->
     <string name="dive_site_rating">%1$.2f (%2$d)</string>
 
+    <!-- QR Code -->
+    <string name="qrcode_tab_scan">Scan</string>
+    <string name="qrcode_tab_code">My Code</string>
     <!-- InfoView -->
     <string name="infoview_content_description">An Icon for an InfoView</string>
 

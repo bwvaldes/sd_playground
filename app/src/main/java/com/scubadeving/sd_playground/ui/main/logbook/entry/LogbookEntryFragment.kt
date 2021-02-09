@@ -1,14 +1,11 @@
-package com.scubadeving.sd_playground.ui.main.logbook
+package com.scubadeving.sd_playground.ui.main.logbook.entry
 
-import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -59,14 +56,7 @@ class LogbookEntryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         scan_qr.setOnClickListener {
-            Toast.makeText(activity, "Scan QR", Toast.LENGTH_SHORT).show()
-            val dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_qr, null)
-            AlertDialog.Builder(context)
-                .setView(dialogView)
-                .setTitle("Scan QR Code")
-                .setMessage("Simply scan this QR to log a dive!")
-                .setPositiveButton("Done", null)
-                .show()
+            view.findNavController().navigate(R.id.qrCodeFragment)
         }
         configureWildlife()
     }
