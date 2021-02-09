@@ -6,8 +6,9 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a35dd33b8ebbb3c1b64b4f5de0935553/transformed/jetified-fragment-ktx-1.2.4/res" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/a35dd33b8ebbb3c1b64b4f5de0935553/transformed/jetified-fragment-ktx-1.2.4/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a35dd33b8ebbb3c1b64b4f5de0935553/transformed/jetified-fragment-ktx-1.2.4/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/db2136dfee3b10c22805746a9aa79c11/transformed/jetified-fragment-ktx-1.2.4/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/db2136dfee3b10c22805746a9aa79c11/transformed/jetified-fragment-ktx-1.2.4/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/6c0d0de9778f217d21dca6d80c64f2b9/transformed/jetified-fragment-ktx-1.2.4/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/6c0d0de9778f217d21dca6d80c64f2b9/transformed/jetified-fragment-ktx-1.2.4/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/6c0d0de9778f217d21dca6d80c64f2b9/transformed/jetified-fragment-ktx-1.2.4/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

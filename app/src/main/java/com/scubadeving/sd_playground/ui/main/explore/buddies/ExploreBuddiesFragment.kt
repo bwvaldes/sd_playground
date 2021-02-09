@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.*
@@ -17,8 +18,8 @@ import kotlinx.android.synthetic.main.fragment_explore_buddies.*
 
 class ExploreBuddiesFragment : Fragment() {
 
-    private var nearbyDivers: List<Diver> =
-        listOf(
+    private var nearbyDivers: ArrayList<Diver> =
+        arrayListOf(
             Diver("Bob", "Open Water", 1),
             Diver("Billy", "Rescue Diver", (0..100).random()),
             Diver("Jill", "Advanced Open Water", (0..100).random()),
@@ -29,21 +30,28 @@ class ExploreBuddiesFragment : Fragment() {
             Diver("Greg", "Open Water", (0..100).random())
         )
 
-    private var diveCenterDivers: List<Diver> =
-        listOf(
+    private var diveCenterDivers: ArrayList<Diver> =
+        arrayListOf(
+            Diver("Jill", "Open Water", (0..100).random()),
+            Diver("Jack", "Open Water", (0..100).random()),
+            Diver("Pedro", "Open Water", (0..100).random()),
+            Diver("Nick", "Open Water", (0..100).random()),
+            Diver("Jill", "Advanced Open Water", (0..100).random()),
+            Diver("Karen", "Open Water", 0),
+            Diver("Molly", "Night Diver", (0..100).random())
+        )
+
+
+    private var pastDivers: ArrayList<Diver> =
+        arrayListOf(
+            Diver("Lia", "Discover Diver", (0..100).random()),
+            Diver("Arnold", "Open Water", (0..100).random()),
+            Diver("Richard", "Open Water", (0..100).random()),
+            Diver("Brandon", "Open Water", (0..100).random()),
             Diver("Jill", "Open Water", (0..100).random()),
             Diver("Jack", "Open Water", (0..100).random()),
             Diver("Pedro", "Open Water", (0..100).random()),
             Diver("Nick", "Open Water", (0..100).random())
-        )
-
-
-    private var pastDivers: List<Diver> =
-        listOf(
-            Diver("Lia", "Discover Diver", (0..100).random()),
-            Diver("Arnold", "Open Water", (0..100).random()),
-            Diver("Richard", "Open Water", (0..100).random()),
-            Diver("Brandon", "Open Water", (0..100).random())
         )
     private lateinit var nearbyDiversLayoutManager: LinearLayoutManager
     private lateinit var diveCenterDiversLayoutManager: GridLayoutManager
@@ -99,6 +107,9 @@ class ExploreBuddiesFragment : Fragment() {
             val snapHelper: SnapHelper = PagerSnapHelper()
             snapHelper.attachToRecyclerView(this)
         }
+        dive_center_divers_see_all.setOnClickListener {
+            Toast.makeText(context, "Just Clicked Dive Center Buddies!", Toast.LENGTH_SHORT).show()
+        }
     }
 
 
@@ -114,6 +125,9 @@ class ExploreBuddiesFragment : Fragment() {
             addItemDecoration(GridSpacingItemDecoration(spanCount, spacing, includeEdge))
             val snapHelper: SnapHelper = PagerSnapHelper()
             snapHelper.attachToRecyclerView(this)
+        }
+        past_divers_see_all.setOnClickListener {
+            Toast.makeText(context, "Just Clicked Past Dive Buddies!", Toast.LENGTH_SHORT).show()
         }
     }
 }

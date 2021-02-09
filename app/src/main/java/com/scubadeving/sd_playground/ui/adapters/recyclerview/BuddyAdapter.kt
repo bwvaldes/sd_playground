@@ -12,7 +12,7 @@ import com.scubadeving.sd_playground.utils.inflate
 import kotlinx.android.synthetic.main.item_explore_buddies_horizontal_card.view.*
 import kotlinx.android.synthetic.main.item_explore_buddies_vertical_card.view.*
 
-class BuddyAdapter(private val divers: List<Diver>, val orientation: Boolean) :
+class BuddyAdapter(private val divers: ArrayList<Diver>, val orientation: Boolean) :
     RecyclerView.Adapter<BuddyAdapter.BuddyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BuddyViewHolder {
@@ -24,11 +24,17 @@ class BuddyAdapter(private val divers: List<Diver>, val orientation: Boolean) :
         return BuddyViewHolder(inflatedView)
     }
 
-    override fun getItemCount(): Int = divers.size
+    override fun getItemCount(): Int {
+        return if (!orientation && divers.size > VERTICAL_LIMIT) {
+            VERTICAL_LIMIT
+        } else {
+            divers.size
+        }
+    }
 
     override fun onBindViewHolder(holder: BuddyViewHolder, position: Int) {
-        val details = divers[position]
-        holder.bind(details, position)
+        val diver = divers[position]
+        holder.bind(diver, position)
     }
 
     inner class BuddyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
@@ -44,33 +50,62 @@ class BuddyAdapter(private val divers: List<Diver>, val orientation: Boolean) :
                 itemView.context,
                 "Just Clicked Buddy Card!",
                 Toast.LENGTH_SHORT
-            )
-                .show()
-            // Todo: Should navigate to specific user and react whether it is current user
+            ).show()
+            // Todo: Should navigate to $selectedDiver Profile
             view.findNavController().navigate(R.id.profileFragment)
         }
 
         fun bind(diver: Diver, position: Int) {
             itemView.apply {
                 if (orientation) {
-                    diver_card_horizontal_avatar.setImageResource(R.drawable.ic_profile)
-                    diver_card_horizontal_background.setImageResource(R.color.purple_200)
-                    diver_card_horizontal_name.text = diver.name
-                    diver_card_horizontal_level.text = diver.certLevel
-                    if (diver.buddyCount != 1) {
-                        diver_card_horizontal_buddy_count.text =
-                            diver.buddyCount.toString().plus(" Buddies")
-                    } else {
-                        diver_card_horizontal_buddy_count.text =
-                            diver.buddyCount.toString().plus(" Buddy")
-                    }
+                    configureHorizontalBuddyLayout(position, diver)
                 } else {
-                    diver_card_vertical_avatar.setImageResource(R.drawable.ic_profile)
-                    diver_card_vertical_background.setImageResource(R.color.teel_200)
-                    diver_card_vertical_name.text = diver.name
-                    diver_card_vertical_level.text = diver.certLevel
+                    configureVerticalBuddyLayout(position, diver)
                 }
             }
         }
+
+        private fun View.configureHorizontalBuddyLayout(position: Int, diver: Diver) {
+            diver_card_horizontal_clear.setOnClickListener { dismissBuddy(position) }
+            diver_card_horizontal_avatar.setImageResource(R.drawable.ic_profile)
+            diver_card_horizontal_background.setImageResource(R.color.purple_200)
+            diver_card_horizontal_name.text = diver.name
+            diver_card_horizontal_level.text = diver.certLevel
+            configureBuddyCountText(diver)
+            diver_card_horizontal_add_buddy.setOnClickListener {
+                Toast.makeText(context, "Just Clicked Add Buddy!", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        private fun View.configureVerticalBuddyLayout(position: Int, diver: Diver) {
+            diver_card_vertical_clear.setOnClickListener { dismissBuddy(position) }
+            diver_card_vertical_avatar.setImageResource(R.drawable.ic_profile)
+            diver_card_vertical_background.setImageResource(R.color.teel_200)
+            diver_card_vertical_name.text = diver.name
+            diver_card_vertical_level.text = diver.certLevel
+            diver_card_vertical_add_buddy.setOnClickListener {
+                Toast.makeText(context, "Just Clicked Add Buddy!", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        private fun View.configureBuddyCountText(diver: Diver) {
+            diver_card_horizontal_buddy_count.text =
+                if (diver.buddyCount != SINGULAR_BUDDY_COUNT) {
+                    diver.buddyCount.toString().plus(" Buddies")
+                } else {
+                    diver.buddyCount.toString().plus(" Buddy")
+                }
+        }
+
+        private fun dismissBuddy(position: Int) {
+            divers.removeAt(position)
+            notifyItemRemoved(position)
+            notifyItemRangeChanged(position, divers.size)
+        }
+    }
+
+    companion object {
+        private const val VERTICAL_LIMIT = 4
+        private const val SINGULAR_BUDDY_COUNT = 1
     }
 }
