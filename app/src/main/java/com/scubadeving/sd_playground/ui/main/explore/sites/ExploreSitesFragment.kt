@@ -6,16 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.*
 import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
 import androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
-import androidx.recyclerview.widget.PagerSnapHelper
-import androidx.recyclerview.widget.SnapHelper
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.DiveSite
+import com.scubadeving.sd_playground.data.ExploreFilter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.DiveSiteAdapter
+import com.scubadeving.sd_playground.ui.adapters.recyclerview.ExploreFilterAdapter
+import com.scubadeving.sd_playground.ui.adapters.recyclerview.decorations.GridSpacingItemDecoration
 import kotlinx.android.synthetic.main.fragment_explore_sites.*
 
 class ExploreSitesFragment : Fragment() {
@@ -36,7 +35,31 @@ class ExploreSitesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         configureExploreNearbyDiveSites()
         configureExploreAllDiveSites()
-        explore_tropical.setOnClickListener { findNavController().navigate(R.id.exploreSitesFilteredFragment) }
+        configureExploreSitesFilter()
+    }
+
+    private fun configureExploreSitesFilter() {
+        val filters: List<ExploreFilter> =
+            listOf(
+                ExploreFilter("Tropical"),
+                ExploreFilter("Ice"),
+                ExploreFilter("Wreck"),
+                ExploreFilter("Deep"),
+                ExploreFilter("Cave"),
+                ExploreFilter("Nitrox"),
+                ExploreFilter("Abroad"),
+                ExploreFilter("Shallow"),
+                ExploreFilter("Night"),
+                ExploreFilter("Brackish")
+            )
+        val spanCount = 2
+        val spacing = 15
+        val includeEdge = true
+        explore_sites_filter_rv.apply {
+            layoutManager = GridLayoutManager(context, spanCount, HORIZONTAL, false)
+            adapter = ExploreFilterAdapter(filters)
+            addItemDecoration(GridSpacingItemDecoration(spanCount, spacing, includeEdge))
+        }
     }
 
     private fun configureExploreNearbyDiveSites() {
@@ -45,7 +68,7 @@ class ExploreSitesFragment : Fragment() {
             DiveSite("Leo Carillo", "Malibu", 4.75, 42),
             DiveSite("Boat Dive 1", "Anacapa", 3.98, 8)
         )
-        nearby_sites_rv.apply {
+        explore_sites_nearby_rv.apply {
             layoutManager = LinearLayoutManager(context, HORIZONTAL, false)
             adapter = DiveSiteAdapter(nearbyDiveSites, true)
             val dividerItemDecoration = DividerItemDecoration(context, HORIZONTAL)
@@ -67,7 +90,7 @@ class ExploreSitesFragment : Fragment() {
             DiveSite("Leo Carillo", "Malibu", 4.75, 42),
             DiveSite("Boat Dive 1", "Anacapa", 3.98, 8)
         )
-        all_sites_rv.apply {
+        explore_sites_all_rv.apply {
             layoutManager = LinearLayoutManager(context, VERTICAL, false)
             adapter = DiveSiteAdapter(allDiveSites, false)
         }

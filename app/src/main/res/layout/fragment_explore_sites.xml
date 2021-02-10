@@ -9,7 +9,7 @@
         android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline"
+            android:id="@+id/explore_sites_guideline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -24,91 +24,54 @@
             android:text="Explore Sites"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/explore_tropical"
-            android:layout_width="172dp"
-            android:layout_height="72dp"
-            android:text="Tropical"
-            app:layout_constraintEnd_toStartOf="@+id/guideline"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/explore_sites_filter_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="?attr/actionBarSize"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/explore_sites_heading" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/explore_cold"
-            android:layout_width="172dp"
-            android:layout_height="72dp"
-            android:text="Cold Water"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toTopOf="@+id/explore_tropical" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/explore_ice"
-            android:layout_width="172dp"
-            android:layout_height="72dp"
-            android:text="Ice"
-            app:layout_constraintEnd_toStartOf="@+id/guideline"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/explore_tropical" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/explore_caves"
-            android:layout_width="172dp"
-            android:layout_height="72dp"
-            android:text="Caves"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toTopOf="@+id/explore_ice" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/explore_deep"
-            android:layout_width="172dp"
-            android:layout_height="72dp"
-            android:text="Deep"
-            app:layout_constraintEnd_toStartOf="@+id/guideline"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/explore_ice" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/explore_wrecks"
-            android:layout_width="172dp"
-            android:layout_height="72dp"
-            android:text="Wrecks"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/guideline"
-            app:layout_constraintTop_toTopOf="@+id/explore_deep" />
-
         <TextView
-            android:id="@+id/nearby_sites"
+            android:id="@+id/explore_sites_nearby"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:background="@android:color/darker_gray"
             android:text="Nearby Dives"
-            app:layout_constraintTop_toBottomOf="@id/explore_wrecks" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/explore_sites_filter_rv" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/nearby_sites_rv"
+            android:id="@+id/explore_sites_nearby_rv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="?attr/actionBarSize"
-            app:layout_constraintTop_toBottomOf="@id/nearby_sites" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/explore_sites_nearby" />
 
         <TextView
-            android:id="@+id/all_sites"
+            android:id="@+id/explore_sites_all"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:background="@android:color/darker_gray"
             android:text="Explore All Sites"
-            app:layout_constraintTop_toBottomOf="@id/nearby_sites_rv" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/explore_sites_nearby_rv" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/all_sites_rv"
+            android:id="@+id/explore_sites_all_rv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="?attr/actionBarSize"
-            app:layout_constraintTop_toBottomOf="@id/all_sites" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/explore_sites_all" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

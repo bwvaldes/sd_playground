@@ -25,7 +25,7 @@
             android:orientation="horizontal"
             android:padding="15dp"
             app:checkedChip="@+id/chip_padi"
-            app:chipSpacingHorizontal="25dp"
+            app:chipSpacingHorizontal="15dp"
             app:selectionRequired="true"
             app:singleSelection="true">
 

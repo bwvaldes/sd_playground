@@ -84,8 +84,8 @@
         tools:layout="@layout/fragment_detail_qrcode_main" />
 
     <fragment
-        android:id="@+id/exploreSitesFilteredFragment"
-        android:name="com.scubadeving.sd_playground.ui.main.explore.sites.filtered.ExploreSitesFilteredFragment"
-        android:label="fragment_explore_sites_filtered"
-        tools:layout="@layout/fragment_explore_sites_filtered" />
+        android:id="@+id/exploreDetailsFilteredFragment"
+        android:name="com.scubadeving.sd_playground.ui.main.explore.filtered.ExploreDetailsFilteredFragment"
+        android:label="fragment_explore_details_filtered"
+        tools:layout="@layout/fragment_explore_details_filtered" />
 </navigation>

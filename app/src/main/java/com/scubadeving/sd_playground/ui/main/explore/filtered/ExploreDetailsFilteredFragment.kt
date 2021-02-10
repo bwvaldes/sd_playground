@@ -1,4 +1,4 @@
-package com.scubadeving.sd_playground.ui.main.explore.sites.filtered
+package com.scubadeving.sd_playground.ui.main.explore.filtered
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,27 +11,31 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.DiveSite
+import com.scubadeving.sd_playground.data.Wildlife
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.DiveSiteAdapter
-import kotlinx.android.synthetic.main.fragment_explore_sites_filtered.*
+import com.scubadeving.sd_playground.ui.adapters.recyclerview.WildlifeAdapter
+import kotlinx.android.synthetic.main.fragment_explore_details_filtered.*
 
-class ExploreSitesFilteredFragment : Fragment() {
+class ExploreDetailsFilteredFragment : Fragment() {
 
-    private lateinit var exploreSitesFilteredViewModel: ExploreSitesFilteredViewModel
+    private lateinit var exploreDetailsFilteredViewModel: ExploreDetailsFilteredViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        exploreSitesFilteredViewModel =
-            ViewModelProvider(this).get(ExploreSitesFilteredViewModel::class.java)
-        return inflater.inflate(R.layout.fragment_explore_sites_filtered, container, false)
+        exploreDetailsFilteredViewModel =
+            ViewModelProvider(this).get(ExploreDetailsFilteredViewModel::class.java)
+        return inflater.inflate(R.layout.fragment_explore_details_filtered, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        explore_dive_sites_filtered_toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
-        configureExploreFilteredDiveSites()
+        explore_details_filtered_toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
+        if (arguments?.isEmpty == true) {
+            configureExploreFilteredWildlife()
+        } else configureExploreFilteredDiveSites()
     }
 
     private fun configureExploreFilteredDiveSites() {
@@ -46,9 +50,26 @@ class ExploreSitesFilteredFragment : Fragment() {
             DiveSite("Leo Carillo", "Malibu", 4.75, 42),
             DiveSite("Boat Dive 1", "Anacapa", 3.98, 8)
         )
-        explore_dive_sites_filtered_rv.apply {
+        explore_details_filtered_rv.apply {
             layoutManager = LinearLayoutManager(context, VERTICAL, false)
             adapter = DiveSiteAdapter(filteredDiveSites, false)
+        }
+    }
+
+    private fun configureExploreFilteredWildlife() {
+        val filteredWildlife: List<Wildlife> =
+            listOf(
+                Wildlife("Garibaldi"),
+                Wildlife("Halibut"),
+                Wildlife("Horn Shark"),
+                Wildlife("Sheephead"),
+                Wildlife("Bat Ray"),
+                Wildlife("Blennie"),
+                Wildlife("Moray Eel")
+            )
+        explore_details_filtered_rv.apply {
+            layoutManager = LinearLayoutManager(context, VERTICAL, false)
+            adapter = WildlifeAdapter(filteredWildlife)
         }
     }
 }
