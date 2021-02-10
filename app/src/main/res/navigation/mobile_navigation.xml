@@ -70,16 +70,22 @@
         android:id="@+id/notificationsFragment"
         android:name="com.scubadeving.sd_playground.ui.details.notifications.NotificationsFragment"
         android:label="NotificationsFragment"
-        tools:layout="@layout/fragment_detail_notifications"/>
+        tools:layout="@layout/fragment_detail_notifications" />
     <fragment
         android:id="@+id/weatherDetailFragment"
         android:name="com.scubadeving.sd_playground.ui.details.weather.WeatherDetailFragment"
         android:label="WeatherDetailFragment"
-        tools:layout="@layout/fragment_detail_weather"/>
+        tools:layout="@layout/fragment_detail_weather" />
 
     <fragment
         android:id="@+id/qrCodeFragment"
         android:name="com.scubadeving.sd_playground.ui.details.codes.QRCodeMainFragment"
         android:label="fragment_qrcode"
         tools:layout="@layout/fragment_detail_qrcode_main" />
+
+    <fragment
+        android:id="@+id/exploreSitesFilteredFragment"
+        android:name="com.scubadeving.sd_playground.ui.main.explore.sites.filtered.ExploreSitesFilteredFragment"
+        android:label="fragment_explore_sites_filtered"
+        tools:layout="@layout/fragment_explore_sites_filtered" />
 </navigation>

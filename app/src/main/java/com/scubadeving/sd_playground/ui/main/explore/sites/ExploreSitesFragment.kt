@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
@@ -35,6 +36,7 @@ class ExploreSitesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         configureExploreNearbyDiveSites()
         configureExploreAllDiveSites()
+        explore_tropical.setOnClickListener { findNavController().navigate(R.id.exploreSitesFilteredFragment) }
     }
 
     private fun configureExploreNearbyDiveSites() {

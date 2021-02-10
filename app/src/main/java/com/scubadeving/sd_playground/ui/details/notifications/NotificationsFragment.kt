@@ -14,14 +14,13 @@ import kotlinx.android.synthetic.main.fragment_detail_notifications.*
 
 class NotificationsFragment : Fragment() {
 
-    private lateinit var gearViewModel: NotificationsViewModel
+    private lateinit var notificationsViewModel: NotificationsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        gearViewModel = ViewModelProvider(this).get(NotificationsViewModel::class.java)
-
+        notificationsViewModel = ViewModelProvider(this).get(NotificationsViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_detail_notifications, container, false)
         activity?.fab?.setOnClickListener {
             Toast.makeText(activity, "Add Gear", Toast.LENGTH_SHORT).show()

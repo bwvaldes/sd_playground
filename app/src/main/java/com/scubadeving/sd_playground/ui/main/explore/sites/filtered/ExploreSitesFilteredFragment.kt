@@ -1,0 +1,54 @@
+package com.scubadeving.sd_playground.ui.main.explore.sites.filtered
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
+import com.scubadeving.sd_playground.R
+import com.scubadeving.sd_playground.data.DiveSite
+import com.scubadeving.sd_playground.ui.adapters.recyclerview.DiveSiteAdapter
+import kotlinx.android.synthetic.main.fragment_explore_sites_filtered.*
+
+class ExploreSitesFilteredFragment : Fragment() {
+
+    private lateinit var exploreSitesFilteredViewModel: ExploreSitesFilteredViewModel
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        exploreSitesFilteredViewModel =
+            ViewModelProvider(this).get(ExploreSitesFilteredViewModel::class.java)
+        return inflater.inflate(R.layout.fragment_explore_sites_filtered, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        explore_dive_sites_filtered_toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
+        configureExploreFilteredDiveSites()
+    }
+
+    private fun configureExploreFilteredDiveSites() {
+        val filteredDiveSites: List<DiveSite> = listOf(
+            DiveSite("Casino Point", "Catalina", 3.2, 14),
+            DiveSite("Leo Carillo", "Malibu", 4.75, 42),
+            DiveSite("Boat Dive 1", "Anacapa", 3.98, 8),
+            DiveSite("Casino Point", "Catalina", 3.2, 14),
+            DiveSite("Leo Carillo", "Malibu", 4.75, 42),
+            DiveSite("Boat Dive 1", "Anacapa", 3.98, 8),
+            DiveSite("Casino Point", "Catalina", 3.2, 14),
+            DiveSite("Leo Carillo", "Malibu", 4.75, 42),
+            DiveSite("Boat Dive 1", "Anacapa", 3.98, 8)
+        )
+        explore_dive_sites_filtered_rv.apply {
+            layoutManager = LinearLayoutManager(context, VERTICAL, false)
+            adapter = DiveSiteAdapter(filteredDiveSites, false)
+        }
+    }
+}
