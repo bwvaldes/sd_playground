@@ -13,14 +13,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.DiveSite
 import com.scubadeving.sd_playground.utils.inflate
-import kotlinx.android.synthetic.main.item_dive_site_card.view.*
+import kotlinx.android.synthetic.main.item_dive_site_card_large.view.*
+import kotlinx.android.synthetic.main.item_dive_site_card_small.view.*
 
-class DiveSiteAdapter(private val diveSites: List<DiveSite>) :
+class DiveSiteAdapter(private val diveSites: List<DiveSite>, val orientation: Boolean = true) :
     RecyclerView.Adapter<DiveSiteAdapter.DiveSiteViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DiveSiteViewHolder {
-        val inflatedView = parent.inflate(R.layout.item_dive_site_card, false)
+        val layout = if (orientation) R.layout.item_dive_site_card_small else R.layout.item_dive_site_card_large
+        val inflatedView = parent.inflate(layout, false)
         return DiveSiteViewHolder(inflatedView)
     }
 
@@ -49,31 +51,59 @@ class DiveSiteAdapter(private val diveSites: List<DiveSite>) :
         @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
         fun bind(diveSite: DiveSite, position: Int) {
             itemView.apply {
-                dive_site_card_favorite.apply {
-                    setOnCheckedChangeListener { _, isFavorite ->
-                        if (isFavorite) {
-                            Toast.makeText(context, "Favorited!", Toast.LENGTH_LONG).show()
-                        } else {
-                            Toast.makeText(context, "Unfavorited!", Toast.LENGTH_LONG).show()
-                        }
-                    }
+                if (orientation) {
+                    configureDiveSitesSmallLayout(position, diveSite)
+                } else {
+                    configureDiveSitesLargeLayout(diveSite)
                 }
-                when (position) {
-                    1 -> backgroundTintList = ColorStateList.valueOf(Color.RED)
-                    2 -> backgroundTintList = ColorStateList.valueOf(Color.MAGENTA)
-                    3 -> {
-                        backgroundTintList = ColorStateList.valueOf(Color.GREEN)
-                        dive_site_card_popularity.visibility = View.VISIBLE
-                    }
-                }
-                dive_site_card_rating.text = context.getString(
-                    R.string.dive_site_rating,
-                    diveSite.rating,
-                    diveSite.reviews
-                )
-                dive_site_card_name.text = diveSite.name
-                dive_site_card_location.text = diveSite.location
             }
+        }
+
+        @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+        private fun View.configureDiveSitesSmallLayout(position: Int, diveSite: DiveSite) {
+            dive_site_card_small_favorite.apply {
+                setOnCheckedChangeListener { _, isFavorite ->
+                    if (isFavorite) {
+                        Toast.makeText(context, "Favorited!", Toast.LENGTH_LONG).show()
+                    } else {
+                        Toast.makeText(context, "Unfavorited!", Toast.LENGTH_LONG).show()
+                    }
+                }
+            }
+            when (position) {
+                1 -> backgroundTintList = ColorStateList.valueOf(Color.RED)
+                2 -> backgroundTintList = ColorStateList.valueOf(Color.MAGENTA)
+                3 -> {
+                    backgroundTintList = ColorStateList.valueOf(Color.GREEN)
+                    dive_site_card_small_popularity.visibility = View.VISIBLE
+                }
+            }
+            dive_site_card_small_rating.text = context.getString(
+                R.string.dive_site_rating,
+                diveSite.rating,
+                diveSite.reviews
+            )
+            dive_site_card_small_name.text = diveSite.name
+            dive_site_card_small_location.text = diveSite.location
+        }
+
+        private fun View.configureDiveSitesLargeLayout(diveSite: DiveSite) {
+            dive_site_card_large_favorite.apply {
+                setOnCheckedChangeListener { _, isFavorite ->
+                    if (isFavorite) {
+                        Toast.makeText(context, "Favorited!", Toast.LENGTH_LONG).show()
+                    } else {
+                        Toast.makeText(context, "Unfavorited!", Toast.LENGTH_LONG).show()
+                    }
+                }
+            }
+            dive_site_card_large_rating.text = context.getString(
+                R.string.dive_site_rating,
+                diveSite.rating,
+                diveSite.reviews
+            )
+            dive_site_card_large_name.text = diveSite.name
+            dive_site_card_large_location.text = diveSite.location
         }
     }
 }

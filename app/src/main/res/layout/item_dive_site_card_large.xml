@@ -2,9 +2,9 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/dive_site_card_container"
-    android:layout_width="344dp"
-    android:layout_height="216dp"
+    android:id="@+id/dive_site_card_large_container"
+    android:layout_width="match_parent"
+    android:layout_height="300dp"
     android:elevation="8dp"
     app:cardBackgroundColor="@android:color/holo_blue_bright"
     app:cardCornerRadius="5dp"
@@ -16,14 +16,14 @@
         android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/dive_site_card_guideline"
+            android:id="@+id/dive_site_card_large_guideline"
             android:layout_width="1dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent=".60" />
+            app:layout_constraintGuide_percent=".66" />
 
         <TextView
-            android:id="@+id/dive_site_card_popularity"
+            android:id="@+id/dive_site_card_large_popularity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
@@ -36,7 +36,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ToggleButton
-            android:id="@+id/dive_site_card_favorite"
+            android:id="@+id/dive_site_card_large_favorite"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_gravity="center"
@@ -58,27 +58,28 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/dive_site_card_guideline" />
+            app:layout_constraintTop_toBottomOf="@id/dive_site_card_large_guideline" />
 
         <TextView
-            android:id="@+id/dive_site_card_rating"
+            android:id="@+id/dive_site_card_large_rating"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginStart="15dp"
             android:layout_marginLeft="15dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="10dp"
             android:drawableStart="@drawable/ic_rating"
             android:drawableLeft="@drawable/ic_rating"
             android:gravity="center|start"
             android:textColor="@color/white"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/dive_site_card_guideline"
+            app:layout_constraintTop_toBottomOf="@id/dive_site_card_large_guideline"
             tools:text="4.5 (24)" />
 
         <TextView
-            android:id="@+id/dive_site_card_name"
+            android:id="@+id/dive_site_card_large_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -86,14 +87,14 @@
             android:layout_marginLeft="15dp"
             android:ellipsize="end"
             android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dive_site_card_rating"
+            app:layout_constraintTop_toBottomOf="@+id/dive_site_card_large_rating"
             tools:text="Shaw's Cove" />
 
         <TextView
-            android:id="@+id/dive_site_card_location"
+            android:id="@+id/dive_site_card_large_location"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -101,9 +102,10 @@
             android:layout_marginLeft="15dp"
             android:ellipsize="end"
             android:textColor="@color/white"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dive_site_card_name"
+            app:layout_constraintTop_toBottomOf="@+id/dive_site_card_large_name"
             tools:text="Newport Beach, California" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

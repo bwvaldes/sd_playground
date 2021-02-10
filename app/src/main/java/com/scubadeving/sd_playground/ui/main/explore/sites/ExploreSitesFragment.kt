@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
+import androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.scubadeving.sd_playground.R
@@ -18,11 +19,6 @@ import kotlinx.android.synthetic.main.fragment_explore_sites.*
 
 class ExploreSitesFragment : Fragment() {
 
-    private var nearbyDiveSites: List<DiveSite> = listOf(
-        DiveSite("Casino Point", "Catalina", 3.2, 14),
-        DiveSite("Leo Carillo", "Malibu", 4.75, 42),
-        DiveSite("Boat Dive 1", "Anacapa", 3.98, 8)
-    )
     private lateinit var exploreSitesViewModel: ExploreSitesViewModel
 
     override fun onCreateView(
@@ -37,13 +33,41 @@ class ExploreSitesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        configureExploreNearbyDiveSites()
+        configureExploreAllDiveSites()
+    }
+
+    private fun configureExploreNearbyDiveSites() {
+        val nearbyDiveSites: List<DiveSite> = listOf(
+            DiveSite("Casino Point", "Catalina", 3.2, 14),
+            DiveSite("Leo Carillo", "Malibu", 4.75, 42),
+            DiveSite("Boat Dive 1", "Anacapa", 3.98, 8)
+        )
         nearby_sites_rv.apply {
             layoutManager = LinearLayoutManager(context, HORIZONTAL, false)
-            adapter = DiveSiteAdapter(nearbyDiveSites)
+            adapter = DiveSiteAdapter(nearbyDiveSites, true)
             val dividerItemDecoration = DividerItemDecoration(context, HORIZONTAL)
             addItemDecoration(dividerItemDecoration)
             val snapHelper: SnapHelper = PagerSnapHelper()
             snapHelper.attachToRecyclerView(this)
+        }
+    }
+
+    private fun configureExploreAllDiveSites() {
+        val allDiveSites: List<DiveSite> = listOf(
+            DiveSite("Casino Point", "Catalina", 3.2, 14),
+            DiveSite("Leo Carillo", "Malibu", 4.75, 42),
+            DiveSite("Boat Dive 1", "Anacapa", 3.98, 8),
+            DiveSite("Casino Point", "Catalina", 3.2, 14),
+            DiveSite("Leo Carillo", "Malibu", 4.75, 42),
+            DiveSite("Boat Dive 1", "Anacapa", 3.98, 8),
+            DiveSite("Casino Point", "Catalina", 3.2, 14),
+            DiveSite("Leo Carillo", "Malibu", 4.75, 42),
+            DiveSite("Boat Dive 1", "Anacapa", 3.98, 8)
+        )
+        all_sites_rv.apply {
+            layoutManager = LinearLayoutManager(context, VERTICAL, false)
+            adapter = DiveSiteAdapter(allDiveSites, false)
         }
     }
 }
