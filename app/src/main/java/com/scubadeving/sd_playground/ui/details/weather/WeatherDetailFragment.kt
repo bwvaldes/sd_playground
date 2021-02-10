@@ -7,9 +7,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.scubadeving.sd_playground.R
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_detail_weather.*
 
 class WeatherDetailFragment : Fragment() {
 
@@ -26,10 +27,11 @@ class WeatherDetailFragment : Fragment() {
             Toast.makeText(activity, "Add Gear", Toast.LENGTH_SHORT).show()
         }
         activity?.fab?.setImageDrawable(resources.getDrawable(android.R.drawable.ic_input_add))
-        val toolbar: androidx.appcompat.widget.Toolbar = root.findViewById(R.id.toolbar)
-        toolbar.setNavigationOnClickListener { view ->
-            view.findNavController().navigateUp()
-        }
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        weather_toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
     }
 }

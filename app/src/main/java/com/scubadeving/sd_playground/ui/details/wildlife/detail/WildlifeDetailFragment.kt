@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
@@ -68,22 +68,18 @@ class WildlifeDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         wildlifeDetailViewModel = ViewModelProvider(this).get(WildlifeDetailViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_detail_wildlife_details, container, false)
-        val toolbar: androidx.appcompat.widget.Toolbar = root.findViewById(R.id.toolbar)
-        toolbar.setNavigationOnClickListener { view ->
-            view.findNavController().navigateUp()
-        }
-        return root
+        return inflater.inflate(R.layout.fragment_detail_wildlife_details, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        wildlife_detail_toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
         configureEncounters()
         configureWildlife()
     }
 
     private fun configureEncounters() {
-        encounters_rv.apply {
+        wildlife_detail_encounters_rv.apply {
             conditionsLayoutManager = LinearLayoutManager(context, HORIZONTAL, false)
             layoutManager = conditionsLayoutManager
             conditionsAdapter = ItemDetailAdapter(encounters)
@@ -96,7 +92,7 @@ class WildlifeDetailFragment : Fragment() {
     }
 
     private fun configureWildlife() {
-        look_out_for_rv.apply {
+        wildlife_detail_nearby_rv.apply {
             wildlifeLayoutManager = LinearLayoutManager(context, HORIZONTAL, false)
             layoutManager = wildlifeLayoutManager
             wildlifeDetailAdapter = WildlifeAdapter(wildLife)

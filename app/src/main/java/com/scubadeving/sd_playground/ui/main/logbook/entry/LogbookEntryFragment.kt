@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.*
@@ -39,36 +39,30 @@ class LogbookEntryFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        logbookEntryViewModel =
-            ViewModelProvider(this).get(LogbookEntryViewModel::class.java)
+        logbookEntryViewModel = ViewModelProvider(this).get(LogbookEntryViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_logbook_entry, container, false)
         activity?.fab?.setOnClickListener {
             Toast.makeText(activity, "Add Log", Toast.LENGTH_SHORT).show()
         }
         activity?.fab?.setImageDrawable(resources.getDrawable(android.R.drawable.ic_input_add))
-        val toolbar: androidx.appcompat.widget.Toolbar = root.findViewById(R.id.toolbar)
-        toolbar.setNavigationOnClickListener { view ->
-            view.findNavController().navigateUp()
-        }
         return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        scan_qr.setOnClickListener {
-            view.findNavController().navigate(R.id.qrCodeFragment)
-        }
+        logbook_entry_toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
+        logbook_entry_qr_scan.setOnClickListener { findNavController().navigate(R.id.qrCodeFragment) }
         configureWildlife()
     }
 
     private fun configureWildlife() {
-        wildlife_rv.apply {
+        logbook_entry_wildlife_rv.apply {
             layoutManager = LinearLayoutManager(context, HORIZONTAL, false)
             adapter = WildlifeAdapter(wildLife)
-            val dividerItemDecoration = DividerItemDecoration(wildlife_rv.context, HORIZONTAL)
-            wildlife_rv.addItemDecoration(dividerItemDecoration)
+            val dividerItemDecoration = DividerItemDecoration(logbook_entry_wildlife_rv.context, HORIZONTAL)
+            logbook_entry_wildlife_rv.addItemDecoration(dividerItemDecoration)
             val snapHelper: SnapHelper = PagerSnapHelper()
-            snapHelper.attachToRecyclerView(wildlife_rv)
+            snapHelper.attachToRecyclerView(logbook_entry_wildlife_rv)
         }
     }
 }

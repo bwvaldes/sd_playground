@@ -9,10 +9,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
-import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.appbar.AppBarLayout
-import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.ui.adapters.viewpager.ProfileViewPagerAdapter
@@ -36,45 +32,49 @@ class ProfileFragment : Fragment() {
             Toast.makeText(activity, "Edit Profile", Toast.LENGTH_SHORT).show()
         }
         activity?.fab?.setImageDrawable(resources.getDrawable(R.drawable.ic_edit))
-        val toolbar: androidx.appcompat.widget.Toolbar = root.findViewById(R.id.profile_toolbar)
-        toolbar.setNavigationOnClickListener { view ->
-            view.findNavController().navigateUp()
-        }
-        toolbar.setOnMenuItemClickListener {
-            findNavController().navigate(R.id.action_profileFragment_to_settingsFragment)
-            true
-        }
-
-        var isToolbarShown = false
-
-        val pager: ViewPager2 = root.findViewById(R.id.profile_pager)
-        val appbar: AppBarLayout = root.findViewById(R.id.profile_appbar)
-        val toolbarLayout: CollapsingToolbarLayout = root.findViewById(R.id.toolbarLayout)
-        // scroll change listener begins at Y = 0 when image is fully collapsed
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            pager.setOnScrollChangeListener { _, _, scrollY, _, _ ->
-
-                // User scrolled past image to height of toolbar and the title text is
-                // underneath the toolbar, so the toolbar should be shown.
-                val shouldShowToolbar = scrollY > toolbar.height
-
-                // The new state of the toolbar differs from the previous state; update
-                // appbar and toolbar attributes.
-                if (isToolbarShown != shouldShowToolbar) {
-                    isToolbarShown = shouldShowToolbar
-
-                    // Use shadow animator to add elevation if toolbar is shown
-                    appbar.isActivated = shouldShowToolbar
-
-                    // Show the plant name if toolbar is shown
-                    toolbarLayout.isTitleEnabled = shouldShowToolbar
-                }
-            }
-        }
         return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        configureProfileToolbar()
+        configureProfileViewPager()
+    }
+
+    private fun configureProfileToolbar() {
+        profile_toolbar.apply {
+            setNavigationOnClickListener { findNavController().navigateUp() }
+            setOnMenuItemClickListener {
+                findNavController().navigate(R.id.action_profileFragment_to_settingsFragment)
+                true
+            }
+
+            var isToolbarShown = false
+
+            // scroll change listener begins at Y = 0 when image is fully collapsed
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                profile_pager.setOnScrollChangeListener { _, _, scrollY, _, _ ->
+
+                    // User scrolled past image to height of toolbar and the title text is
+                    // underneath the toolbar, so the toolbar should be shown.
+                    val shouldShowToolbar = scrollY > height
+
+                    // The new state of the toolbar differs from the previous state; update
+                    // appbar and toolbar attributes.
+                    if (isToolbarShown != shouldShowToolbar) {
+                        isToolbarShown = shouldShowToolbar
+
+                        // Use shadow animator to add elevation if toolbar is shown
+                        profile_appbar.isActivated = shouldShowToolbar
+
+                        // Show the plant name if toolbar is shown
+                        profile_toolbar_layout.isTitleEnabled = shouldShowToolbar
+                    }
+                }
+            }
+        }
+    }
+
+    private fun configureProfileViewPager() {
         profile_pager.apply {
             adapter = ProfileViewPagerAdapter(requireParentFragment())
             TabLayoutMediator(profile_tab_layout, this) { tab, position ->

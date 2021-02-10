@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.*
@@ -53,27 +53,24 @@ class CertificationDetailFragment : Fragment() {
         certDetailViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
-
-        val toolbar: androidx.appcompat.widget.Toolbar = root.findViewById(R.id.toolbar)
-        toolbar.setNavigationOnClickListener { view ->
-            view.findNavController().navigateUp()
-        }
         return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        cert_detail_toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
         configurePrerequisites()
         configureNextSteps()
     }
 
     private fun configurePrerequisites() {
-        prerequisites_rv.apply {
+        cert_detail_prerequisites_rv.apply {
             prerequisitesLayoutManager = LinearLayoutManager(context, HORIZONTAL, false)
             layoutManager = prerequisitesLayoutManager
             prerequisitesAdapter = ItemDetailAdapter(prerequisites)
             adapter = prerequisitesAdapter
-            val dividerItemDecoration = DividerItemDecoration(context, prerequisitesLayoutManager.orientation)
+            val dividerItemDecoration =
+                DividerItemDecoration(context, prerequisitesLayoutManager.orientation)
             addItemDecoration(dividerItemDecoration)
             val snapHelper: SnapHelper = PagerSnapHelper()
             snapHelper.attachToRecyclerView(this)
@@ -81,12 +78,13 @@ class CertificationDetailFragment : Fragment() {
     }
 
     private fun configureNextSteps() {
-        next_steps_rv.apply {
+        cert_detail_next_steps_rv.apply {
             specialtyLayoutManager = LinearLayoutManager(context, HORIZONTAL, false)
             layoutManager = specialtyLayoutManager
             specialtyAdapter = SpecialtyAdapter(specialties)
             adapter = specialtyAdapter
-            val dividerItemDecoration = DividerItemDecoration(context, prerequisitesLayoutManager.orientation)
+            val dividerItemDecoration =
+                DividerItemDecoration(context, prerequisitesLayoutManager.orientation)
             addItemDecoration(dividerItemDecoration)
             val snapHelper: SnapHelper = PagerSnapHelper()
             snapHelper.attachToRecyclerView(this)

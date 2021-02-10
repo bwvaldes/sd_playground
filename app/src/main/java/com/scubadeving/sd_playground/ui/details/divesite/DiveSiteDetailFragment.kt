@@ -4,11 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
@@ -60,28 +58,19 @@ class DiveSiteDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         diveSiteDetailViewModel = ViewModelProvider(this).get(DiveSiteDetailViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_detail_dive_site, container, false)
-        val textView: TextView = root.findViewById(R.id.text_dive_site_detail)
-        diveSiteDetailViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-
-        val toolbar: androidx.appcompat.widget.Toolbar = root.findViewById(R.id.toolbar)
-        toolbar.setNavigationOnClickListener { view ->
-            view.findNavController().navigateUp()
-        }
-        return root
+        return inflater.inflate(R.layout.fragment_detail_dive_site, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        dive_site_detail_toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
         configureConditions()
         configureDiveCenters()
         configureWildlife()
     }
 
     private fun configureConditions() {
-        site_conditions_rv.apply {
+        dive_site_detail_conditions_rv.apply {
             conditionsLayoutManager = LinearLayoutManager(context, HORIZONTAL, false)
             layoutManager = conditionsLayoutManager
             conditionsAdapter = ItemDetailAdapter(conditions)
@@ -94,12 +83,12 @@ class DiveSiteDetailFragment : Fragment() {
     }
 
     private fun configureDiveCenters() {
-        dive_centers_rv.apply {
+        dive_site_detail_dive_centers_rv.apply {
             diveCentersLayoutManager = LinearLayoutManager(context, HORIZONTAL, false)
             layoutManager = diveCentersLayoutManager
             diveCentersAdapter = DiveCenterAdapter(diveCenters)
             adapter = diveCentersAdapter
-            val dividerItemDecoration = DividerItemDecoration(dive_centers_rv.context, diveCentersLayoutManager.orientation)
+            val dividerItemDecoration = DividerItemDecoration(dive_site_detail_dive_centers_rv.context, diveCentersLayoutManager.orientation)
             addItemDecoration(dividerItemDecoration)
             val snapHelper: SnapHelper = PagerSnapHelper()
             snapHelper.attachToRecyclerView(this)
@@ -107,7 +96,7 @@ class DiveSiteDetailFragment : Fragment() {
     }
 
     private fun configureWildlife() {
-        wildlife_rv.apply {
+        logbook_entry_wildlife_rv.apply {
             wildlifeLayoutManager = LinearLayoutManager(context, HORIZONTAL, false)
             layoutManager = wildlifeLayoutManager
             wildlifeAdapter = WildlifeAdapter(wildLife)

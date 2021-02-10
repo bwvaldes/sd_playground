@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.scubadeving.sd_playground.R
+import kotlinx.android.synthetic.main.fragment_settings.*
 
 class SettingsFragment : Fragment() {
 
@@ -17,14 +17,13 @@ class SettingsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        settingsViewModel =
-            ViewModelProvider(this).get(SettingsViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_settings, container, false)
-        val toolbar: androidx.appcompat.widget.Toolbar = root.findViewById(R.id.toolbar)
-        toolbar.setNavigationOnClickListener { view ->
-            view.findNavController().navigateUp()
-        }
-        return root
+        settingsViewModel = ViewModelProvider(this).get(SettingsViewModel::class.java)
+        return inflater.inflate(R.layout.fragment_settings, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        settings_toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
