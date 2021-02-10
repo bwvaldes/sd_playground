@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.google.android.material.tabs.TabLayoutMediator
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.ui.adapters.viewpager.QRCodePagerAdapter
@@ -21,7 +22,12 @@ class QRCodeMainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         qrCodeViewModel = ViewModelProvider(this).get(QRCodeMainViewModel::class.java)
-        return inflater.inflate(R.layout.fragment_detail_qrcode_main, container, false)
+        val root = inflater.inflate(R.layout.fragment_detail_qrcode_main, container, false)
+        val toolbar: androidx.appcompat.widget.Toolbar = root.findViewById(R.id.qrcode_toolbar)
+        toolbar.setNavigationOnClickListener { view ->
+            view.findNavController().navigateUp()
+        }
+        return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
