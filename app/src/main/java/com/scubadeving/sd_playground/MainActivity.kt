@@ -27,7 +27,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.logbookEntryFragment,
                 R.id.settingsFragment,
                 R.id.qrCodeFragment,
-                R.id.exploreDetailsFilteredFragment -> {
+                R.id.exploreDetailsFilteredFragment,
+                R.id.notificationsFragment -> {
                     nav_view.visibility = View.GONE
                     bottomBar.visibility = View.GONE
                     fab.visibility = View.GONE

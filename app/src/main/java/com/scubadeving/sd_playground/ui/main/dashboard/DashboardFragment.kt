@@ -17,20 +17,15 @@ import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.DiveSite
+import com.scubadeving.sd_playground.data.Notification
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.DiveSiteAdapter
+import com.scubadeving.sd_playground.ui.adapters.recyclerview.NotificationsAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_dashboard.*
+import kotlinx.android.synthetic.main.fragment_detail_notifications.*
 import kotlinx.android.synthetic.main.view_dashboard_items.*
 
 class DashboardFragment : Fragment() {
-
-    private var diveSites: List<DiveSite> = listOf(
-        DiveSite("Shaw's Cove", "Newport Beach", 4.5, 112),
-        DiveSite("Casino Point", "Catalina", 3.2, 14),
-        DiveSite("Se lion Point", "Ventura", 4.8, 86),
-        DiveSite("Leo Carillo", "Malibu", 4.75, 42),
-        DiveSite("Boat Dive 1", "Anacapa", 3.98, 8)
-    )
 
     private lateinit var dashboardViewModel: DashboardViewModel
 
@@ -56,6 +51,19 @@ class DashboardFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        configureUpcomingDivesRecyclerView()
+        configureDashboardNotificationsRecyclerView()
+        configureDashItems()
+    }
+
+    private fun configureUpcomingDivesRecyclerView() {
+        val diveSites: List<DiveSite> = listOf(
+            DiveSite("Shaw's Cove", "Newport Beach", 4.5, 112),
+            DiveSite("Casino Point", "Catalina", 3.2, 14),
+            DiveSite("Se lion Point", "Ventura", 4.8, 86),
+            DiveSite("Leo Carillo", "Malibu", 4.75, 42),
+            DiveSite("Boat Dive 1", "Anacapa", 3.98, 8)
+        )
         upcoming_dives_rv.apply {
             layoutManager = LinearLayoutManager(context, HORIZONTAL, false)
             adapter = DiveSiteAdapter(diveSites)
@@ -64,7 +72,6 @@ class DashboardFragment : Fragment() {
             val snapHelper: SnapHelper = PagerSnapHelper()
             snapHelper.attachToRecyclerView(this)
         }
-        configureDashItems()
     }
 
     private fun configureDashItems() {
@@ -81,6 +88,25 @@ class DashboardFragment : Fragment() {
         }
         dash_next_card.setOnClickListener {
             it.findNavController().navigate(R.id.certDetailFragment)
+        }
+    }
+
+    private fun configureDashboardNotificationsRecyclerView() {
+        val notifications: ArrayList<Notification> = arrayListOf(
+            Notification("Today", "This is a Notification"),
+            Notification("Feb 3rd", "This is a Notification"),
+            Notification("Jan 30th", "This is a Notification"),
+            Notification("Jan 18th", "This is a Notification"),
+            Notification("Dec 20th", "This is a Notification"),
+            Notification("Dec 3rd", "This is a Notification")
+        )
+        dashboard_notifications_rv.apply {
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            adapter = NotificationsAdapter(notifications, true)
+            val dividerItemDecoration = DividerItemDecoration(context, HORIZONTAL)
+            addItemDecoration(dividerItemDecoration)
+            val snapHelper: SnapHelper = PagerSnapHelper()
+            snapHelper.attachToRecyclerView(this)
         }
     }
 
