@@ -22,21 +22,6 @@ import kotlinx.android.synthetic.main.fragment_detail_cert.*
 
 class CertificationDetailFragment : Fragment() {
 
-    private var prerequisites: List<String> =
-        listOf(
-            "Age Requirement: 12",
-            "OW",
-            "AOW",
-            "Adventure Diver",
-            "EFR Primary",
-            "EFR Secondary"
-        )
-    private var specialties: List<Specialty> = listOf(
-        Specialty("Adaptive Support"),
-        Specialty("Cave"),
-        Specialty("Ice"),
-        Specialty("DiveMaster")
-    )
     private lateinit var prerequisitesLayoutManager: LinearLayoutManager
     private lateinit var specialtyLayoutManager: LinearLayoutManager
     private lateinit var prerequisitesAdapter: ItemDetailAdapter
@@ -64,6 +49,15 @@ class CertificationDetailFragment : Fragment() {
     }
 
     private fun configurePrerequisites() {
+        val prerequisites: List<String> =
+            listOf(
+                "Age Requirement: 12",
+                "OW",
+                "AOW",
+                "Adventure Diver",
+                "EFR Primary",
+                "EFR Secondary"
+            )
         cert_detail_prerequisites_rv.apply {
             prerequisitesLayoutManager = LinearLayoutManager(context, HORIZONTAL, false)
             layoutManager = prerequisitesLayoutManager
@@ -78,6 +72,12 @@ class CertificationDetailFragment : Fragment() {
     }
 
     private fun configureNextSteps() {
+        val specialties: List<Specialty> = listOf(
+            Specialty("Adaptive Support"),
+            Specialty("Cave"),
+            Specialty("Ice"),
+            Specialty("DiveMaster")
+        )
         cert_detail_next_steps_rv.apply {
             specialtyLayoutManager = LinearLayoutManager(context, HORIZONTAL, false)
             layoutManager = specialtyLayoutManager

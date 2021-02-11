@@ -25,8 +25,8 @@ class BuddyAdapter(private val divers: ArrayList<Diver>, val orientation: Boolea
     }
 
     override fun getItemCount(): Int {
-        return if (!orientation && divers.size > VERTICAL_LIMIT) {
-            VERTICAL_LIMIT
+        return if (!orientation && divers.size > BUDDY_VERTICAL_LIMIT) {
+            BUDDY_VERTICAL_LIMIT
         } else {
             divers.size
         }
@@ -105,7 +105,7 @@ class BuddyAdapter(private val divers: ArrayList<Diver>, val orientation: Boolea
     }
 
     companion object {
-        private const val VERTICAL_LIMIT = 4
+        private const val BUDDY_VERTICAL_LIMIT = 4
         private const val SINGULAR_BUDDY_COUNT = 1
     }
 }

@@ -22,16 +22,6 @@ import kotlinx.android.synthetic.main.fragment_logbook_entry.*
 
 class LogbookEntryFragment : Fragment() {
 
-    private var wildLife: List<Wildlife> =
-        listOf(
-            Wildlife("Garibaldi"),
-            Wildlife("Halibut"),
-            Wildlife("Horn Shark"),
-            Wildlife("Sheephead"),
-            Wildlife("Bat Ray"),
-            Wildlife("Blennie"),
-            Wildlife("Moray Eel")
-        )
     private lateinit var logbookEntryViewModel: LogbookEntryViewModel
 
     override fun onCreateView(
@@ -56,10 +46,21 @@ class LogbookEntryFragment : Fragment() {
     }
 
     private fun configureWildlife() {
+        val wildLife: List<Wildlife> =
+            listOf(
+                Wildlife("Garibaldi"),
+                Wildlife("Halibut"),
+                Wildlife("Horn Shark"),
+                Wildlife("Sheephead"),
+                Wildlife("Bat Ray"),
+                Wildlife("Blennie"),
+                Wildlife("Moray Eel")
+            )
         logbook_entry_wildlife_rv.apply {
             layoutManager = LinearLayoutManager(context, HORIZONTAL, false)
             adapter = WildlifeAdapter(wildLife)
-            val dividerItemDecoration = DividerItemDecoration(logbook_entry_wildlife_rv.context, HORIZONTAL)
+            val dividerItemDecoration =
+                DividerItemDecoration(logbook_entry_wildlife_rv.context, HORIZONTAL)
             logbook_entry_wildlife_rv.addItemDecoration(dividerItemDecoration)
             val snapHelper: SnapHelper = PagerSnapHelper()
             snapHelper.attachToRecyclerView(logbook_entry_wildlife_rv)

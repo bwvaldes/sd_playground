@@ -88,4 +88,10 @@
         android:name="com.scubadeving.sd_playground.ui.main.explore.filtered.ExploreDetailsFilteredFragment"
         android:label="fragment_explore_details_filtered"
         tools:layout="@layout/fragment_explore_details_filtered" />
+
+    <fragment
+        android:id="@+id/certificationScanFragment"
+        android:name="com.scubadeving.sd_playground.ui.details.certifications.scan.CertificationScanFragment"
+        android:label="fragment_cert_scan"
+        tools:layout="@layout/fragment_detail_cert_scan" />
 </navigation>

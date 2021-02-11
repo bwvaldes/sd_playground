@@ -22,29 +22,6 @@ import kotlinx.android.synthetic.main.fragment_detail_dive_site.*
 
 class DiveSiteDetailFragment : Fragment() {
 
-    private var conditions: List<String> =
-        listOf(
-            "Difficulty: 5/10",
-            "65 degrees fahrenheit",
-            "Depth: 9m",
-            "Visibility: 15-30ft",
-            "Dive Type: Shore"
-        )
-    private var diveCenters: List<DiveCenter> =
-        listOf(
-            DiveCenter("Newport Divers"),
-            DiveCenter("Eco Dive Center")
-        )
-    private var wildLife: List<Wildlife> =
-        listOf(
-            Wildlife("Garibaldi"),
-            Wildlife("Halibut"),
-            Wildlife("Horn Shark"),
-            Wildlife("Sheephead"),
-            Wildlife("Bat Ray"),
-            Wildlife("Blennie"),
-            Wildlife("Moray Eel")
-        )
     private lateinit var conditionsLayoutManager: LinearLayoutManager
     private lateinit var diveCentersLayoutManager: LinearLayoutManager
     private lateinit var wildlifeLayoutManager: LinearLayoutManager
@@ -70,12 +47,21 @@ class DiveSiteDetailFragment : Fragment() {
     }
 
     private fun configureConditions() {
+        val conditions: List<String> =
+            listOf(
+                "Difficulty: 5/10",
+                "65 degrees fahrenheit",
+                "Depth: 9m",
+                "Visibility: 15-30ft",
+                "Dive Type: Shore"
+            )
         dive_site_detail_conditions_rv.apply {
             conditionsLayoutManager = LinearLayoutManager(context, HORIZONTAL, false)
             layoutManager = conditionsLayoutManager
             conditionsAdapter = ItemDetailAdapter(conditions)
             adapter = conditionsAdapter
-            val dividerItemDecoration = DividerItemDecoration(context, conditionsLayoutManager.orientation)
+            val dividerItemDecoration =
+                DividerItemDecoration(context, conditionsLayoutManager.orientation)
             addItemDecoration(dividerItemDecoration)
             val snapHelper: SnapHelper = PagerSnapHelper()
             snapHelper.attachToRecyclerView(this)
@@ -83,12 +69,20 @@ class DiveSiteDetailFragment : Fragment() {
     }
 
     private fun configureDiveCenters() {
+        val diveCenters: List<DiveCenter> =
+            listOf(
+                DiveCenter("Newport Divers"),
+                DiveCenter("Eco Dive Center")
+            )
         dive_site_detail_dive_centers_rv.apply {
             diveCentersLayoutManager = LinearLayoutManager(context, HORIZONTAL, false)
             layoutManager = diveCentersLayoutManager
             diveCentersAdapter = DiveCenterAdapter(diveCenters)
             adapter = diveCentersAdapter
-            val dividerItemDecoration = DividerItemDecoration(dive_site_detail_dive_centers_rv.context, diveCentersLayoutManager.orientation)
+            val dividerItemDecoration = DividerItemDecoration(
+                dive_site_detail_dive_centers_rv.context,
+                diveCentersLayoutManager.orientation
+            )
             addItemDecoration(dividerItemDecoration)
             val snapHelper: SnapHelper = PagerSnapHelper()
             snapHelper.attachToRecyclerView(this)
@@ -96,12 +90,23 @@ class DiveSiteDetailFragment : Fragment() {
     }
 
     private fun configureWildlife() {
+        val wildLife: List<Wildlife> =
+            listOf(
+                Wildlife("Garibaldi"),
+                Wildlife("Halibut"),
+                Wildlife("Horn Shark"),
+                Wildlife("Sheephead"),
+                Wildlife("Bat Ray"),
+                Wildlife("Blennie"),
+                Wildlife("Moray Eel")
+            )
         logbook_entry_wildlife_rv.apply {
             wildlifeLayoutManager = LinearLayoutManager(context, HORIZONTAL, false)
             layoutManager = wildlifeLayoutManager
             wildlifeAdapter = WildlifeAdapter(wildLife)
             adapter = wildlifeAdapter
-            val dividerItemDecoration = DividerItemDecoration(context, wildlifeLayoutManager.orientation)
+            val dividerItemDecoration =
+                DividerItemDecoration(context, wildlifeLayoutManager.orientation)
             addItemDecoration(dividerItemDecoration)
             val snapHelper: SnapHelper = PagerSnapHelper()
             snapHelper.attachToRecyclerView(this)

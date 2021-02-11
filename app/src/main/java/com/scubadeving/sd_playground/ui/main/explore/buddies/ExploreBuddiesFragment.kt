@@ -18,41 +18,6 @@ import kotlinx.android.synthetic.main.fragment_explore_buddies.*
 
 class ExploreBuddiesFragment : Fragment() {
 
-    private var nearbyDivers: ArrayList<Diver> =
-        arrayListOf(
-            Diver("Bob", "Open Water", 1),
-            Diver("Billy", "Rescue Diver", (0..100).random()),
-            Diver("Jill", "Advanced Open Water", (0..100).random()),
-            Diver("Karen", "Open Water", 0),
-            Diver("Molly", "Night Diver", (0..100).random()),
-            Diver("Don", "Open Water", (0..100).random()),
-            Diver("Bill", "Open Water", (0..100).random()),
-            Diver("Greg", "Open Water", (0..100).random())
-        )
-
-    private var diveCenterDivers: ArrayList<Diver> =
-        arrayListOf(
-            Diver("Jill", "Open Water", (0..100).random()),
-            Diver("Jack", "Open Water", (0..100).random()),
-            Diver("Pedro", "Open Water", (0..100).random()),
-            Diver("Nick", "Open Water", (0..100).random()),
-            Diver("Jill", "Advanced Open Water", (0..100).random()),
-            Diver("Karen", "Open Water", 0),
-            Diver("Molly", "Night Diver", (0..100).random())
-        )
-
-
-    private var pastDivers: ArrayList<Diver> =
-        arrayListOf(
-            Diver("Lia", "Discover Diver", (0..100).random()),
-            Diver("Arnold", "Open Water", (0..100).random()),
-            Diver("Richard", "Open Water", (0..100).random()),
-            Diver("Brandon", "Open Water", (0..100).random()),
-            Diver("Jill", "Open Water", (0..100).random()),
-            Diver("Jack", "Open Water", (0..100).random()),
-            Diver("Pedro", "Open Water", (0..100).random()),
-            Diver("Nick", "Open Water", (0..100).random())
-        )
     private lateinit var nearbyDiversLayoutManager: LinearLayoutManager
     private lateinit var diveCenterDiversLayoutManager: GridLayoutManager
     private lateinit var pastDiversDiversLayoutManager: GridLayoutManager
@@ -79,6 +44,17 @@ class ExploreBuddiesFragment : Fragment() {
     }
 
     private fun configureNearbyDivers() {
+        val nearbyDivers: ArrayList<Diver> =
+            arrayListOf(
+                Diver("Bob", "Open Water", 1),
+                Diver("Billy", "Rescue Diver", (0..100).random()),
+                Diver("Jill", "Advanced Open Water", (0..100).random()),
+                Diver("Karen", "Open Water", 0),
+                Diver("Molly", "Night Diver", (0..100).random()),
+                Diver("Don", "Open Water", (0..100).random()),
+                Diver("Bill", "Open Water", (0..100).random()),
+                Diver("Greg", "Open Water", (0..100).random())
+            )
         nearby_divers_rv.apply {
             nearbyDiversLayoutManager =
                 LinearLayoutManager(context, HORIZONTAL, false)
@@ -94,6 +70,16 @@ class ExploreBuddiesFragment : Fragment() {
     }
 
     private fun configureDiveCenterDivers() {
+        val diveCenterDivers: ArrayList<Diver> =
+            arrayListOf(
+                Diver("Jill", "Open Water", (0..100).random()),
+                Diver("Jack", "Open Water", (0..100).random()),
+                Diver("Pedro", "Open Water", (0..100).random()),
+                Diver("Nick", "Open Water", (0..100).random()),
+                Diver("Jill", "Advanced Open Water", (0..100).random()),
+                Diver("Karen", "Open Water", 0),
+                Diver("Molly", "Night Diver", (0..100).random())
+            )
         val spanCount = 2
         val spacing = 15
         val includeEdge = true
@@ -114,6 +100,17 @@ class ExploreBuddiesFragment : Fragment() {
 
 
     private fun configurePastDivers() {
+        val pastDivers: ArrayList<Diver> =
+            arrayListOf(
+                Diver("Lia", "Discover Diver", (0..100).random()),
+                Diver("Arnold", "Open Water", (0..100).random()),
+                Diver("Richard", "Open Water", (0..100).random()),
+                Diver("Brandon", "Open Water", (0..100).random()),
+                Diver("Jill", "Open Water", (0..100).random()),
+                Diver("Jack", "Open Water", (0..100).random()),
+                Diver("Pedro", "Open Water", (0..100).random()),
+                Diver("Nick", "Open Water", (0..100).random())
+            )
         val spanCount = 2
         val spacing = 15
         val includeEdge = true

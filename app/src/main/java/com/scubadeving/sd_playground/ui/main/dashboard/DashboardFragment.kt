@@ -19,10 +19,9 @@ import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.DiveSite
 import com.scubadeving.sd_playground.data.Notification
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.DiveSiteAdapter
-import com.scubadeving.sd_playground.ui.adapters.recyclerview.NotificationsAdapter
+import com.scubadeving.sd_playground.ui.adapters.recyclerview.NotificationAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_dashboard.*
-import kotlinx.android.synthetic.main.fragment_detail_notifications.*
 import kotlinx.android.synthetic.main.view_dashboard_items.*
 
 class DashboardFragment : Fragment() {
@@ -102,7 +101,7 @@ class DashboardFragment : Fragment() {
         )
         dashboard_notifications_rv.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            adapter = NotificationsAdapter(notifications, true)
+            adapter = NotificationAdapter(notifications, true)
             val dividerItemDecoration = DividerItemDecoration(context, HORIZONTAL)
             addItemDecoration(dividerItemDecoration)
             val snapHelper: SnapHelper = PagerSnapHelper()

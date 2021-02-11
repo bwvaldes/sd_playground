@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.*
@@ -14,7 +15,7 @@ import com.google.android.material.chip.Chip
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.Certification
 import com.scubadeving.sd_playground.data.Specialty
-import com.scubadeving.sd_playground.ui.adapters.recyclerview.CertificationLevelAdapter
+import com.scubadeving.sd_playground.ui.adapters.recyclerview.CertificationAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_catalog.*
 
@@ -125,8 +126,9 @@ class CatalogFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_catalog, container, false)
         activity?.fab?.setOnClickListener {
             Toast.makeText(activity, "Search Catalog", Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.certificationScanFragment)
         }
-        activity?.fab?.setImageDrawable(resources.getDrawable(R.drawable.ic_search))
+        activity?.fab?.setImageDrawable(resources.getDrawable(R.drawable.ic_add))
         return root
     }
 
@@ -139,7 +141,7 @@ class CatalogFragment : Fragment() {
     private fun configureRecyclerView() {
         cert_path_level_rv.apply {
             layoutManager = LinearLayoutManager(context)
-            adapter = CertificationLevelAdapter(padiCertifications)
+            adapter = CertificationAdapter(padiCertifications)
             val dividerItemDecoration = DividerItemDecoration(context, VERTICAL)
             addItemDecoration(dividerItemDecoration)
         }
@@ -151,11 +153,11 @@ class CatalogFragment : Fragment() {
             Toast.makeText(chipGroup.context, selectedChipText ?: "No Choice", Toast.LENGTH_LONG)
                 .show()
             cert_path_level_rv.adapter = when (checkedId) {
-                R.id.chip_padi -> CertificationLevelAdapter(padiCertifications)
-                R.id.chip_sdi -> CertificationLevelAdapter(sdiCertifications)
-                R.id.chip_ssi -> CertificationLevelAdapter(ssiCertifications)
-                R.id.chip_tdi -> CertificationLevelAdapter(tdiCertifications)
-                else -> CertificationLevelAdapter(padiCertifications)
+                R.id.chip_padi -> CertificationAdapter(padiCertifications)
+                R.id.chip_sdi -> CertificationAdapter(sdiCertifications)
+                R.id.chip_ssi -> CertificationAdapter(ssiCertifications)
+                R.id.chip_tdi -> CertificationAdapter(tdiCertifications)
+                else -> CertificationAdapter(padiCertifications)
             }
         }
     }

@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.Notification
-import com.scubadeving.sd_playground.ui.adapters.recyclerview.NotificationsAdapter
+import com.scubadeving.sd_playground.ui.adapters.recyclerview.NotificationAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.decorations.SwipeToDeleteCallback
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_detail_notifications.*
@@ -52,10 +52,10 @@ class NotificationsFragment : Fragment() {
         )
         notifications_rv.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-            adapter = NotificationsAdapter(notifications, false)
+            adapter = NotificationAdapter(notifications, false)
             val swipeHandler = object : SwipeToDeleteCallback(context) {
                 override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                    val adapter = adapter as NotificationsAdapter
+                    val adapter = adapter as NotificationAdapter
                     adapter.dismissNotification(viewHolder.adapterPosition)
                 }
             }

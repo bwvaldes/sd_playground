@@ -16,16 +16,6 @@ import kotlinx.android.synthetic.main.fragment_logged_wildlife.*
 
 class LoggedWildlifeFragment : Fragment() {
 
-    private var wildLife: List<Wildlife> =
-        listOf(
-            Wildlife("Garibaldi"),
-            Wildlife("Halibut"),
-            Wildlife("Horn Shark"),
-            Wildlife("Sheephead"),
-            Wildlife("Bat Ray"),
-            Wildlife("Blennie"),
-            Wildlife("Moray Eel")
-        )
     private lateinit var loggedWildlifeViewModel: LoggedWildlifeViewModel
 
     override fun onCreateView(
@@ -44,6 +34,16 @@ class LoggedWildlifeFragment : Fragment() {
     }
 
     private fun configureWildlife() {
+        val wildLife: List<Wildlife> =
+            listOf(
+                Wildlife("Garibaldi"),
+                Wildlife("Halibut"),
+                Wildlife("Horn Shark"),
+                Wildlife("Sheephead"),
+                Wildlife("Bat Ray"),
+                Wildlife("Blennie"),
+                Wildlife("Moray Eel")
+            )
         logged_wildlife_rv.apply {
             layoutManager = LinearLayoutManager(context, VERTICAL, false)
             adapter = WildlifeAdapter(wildLife)

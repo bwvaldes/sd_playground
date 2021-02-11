@@ -21,42 +21,6 @@ import kotlinx.android.synthetic.main.fragment_detail_wildlife_details.*
 
 class WildlifeDetailFragment : Fragment() {
 
-    private var encounters: List<String> =
-        listOf(
-            "Thailand:2",
-            "Phillipines:14"
-        )
-    private var wildLife: List<Wildlife> =
-        listOf(
-            Wildlife(
-                "Whale Shark",
-                "Rhincodon typus",
-                ConservationStatus.VULNERABLE,
-                "Gentle Giant",
-                "Phillipines"
-            ),
-            Wildlife(
-                "Sunfish",
-                "Mola-Mola",
-                ConservationStatus.ENDANGERED,
-                "Heavy Bony fishy",
-                "Oregon"
-            ),
-            Wildlife(
-                "Spotted Sting Ray",
-                "Taeniura lymma",
-                ConservationStatus.VULNERABLE,
-                "Poisonous looking Ray",
-                "Australia"
-            ),
-            Wildlife(
-                "Remora",
-                "Echeneidae",
-                ConservationStatus.LEAST_CONCERN,
-                "Symbiotic Fish",
-                "Dubai"
-            )
-        )
     private lateinit var conditionsLayoutManager: LinearLayoutManager
     private lateinit var wildlifeLayoutManager: LinearLayoutManager
     private lateinit var conditionsAdapter: ItemDetailAdapter
@@ -79,6 +43,11 @@ class WildlifeDetailFragment : Fragment() {
     }
 
     private fun configureEncounters() {
+        val encounters: List<String> =
+            listOf(
+                "Thailand:2",
+                "Phillipines:14"
+            )
         wildlife_detail_encounters_rv.apply {
             conditionsLayoutManager = LinearLayoutManager(context, HORIZONTAL, false)
             layoutManager = conditionsLayoutManager
@@ -92,6 +61,37 @@ class WildlifeDetailFragment : Fragment() {
     }
 
     private fun configureWildlife() {
+        val wildLife: List<Wildlife> =
+            listOf(
+                Wildlife(
+                    "Whale Shark",
+                    "Rhincodon typus",
+                    ConservationStatus.VULNERABLE,
+                    "Gentle Giant",
+                    "Phillipines"
+                ),
+                Wildlife(
+                    "Sunfish",
+                    "Mola-Mola",
+                    ConservationStatus.ENDANGERED,
+                    "Heavy Bony fishy",
+                    "Oregon"
+                ),
+                Wildlife(
+                    "Spotted Sting Ray",
+                    "Taeniura lymma",
+                    ConservationStatus.VULNERABLE,
+                    "Poisonous looking Ray",
+                    "Australia"
+                ),
+                Wildlife(
+                    "Remora",
+                    "Echeneidae",
+                    ConservationStatus.LEAST_CONCERN,
+                    "Symbiotic Fish",
+                    "Dubai"
+                )
+            )
         wildlife_detail_nearby_rv.apply {
             wildlifeLayoutManager = LinearLayoutManager(context, HORIZONTAL, false)
             layoutManager = wildlifeLayoutManager

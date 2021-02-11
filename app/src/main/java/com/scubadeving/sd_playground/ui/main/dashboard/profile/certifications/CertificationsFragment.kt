@@ -10,30 +10,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.GridLayoutManager.VERTICAL
 import com.scubadeving.sd_playground.R
+import com.scubadeving.sd_playground.data.Certification
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.decorations.GridSpacingItemDecoration
-import com.scubadeving.sd_playground.ui.adapters.recyclerview.CertCardAdapter
+import com.scubadeving.sd_playground.ui.adapters.recyclerview.CertificationAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_profile_certifications.*
 
 class CertificationsFragment : Fragment() {
 
-    var certCards: List<String> = listOf(
-        "Discover Diver",
-        "Project AWARE Diver",
-        "Open Water Diver",
-        "Advanced Open Water Diver",
-        "Equipment Specialist",
-        "Night Dive",
-        "Nitrox Diver",
-        "Deep Diver",
-        "Public Safety Diver",
-        "Cavern Diver",
-        "Against Debris",
-        "Rebreather Diver",
-        "Sidemount Diver",
-        "Peak Performance Buoyancy",
-        "Search and Recovery"
-    )
     private lateinit var certificationsViewModel: CertificationsViewModel
 
     override fun onCreateView(
@@ -53,12 +37,29 @@ class CertificationsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val certCards: List<Certification> = listOf(
+            Certification("Discover Diver"),
+            Certification("Project AWARE Diver"),
+            Certification("Open Water Diver"),
+            Certification("Advanced Open Water Diver"),
+            Certification("Equipment Specialist"),
+            Certification("Night Dive"),
+            Certification("Nitrox Diver"),
+            Certification("Deep Diver"),
+            Certification("Public Safety Diver"),
+            Certification("Cavern Diver"),
+            Certification("Against Debris"),
+            Certification("Rebreather Diver"),
+            Certification("Sidemount Diver"),
+            Certification("Peak Performance Buoyancy"),
+            Certification("Search and Recovery")
+        )
         val spanCount = 2
         val spacing = 15
         val includeEdge = true
         cert_card_rv.apply {
             layoutManager = GridLayoutManager(context, spanCount, VERTICAL, false)
-            adapter = CertCardAdapter(certCards)
+            adapter = CertificationAdapter(certCards, false)
             addItemDecoration(GridSpacingItemDecoration(spanCount, spacing, includeEdge))
         }
     }
