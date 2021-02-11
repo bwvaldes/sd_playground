@@ -4,10 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class CertDetailViewModel : ViewModel() {
+class CertificationDetailViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is Cert Detail Fragment"
+        value = "This is Certification Detail Fragment"
     }
     val text: LiveData<String> = _text
 }

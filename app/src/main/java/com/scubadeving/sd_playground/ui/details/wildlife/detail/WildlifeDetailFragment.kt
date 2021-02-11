@@ -21,10 +21,6 @@ import kotlinx.android.synthetic.main.fragment_detail_wildlife_details.*
 
 class WildlifeDetailFragment : Fragment() {
 
-    private lateinit var conditionsLayoutManager: LinearLayoutManager
-    private lateinit var wildlifeLayoutManager: LinearLayoutManager
-    private lateinit var conditionsAdapter: ItemDetailAdapter
-    private lateinit var wildlifeDetailAdapter: WildlifeAdapter
     private lateinit var wildlifeDetailViewModel: WildlifeDetailViewModel
 
     override fun onCreateView(
@@ -49,11 +45,9 @@ class WildlifeDetailFragment : Fragment() {
                 "Phillipines:14"
             )
         wildlife_detail_encounters_rv.apply {
-            conditionsLayoutManager = LinearLayoutManager(context, HORIZONTAL, false)
-            layoutManager = conditionsLayoutManager
-            conditionsAdapter = ItemDetailAdapter(encounters)
-            adapter = conditionsAdapter
-            val dividerItemDecoration = DividerItemDecoration(context, conditionsLayoutManager.orientation)
+            layoutManager = LinearLayoutManager(context, HORIZONTAL, false)
+            adapter = ItemDetailAdapter(encounters)
+            val dividerItemDecoration = DividerItemDecoration(context, HORIZONTAL)
             addItemDecoration(dividerItemDecoration)
             val snapHelper: SnapHelper = PagerSnapHelper()
             snapHelper.attachToRecyclerView(this)
@@ -93,11 +87,9 @@ class WildlifeDetailFragment : Fragment() {
                 )
             )
         wildlife_detail_nearby_rv.apply {
-            wildlifeLayoutManager = LinearLayoutManager(context, HORIZONTAL, false)
-            layoutManager = wildlifeLayoutManager
-            wildlifeDetailAdapter = WildlifeAdapter(wildLife)
-            adapter = wildlifeDetailAdapter
-            val dividerItemDecoration = DividerItemDecoration(context, wildlifeLayoutManager.orientation)
+            layoutManager = LinearLayoutManager(context, HORIZONTAL, false)
+            adapter = WildlifeAdapter(wildLife)
+            val dividerItemDecoration = DividerItemDecoration(context, HORIZONTAL)
             addItemDecoration(dividerItemDecoration)
             val snapHelper: SnapHelper = PagerSnapHelper()
             snapHelper.attachToRecyclerView(this)

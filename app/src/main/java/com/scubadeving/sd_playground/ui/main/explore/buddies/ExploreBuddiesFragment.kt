@@ -18,12 +18,6 @@ import kotlinx.android.synthetic.main.fragment_explore_buddies.*
 
 class ExploreBuddiesFragment : Fragment() {
 
-    private lateinit var nearbyDiversLayoutManager: LinearLayoutManager
-    private lateinit var diveCenterDiversLayoutManager: GridLayoutManager
-    private lateinit var pastDiversDiversLayoutManager: GridLayoutManager
-    private lateinit var nearbyDiversAdapter: BuddyAdapter
-    private lateinit var diveCenterDiversAdapter: BuddyAdapter
-    private lateinit var pastDiversDiversAdapter: BuddyAdapter
     private lateinit var exploreBuddiesViewModel: ExploreBuddiesViewModel
 
     override fun onCreateView(
@@ -31,8 +25,7 @@ class ExploreBuddiesFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        exploreBuddiesViewModel =
-            ViewModelProvider(this).get(ExploreBuddiesViewModel::class.java)
+        exploreBuddiesViewModel = ViewModelProvider(this).get(ExploreBuddiesViewModel::class.java)
         return inflater.inflate(R.layout.fragment_explore_buddies, container, false)
     }
 
@@ -56,13 +49,10 @@ class ExploreBuddiesFragment : Fragment() {
                 Diver("Greg", "Open Water", (0..100).random())
             )
         nearby_divers_rv.apply {
-            nearbyDiversLayoutManager =
-                LinearLayoutManager(context, HORIZONTAL, false)
-            layoutManager = nearbyDiversLayoutManager
-            nearbyDiversAdapter = BuddyAdapter(nearbyDivers, true)
-            adapter = nearbyDiversAdapter
+            layoutManager = LinearLayoutManager(context, HORIZONTAL, false)
+            adapter = BuddyAdapter(nearbyDivers, true)
             val dividerItemDecoration =
-                DividerItemDecoration(context, nearbyDiversLayoutManager.orientation)
+                DividerItemDecoration(context, HORIZONTAL)
             addItemDecoration(dividerItemDecoration)
             val snapHelper: SnapHelper = PagerSnapHelper()
             snapHelper.attachToRecyclerView(this)
@@ -84,11 +74,8 @@ class ExploreBuddiesFragment : Fragment() {
         val spacing = 15
         val includeEdge = true
         dive_center_divers_rv.apply {
-            diveCenterDiversLayoutManager =
-                GridLayoutManager(context, spanCount, VERTICAL, false)
-            layoutManager = diveCenterDiversLayoutManager
-            diveCenterDiversAdapter = BuddyAdapter(diveCenterDivers, false)
-            adapter = diveCenterDiversAdapter
+            layoutManager = GridLayoutManager(context, spanCount, VERTICAL, false)
+            adapter = BuddyAdapter(diveCenterDivers, false)
             addItemDecoration(GridSpacingItemDecoration(spanCount, spacing, includeEdge))
             val snapHelper: SnapHelper = PagerSnapHelper()
             snapHelper.attachToRecyclerView(this)
@@ -115,10 +102,8 @@ class ExploreBuddiesFragment : Fragment() {
         val spacing = 15
         val includeEdge = true
         past_divers_rv.apply {
-            pastDiversDiversLayoutManager = GridLayoutManager(context, spanCount, VERTICAL, false)
-            layoutManager = pastDiversDiversLayoutManager
-            pastDiversDiversAdapter = BuddyAdapter(pastDivers, false)
-            adapter = pastDiversDiversAdapter
+            layoutManager = GridLayoutManager(context, spanCount, VERTICAL, false)
+            adapter = BuddyAdapter(pastDivers, false)
             addItemDecoration(GridSpacingItemDecoration(spanCount, spacing, includeEdge))
             val snapHelper: SnapHelper = PagerSnapHelper()
             snapHelper.attachToRecyclerView(this)

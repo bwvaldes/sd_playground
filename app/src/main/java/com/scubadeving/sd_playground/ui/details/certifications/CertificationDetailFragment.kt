@@ -22,20 +22,16 @@ import kotlinx.android.synthetic.main.fragment_detail_cert.*
 
 class CertificationDetailFragment : Fragment() {
 
-    private lateinit var prerequisitesLayoutManager: LinearLayoutManager
-    private lateinit var specialtyLayoutManager: LinearLayoutManager
-    private lateinit var prerequisitesAdapter: ItemDetailAdapter
-    private lateinit var specialtyAdapter: SpecialtyAdapter
-    private lateinit var certDetailViewModel: CertDetailViewModel
+    private lateinit var certificationDetailViewModel: CertificationDetailViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        certDetailViewModel = ViewModelProvider(this).get(CertDetailViewModel::class.java)
+        certificationDetailViewModel = ViewModelProvider(this).get(CertificationDetailViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_detail_cert, container, false)
         val textView: TextView = root.findViewById(R.id.text_cert_detail)
-        certDetailViewModel.text.observe(viewLifecycleOwner, Observer {
+        certificationDetailViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root
@@ -59,12 +55,10 @@ class CertificationDetailFragment : Fragment() {
                 "EFR Secondary"
             )
         cert_detail_prerequisites_rv.apply {
-            prerequisitesLayoutManager = LinearLayoutManager(context, HORIZONTAL, false)
-            layoutManager = prerequisitesLayoutManager
-            prerequisitesAdapter = ItemDetailAdapter(prerequisites)
-            adapter = prerequisitesAdapter
+            layoutManager = LinearLayoutManager(context, HORIZONTAL, false)
+            adapter = ItemDetailAdapter(prerequisites)
             val dividerItemDecoration =
-                DividerItemDecoration(context, prerequisitesLayoutManager.orientation)
+                DividerItemDecoration(context, HORIZONTAL)
             addItemDecoration(dividerItemDecoration)
             val snapHelper: SnapHelper = PagerSnapHelper()
             snapHelper.attachToRecyclerView(this)
@@ -79,12 +73,10 @@ class CertificationDetailFragment : Fragment() {
             Specialty("DiveMaster")
         )
         cert_detail_next_steps_rv.apply {
-            specialtyLayoutManager = LinearLayoutManager(context, HORIZONTAL, false)
-            layoutManager = specialtyLayoutManager
-            specialtyAdapter = SpecialtyAdapter(specialties)
-            adapter = specialtyAdapter
+            layoutManager = LinearLayoutManager(context, HORIZONTAL, false)
+            adapter = SpecialtyAdapter(specialties)
             val dividerItemDecoration =
-                DividerItemDecoration(context, prerequisitesLayoutManager.orientation)
+                DividerItemDecoration(context, HORIZONTAL)
             addItemDecoration(dividerItemDecoration)
             val snapHelper: SnapHelper = PagerSnapHelper()
             snapHelper.attachToRecyclerView(this)

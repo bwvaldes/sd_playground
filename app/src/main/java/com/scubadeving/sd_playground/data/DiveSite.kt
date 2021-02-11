@@ -9,9 +9,19 @@ data class DiveSite(
 )
 
 data class Conditions(
-    val difficulty: String,
+    val difficulty: Int,
     val temperature: String,
     val depth: String,
     val visibility: String,
-    val diveType: String
-)
+    val diveType: DiveType
+) {
+    enum class DiveType {
+        TRAINING,
+        BOAT,
+        SHORE,
+        NIGHT,
+        DRIFT,
+        FRESH,
+        SALT
+    }
+}
