@@ -35,7 +35,7 @@
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.scubadeving.sd_playground.ui.main.dashboard.profile.ProfileFragment"
-        android:label="fragment_profile"
+        android:label="ProfileFragment"
         tools:layout="@layout/fragment_profile">
         <action
             android:id="@+id/action_profileFragment_to_settingsFragment"
@@ -44,33 +44,33 @@
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.scubadeving.sd_playground.ui.main.dashboard.profile.settings.SettingsFragment"
-        android:label="fragment_settings"
+        android:label="SettingsFragment"
         tools:layout="@layout/fragment_settings" />
     <fragment
         android:id="@+id/certDetailFragment"
         android:name="com.scubadeving.sd_playground.ui.details.certifications.CertificationDetailFragment"
-        android:label="fragment_cert_detail"
+        android:label="CertificationDetailFragment"
         tools:layout="@layout/fragment_detail_cert" />
     <fragment
         android:id="@+id/diveSiteDetailFragment"
         android:name="com.scubadeving.sd_playground.ui.details.divesite.DiveSiteDetailFragment"
-        android:label="fragment_dive_site_detail"
+        android:label="DiveSiteDetailFragment"
         tools:layout="@layout/fragment_detail_dive_site" />
     <fragment
         android:id="@+id/wildlifeFragment"
         android:name="com.scubadeving.sd_playground.ui.details.wildlife.WildlifeMainFragment"
-        android:label="fragment_wildlife"
+        android:label="WildlifeFragment"
         tools:layout="@layout/fragment_detail_wildlife_main" />
     <fragment
         android:id="@+id/logbookEntryFragment"
         android:name="com.scubadeving.sd_playground.ui.main.logbook.entry.LogbookEntryFragment"
-        android:label="fragment_logbook_entry"
+        android:label="LogbookEntryFragment"
         tools:layout="@layout/fragment_logbook_entry" />
     <fragment
         android:id="@+id/notificationsFragment"
-        android:name="com.scubadeving.sd_playground.ui.details.notifications.NotificationsFragment"
+        android:name="com.scubadeving.sd_playground.ui.main.inbox.notifications.NotificationsFragment"
         android:label="NotificationsFragment"
-        tools:layout="@layout/fragment_detail_notifications" />
+        tools:layout="@layout/fragment_inbox_notifications" />
     <fragment
         android:id="@+id/weatherDetailFragment"
         android:name="com.scubadeving.sd_playground.ui.details.weather.WeatherDetailFragment"
@@ -80,18 +80,23 @@
     <fragment
         android:id="@+id/qrCodeFragment"
         android:name="com.scubadeving.sd_playground.ui.details.codes.QRCodeMainFragment"
-        android:label="fragment_qrcode"
+        android:label="QRCodeFragment"
         tools:layout="@layout/fragment_detail_qrcode_main" />
 
     <fragment
         android:id="@+id/exploreDetailsFilteredFragment"
         android:name="com.scubadeving.sd_playground.ui.main.explore.filtered.ExploreDetailsFilteredFragment"
-        android:label="fragment_explore_details_filtered"
+        android:label="ExploreDetailsFilteredFragment"
         tools:layout="@layout/fragment_explore_details_filtered" />
 
     <fragment
         android:id="@+id/certificationScanFragment"
         android:name="com.scubadeving.sd_playground.ui.details.certifications.scan.CertificationScanFragment"
-        android:label="fragment_cert_scan"
+        android:label="ScanCertFragment"
         tools:layout="@layout/fragment_detail_cert_scan" />
+    <fragment
+        android:id="@+id/inboxFragment"
+        android:name="com.scubadeving.sd_playground.ui.main.inbox.InboxFragment"
+        android:label="InboxFragment"
+        tools:layout="@layout/fragment_inbox" />
 </navigation>

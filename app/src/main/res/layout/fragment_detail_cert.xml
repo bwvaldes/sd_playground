@@ -93,12 +93,6 @@
                 android:orientation="horizontal" />
 
             <TextView
-                android:id="@+id/text_cert_detail"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Hello" />
-
-            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"

@@ -48,6 +48,17 @@
             app:layout_constraintTop_toBottomOf="@+id/notification_card_dashboard_date"
             tools:text="This is A notifications on the dashboard!" />
 
+        <TextView
+            android:id="@+id/notification_card_dashboard_count"
+            android:layout_width="34dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_outline"
+            android:gravity="center"
+            android:padding="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="2" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>

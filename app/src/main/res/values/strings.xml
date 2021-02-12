@@ -28,6 +28,11 @@
     <!-- QR Code -->
     <string name="qrcode_tab_scan">Scan</string>
     <string name="qrcode_tab_code">My Code</string>
+
+    <!-- Inbox -->
+    <string name="inbox_tab_messages">Messages</string>
+    <string name="inbox_tab_notifications">Notifications</string>
+
     <!-- InfoView -->
     <string name="infoview_content_description">An Icon for an InfoView</string>
 

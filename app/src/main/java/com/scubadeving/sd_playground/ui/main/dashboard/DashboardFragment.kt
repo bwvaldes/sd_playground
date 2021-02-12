@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.DiveSite
-import com.scubadeving.sd_playground.data.Notification
+import com.scubadeving.sd_playground.data.InboxNotification
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.DiveSiteAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.NotificationAdapter
 import kotlinx.android.synthetic.main.activity_main.*
@@ -91,17 +91,17 @@ class DashboardFragment : Fragment() {
     }
 
     private fun configureDashboardNotificationsRecyclerView() {
-        val notifications: ArrayList<Notification> = arrayListOf(
-            Notification("Today", "This is a Notification"),
-            Notification("Feb 3rd", "This is a Notification"),
-            Notification("Jan 30th", "This is a Notification"),
-            Notification("Jan 18th", "This is a Notification"),
-            Notification("Dec 20th", "This is a Notification"),
-            Notification("Dec 3rd", "This is a Notification")
+        val inboxNotifications: ArrayList<InboxNotification> = arrayListOf(
+            InboxNotification("Today", "This is a Notification"),
+            InboxNotification("Feb 3rd", "This is a Notification"),
+            InboxNotification("Jan 30th", "This is a Notification"),
+            InboxNotification("Jan 18th", "This is a Notification"),
+            InboxNotification("Dec 20th", "This is a Notification"),
+            InboxNotification("Dec 3rd", "This is a Notification")
         )
         dashboard_notifications_rv.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            adapter = NotificationAdapter(notifications, true)
+            adapter = NotificationAdapter(inboxNotifications, true)
             val dividerItemDecoration = DividerItemDecoration(context, HORIZONTAL)
             addItemDecoration(dividerItemDecoration)
             val snapHelper: SnapHelper = PagerSnapHelper()

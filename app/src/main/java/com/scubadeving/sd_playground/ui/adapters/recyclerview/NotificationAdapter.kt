@@ -7,13 +7,13 @@ import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.scubadeving.sd_playground.R
-import com.scubadeving.sd_playground.data.Notification
+import com.scubadeving.sd_playground.data.InboxNotification
 import com.scubadeving.sd_playground.utils.inflate
 import kotlinx.android.synthetic.main.item_notification_card_dashboard.view.*
 import kotlinx.android.synthetic.main.item_notification_card_list.view.*
 
 class NotificationAdapter(
-    private val notifications: MutableList<Notification>,
+    private val inboxNotifications: MutableList<InboxNotification>,
     private val orientation: Boolean
 ) : RecyclerView.Adapter<NotificationAdapter.NotificationsViewHolder>() {
 
@@ -26,17 +26,17 @@ class NotificationAdapter(
         return NotificationsViewHolder(inflatedView)
     }
 
-    override fun getItemCount(): Int = notifications.size
+    override fun getItemCount(): Int = inboxNotifications.size
 
     override fun onBindViewHolder(holder: NotificationsViewHolder, position: Int) {
-        val notification = notifications[position]
+        val notification = inboxNotifications[position]
         holder.bind(notification, position)
     }
 
     fun dismissNotification(position: Int) {
-        notifications.removeAt(position)
+        inboxNotifications.removeAt(position)
         notifyItemRemoved(position)
-        notifyItemRangeChanged(position, notifications.size)
+        notifyItemRangeChanged(position, inboxNotifications.size)
     }
 
     inner class NotificationsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
@@ -54,29 +54,34 @@ class NotificationAdapter(
                     "Just Clicked Dashboard Notification Card Item!",
                     Toast.LENGTH_SHORT
                 ).show()
-                view.findNavController().navigate(R.id.notificationsFragment)
+                // FIXME go specifically to notifcation frag with tabs
+                view.findNavController().navigate(R.id.inboxFragment)
             }
         }
 
-        fun bind(notification: Notification, position: Int) {
+        fun bind(inboxNotification: InboxNotification, position: Int) {
             itemView.apply {
                 if (orientation) {
-                    configureDashboardNotifications(position, notification)
+                    configureDashboardNotifications(position, inboxNotification)
                 } else {
-                    configureListNotifications(notification)
+                    configureListNotifications(inboxNotification)
                 }
             }
         }
 
-        private fun View.configureDashboardNotifications(position: Int, notification: Notification) {
+        private fun View.configureDashboardNotifications(
+            position: Int,
+            inboxNotification: InboxNotification
+        ) {
             notification_card_dashboard_clear.setOnClickListener { dismissNotification(position) }
-            notification_card_dashboard_date.text = notification.date
-            notification_card_dashboard_data.text = notification.data
+            notification_card_dashboard_date.text = inboxNotification.date
+            notification_card_dashboard_data.text = inboxNotification.data
+            notification_card_dashboard_count.text = inboxNotifications.size.toString()
         }
 
-        private fun View.configureListNotifications(notification: Notification) {
-            notification_card_list_date.text = notification.date
-            notification_card_list_data.text = notification.data
+        private fun View.configureListNotifications(inboxNotification: InboxNotification) {
+            notification_card_list_date.text = inboxNotification.date
+            notification_card_list_data.text = inboxNotification.data
         }
     }
 }

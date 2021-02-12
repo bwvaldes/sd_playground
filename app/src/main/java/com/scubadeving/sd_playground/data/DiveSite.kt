@@ -14,14 +14,14 @@ data class Conditions(
     val depth: String,
     val visibility: String,
     val diveType: DiveType
-) {
-    enum class DiveType {
-        TRAINING,
-        BOAT,
-        SHORE,
-        NIGHT,
-        DRIFT,
-        FRESH,
-        SALT
-    }
+)
+
+enum class DiveType {
+    TRAINING,
+    BOAT,
+    SHORE,
+    NIGHT,
+    DRIFT,
+    FRESH,
+    SALT
 }
