@@ -94,9 +94,16 @@
         android:name="com.scubadeving.sd_playground.ui.details.certifications.scan.CertificationScanFragment"
         android:label="ScanCertFragment"
         tools:layout="@layout/fragment_detail_cert_scan" />
+
     <fragment
         android:id="@+id/inboxFragment"
         android:name="com.scubadeving.sd_playground.ui.main.inbox.InboxFragment"
         android:label="InboxFragment"
         tools:layout="@layout/fragment_inbox" />
+
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.scubadeving.sd_playground.ui.main.inbox.messages.chat.ChatFragment"
+        android:label="ChatFragment"
+        tools:layout="@layout/fragment_chat" />
 </navigation>

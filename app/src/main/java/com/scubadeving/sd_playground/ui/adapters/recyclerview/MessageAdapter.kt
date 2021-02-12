@@ -42,7 +42,7 @@ class MessageAdapter(private val messages: ArrayList<InboxMessage>) :
                 "Just Clicked Message Item!",
                 Toast.LENGTH_SHORT
             ).show()
-//            view.findNavController().navigate(R.id.chatFragment)
+            view.findNavController().navigate(R.id.chatFragment)
         }
 
         fun bind(message: InboxMessage, position: Int) {

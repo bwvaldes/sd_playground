@@ -29,7 +29,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.qrCodeFragment,
                 R.id.exploreDetailsFilteredFragment,
                 R.id.notificationsFragment,
-                R.id.certificationScanFragment-> {
+                R.id.certificationScanFragment,
+                R.id.chatFragment -> {
                     nav_view.visibility = View.GONE
                     bottomBar.visibility = View.GONE
                     fab.visibility = View.GONE
