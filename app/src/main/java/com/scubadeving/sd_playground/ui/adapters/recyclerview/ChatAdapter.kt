@@ -1,6 +1,5 @@
 package com.scubadeving.sd_playground.ui.adapters.recyclerview
 
-import android.text.format.DateUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,11 +7,12 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.ChatMessage
+import com.scubadeving.sd_playground.data.ChatMessage.Companion.MESSAGE_TYPE_DATE
 import com.scubadeving.sd_playground.data.ChatMessage.Companion.MESSAGE_TYPE_GUEST
 import com.scubadeving.sd_playground.data.ChatMessage.Companion.MESSAGE_TYPE_HOST
-import kotlinx.android.synthetic.main.item_chat_guest_container.view.*
-import kotlinx.android.synthetic.main.item_chat_guest_container.view.chat_guest_avatar
-import kotlinx.android.synthetic.main.item_chat_host_container.view.*
+import kotlinx.android.synthetic.main.item_chat_container_date.view.*
+import kotlinx.android.synthetic.main.item_chat_container_guest.view.*
+import kotlinx.android.synthetic.main.item_chat_container_host.view.*
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -22,14 +22,19 @@ class ChatAdapter(var chatMessages: MutableList<ChatMessage>) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatMessageViewHolder<*> {
         val context = parent.context
         return when (viewType) {
+            MESSAGE_TYPE_DATE -> {
+                val view = LayoutInflater.from(context)
+                    .inflate(R.layout.item_chat_container_date, parent, false)
+                ChatDateViewHolder(view)
+            }
             MESSAGE_TYPE_HOST -> {
                 val view = LayoutInflater.from(context)
-                    .inflate(R.layout.item_chat_host_container, parent, false)
+                    .inflate(R.layout.item_chat_container_host, parent, false)
                 ChatHostMessageViewHolder(view)
             }
             MESSAGE_TYPE_GUEST -> {
                 val view = LayoutInflater.from(parent.context)
-                    .inflate(R.layout.item_chat_guest_container, parent, false)
+                    .inflate(R.layout.item_chat_container_guest, parent, false)
                 ChatGuestMessageViewHolder(view)
             }
             else -> throw IllegalArgumentException("Invalid view type")
@@ -39,6 +44,7 @@ class ChatAdapter(var chatMessages: MutableList<ChatMessage>) :
     override fun onBindViewHolder(holder: ChatMessageViewHolder<*>, position: Int) {
         val chatMessage = chatMessages[position]
         when (holder) {
+            is ChatDateViewHolder -> holder.bind(chatMessage)
             is ChatHostMessageViewHolder -> holder.bind(chatMessage)
             is ChatGuestMessageViewHolder -> holder.bind(chatMessage)
             else -> throw IllegalArgumentException()
@@ -52,6 +58,15 @@ class ChatAdapter(var chatMessages: MutableList<ChatMessage>) :
     fun addMessage(message: ChatMessage){
         chatMessages.add(message)
         notifyDataSetChanged()
+    }
+
+    inner class ChatDateViewHolder(val view: View) : ChatMessageViewHolder<ChatMessage>(view) {
+
+        override fun bind(message: ChatMessage) {
+            itemView.apply {
+                chat_date_message.text = message.content.plus(getChatMessageTime(message))
+            }
+        }
     }
 
     inner class ChatHostMessageViewHolder(val view: View) : ChatMessageViewHolder<ChatMessage>(view) {

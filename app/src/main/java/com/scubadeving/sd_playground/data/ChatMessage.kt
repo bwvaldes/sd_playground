@@ -6,7 +6,8 @@ data class ChatMessage(
     var time: Long
 ) {
     companion object {
-        const val MESSAGE_TYPE_HOST = 0
-        const val MESSAGE_TYPE_GUEST = 1
+        const val MESSAGE_TYPE_DATE = 0
+        const val MESSAGE_TYPE_HOST = 1
+        const val MESSAGE_TYPE_GUEST = 2
     }
 }
