@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -34,8 +35,8 @@ class LoggedWildlifeFragment : Fragment() {
     }
 
     private fun configureWildlife() {
-        val wildLife: List<Wildlife> =
-            listOf(
+        val wildLife: ArrayList<Wildlife> =
+            arrayListOf(
                 Wildlife("Garibaldi"),
                 Wildlife("Halibut"),
                 Wildlife("Horn Shark"),
@@ -44,6 +45,9 @@ class LoggedWildlifeFragment : Fragment() {
                 Wildlife("Blennie"),
                 Wildlife("Moray Eel")
             )
+        parentFragment?.view?.findViewById<Toolbar>(R.id.logbook_toolbar)?.setOnClickListener {
+            wildLife.asReversed()
+        }
         logged_wildlife_rv.apply {
             layoutManager = LinearLayoutManager(context, VERTICAL, false)
             adapter = WildlifeAdapter(wildLife)

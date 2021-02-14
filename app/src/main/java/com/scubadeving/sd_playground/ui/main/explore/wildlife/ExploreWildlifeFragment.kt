@@ -61,8 +61,8 @@ class ExploreWildlifeFragment : Fragment() {
     }
 
     private fun configureExploreWildlifeNearby() {
-        val nearbyWildlife: List<Wildlife> =
-            listOf(
+        val nearbyWildlife: ArrayList<Wildlife> =
+            arrayListOf(
                 Wildlife("Garibaldi"),
                 Wildlife("Halibut"),
                 Wildlife("Horn Shark"),

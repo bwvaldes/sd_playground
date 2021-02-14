@@ -46,8 +46,8 @@ class LogbookEntryFragment : Fragment() {
     }
 
     private fun configureWildlife() {
-        val wildLife: List<Wildlife> =
-            listOf(
+        val wildLife: ArrayList<Wildlife> =
+            arrayListOf(
                 Wildlife("Garibaldi"),
                 Wildlife("Halibut"),
                 Wildlife("Horn Shark"),

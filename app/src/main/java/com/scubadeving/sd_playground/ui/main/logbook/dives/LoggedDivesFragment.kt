@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -34,8 +35,8 @@ class LoggedDivesFragment : Fragment() {
     }
 
     private fun configureLoggedDives() {
-        val diveLogs: List<DiveLog> =
-            listOf(
+        val diveLogs: ArrayList<DiveLog> =
+            arrayListOf(
                 DiveLog(1, "Shaw's Cove", "January 23rd, 2020", 3.8, "63ft", "37min"),
                 DiveLog(2, "Catalina", "February 2nd, 2020", 4.2, "35ft", "48min"),
                 DiveLog(3, "Leo Carillo", "February 4th, 2020", 4.3, "105ft", "29min"),
@@ -47,6 +48,9 @@ class LoggedDivesFragment : Fragment() {
                 DiveLog(9, "Ventura", "February 18th, 2020", 4.98, "30ft", "53min"),
                 DiveLog(10, "Pointe Dume", "February 20th, 2020", 4.0, "135ft", "24min")
             )
+        parentFragment?.view?.findViewById<Toolbar>(R.id.logbook_toolbar)?.setOnClickListener {
+            diveLogs.asReversed()
+        }
         logged_dives_rv.apply {
             layoutManager = LinearLayoutManager(context, VERTICAL, false)
             adapter = DiveLogAdapter(diveLogs, true)

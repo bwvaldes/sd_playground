@@ -33,9 +33,6 @@ class LogbookMainFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        logbook_sort.setOnClickListener {
-            Toast.makeText(activity, "Toggle Sort", Toast.LENGTH_SHORT).show()
-        }
         logbook_pager.apply {
             isUserInputEnabled = false
             adapter = LogbookViewPagerAdapter(requireParentFragment())

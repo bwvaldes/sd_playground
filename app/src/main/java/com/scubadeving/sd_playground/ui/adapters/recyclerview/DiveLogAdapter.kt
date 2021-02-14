@@ -12,7 +12,7 @@ import com.scubadeving.sd_playground.utils.inflate
 import kotlinx.android.synthetic.main.item_logged_dive_card_horizontal.view.*
 import kotlinx.android.synthetic.main.item_logged_dive_card_vertical.view.*
 
-class DiveLogAdapter(private val diveLogs: List<DiveLog>, val orientation: Boolean) :
+class DiveLogAdapter(private val diveLogs: ArrayList<DiveLog>, val orientation: Boolean) :
     RecyclerView.Adapter<DiveLogAdapter.DiveLogViewHolder>() {
 
 

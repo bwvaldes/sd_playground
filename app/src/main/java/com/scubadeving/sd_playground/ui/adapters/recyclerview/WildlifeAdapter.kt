@@ -11,7 +11,7 @@ import com.scubadeving.sd_playground.data.Wildlife
 import com.scubadeving.sd_playground.utils.inflate
 import kotlinx.android.synthetic.main.item_wildlife_card_small.view.*
 
-class WildlifeAdapter(private val wildlife: List<Wildlife>) :
+class WildlifeAdapter(private val wildlife: ArrayList<Wildlife>) :
     RecyclerView.Adapter<WildlifeAdapter.WildlifeViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WildlifeViewHolder {

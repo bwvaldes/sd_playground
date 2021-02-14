@@ -66,11 +66,10 @@ class ChatFragment : Fragment() {
             )
         )
         chat_message_rv.apply {
-            layoutManager = LinearLayoutManager(context, VERTICAL, false)
-                .apply {
-                    stackFromEnd = true
-                    isSmoothScrollbarEnabled = true
-                }
+            layoutManager = LinearLayoutManager(context, VERTICAL, false).apply {
+                stackFromEnd = true
+                isSmoothScrollbarEnabled = true
+            }
             adapter = ChatAdapter(chatMessages)
         }
     }

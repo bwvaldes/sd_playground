@@ -41,12 +41,12 @@ class ChatAdapter(var chatMessages: MutableList<ChatMessage>) :
         }
     }
 
-    override fun onBindViewHolder(holder: ChatMessageViewHolder<*>, position: Int) {
+    override fun onBindViewHolder(viewHolder: ChatMessageViewHolder<*>, position: Int) {
         val chatMessage = chatMessages[position]
-        when (holder) {
-            is ChatDateViewHolder -> holder.bind(chatMessage)
-            is ChatHostMessageViewHolder -> holder.bind(chatMessage)
-            is ChatGuestMessageViewHolder -> holder.bind(chatMessage)
+        when (viewHolder) {
+            is ChatDateViewHolder -> viewHolder.bind(chatMessage)
+            is ChatHostMessageViewHolder -> viewHolder.bind(chatMessage)
+            is ChatGuestMessageViewHolder -> viewHolder.bind(chatMessage)
             else -> throw IllegalArgumentException()
         }
     }
@@ -84,7 +84,7 @@ class ChatAdapter(var chatMessages: MutableList<ChatMessage>) :
         override fun bind(message: ChatMessage) {
             itemView.apply {
                 chat_guest_avatar.setOnClickListener {
-                    // FIXME nav with args to specific frag
+                    // FIXME nav with args to specific diver profile
                     it.findNavController().navigate(R.id.profileFragment)
                 }
                 chat_guest_name.text = "John Doe"

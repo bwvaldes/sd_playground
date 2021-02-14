@@ -55,8 +55,8 @@ class WildlifeDetailFragment : Fragment() {
     }
 
     private fun configureWildlife() {
-        val wildLife: List<Wildlife> =
-            listOf(
+        val wildLife: ArrayList<Wildlife> =
+            arrayListOf(
                 Wildlife(
                     "Whale Shark",
                     "Rhincodon typus",

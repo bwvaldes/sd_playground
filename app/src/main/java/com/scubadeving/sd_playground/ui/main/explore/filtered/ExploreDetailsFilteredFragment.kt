@@ -57,8 +57,8 @@ class ExploreDetailsFilteredFragment : Fragment() {
     }
 
     private fun configureExploreFilteredWildlife() {
-        val filteredWildlife: List<Wildlife> =
-            listOf(
+        val filteredWildlife: ArrayList<Wildlife> =
+            arrayListOf(
                 Wildlife("Garibaldi"),
                 Wildlife("Halibut"),
                 Wildlife("Horn Shark"),
