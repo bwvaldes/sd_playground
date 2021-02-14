@@ -2,10 +2,12 @@ package com.scubadeving.sd_playground.ui.main.dashboard.profile.settings
 
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.scubadeving.sd_playground.R
+import kotlinx.android.synthetic.main.fragment_dashboard.*
 import kotlinx.android.synthetic.main.fragment_settings.*
 
 class SettingsFragment : Fragment() {
@@ -24,15 +26,18 @@ class SettingsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         settings_toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
-    }
+        settings_toolbar.apply {
+            inflateMenu(R.menu.menu_settings)
+            setOnMenuItemClickListener { item ->
+                when (item.itemId) {
+                    R.id.action_logout -> {
+                        Toast.makeText(context, "Just Clicked logout!", Toast.LENGTH_SHORT).show()
+                        true
+                    }
+                    else -> true
+                }
+            }
+        }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.menu_profile, menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        findNavController().navigate(R.id.action_navigation_dashboard_to_profileFragment)
-        return super.onOptionsItemSelected(item)
     }
 }

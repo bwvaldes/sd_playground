@@ -106,4 +106,10 @@
         android:name="com.scubadeving.sd_playground.ui.main.inbox.messages.chat.ChatFragment"
         android:label="ChatFragment"
         tools:layout="@layout/fragment_chat" />
+
+    <fragment
+        android:id="@+id/savedFragment"
+        android:name="com.scubadeving.sd_playground.ui.main.saved.SavedFragment"
+        android:label="SavedFragment"
+        tools:layout="@layout/fragment_saved" />
 </navigation>

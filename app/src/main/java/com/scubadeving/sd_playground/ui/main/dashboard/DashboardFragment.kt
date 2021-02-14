@@ -1,9 +1,7 @@
 package com.scubadeving.sd_playground.ui.main.dashboard
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -41,15 +39,28 @@ class DashboardFragment : Fragment() {
             Toast.makeText(activity, "Search Dashboard", Toast.LENGTH_SHORT).show()
         }
         activity?.fab?.setImageDrawable(resources.getDrawable(R.drawable.ic_search))
-        val profileIcon = root.findViewById<ImageView>(R.id.profile_icon)
-        navToProfile(profileIcon)
-        val notificationsIcon = root.findViewById<ImageView>(R.id.notifications_icon)
-        navToNotifications(notificationsIcon)
         return root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        dashboard_toolbar.apply {
+            inflateMenu(R.menu.menu_dashboard)
+            setOnMenuItemClickListener { item ->
+                when (item.itemId) {
+                    R.id.action_profile -> {
+                        navToProfile()
+                        true
+                    }
+                    R.id.action_saved -> {
+                        navToSaved()
+                        true
+                    }
+                    else -> true
+                }
+            }
+        }
+        navToNotifications(notifications_icon)
         configureUpcomingDivesRecyclerView()
         configureDashboardNotificationsRecyclerView()
         configureDashItems()
@@ -109,10 +120,12 @@ class DashboardFragment : Fragment() {
         }
     }
 
-    private fun navToProfile(view: View) {
-        view.setOnClickListener {
-            findNavController().navigate(R.id.action_navigation_dashboard_to_profileFragment)
-        }
+    private fun navToSaved() {
+        findNavController().navigate(R.id.savedFragment)
+    }
+
+    private fun navToProfile() {
+        findNavController().navigate(R.id.profileFragment)
     }
 
     private fun navToNotifications(view: View) {

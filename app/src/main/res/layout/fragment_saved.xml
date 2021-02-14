@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/saved_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@android:color/transparent"
+            app:contentInsetStartWithNavigation="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_arrow_back" />
+
+        <TextView
+            android:id="@+id/saved_lists_heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/darker_gray"
+            android:drawableEnd="@drawable/ic_add"
+            android:text="Lists"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/saved_toolbar" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/saved_lists_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/saved_lists_heading" />
+
+        <TextView
+            android:id="@+id/saved_dive_sites_heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/darker_gray"
+            android:text="Saved"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/country_filter_container" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/saved_dive_sites_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/saved_dive_sites_heading" />
+
+        <HorizontalScrollView
+            android:id="@+id/country_filter_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:scrollbars="none"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/saved_lists_rv">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/country_filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:orientation="horizontal"
+                android:padding="15dp"
+                app:checkedChip="@+id/chip_padi"
+                app:chipSpacingHorizontal="15dp"
+                app:selectionRequired="true"
+                app:singleSelection="true">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_asia"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="75dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Asia"
+                    android:textAlignment="center"
+                    app:chipCornerRadius="5dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_europe"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="75dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Europe"
+                    android:textAlignment="center"
+                    app:chipCornerRadius="5dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_north_america"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="75dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="North America"
+                    android:textAlignment="center"
+                    app:chipCornerRadius="5dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_south_america"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="75dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="South America"
+                    android:textAlignment="center"
+                    app:chipCornerRadius="5dp" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_africa"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="75dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Africa"
+                    android:textAlignment="center"
+                    app:chipCornerRadius="5dp" />
+
+            </com.google.android.material.chip.ChipGroup>
+        </HorizontalScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
