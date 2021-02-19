@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cert_card_container"
+    android:layout_width="match_parent"
+    android:layout_height="216dp"
+    android:elevation="8dp"
+    app:cardBackgroundColor="@android:color/holo_blue_bright"
+    app:cardCornerRadius="5dp"
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/gear_card_item_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|bottom"
+            android:ellipsize="end"
+            android:padding="5dp"
+            android:textColor="@color/black"
+            android:textSize="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Suit" />
+
+        <TextView
+            android:id="@+id/gear_card_primary_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|bottom"
+            android:layout_marginTop="15dp"
+            android:ellipsize="end"
+            android:padding="5dp"
+            android:text="7mm"
+            android:textColor="@color/black"
+            android:textSize="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/gear_card_item_text" />
+
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/gear_filters"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@android:color/transparent"
+            android:orientation="horizontal"
+            android:padding="15dp"
+            app:checkedChip="@+id/chip_wet_full"
+            app:chipSpacingHorizontal="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/gear_card_primary_text"
+            app:selectionRequired="true"
+            app:singleSelection="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_swim"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Swim"
+                android:textAlignment="center"
+                app:chipCornerRadius="5dp" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_wet_short"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Shorty"
+                android:textAlignment="center"
+                app:chipCornerRadius="5dp" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_wet_full"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Full Wet"
+                android:textAlignment="center"
+                app:chipCornerRadius="5dp" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_dry"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Dry"
+                android:textAlignment="center"
+                app:chipCornerRadius="5dp" />
+
+
+        </com.google.android.material.chip.ChipGroup>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

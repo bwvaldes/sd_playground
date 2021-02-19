@@ -4,11 +4,21 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout.VERTICAL
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.*
 import com.scubadeving.sd_playground.R
+import com.scubadeving.sd_playground.data.Diver
+import com.scubadeving.sd_playground.data.Gear
+import com.scubadeving.sd_playground.data.GearProfile
+import com.scubadeving.sd_playground.ui.adapters.recyclerview.BuddyAdapter
+import com.scubadeving.sd_playground.ui.adapters.recyclerview.GearAdapter
+import com.scubadeving.sd_playground.ui.adapters.recyclerview.decorations.GridSpacingItemDecoration
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_explore_buddies.*
+import kotlinx.android.synthetic.main.fragment_profile_gear.*
 
 class GearFragment : Fragment() {
 
@@ -27,4 +37,45 @@ class GearFragment : Fragment() {
         activity?.fab?.setImageDrawable(resources.getDrawable(android.R.drawable.ic_input_add))
         return root
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        configureGearProfileList()
+        configureGearItems()
+    }
+
+    private fun configureGearProfileList() {
+        val gearList = listOf(Gear("Suit"), Gear("Suit"), Gear("Suit"))
+        val gearProfiles: ArrayList<GearProfile> =
+            arrayListOf(
+                GearProfile("Saltwater", gearList),
+                GearProfile("Freshwater", gearList),
+                GearProfile("Cold Setup", gearList),
+                GearProfile("Tropical", gearList)
+            )
+        gear_profiles_rv.apply {
+            layoutManager = LinearLayoutManager(context, GridLayoutManager.HORIZONTAL, false)
+            adapter = GearAdapter(gearProfiles, true)
+        }
+        gear_profile_gear_list.text = gearList.toString()
+    }
+
+    private fun configureGearItems() {
+        val gearList = listOf(Gear("Suit"), Gear("Suit"), Gear("Suit"))
+        val gearProfiles: ArrayList<GearProfile> =
+            arrayListOf(
+                GearProfile("Saltwater", gearList),
+                GearProfile("Freshwater", gearList),
+                GearProfile("Cold Setup", gearList),
+                GearProfile("Tropical", gearList)
+            )
+        gear_filtered_rv.apply {
+            layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+            adapter = GearAdapter(gearProfiles, false)
+            setOnClickListener {
+                Toast.makeText(context, "Just Clicked Gear Item!", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
 }

@@ -28,7 +28,7 @@ class CatalogFragment : Fragment() {
         Specialty("Digital Underwater Photographer (for Snorkelers)")
     )
     private val intermediateSpecialties: List<Specialty> = listOf(
-        Specialty("Avanced Rebreather Diver"),
+        Specialty("Advanced Rebreather Diver"),
         Specialty("Altitude Diver"),
         Specialty("AWARE - Fish Identification"),
         Specialty("AWARE Shark Conservation"),
@@ -134,11 +134,11 @@ class CatalogFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        configureRecyclerView()
+        configureCertificationRecyclerView()
         configureAgencyFilter()
     }
 
-    private fun configureRecyclerView() {
+    private fun configureCertificationRecyclerView() {
         cert_path_level_rv.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = CertificationAdapter(padiCertifications)
