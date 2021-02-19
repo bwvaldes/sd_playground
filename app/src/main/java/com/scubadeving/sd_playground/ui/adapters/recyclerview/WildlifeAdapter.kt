@@ -26,24 +26,25 @@ class WildlifeAdapter(private val wildlife: ArrayList<Wildlife>) :
         holder.bind(wildlife, position)
     }
 
-    inner class WildlifeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
-        View.OnClickListener {
+    inner class WildlifeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         init {
-            itemView.setOnClickListener(this)
-        }
-
-        override fun onClick(view: View) {
-            Log.d("RecyclerView", "CLICK!")
-            Toast.makeText(itemView.context, "Just Clicked Wildlife Item!", Toast.LENGTH_SHORT)
-                .show()
-            view.findNavController().navigate(R.id.wildlifeFragment)
+            itemView.setOnClickListener {
+                Log.d("RecyclerView", "CLICK!")
+                Toast.makeText(itemView.context, "Just Clicked Wildlife Item!", Toast.LENGTH_SHORT)
+                    .show()
+                navigateToWildlifeDetail(it)
+            }
         }
 
         fun bind(wildlife: Wildlife, position: Int) {
             itemView.apply {
                 wildlife_card_name.text = wildlife.commonName
             }
+        }
+
+        private fun navigateToWildlifeDetail(it: View) {
+            it.findNavController().navigate(R.id.wildlifeFragment)
         }
     }
 }

@@ -39,23 +39,19 @@ class NotificationAdapter(
         notifyItemRangeChanged(position, inboxNotifications.size)
     }
 
-    inner class NotificationsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
-        View.OnClickListener {
+    inner class NotificationsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         init {
-            itemView.setOnClickListener(this)
-        }
-
-        override fun onClick(view: View) {
-            Log.d("RecyclerView", "CLICK!")
-            if (orientation) {
-                Toast.makeText(
-                    itemView.context,
-                    "Just Clicked Dashboard Notification Card Item!",
-                    Toast.LENGTH_SHORT
-                ).show()
-                // FIXME go specifically to notifcation frag with tabs
-                view.findNavController().navigate(R.id.inboxFragment)
+            itemView.setOnClickListener {
+                Log.d("RecyclerView", "CLICK!")
+                if (orientation) {
+                    Toast.makeText(
+                        itemView.context,
+                        "Just Clicked Dashboard Notification Card Item!",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    navigateToNotificationDetail(it)
+                }
             }
         }
 
@@ -82,6 +78,10 @@ class NotificationAdapter(
         private fun View.configureListNotifications(inboxNotification: InboxNotification) {
             notification_card_list_date.text = inboxNotification.date
             notification_card_list_data.text = inboxNotification.data
+        }
+
+        private fun navigateToNotificationDetail(it: View) {
+            it.findNavController().navigate(R.id.inboxFragment)
         }
     }
 }

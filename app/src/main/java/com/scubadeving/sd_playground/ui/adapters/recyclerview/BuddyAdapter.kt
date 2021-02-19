@@ -37,22 +37,18 @@ class BuddyAdapter(private val divers: ArrayList<Diver>, val orientation: Boolea
         holder.bind(diver, position)
     }
 
-    inner class BuddyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
-        View.OnClickListener {
+    inner class BuddyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         init {
-            itemView.setOnClickListener(this)
-        }
-
-        override fun onClick(view: View) {
-            Log.d("RecyclerView", "CLICK!")
-            Toast.makeText(
-                itemView.context,
-                "Just Clicked Buddy Card!",
-                Toast.LENGTH_SHORT
-            ).show()
-            // Todo: Should navigate to $selectedDiver Profile
-            view.findNavController().navigate(R.id.profileFragment)
+            itemView.setOnClickListener {
+                Log.d("RecyclerView", "CLICK!")
+                Toast.makeText(
+                    itemView.context,
+                    "Just Clicked Buddy Card!",
+                    Toast.LENGTH_SHORT
+                ).show()
+                navigateToProfile(it)
+            }
         }
 
         fun bind(diver: Diver, position: Int) {
@@ -101,6 +97,10 @@ class BuddyAdapter(private val divers: ArrayList<Diver>, val orientation: Boolea
             divers.removeAt(position)
             notifyItemRemoved(position)
             notifyItemRangeChanged(position, divers.size)
+        }
+
+        private fun navigateToProfile(it: View) {
+            it.findNavController().navigate(R.id.profileFragment)
         }
     }
 

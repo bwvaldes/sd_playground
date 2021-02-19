@@ -33,18 +33,15 @@ class DiveLogAdapter(private val diveLogs: ArrayList<DiveLog>, val orientation: 
         holderLog.bind(loggedDive, position)
     }
 
-    inner class DiveLogViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
-        View.OnClickListener {
+    inner class DiveLogViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
         init {
-            itemView.setOnClickListener(this)
-        }
-
-        override fun onClick(view: View) {
-            Log.d("RecyclerView", "CLICK!")
-            Toast.makeText(itemView.context, "Just Clicked Logged Dive Item!", Toast.LENGTH_SHORT)
-                .show()
-            view.findNavController().navigate(R.id.logbookEntryFragment)
+            itemView.setOnClickListener {
+                Log.d("RecyclerView", "CLICK!")
+                Toast.makeText(itemView.context, "Just Clicked Logged Dive Item!", Toast.LENGTH_SHORT)
+                    .show()
+                navigateToDiveLogDetail(it)
+            }
         }
 
         fun bind(diveLog: DiveLog, position: Int) {
@@ -75,6 +72,10 @@ class DiveLogAdapter(private val diveLogs: ArrayList<DiveLog>, val orientation: 
             logged_dive_map_date.text = loggedDive.date
             logged_dive_map_depth.text = loggedDive.depth
             logged_dive_map_bottom_time.text = loggedDive.bottomTime
+        }
+
+        private fun navigateToDiveLogDetail(it: View) {
+            it.findNavController().navigate(R.id.logbookEntryFragment)
         }
     }
 }

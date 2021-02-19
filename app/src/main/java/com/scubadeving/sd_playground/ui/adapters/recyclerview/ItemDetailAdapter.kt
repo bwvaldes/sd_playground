@@ -24,20 +24,17 @@ class ItemDetailAdapter(private val details: List<String>) :
         holder.bind(details, position)
     }
 
-    inner class ItemDetailViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
-        View.OnClickListener {
+    inner class ItemDetailViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
         init {
-            itemView.setOnClickListener(this)
-        }
-
-        override fun onClick(view: View) {
-            Log.d("RecyclerView", "CLICK!")
-            Toast.makeText(
-                itemView.context,
-                "Just Clicked Item Detail Card!",
-                Toast.LENGTH_SHORT
-            ).show()
+            itemView.setOnClickListener {
+                Log.d("RecyclerView", "CLICK!")
+                Toast.makeText(
+                    itemView.context,
+                    "Just Clicked Item Detail Card!",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
         }
 
         fun bind(detail: String, position: Int) {

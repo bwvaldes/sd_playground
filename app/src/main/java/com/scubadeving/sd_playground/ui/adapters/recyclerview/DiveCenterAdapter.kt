@@ -27,28 +27,29 @@ class DiveCenterAdapter(private val diveCenters: List<DiveCenter>) :
         holder.bind(diveCenter, position)
     }
 
-    inner class DiveCenterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
-        View.OnClickListener {
+    inner class DiveCenterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         init {
-            itemView.setOnClickListener(this)
-        }
-
-        override fun onClick(view: View) {
-            Log.d("RecyclerView", "CLICK!")
-            Toast.makeText(itemView.context, "Just Clicked Dive Center Item!", Toast.LENGTH_SHORT)
-                .show()
-            val gmmIntentUri =
-                Uri.parse("geo:33.7715323,-118.3633929?q=" + Uri.encode("Dive Center"))
-            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
-            mapIntent.setPackage("com.google.android.apps.maps")
-            view.context.startActivity(mapIntent)
+            itemView.setOnClickListener {
+                Log.d("RecyclerView", "CLICK!")
+                Toast.makeText(itemView.context, "Just Clicked Dive Center Item!", Toast.LENGTH_SHORT)
+                    .show()
+                navigateToDiveCenterDetail(it)
+            }
         }
 
         fun bind(diveCenter: DiveCenter, position: Int) {
             itemView.apply {
                 dive_center_name.text = diveCenter.name
             }
+        }
+
+        private fun navigateToDiveCenterDetail(it: View) {
+            val gmmIntentUri =
+                Uri.parse("geo:33.7715323,-118.3633929?q=" + Uri.encode("Dive Center"))
+            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+            mapIntent.setPackage("com.google.android.apps.maps")
+            it.context.startActivity(mapIntent)
         }
     }
 }

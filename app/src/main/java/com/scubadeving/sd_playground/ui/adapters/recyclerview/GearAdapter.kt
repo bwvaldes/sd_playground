@@ -27,9 +27,9 @@ class GearAdapter(private val gearProfiles: ArrayList<GearProfile>, val orientat
 
     override fun getItemCount(): Int = gearProfiles.size
 
-    override fun onBindViewHolder(holderLog: GearViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: GearViewHolder, position: Int) {
         val gearProfile = gearProfiles[position]
-        holderLog.bind(gearProfile, position)
+        holder.bind(gearProfile, position)
     }
 
     inner class GearViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

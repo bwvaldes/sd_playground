@@ -34,18 +34,15 @@ class DiveSiteAdapter(private val diveSites: List<DiveSite>, val orientation: Bo
         holder.bind(sites, position)
     }
 
-    inner class DiveSiteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
-        View.OnClickListener {
+    inner class DiveSiteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         init {
-            itemView.setOnClickListener(this)
-        }
-
-        override fun onClick(view: View) {
-            Log.d("RecyclerView", "CLICK!")
-            Toast.makeText(itemView.context, "Just Clicked Dive Site Item!", Toast.LENGTH_SHORT)
-                .show()
-            view.findNavController().navigate(R.id.diveSiteDetailFragment)
+            itemView.setOnClickListener {
+                Log.d("RecyclerView", "CLICK!")
+                Toast.makeText(itemView.context, "Just Clicked Dive Site Item!", Toast.LENGTH_SHORT)
+                    .show()
+                navigateToDiveSiteDetail(it)
+            }
         }
 
         @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
@@ -104,6 +101,10 @@ class DiveSiteAdapter(private val diveSites: List<DiveSite>, val orientation: Bo
             )
             dive_site_card_large_name.text = diveSite.name
             dive_site_card_large_location.text = diveSite.location
+        }
+
+        private fun navigateToDiveSiteDetail(it: View) {
+            it.findNavController().navigate(R.id.diveSiteDetailFragment)
         }
     }
 }

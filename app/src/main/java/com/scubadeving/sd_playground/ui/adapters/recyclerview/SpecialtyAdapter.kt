@@ -26,27 +26,28 @@ class SpecialtyAdapter(private val specialties: List<Specialty>) :
         holder.bind(specialtyCards, position)
     }
 
-    inner class SpecialtyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
-        View.OnClickListener {
+    inner class SpecialtyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         init {
-            itemView.setOnClickListener(this)
-        }
-
-        override fun onClick(view: View) {
-            Log.d("RecyclerView", "CLICK!")
-            Toast.makeText(
-                itemView.context,
-                "Just Clicked Cert Path Specialty Item!",
-                Toast.LENGTH_SHORT
-            ).show()
-            view.findNavController().navigate(R.id.certDetailFragment)
+            itemView.setOnClickListener {
+                Log.d("RecyclerView", "CLICK!")
+                Toast.makeText(
+                    itemView.context,
+                    "Just Clicked Cert Path Specialty Item!",
+                    Toast.LENGTH_SHORT
+                ).show()
+                navigateToSpecialtyDetail(it)
+            }
         }
 
         fun bind(specialty: Specialty, position: Int) {
             itemView.apply {
                 cert_card_text.text = specialty.name
             }
+        }
+
+        private fun navigateToSpecialtyDetail(it: View) {
+            it.findNavController().navigate(R.id.certDetailFragment)
         }
     }
 }

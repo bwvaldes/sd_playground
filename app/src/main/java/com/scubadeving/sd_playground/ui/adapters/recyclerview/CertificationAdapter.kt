@@ -38,18 +38,15 @@ class CertificationAdapter(
         holder.bind(certification, position)
     }
 
-    inner class CertificationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
-        View.OnClickListener {
+    inner class CertificationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
         init {
-            itemView.setOnClickListener(this)
-        }
-
-        override fun onClick(view: View) {
-            Log.d("RecyclerView", "CLICK!")
-            Toast.makeText(itemView.context, "Just Clicked Cert Path Item!", Toast.LENGTH_SHORT)
-                .show()
-            view.findNavController().navigate(R.id.certDetailFragment)
+            itemView.setOnClickListener {
+                Log.d("RecyclerView", "CLICK!")
+                Toast.makeText(itemView.context, "Just Clicked Cert Path Item!", Toast.LENGTH_SHORT)
+                    .show()
+                navigateToCertificationDetail(it)
+            }
         }
 
         fun bind(certification: Certification, position: Int) {
@@ -80,6 +77,10 @@ class CertificationAdapter(
 
         private fun View.configureProfileCertificationsLayout(certifications: Certification) {
             profile_cert_card_text.text = certifications.name
+        }
+
+        private fun navigateToCertificationDetail(it: View) {
+            it.findNavController().navigate(R.id.certDetailFragment)
         }
     }
 
