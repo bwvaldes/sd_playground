@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.*
@@ -21,6 +22,7 @@ import kotlinx.android.synthetic.main.fragment_detail_cert.*
 class CertificationDetailFragment : Fragment() {
 
     private lateinit var certificationDetailViewModel: CertificationDetailViewModel
+    private val args: CertificationDetailFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +37,7 @@ class CertificationDetailFragment : Fragment() {
         cert_detail_toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
         configurePrerequisites()
         configureNextSteps()
+        cert_detail_toolbar_layout.title = args.certificationName
     }
 
     private fun configurePrerequisites() {

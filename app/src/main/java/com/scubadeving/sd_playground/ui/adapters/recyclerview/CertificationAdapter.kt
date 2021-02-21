@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.*
 import androidx.recyclerview.widget.LinearLayoutManager.*
+import com.scubadeving.sd_playground.MainNavigationDirections
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.Certification
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.CertificationAdapter.CertificationViewHolder
@@ -17,8 +18,7 @@ import kotlinx.android.synthetic.main.item_cert_level.view.*
 class CertificationAdapter(
     private val certifications: List<Certification>,
     private val orientation: Boolean = true
-) :
-    RecyclerView.Adapter<CertificationViewHolder>() {
+) : RecyclerView.Adapter<CertificationViewHolder>() {
 
     private val viewPool = RecyclerView.RecycledViewPool()
 
@@ -38,34 +38,31 @@ class CertificationAdapter(
         holder.bind(certification, position)
     }
 
-    inner class CertificationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-
-        init {
-            itemView.setOnClickListener {
-                Log.d("RecyclerView", "CLICK!")
-                Toast.makeText(itemView.context, "Just Clicked Cert Path Item!", Toast.LENGTH_SHORT)
-                    .show()
-                navigateToCertificationDetail(it)
-            }
-        }
+    inner class CertificationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(certification: Certification, position: Int) {
             itemView.apply {
                 if (orientation) {
-                    configureCatalogCertificationsLayout(certification)
+                    configureCertificationCatalogLayout(certification)
                 } else {
-                    configureProfileCertificationsLayout(certification)
+                    configureCertificationProfileLayout(certification)
+                }
+                setOnClickListener {
+                    Log.d("RecyclerView", "CLICK!")
+                    Toast.makeText(itemView.context, "Just Clicked Cert Path Item!", Toast.LENGTH_SHORT)
+                        .show()
+                    navigateToCertificationDetail(it, certification)
                 }
             }
         }
 
-        private fun View.configureCatalogCertificationsLayout(certifications: Certification) {
-            cert_level_name.text = certifications.name
+        private fun View.configureCertificationCatalogLayout(certification: Certification) {
+            cert_level_name.text = certification.name
             val specialtyLayoutManager = LinearLayoutManager(context, HORIZONTAL, false)
             specialtyLayoutManager.initialPrefetchItemCount = CERT_LEVEL_PREFETCH_COUNT
             cert_level_specialty_rv.apply {
                 layoutManager = specialtyLayoutManager
-                adapter = certifications.specialties?.let { SpecialtyAdapter(it) }
+                adapter = certification.specialties?.let { SpecialtyAdapter(it) }
                 setRecycledViewPool(viewPool)
                 val dividerItemDecoration = DividerItemDecoration(context, HORIZONTAL)
                 addItemDecoration(dividerItemDecoration)
@@ -75,12 +72,13 @@ class CertificationAdapter(
             }
         }
 
-        private fun View.configureProfileCertificationsLayout(certifications: Certification) {
-            profile_cert_card_text.text = certifications.name
+        private fun View.configureCertificationProfileLayout(certification: Certification) {
+            profile_cert_card_text.text = certification.name
         }
 
-        private fun navigateToCertificationDetail(it: View) {
-            it.findNavController().navigate(R.id.certDetailFragment)
+        private fun navigateToCertificationDetail(it: View, certification: Certification) {
+            val directions = MainNavigationDirections.actionGlobalCertDetailFragment(certification.name)
+            it.findNavController().navigate(directions)
         }
     }
 

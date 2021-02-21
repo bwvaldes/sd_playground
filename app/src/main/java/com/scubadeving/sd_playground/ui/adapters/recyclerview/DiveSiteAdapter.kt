@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.scubadeving.sd_playground.MainNavigationDirections
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.DiveSite
 import com.scubadeving.sd_playground.utils.inflate
@@ -36,15 +37,6 @@ class DiveSiteAdapter(private val diveSites: List<DiveSite>, val orientation: Bo
 
     inner class DiveSiteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        init {
-            itemView.setOnClickListener {
-                Log.d("RecyclerView", "CLICK!")
-                Toast.makeText(itemView.context, "Just Clicked Dive Site Item!", Toast.LENGTH_SHORT)
-                    .show()
-                navigateToDiveSiteDetail(it)
-            }
-        }
-
         @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
         fun bind(diveSite: DiveSite, position: Int) {
             itemView.apply {
@@ -52,6 +44,12 @@ class DiveSiteAdapter(private val diveSites: List<DiveSite>, val orientation: Bo
                     configureDiveSitesSmallLayout(position, diveSite)
                 } else {
                     configureDiveSitesLargeLayout(diveSite)
+                }
+                setOnClickListener {
+                    Log.d("RecyclerView", "CLICK!")
+                    Toast.makeText(itemView.context, "Just Clicked Dive Site Item!", Toast.LENGTH_SHORT)
+                        .show()
+                    navigateToDiveSiteDetail(it, diveSite)
                 }
             }
         }
@@ -103,8 +101,9 @@ class DiveSiteAdapter(private val diveSites: List<DiveSite>, val orientation: Bo
             dive_site_card_large_location.text = diveSite.location
         }
 
-        private fun navigateToDiveSiteDetail(it: View) {
-            it.findNavController().navigate(R.id.diveSiteDetailFragment)
+        private fun navigateToDiveSiteDetail(it: View, diveSite: DiveSite) {
+            val directions = MainNavigationDirections.actionGlobalDiveSiteDetailFragment(diveSite.name)
+            it.findNavController().navigate(directions)
         }
     }
 }

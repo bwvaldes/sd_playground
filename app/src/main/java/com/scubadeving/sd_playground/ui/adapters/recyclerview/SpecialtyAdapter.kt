@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.scubadeving.sd_playground.MainNavigationDirections
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.Specialty
 import com.scubadeving.sd_playground.utils.inflate
@@ -28,26 +29,24 @@ class SpecialtyAdapter(private val specialties: List<Specialty>) :
 
     inner class SpecialtyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        init {
-            itemView.setOnClickListener {
-                Log.d("RecyclerView", "CLICK!")
-                Toast.makeText(
-                    itemView.context,
-                    "Just Clicked Cert Path Specialty Item!",
-                    Toast.LENGTH_SHORT
-                ).show()
-                navigateToSpecialtyDetail(it)
-            }
-        }
-
         fun bind(specialty: Specialty, position: Int) {
             itemView.apply {
                 cert_card_text.text = specialty.name
+                setOnClickListener {
+                    Log.d("RecyclerView", "CLICK!")
+                    Toast.makeText(
+                        itemView.context,
+                        "Just Clicked Cert Path Specialty Item!",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    navigateToSpecialtyDetail(it, specialty)
+                }
             }
         }
 
-        private fun navigateToSpecialtyDetail(it: View) {
-            it.findNavController().navigate(R.id.certDetailFragment)
+        private fun navigateToSpecialtyDetail(it: View, specialty: Specialty) {
+            val directions = MainNavigationDirections.actionGlobalCertDetailFragment(specialty.name)
+            it.findNavController().navigate(directions)
         }
     }
 }

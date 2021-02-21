@@ -17,7 +17,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class ChatAdapter(var chatMessages: MutableList<ChatMessage>) :
-    RecyclerView.Adapter<ChatMessageViewHolder<*>>() {
+    RecyclerView.Adapter<ChatAdapter.ChatMessageViewHolder<*>>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatMessageViewHolder<*> {
         val context = parent.context
@@ -55,11 +55,6 @@ class ChatAdapter(var chatMessages: MutableList<ChatMessage>) :
 
     override fun getItemViewType(position: Int): Int = chatMessages[position].messageType
 
-    fun addMessage(message: ChatMessage){
-        chatMessages.add(message)
-        notifyDataSetChanged()
-    }
-
     inner class ChatDateViewHolder(val view: View) : ChatMessageViewHolder<ChatMessage>(view) {
 
         override fun bind(message: ChatMessage) {
@@ -94,13 +89,18 @@ class ChatAdapter(var chatMessages: MutableList<ChatMessage>) :
             it.findNavController().navigate(R.id.profileFragment)
         }
     }
-}
 
-abstract class ChatMessageViewHolder<in T>(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    abstract fun bind(message: T)
-}
+    abstract class ChatMessageViewHolder<in T>(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        abstract fun bind(message: T)
+    }
 
-fun getChatMessageTime(message: ChatMessage): String {
-    val format = SimpleDateFormat("hh:mm a", Locale.getDefault())
-    return format.format(message.time)
+    fun addMessage(message: ChatMessage){
+        chatMessages.add(message)
+        notifyDataSetChanged()
+    }
+
+    fun getChatMessageTime(message: ChatMessage): String {
+        val format = SimpleDateFormat("hh:mm a", Locale.getDefault())
+        return format.format(message.time)
+    }
 }

@@ -1,9 +1,26 @@
 <resources>
     <string name="app_name">sd_playground</string>
-    <string name="title_catalog">Catalog</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_explore">Explore</string>
-    <string name="title_logbook">Logbook</string>
+
+    <!-- NavGraph Labels-->
+    <string name="label_catalog">Catalog</string>
+    <string name="label_dashboard">Dashboard</string>
+    <string name="label_explore">Explore</string>
+    <string name="label_logbook">Logbook</string>
+    <string name="label_profile">ProfileFragment</string>
+    <string name="label_settings">SettingsFragment</string>
+    <string name="label_certification_detail">CertificationDetailFragment</string>
+    <string name="label_dive_site_detail">DiveSiteDetailFragment</string>
+    <string name="label_wildlife">WildlifeFragment</string>
+    <string name="label_logbook_entry">LogbookEntryFragment</string>
+    <string name="label_notifications">NotificationsFragment</string>
+    <string name="label_weather_detail">WeatherDetailFragment</string>
+    <string name="label_qr_code">QRCodeFragment</string>
+    <string name="label_explore_detail_filtered">ExploreDetailsFilteredFragment</string>
+    <string name="label_scan_certificayion">ScanCertFragment</string>
+    <string name="label_inbox">InboxFragment</string>
+    <string name="label_chat">ChatFragment</string>
+    <string name="label_saved">SavedFragment</string>
+    <string name="label_wildlife_detail">WildlifeDetailFragment</string>
 
     <!-- Logbook -->
     <string name="logbook_tab_dives">Dives</string>

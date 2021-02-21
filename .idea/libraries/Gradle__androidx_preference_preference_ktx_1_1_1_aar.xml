@@ -2,9 +2,11 @@
   <library name="Gradle: androidx.preference:preference-ktx:1.1.1@aar">
     <CLASSES>
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/02e88b4886a0f52ad844d2ccff4bd5ec/transformed/jetified-preference-ktx-1.1.1/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/a70883c7c23db1a4f2ca9a5c0b5231f0/transformed/jetified-preference-ktx-1.1.1/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a70883c7c23db1a4f2ca9a5c0b5231f0/transformed/jetified-preference-ktx-1.1.1/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a70883c7c23db1a4f2ca9a5c0b5231f0/transformed/jetified-preference-ktx-1.1.1/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/57201fc9de17db8e593e1094470646ec/transformed/jetified-preference-ktx-1.1.1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/df8c953b212f0082f034a6ea2e8b29ef/transformed/jetified-preference-ktx-1.1.1/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/df8c953b212f0082f034a6ea2e8b29ef/transformed/jetified-preference-ktx-1.1.1/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/df8c953b212f0082f034a6ea2e8b29ef/transformed/jetified-preference-ktx-1.1.1/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

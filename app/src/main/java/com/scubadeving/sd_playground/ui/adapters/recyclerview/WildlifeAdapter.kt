@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.scubadeving.sd_playground.MainNavigationDirections
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.Wildlife
 import com.scubadeving.sd_playground.utils.inflate
@@ -28,23 +29,21 @@ class WildlifeAdapter(private val wildlife: ArrayList<Wildlife>) :
 
     inner class WildlifeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        init {
-            itemView.setOnClickListener {
-                Log.d("RecyclerView", "CLICK!")
-                Toast.makeText(itemView.context, "Just Clicked Wildlife Item!", Toast.LENGTH_SHORT)
-                    .show()
-                navigateToWildlifeDetail(it)
-            }
-        }
-
         fun bind(wildlife: Wildlife, position: Int) {
             itemView.apply {
                 wildlife_card_name.text = wildlife.commonName
+                setOnClickListener {
+                    Log.d("RecyclerView", "CLICK!")
+                    Toast.makeText(itemView.context, "Just Clicked Wildlife Item!", Toast.LENGTH_SHORT)
+                        .show()
+                    navigateToWildlifeDetail(it, wildlife)
+                }
             }
         }
 
-        private fun navigateToWildlifeDetail(it: View) {
-            it.findNavController().navigate(R.id.wildlifeFragment)
+        private fun navigateToWildlifeDetail(it: View, wildlife: Wildlife) {
+            val directions = MainNavigationDirections.actionGlobalWildlifeDetailFragment(wildlife.commonName)
+            it.findNavController().navigate(directions)
         }
     }
 }
