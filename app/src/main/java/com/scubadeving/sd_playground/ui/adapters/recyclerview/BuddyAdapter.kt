@@ -61,7 +61,7 @@ class BuddyAdapter(private val divers: ArrayList<Diver>, val orientation: Boolea
 
         private fun View.configureHorizontalBuddyLayout(position: Int, diver: Diver) {
             diver_card_horizontal_clear.setOnClickListener { dismissBuddy(position) }
-            diver_card_horizontal_avatar.setImageResource(R.drawable.ic_profile)
+            diver_card_horizontal_avatar.setImageResource(R.drawable.ic_avatar)
             diver_card_horizontal_background.setImageResource(R.color.purple_200)
             diver_card_horizontal_name.text = diver.name
             diver_card_horizontal_level.text = diver.certLevel
@@ -73,7 +73,7 @@ class BuddyAdapter(private val divers: ArrayList<Diver>, val orientation: Boolea
 
         private fun View.configureVerticalBuddyLayout(position: Int, diver: Diver) {
             diver_card_vertical_clear.setOnClickListener { dismissBuddy(position) }
-            diver_card_vertical_avatar.setImageResource(R.drawable.ic_profile)
+            diver_card_vertical_avatar.setImageResource(R.drawable.ic_avatar)
             diver_card_vertical_background.setImageResource(R.color.teel_200)
             diver_card_vertical_name.text = diver.name
             diver_card_vertical_level.text = diver.certLevel

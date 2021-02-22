@@ -47,7 +47,7 @@
             android:id="@+id/diver_card_vertical_avatar"
             android:layout_width="96dp"
             android:layout_height="96dp"
-            android:src="@drawable/ic_profile"
+            android:src="@drawable/ic_avatar"
             app:layout_constraintBottom_toBottomOf="@id/diver_card_horizontal_guideline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

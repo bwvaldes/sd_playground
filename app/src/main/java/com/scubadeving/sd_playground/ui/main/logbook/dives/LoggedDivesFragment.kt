@@ -55,7 +55,7 @@ class LoggedDivesFragment : Fragment() {
             layoutManager = LinearLayoutManager(context, VERTICAL, false)
             adapter = DiveLogAdapter(diveLogs, true)
             val dividerItemDecoration = DividerItemDecoration(context, VERTICAL)
-            logged_dives_rv.addItemDecoration(dividerItemDecoration)
+            addItemDecoration(dividerItemDecoration)
         }
     }
 }

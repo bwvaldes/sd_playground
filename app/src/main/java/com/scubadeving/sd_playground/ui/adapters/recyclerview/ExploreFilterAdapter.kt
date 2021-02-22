@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.scubadeving.sd_playground.MainNavigationDirections
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.ExploreFilter
 import com.scubadeving.sd_playground.utils.inflate
@@ -38,13 +39,14 @@ class ExploreFilterAdapter(private val filters: List<ExploreFilter>) :
                         "Just Clicked Explore Filter Card!",
                         Toast.LENGTH_SHORT
                     ).show()
-                    navigateToDiveSiteDetail(it)
+                    navigateToExploreSitesDetail(it, filter)
                 }
             }
         }
 
-        private fun navigateToDiveSiteDetail(it: View) {
-            it.findNavController().navigate(R.id.exploreDetailsFilteredFragment)
+        private fun navigateToExploreSitesDetail(it: View, filter: ExploreFilter) {
+            val directions = MainNavigationDirections.actionGlobalExploreDetailsFilteredFragment(filter.name)
+            it.findNavController().navigate(directions)
         }
     }
 }

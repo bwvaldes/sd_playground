@@ -2,7 +2,6 @@ package com.scubadeving.sd_playground.ui.main.dashboard
 
 import android.os.Bundle
 import android.view.*
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -15,6 +14,7 @@ import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.scubadeving.sd_playground.MainNavigationDirections
 import com.scubadeving.sd_playground.R
+import com.scubadeving.sd_playground.data.Certification
 import com.scubadeving.sd_playground.data.DiveSite
 import com.scubadeving.sd_playground.data.Diver
 import com.scubadeving.sd_playground.data.InboxNotification
@@ -49,7 +49,6 @@ class DashboardFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         welcome_username.text = "Welcome ${currentUser.name}!"
         dashboard_toolbar.apply {
-            inflateMenu(R.menu.menu_dashboard)
             setOnMenuItemClickListener { item ->
                 when (item.itemId) {
                     R.id.action_profile -> {
@@ -57,14 +56,14 @@ class DashboardFragment : Fragment() {
                         true
                     }
                     R.id.action_saved -> {
-                        navToSaved()
+                        navigateToSaved()
                         true
                     }
                     else -> true
                 }
             }
         }
-        navToNotifications(notifications_icon)
+        navigateToNotifications(notifications_icon)
         configureUpcomingDivesRecyclerView()
         configureDashboardNotificationsRecyclerView()
         configureDashItems()
@@ -89,20 +88,10 @@ class DashboardFragment : Fragment() {
     }
 
     private fun configureDashItems() {
-        dash_weather_card.setOnClickListener {
-            it.findNavController().navigate(R.id.weatherDetailFragment)
-        }
-        dash_fly_card.setOnClickListener {
-            // TODO: Nav to most recently logged dive
-            it.findNavController().navigate(R.id.navigation_logbook)
-        }
-        dash_maintenance_card.setOnClickListener {
-            // TODO: Use safeArgs to hit gear fragment
-            it.findNavController().navigate(R.id.profileFragment)
-        }
-        dash_next_card.setOnClickListener {
-            it.findNavController().navigate(R.id.certDetailFragment)
-        }
+        dash_weather_card.setOnClickListener { navigateToWeatherDetail(it) }
+        dash_fly_card.setOnClickListener { navigateToLogbookEntry(it) }
+        dash_maintenance_card.setOnClickListener { navigateToProfile(it, currentUser) }
+        dash_next_card.setOnClickListener { navigateToCertificationDetail(it) }
     }
 
     private fun configureDashboardNotificationsRecyclerView() {
@@ -124,7 +113,15 @@ class DashboardFragment : Fragment() {
         }
     }
 
-    private fun navToSaved() {
+    private fun navigateToLogbookEntry(it: View) {
+        it.findNavController().navigate(R.id.navigation_logbook)
+    }
+
+    private fun navigateToWeatherDetail(it: View) {
+        it.findNavController().navigate(R.id.weatherDetailFragment)
+    }
+
+    private fun navigateToSaved() {
         findNavController().navigate(R.id.savedFragment)
     }
 
@@ -133,9 +130,15 @@ class DashboardFragment : Fragment() {
         it.findNavController().navigate(directions)
     }
 
-    private fun navToNotifications(view: View) {
+    private fun navigateToNotifications(view: View) {
         view.setOnClickListener {
             it.findNavController().navigate(R.id.notificationsFragment)
         }
+    }
+
+    private fun navigateToCertificationDetail(it: View) {
+        val nextCertification = Certification("Rescue Diver")
+        val directions = MainNavigationDirections.actionGlobalCertDetailFragment(nextCertification.name)
+        it.findNavController().navigate(directions)
     }
 }

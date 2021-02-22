@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 class SavedViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is Explore Sites Filtered Fragment"
+        value = "This is Saved List Fragment"
     }
     val text: LiveData<String> = _text
 }

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.navArgs
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -19,6 +20,8 @@ import kotlinx.android.synthetic.main.fragment_explore_details_filtered.*
 class ExploreDetailsFilteredFragment : Fragment() {
 
     private lateinit var exploreDetailsFilteredViewModel: ExploreDetailsFilteredViewModel
+    private val args: ExploreDetailsFilteredFragmentArgs by navArgs()
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,7 +35,10 @@ class ExploreDetailsFilteredFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        explore_details_filtered_toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
+        explore_details_filtered_toolbar.apply {
+            setNavigationOnClickListener { findNavController().navigateUp() }
+            title = args.exploreDetailName
+        }
         if (arguments?.isEmpty == true) {
             configureExploreFilteredWildlife()
         } else configureExploreFilteredDiveSites()

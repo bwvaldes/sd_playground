@@ -29,7 +29,6 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:scaleType="centerCrop"
-                android:src="@drawable/ic_profile"
                 app:layout_collapseMode="parallax"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -50,28 +49,21 @@
 
                 <ImageView
                     android:id="@+id/avatar"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
                     android:layout_gravity="center"
-                    android:src="@mipmap/ic_launcher"
+                    android:src="@drawable/ic_avatar"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
-                    android:id="@+id/diver_verification_badge"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@color/white"
-                    android:src="@drawable/ic_anchor"
-                    app:layout_constraintEnd_toEndOf="@id/avatar"
-                    app:layout_constraintStart_toEndOf="@id/avatar"
-                    app:layout_constraintBottom_toBottomOf="@id/avatar" />
 
                 <TextView
                     android:id="@+id/profile_username"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:drawableEnd="@drawable/ic_verified"
+                    android:drawablePadding="5dp"
+                    android:drawableTint="@android:color/holo_blue_dark"
                     android:text="John Smith"
                     android:textColor="@color/white"
                     android:textSize="24sp"
@@ -137,7 +129,7 @@
                 android:background="@android:color/transparent"
                 app:contentInsetStartWithNavigation="0dp"
                 app:layout_collapseMode="pin"
-                app:menu="@menu/menu_settings"
+                app:menu="@menu/menu_profile"
                 app:navigationIcon="@drawable/ic_arrow_back"
                 app:titleTextColor="?attr/colorOnSurface" />
 

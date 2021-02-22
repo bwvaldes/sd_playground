@@ -10,12 +10,12 @@
         android:id="@+id/message_card_avatar"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:src="@drawable/ic_profile"
+        android:src="@drawable/ic_avatar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/message_card_date"
+        android:id="@+id/message_card_diver_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -23,8 +23,24 @@
         android:layout_marginLeft="5dp"
         android:ellipsize="end"
         android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/message_card_date"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/message_card_avatar"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Jane Doe" />
+
+    <TextView
+        android:id="@+id/message_card_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:ellipsize="end"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/message_card_diver_name"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Jan 20th, 2020" />
 

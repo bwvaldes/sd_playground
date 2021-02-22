@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.*
 import com.scubadeving.sd_playground.R
@@ -16,11 +17,13 @@ import com.scubadeving.sd_playground.data.ChatMessage.Companion.MESSAGE_TYPE_GUE
 import com.scubadeving.sd_playground.data.ChatMessage.Companion.MESSAGE_TYPE_HOST
 import com.scubadeving.sd_playground.data.Diver
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.ChatAdapter
+import com.scubadeving.sd_playground.ui.main.logbook.entry.LogbookEntryFragmentArgs
 import kotlinx.android.synthetic.main.fragment_chat.*
 
 class ChatFragment : Fragment() {
 
     private lateinit var chatViewModel: ChatViewModel
+    private val args: ChatFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,7 +41,7 @@ class ChatFragment : Fragment() {
     }
 
     private fun configureChatRecyclerView() {
-        val guestDiver = Diver("JP", "Advanced Open Water", 13)
+        val guestDiver = Diver(args.diverName, "Advanced Open Water", 13)
         val hostDiver = Diver("Brian", "Advanced Open Water", 17)
         val chatMessages = mutableListOf(
             ChatMessage(null, "Wednesday, Mar 3rd 2021 ", MESSAGE_TYPE_DATE, 1200),

@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.RecyclerView
 import com.scubadeving.sd_playground.MainNavigationDirections
 import com.scubadeving.sd_playground.R
@@ -12,6 +13,7 @@ import com.scubadeving.sd_playground.data.ChatMessage.Companion.MESSAGE_TYPE_DAT
 import com.scubadeving.sd_playground.data.ChatMessage.Companion.MESSAGE_TYPE_GUEST
 import com.scubadeving.sd_playground.data.ChatMessage.Companion.MESSAGE_TYPE_HOST
 import com.scubadeving.sd_playground.data.Diver
+import com.scubadeving.sd_playground.ui.main.inbox.messages.chat.ChatFragmentArgs
 import kotlinx.android.synthetic.main.item_chat_container_date.view.*
 import kotlinx.android.synthetic.main.item_chat_container_guest.view.*
 import kotlinx.android.synthetic.main.item_chat_container_host.view.*
@@ -81,7 +83,7 @@ class ChatAdapter(var chatMessages: MutableList<ChatMessage>) :
         override fun bind(message: ChatMessage) {
             itemView.apply {
                 chat_guest_avatar.setOnClickListener { navigateToProfile(it, message.diver!!) }
-                chat_guest_name.text = "John Doe"
+                chat_guest_name.text = message.diver?.name
                 chat_guest_message.text = message.content
                 chat_guest_message_time.text = getChatMessageTime(message)
             }

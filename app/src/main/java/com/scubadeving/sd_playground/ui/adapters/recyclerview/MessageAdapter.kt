@@ -32,11 +32,10 @@ class MessageAdapter(private val messages: ArrayList<InboxMessage>) :
 
         fun bind(message: InboxMessage, position: Int) {
             itemView.apply {
+                message_card_avatar.setOnClickListener { navigateToProfile(it, message.diver) }
+                message_card_diver_name.text = message.diver.name
                 message_card_date.text = message.date
                 message_card_data.text = message.data
-                message_card_avatar.setOnClickListener {
-                    navigateToProfile(it, message.diver)
-                }
                 setOnClickListener {
                     Log.d("RecyclerView", "CLICK!")
                     Toast.makeText(
@@ -44,13 +43,14 @@ class MessageAdapter(private val messages: ArrayList<InboxMessage>) :
                         "Just Clicked Message Item!",
                         Toast.LENGTH_SHORT
                     ).show()
-                    navigateToChatDetail(it)
+                    navigateToChatDetail(it, message.diver)
                 }
             }
         }
 
-        private fun navigateToChatDetail(it: View) {
-            it.findNavController().navigate(R.id.chatFragment)
+        private fun navigateToChatDetail(it: View, diver: Diver) {
+            val directions = MainNavigationDirections.actionGlobalChatFragment(diver.name)
+            it.findNavController().navigate(directions)
         }
 
         private fun navigateToProfile(it: View, diver: Diver) {

@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.scubadeving.sd_playground.MainNavigationDirections
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.DiveLog
 import com.scubadeving.sd_playground.utils.inflate
@@ -46,7 +47,7 @@ class DiveLogAdapter(private val diveLogs: ArrayList<DiveLog>, val orientation: 
                     Log.d("RecyclerView", "CLICK!")
                     Toast.makeText(itemView.context, "Just Clicked Logged Dive Item!", Toast.LENGTH_SHORT)
                         .show()
-                    navigateToDiveLogDetail(it)
+                    navigateToDiveLogDetail(it, diveLog)
                 }
             }
         }
@@ -71,8 +72,9 @@ class DiveLogAdapter(private val diveLogs: ArrayList<DiveLog>, val orientation: 
             logged_dive_map_bottom_time.text = loggedDive.bottomTime
         }
 
-        private fun navigateToDiveLogDetail(it: View) {
-            it.findNavController().navigate(R.id.logbookEntryFragment)
+        private fun navigateToDiveLogDetail(it: View, diveLog: DiveLog) {
+            val directions =  MainNavigationDirections.actionGlobalLogbookEntryFragment(diveLog.diveSite)
+            it.findNavController().navigate(directions)
         }
     }
 }

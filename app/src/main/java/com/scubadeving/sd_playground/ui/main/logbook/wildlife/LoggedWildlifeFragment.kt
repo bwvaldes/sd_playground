@@ -52,7 +52,7 @@ class LoggedWildlifeFragment : Fragment() {
             layoutManager = LinearLayoutManager(context, VERTICAL, false)
             adapter = WildlifeAdapter(wildLife)
             val dividerItemDecoration = DividerItemDecoration(context, VERTICAL)
-            logged_wildlife_rv.addItemDecoration(dividerItemDecoration)
+            addItemDecoration(dividerItemDecoration)
         }
     }
 }

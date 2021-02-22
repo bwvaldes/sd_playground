@@ -27,7 +27,6 @@ class SettingsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         settings_toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
         settings_toolbar.apply {
-            inflateMenu(R.menu.menu_settings)
             setOnMenuItemClickListener { item ->
                 when (item.itemId) {
                     R.id.action_logout -> {

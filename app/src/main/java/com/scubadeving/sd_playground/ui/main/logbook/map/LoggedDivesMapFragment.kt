@@ -57,9 +57,9 @@ class LoggedDivesMapFragment : Fragment() {
             layoutManager = LinearLayoutManager(context, HORIZONTAL, false)
             adapter = DiveLogAdapter(diveLogs, false)
             val dividerItemDecoration = DividerItemDecoration(context, HORIZONTAL)
-            logged_dives_map_rv.addItemDecoration(dividerItemDecoration)
+            addItemDecoration(dividerItemDecoration)
             val snapHelper: SnapHelper = PagerSnapHelper()
-            snapHelper.attachToRecyclerView(logged_dives_map_rv)
+            snapHelper.attachToRecyclerView(this)
         }
     }
 }
