@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.scubadeving.sd_playground.MainNavigationDirections
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.Diver
 import com.scubadeving.sd_playground.utils.inflate
@@ -39,24 +40,21 @@ class BuddyAdapter(private val divers: ArrayList<Diver>, val orientation: Boolea
 
     inner class BuddyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        init {
-            itemView.setOnClickListener {
-                Log.d("RecyclerView", "CLICK!")
-                Toast.makeText(
-                    itemView.context,
-                    "Just Clicked Buddy Card!",
-                    Toast.LENGTH_SHORT
-                ).show()
-                navigateToProfile(it)
-            }
-        }
-
         fun bind(diver: Diver, position: Int) {
             itemView.apply {
                 if (orientation) {
                     configureHorizontalBuddyLayout(position, diver)
                 } else {
                     configureVerticalBuddyLayout(position, diver)
+                }
+                setOnClickListener {
+                    Log.d("RecyclerView", "CLICK!")
+                    Toast.makeText(
+                        itemView.context,
+                        "Just Clicked Buddy Card!",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    navigateToProfile(it, diver)
                 }
             }
         }
@@ -99,8 +97,9 @@ class BuddyAdapter(private val divers: ArrayList<Diver>, val orientation: Boolea
             notifyItemRangeChanged(position, divers.size)
         }
 
-        private fun navigateToProfile(it: View) {
-            it.findNavController().navigate(R.id.profileFragment)
+        private fun navigateToProfile(it: View, diver: Diver) {
+            val directions = MainNavigationDirections.actionGlobalProfileFragment(diver.name)
+            it.findNavController().navigate(directions)
         }
     }
 

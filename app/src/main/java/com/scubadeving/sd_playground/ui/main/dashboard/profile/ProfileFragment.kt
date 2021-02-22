@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
 import com.google.android.material.tabs.TabLayoutMediator
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.ui.adapters.viewpager.ProfileViewPagerAdapter
@@ -18,6 +19,7 @@ import kotlinx.android.synthetic.main.fragment_profile.*
 class ProfileFragment : Fragment() {
 
     private lateinit var profileViewModel: ProfileViewModel
+    private val args: ProfileFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,6 +40,7 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         configureProfileToolbar()
         configureProfileViewPager()
+        profile_username.text = args.userName
     }
 
     private fun configureProfileToolbar() {

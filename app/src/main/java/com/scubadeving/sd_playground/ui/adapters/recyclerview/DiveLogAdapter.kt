@@ -35,21 +35,18 @@ class DiveLogAdapter(private val diveLogs: ArrayList<DiveLog>, val orientation: 
 
     inner class DiveLogViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
-        init {
-            itemView.setOnClickListener {
-                Log.d("RecyclerView", "CLICK!")
-                Toast.makeText(itemView.context, "Just Clicked Logged Dive Item!", Toast.LENGTH_SHORT)
-                    .show()
-                navigateToDiveLogDetail(it)
-            }
-        }
-
         fun bind(diveLog: DiveLog, position: Int) {
             itemView.apply {
                 if (orientation) {
                     configureLogbookListLayout(diveLog)
                 } else {
                     configureLogbookMapLayout(diveLog)
+                }
+                setOnClickListener {
+                    Log.d("RecyclerView", "CLICK!")
+                    Toast.makeText(itemView.context, "Just Clicked Logged Dive Item!", Toast.LENGTH_SHORT)
+                        .show()
+                    navigateToDiveLogDetail(it)
                 }
             }
         }

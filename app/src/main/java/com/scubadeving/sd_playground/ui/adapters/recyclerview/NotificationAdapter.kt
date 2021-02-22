@@ -41,26 +41,23 @@ class NotificationAdapter(
 
     inner class NotificationsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        init {
-            itemView.setOnClickListener {
-                Log.d("RecyclerView", "CLICK!")
-                if (orientation) {
-                    Toast.makeText(
-                        itemView.context,
-                        "Just Clicked Dashboard Notification Card Item!",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    navigateToNotificationDetail(it)
-                }
-            }
-        }
-
         fun bind(inboxNotification: InboxNotification, position: Int) {
             itemView.apply {
                 if (orientation) {
                     configureDashboardNotifications(position, inboxNotification)
                 } else {
                     configureListNotifications(inboxNotification)
+                }
+                setOnClickListener {
+                    Log.d("RecyclerView", "CLICK!")
+                    if (orientation) {
+                        Toast.makeText(
+                            itemView.context,
+                            "Just Clicked Dashboard Notification Card Item!",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        navigateToNotificationDetail(it)
+                    }
                 }
             }
         }

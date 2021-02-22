@@ -27,21 +27,18 @@ class SavedListAdapter(private val savedLists: List<SavedList>) :
 
     inner class SavedListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        init {
-            itemView.setOnClickListener {
-                Log.d("RecyclerView", "CLICK!")
-                Toast.makeText(
-                    itemView.context,
-                    "Just Clicked Saved List Item!",
-                    Toast.LENGTH_SHORT
-                ).show()
-//            it.findNavController().navigate(R.id.savedListFragment)
-            }
-        }
-
         fun bind(savedList: SavedList, position: Int) {
             itemView.apply {
                 saved_list_text.text = savedList.name
+                setOnClickListener {
+                    Log.d("RecyclerView", "CLICK!")
+                    Toast.makeText(
+                        itemView.context,
+                        "Just Clicked Saved List Item!",
+                        Toast.LENGTH_SHORT
+                    ).show()
+//            it.findNavController().navigate(R.id.savedListFragment)
+                }
             }
         }
     }

@@ -14,6 +14,7 @@ import com.scubadeving.sd_playground.data.ChatMessage
 import com.scubadeving.sd_playground.data.ChatMessage.Companion.MESSAGE_TYPE_DATE
 import com.scubadeving.sd_playground.data.ChatMessage.Companion.MESSAGE_TYPE_GUEST
 import com.scubadeving.sd_playground.data.ChatMessage.Companion.MESSAGE_TYPE_HOST
+import com.scubadeving.sd_playground.data.Diver
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.ChatAdapter
 import kotlinx.android.synthetic.main.fragment_chat.*
 
@@ -37,29 +38,40 @@ class ChatFragment : Fragment() {
     }
 
     private fun configureChatRecyclerView() {
+        val guestDiver = Diver("JP", "Advanced Open Water", 13)
+        val hostDiver = Diver("Brian", "Advanced Open Water", 17)
         val chatMessages = mutableListOf(
-            ChatMessage("Wednesday, Mar 3rd 2021 ", MESSAGE_TYPE_DATE, 1200),
-            ChatMessage("Hey bud, long time no dive!", MESSAGE_TYPE_HOST, 1300),
-            ChatMessage("Yea its been a minute, we should dive soon!", MESSAGE_TYPE_GUEST, 1400),
-            ChatMessage("Agreed, how's this weekend sound?", MESSAGE_TYPE_HOST, 1500),
-            ChatMessage("Perfect, lets do it.", MESSAGE_TYPE_GUEST, 1600),
+            ChatMessage(null, "Wednesday, Mar 3rd 2021 ", MESSAGE_TYPE_DATE, 1200),
+            ChatMessage(hostDiver, "Hey bud, long time no dive!", MESSAGE_TYPE_HOST, 1300),
             ChatMessage(
+                guestDiver,
+                "Yea its been a minute, we should dive soon!",
+                MESSAGE_TYPE_GUEST,
+                1400
+            ),
+            ChatMessage(hostDiver, "Agreed, how's this weekend sound?", MESSAGE_TYPE_HOST, 1500),
+            ChatMessage(guestDiver, "Perfect, lets do it.", MESSAGE_TYPE_GUEST, 1600),
+            ChatMessage(
+                hostDiver,
                 "Sweet, see you at Leo Carillo on Saturday, 6am!!",
                 MESSAGE_TYPE_HOST,
                 1208
             ),
-            ChatMessage("Saturday, Mar 6th 2021 ", MESSAGE_TYPE_DATE, 600),
+            ChatMessage(null, "Saturday, Mar 6th 2021 ", MESSAGE_TYPE_DATE, 600),
             ChatMessage(
+                hostDiver,
                 "Hey hey, Im at the site, parked by the 2nd lighthouse. You here yet?",
                 MESSAGE_TYPE_HOST,
                 600
             ),
             ChatMessage(
+                guestDiver,
                 "Yup, parking was terrible. Walking up to you now, see you in a minute.",
                 MESSAGE_TYPE_GUEST,
                 600
             ),
             ChatMessage(
+                hostDiver,
                 "Awesome, I'll start gearing up, catch you in a few!",
                 MESSAGE_TYPE_HOST,
                 600

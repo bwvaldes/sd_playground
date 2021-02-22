@@ -13,8 +13,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.SnapHelper
+import com.scubadeving.sd_playground.MainNavigationDirections
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.DiveSite
+import com.scubadeving.sd_playground.data.Diver
 import com.scubadeving.sd_playground.data.InboxNotification
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.DiveSiteAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.NotificationAdapter
@@ -25,6 +27,7 @@ import kotlinx.android.synthetic.main.view_dashboard_items.*
 class DashboardFragment : Fragment() {
 
     private lateinit var dashboardViewModel: DashboardViewModel
+    private val currentUser = Diver("Brian Valdes", "Open Water", 2)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -44,12 +47,13 @@ class DashboardFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        welcome_username.text = "Welcome ${currentUser.name}!"
         dashboard_toolbar.apply {
             inflateMenu(R.menu.menu_dashboard)
             setOnMenuItemClickListener { item ->
                 when (item.itemId) {
                     R.id.action_profile -> {
-                        navToProfile()
+                        navigateToProfile(view,  currentUser)
                         true
                     }
                     R.id.action_saved -> {
@@ -124,8 +128,9 @@ class DashboardFragment : Fragment() {
         findNavController().navigate(R.id.savedFragment)
     }
 
-    private fun navToProfile() {
-        findNavController().navigate(R.id.profileFragment)
+    private fun navigateToProfile(it: View, diver: Diver) {
+        val directions = MainNavigationDirections.actionGlobalProfileFragment(diver.name)
+        it.findNavController().navigate(directions)
     }
 
     private fun navToNotifications(view: View) {

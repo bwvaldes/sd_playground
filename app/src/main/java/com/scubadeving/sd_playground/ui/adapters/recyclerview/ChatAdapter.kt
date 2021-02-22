@@ -5,11 +5,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.scubadeving.sd_playground.MainNavigationDirections
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.ChatMessage
 import com.scubadeving.sd_playground.data.ChatMessage.Companion.MESSAGE_TYPE_DATE
 import com.scubadeving.sd_playground.data.ChatMessage.Companion.MESSAGE_TYPE_GUEST
 import com.scubadeving.sd_playground.data.ChatMessage.Companion.MESSAGE_TYPE_HOST
+import com.scubadeving.sd_playground.data.Diver
 import kotlinx.android.synthetic.main.item_chat_container_date.view.*
 import kotlinx.android.synthetic.main.item_chat_container_guest.view.*
 import kotlinx.android.synthetic.main.item_chat_container_host.view.*
@@ -78,15 +80,16 @@ class ChatAdapter(var chatMessages: MutableList<ChatMessage>) :
 
         override fun bind(message: ChatMessage) {
             itemView.apply {
-                chat_guest_avatar.setOnClickListener { navigateToProfile(it) }
+                chat_guest_avatar.setOnClickListener { navigateToProfile(it, message.diver!!) }
                 chat_guest_name.text = "John Doe"
                 chat_guest_message.text = message.content
                 chat_guest_message_time.text = getChatMessageTime(message)
             }
         }
 
-        private fun navigateToProfile(it: View) {
-            it.findNavController().navigate(R.id.profileFragment)
+        private fun navigateToProfile(it: View, diver: Diver) {
+            val directions = MainNavigationDirections.actionGlobalProfileFragment(diver.name)
+            it.findNavController().navigate(directions)
         }
     }
 

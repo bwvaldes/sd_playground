@@ -29,18 +29,15 @@ class DiveCenterAdapter(private val diveCenters: List<DiveCenter>) :
 
     inner class DiveCenterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        init {
-            itemView.setOnClickListener {
-                Log.d("RecyclerView", "CLICK!")
-                Toast.makeText(itemView.context, "Just Clicked Dive Center Item!", Toast.LENGTH_SHORT)
-                    .show()
-                navigateToDiveCenterDetail(it)
-            }
-        }
-
         fun bind(diveCenter: DiveCenter, position: Int) {
             itemView.apply {
                 dive_center_name.text = diveCenter.name
+                setOnClickListener {
+                    Log.d("RecyclerView", "CLICK!")
+                    Toast.makeText(itemView.context, "Just Clicked Dive Center Item!", Toast.LENGTH_SHORT)
+                        .show()
+                    navigateToDiveCenterDetail(it)
+                }
             }
         }
 

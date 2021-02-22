@@ -28,21 +28,18 @@ class ExploreFilterAdapter(private val filters: List<ExploreFilter>) :
 
     inner class ExploreFilterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        init {
-            itemView.setOnClickListener {
-                Log.d("RecyclerView", "CLICK!")
-                Toast.makeText(
-                    itemView.context,
-                    "Just Clicked Explore Filter Card!",
-                    Toast.LENGTH_SHORT
-                ).show()
-                navigateToDiveSiteDetail(it)
-            }
-        }
-
         fun bind(filter: ExploreFilter, position: Int) {
             itemView.apply {
                 explore_filter_card_text.text = filter.name
+                setOnClickListener {
+                    Log.d("RecyclerView", "CLICK!")
+                    Toast.makeText(
+                        itemView.context,
+                        "Just Clicked Explore Filter Card!",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    navigateToDiveSiteDetail(it)
+                }
             }
         }
 

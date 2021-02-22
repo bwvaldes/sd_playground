@@ -34,20 +34,17 @@ class GearAdapter(private val gearProfiles: ArrayList<GearProfile>, val orientat
 
     inner class GearViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        init {
-            itemView.setOnClickListener {
-                Log.d("RecyclerView", "CLICK!")
-                Toast.makeText(itemView.context, "Just Clicked Gear Profile Item!", Toast.LENGTH_SHORT)
-                    .show()
-            }
-        }
-
         fun bind(gearProfile: GearProfile, position: Int) {
             itemView.apply {
                 if (orientation) {
                     configureGearProfileLayout(gearProfile)
                 } else {
                     configureGearProfileItemLayout(gearProfile)
+                }
+                setOnClickListener {
+                    Log.d("RecyclerView", "CLICK!")
+                    Toast.makeText(itemView.context, "Just Clicked Gear Profile Item!", Toast.LENGTH_SHORT)
+                        .show()
                 }
             }
         }
