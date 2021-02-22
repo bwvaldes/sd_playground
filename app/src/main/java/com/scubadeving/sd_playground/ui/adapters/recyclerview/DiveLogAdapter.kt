@@ -16,13 +16,11 @@ import kotlinx.android.synthetic.main.item_logged_dive_card_vertical.view.*
 class DiveLogAdapter(private val diveLogs: ArrayList<DiveLog>, val orientation: Boolean) :
     RecyclerView.Adapter<DiveLogAdapter.DiveLogViewHolder>() {
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DiveLogViewHolder {
         val inflatedView = if (orientation) {
             parent.inflate(R.layout.item_logged_dive_card_vertical, false)
         } else {
             parent.inflate(R.layout.item_logged_dive_card_horizontal, false)
-
         }
         return DiveLogViewHolder(inflatedView)
     }

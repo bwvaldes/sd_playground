@@ -30,7 +30,11 @@ class MainActivity : AppCompatActivity() {
                 R.id.exploreDetailsFilteredFragment,
                 R.id.notificationsFragment,
                 R.id.certificationScanFragment,
-                R.id.chatFragment -> {
+                R.id.inboxFragment,
+                R.id.chatFragment,
+                R.id.chatDetailFragment,
+                R.id.weatherDetailFragment,
+                R.id.profileFragment -> {
                     nav_view.visibility = View.GONE
                     bottomBar.visibility = View.GONE
                     fab.visibility = View.GONE

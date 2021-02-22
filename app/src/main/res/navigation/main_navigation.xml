@@ -71,7 +71,13 @@
         android:id="@+id/wildlifeFragment"
         android:name="com.scubadeving.sd_playground.ui.details.wildlife.WildlifeMainFragment"
         android:label="@string/label_wildlife"
-        tools:layout="@layout/fragment_detail_wildlife_main" />
+        tools:layout="@layout/fragment_detail_wildlife_main">
+        <argument
+            android:name="wildlifeName"
+            android:defaultValue="null"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
     <fragment
         android:id="@+id/logbookEntryFragment"
         android:name="com.scubadeving.sd_playground.ui.main.logbook.entry.LogbookEntryFragment"
@@ -128,6 +134,9 @@
         <argument
             android:name="diverName"
             app:argType="string" />
+        <action
+            android:id="@+id/action_chatFragment_to_chatDetailsFragment"
+            app:destination="@id/chatDetailFragment" />
     </fragment>
 
     <fragment
@@ -157,6 +166,16 @@
         tools:layout="@layout/fragment_saved_detail">
         <argument
             android:name="savedListName"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/chatDetailFragment"
+        android:name="com.scubadeving.sd_playground.ui.main.inbox.messages.chat.details.ChatDetailFragment"
+        android:label="@string/label_chat_detail"
+        tools:layout="@layout/fragment_chat_details">
+        <argument
+            android:name="diverName"
             app:argType="string" />
     </fragment>
 

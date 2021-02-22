@@ -4,12 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager.*
+import androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.ChatMessage
 import com.scubadeving.sd_playground.data.ChatMessage.Companion.MESSAGE_TYPE_DATE
@@ -17,7 +18,6 @@ import com.scubadeving.sd_playground.data.ChatMessage.Companion.MESSAGE_TYPE_GUE
 import com.scubadeving.sd_playground.data.ChatMessage.Companion.MESSAGE_TYPE_HOST
 import com.scubadeving.sd_playground.data.Diver
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.ChatAdapter
-import com.scubadeving.sd_playground.ui.main.logbook.entry.LogbookEntryFragmentArgs
 import kotlinx.android.synthetic.main.fragment_chat.*
 
 class ChatFragment : Fragment() {
@@ -37,7 +37,24 @@ class ChatFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         configureChatRecyclerView()
-        chat_toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
+        chat_toolbar.apply {
+            setNavigationOnClickListener { findNavController().navigateUp() }
+            title = args.diverName
+            subtitle = "yesterday at 22:00"
+            setOnMenuItemClickListener { item ->
+                when (item.itemId) {
+                    R.id.action_details -> {
+                        navigateToChatDetail()
+                    }
+                }
+                true
+            }
+        }
+    }
+
+    private fun Toolbar.navigateToChatDetail() {
+        val directions = ChatFragmentDirections.actionChatFragmentToChatDetailsFragment(args.diverName)
+        findNavController().navigate(directions)
     }
 
     private fun configureChatRecyclerView() {

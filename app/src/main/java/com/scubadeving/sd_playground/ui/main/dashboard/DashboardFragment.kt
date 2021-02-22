@@ -104,7 +104,7 @@ class DashboardFragment : Fragment() {
             InboxNotification("Dec 3rd", "This is a Notification")
         )
         dashboard_notifications_rv.apply {
-            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            layoutManager = LinearLayoutManager(context, HORIZONTAL, false)
             adapter = NotificationAdapter(inboxNotifications, true)
             val dividerItemDecoration = DividerItemDecoration(context, HORIZONTAL)
             addItemDecoration(dividerItemDecoration)

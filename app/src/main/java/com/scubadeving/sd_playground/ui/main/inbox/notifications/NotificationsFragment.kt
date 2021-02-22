@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager.*
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.InboxNotification
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.NotificationAdapter
@@ -46,7 +47,7 @@ class NotificationsFragment : Fragment() {
             InboxNotification("Dec 3rd", "This is a Notification")
         )
         notifications_rv.apply {
-            layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+            layoutManager = LinearLayoutManager(context, VERTICAL, false)
             adapter = NotificationAdapter(inboxNotifications, false)
         }
     }

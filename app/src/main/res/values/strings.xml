@@ -53,5 +53,6 @@
 
     <!-- InfoView -->
     <string name="infoview_content_description">An Icon for an InfoView</string>
+    <string name="label_chat_detail">ChatDetailsFragment</string>
 
 </resources>

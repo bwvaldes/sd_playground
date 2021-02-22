@@ -1,0 +1,47 @@
+package com.scubadeving.sd_playground.ui.adapters.recyclerview
+
+import android.view.View
+import android.view.ViewGroup
+import androidx.navigation.findNavController
+import androidx.recyclerview.widget.RecyclerView
+import com.scubadeving.sd_playground.MainNavigationDirections
+import com.scubadeving.sd_playground.R
+import com.scubadeving.sd_playground.data.Diver
+import com.scubadeving.sd_playground.data.InboxNotification
+import com.scubadeving.sd_playground.utils.inflate
+import kotlinx.android.synthetic.main.item_chat_detail_container_member_.view.*
+import kotlinx.android.synthetic.main.item_notification_card_dashboard.view.*
+import kotlinx.android.synthetic.main.item_notification_card_list.view.*
+
+class ChatMemberAdapter(
+    private val chatMembers: List<Diver>
+) : RecyclerView.Adapter<ChatMemberAdapter.ChatMemberViewHolder>() {
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatMemberViewHolder {
+        val inflatedView = parent.inflate(R.layout.item_chat_detail_container_member_, false)
+        return ChatMemberViewHolder(inflatedView)
+    }
+
+    override fun getItemCount(): Int = chatMembers.size
+
+    override fun onBindViewHolder(holder: ChatMemberViewHolder, position: Int) {
+        val member = chatMembers[position]
+        holder.bind(member, position)
+    }
+
+    inner class ChatMemberViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+        fun bind(chatMember: Diver, position: Int) {
+            itemView.apply {
+                setOnClickListener { navigateToProfile(it, chatMember) }
+                chat_detail_card_diver_name.text = chatMember.name
+                chat_detail_card_diver_username.text = "username"
+            }
+        }
+    }
+
+    private fun navigateToProfile(it: View, diver: Diver) {
+        val directions = MainNavigationDirections.actionGlobalProfileFragment(diver.name)
+        it.findNavController().navigate(directions)
+    }
+}
