@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.GridLayoutManager.VERTICAL
 import androidx.recyclerview.widget.GridLayoutManager.HORIZONTAL
+import androidx.recyclerview.widget.GridLayoutManager.VERTICAL
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.Gear

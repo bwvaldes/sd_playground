@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/sd_playground.iml" filepath="$PROJECT_DIR$/.idea/modules/sd_playground.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/sd_playground.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/sd_playground.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sd_playground.buildSrc.iml" filepath="$PROJECT_DIR$/.idea/modules/sd_playground.buildSrc.iml" />
     </modules>
   </component>
 </project>
