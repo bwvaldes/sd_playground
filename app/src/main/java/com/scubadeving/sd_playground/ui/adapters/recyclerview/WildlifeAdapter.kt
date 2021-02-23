@@ -24,12 +24,12 @@ class WildlifeAdapter(private val wildlife: ArrayList<Wildlife>) :
 
     override fun onBindViewHolder(holder: WildlifeViewHolder, position: Int) {
         val wildlife = wildlife[position]
-        holder.bind(wildlife, position)
+        holder.bind(wildlife)
     }
 
     inner class WildlifeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(wildlife: Wildlife, position: Int) {
+        fun bind(wildlife: Wildlife) {
             itemView.apply {
                 wildlife_card_name.text = wildlife.commonName
                 setOnClickListener {

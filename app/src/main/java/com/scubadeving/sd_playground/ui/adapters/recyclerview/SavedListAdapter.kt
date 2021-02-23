@@ -24,12 +24,12 @@ class SavedListAdapter(private val savedLists: List<SavedList>) :
 
     override fun onBindViewHolder(holder: SavedListViewHolder, position: Int) {
         val savedList = savedLists[position]
-        holder.bind(savedList, position)
+        holder.bind(savedList)
     }
 
     inner class SavedListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(savedList: SavedList, position: Int) {
+        fun bind(savedList: SavedList) {
             itemView.apply {
                 saved_list_text.text = savedList.name
                 setOnClickListener {

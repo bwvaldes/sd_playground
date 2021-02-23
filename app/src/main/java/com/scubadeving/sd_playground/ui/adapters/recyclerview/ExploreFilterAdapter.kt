@@ -24,12 +24,12 @@ class ExploreFilterAdapter(private val filters: List<ExploreFilter>) :
 
     override fun onBindViewHolder(holder: ExploreFilterViewHolder, position: Int) {
         val filter = filters[position]
-        holder.bind(filter, position)
+        holder.bind(filter)
     }
 
     inner class ExploreFilterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(filter: ExploreFilter, position: Int) {
+        fun bind(filter: ExploreFilter) {
             itemView.apply {
                 explore_filter_card_text.text = filter.name
                 setOnClickListener {

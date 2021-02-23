@@ -27,12 +27,12 @@ class GearAdapter(private val gearProfiles: ArrayList<GearProfile>, val orientat
 
     override fun onBindViewHolder(holder: GearViewHolder, position: Int) {
         val gearProfile = gearProfiles[position]
-        holder.bind(gearProfile, position)
+        holder.bind(gearProfile)
     }
 
     inner class GearViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(gearProfile: GearProfile, position: Int) {
+        fun bind(gearProfile: GearProfile) {
             itemView.apply {
                 if (orientation) {
                     configureGearProfileLayout(gearProfile)

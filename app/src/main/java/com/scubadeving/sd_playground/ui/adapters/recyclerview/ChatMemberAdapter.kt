@@ -24,12 +24,12 @@ class ChatMemberAdapter(
 
     override fun onBindViewHolder(holder: ChatMemberViewHolder, position: Int) {
         val member = chatMembers[position]
-        holder.bind(member, position)
+        holder.bind(member)
     }
 
     inner class ChatMemberViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(chatMember: Diver, position: Int) {
+        fun bind(chatMember: Diver) {
             itemView.apply {
                 setOnClickListener { navigateToProfile(it, chatMember) }
                 chat_detail_card_diver_name.text = chatMember.name

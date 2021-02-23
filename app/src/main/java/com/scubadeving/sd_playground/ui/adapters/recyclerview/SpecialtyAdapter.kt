@@ -24,12 +24,12 @@ class SpecialtyAdapter(private val specialties: List<Specialty>) :
 
     override fun onBindViewHolder(holder: SpecialtyViewHolder, position: Int) {
         val specialtyCards = specialties[position]
-        holder.bind(specialtyCards, position)
+        holder.bind(specialtyCards)
     }
 
     inner class SpecialtyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(specialty: Specialty, position: Int) {
+        fun bind(specialty: Specialty) {
             itemView.apply {
                 cert_card_text.text = specialty.name
                 setOnClickListener {

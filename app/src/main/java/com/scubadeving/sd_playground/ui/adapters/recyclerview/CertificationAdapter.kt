@@ -40,12 +40,12 @@ class CertificationAdapter(
 
     override fun onBindViewHolder(holder: CertificationViewHolder, position: Int) {
         val certification = certifications[position]
-        holder.bind(certification, position)
+        holder.bind(certification)
     }
 
     inner class CertificationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(certification: Certification, position: Int) {
+        fun bind(certification: Certification) {
             itemView.apply {
                 if (orientation) {
                     configureCertificationCatalogLayout(certification)

@@ -39,12 +39,12 @@ class DiveLogAdapter(private val diveLogs: ArrayList<DiveLog>, val orientation: 
 
     override fun onBindViewHolder(holderLog: DiveLogViewHolder, position: Int) {
         val loggedDive = diveLogs[position]
-        holderLog.bind(loggedDive, position)
+        holderLog.bind(loggedDive)
     }
 
     inner class DiveLogViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(diveLog: DiveLog, position: Int) {
+        fun bind(diveLog: DiveLog) {
             itemView.apply {
                 if (orientation) {
                     configureLogbookListLayout(diveLog)

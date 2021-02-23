@@ -28,12 +28,12 @@ class MessageAdapter(private val messages: ArrayList<InboxMessage>) :
 
     override fun onBindViewHolder(holder: MessageViewHolder, position: Int) {
         val message = messages[position]
-        holder.bind(message, position)
+        holder.bind(message)
     }
 
     inner class MessageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(message: InboxMessage, position: Int) {
+        fun bind(message: InboxMessage) {
             itemView.apply {
                 message_card_avatar.setOnClickListener { navigateToProfile(it, message.diver) }
                 message_card_diver_name.text = message.diver.name

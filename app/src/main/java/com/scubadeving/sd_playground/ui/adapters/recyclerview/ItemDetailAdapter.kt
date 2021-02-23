@@ -21,12 +21,12 @@ class ItemDetailAdapter(private val details: List<String>) :
 
     override fun onBindViewHolder(holder: ItemDetailViewHolder, position: Int) {
         val details = details[position]
-        holder.bind(details, position)
+        holder.bind(details)
     }
 
     inner class ItemDetailViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(detail: String, position: Int) {
+        fun bind(detail: String) {
             itemView.apply {
                 item_detail_text.text = detail
                 setOnClickListener {

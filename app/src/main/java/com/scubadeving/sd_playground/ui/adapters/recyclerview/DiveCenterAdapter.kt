@@ -24,12 +24,12 @@ class DiveCenterAdapter(private val diveCenters: List<DiveCenter>) :
 
     override fun onBindViewHolder(holder: DiveCenterViewHolder, position: Int) {
         val diveCenter = diveCenters[position]
-        holder.bind(diveCenter, position)
+        holder.bind(diveCenter)
     }
 
     inner class DiveCenterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(diveCenter: DiveCenter, position: Int) {
+        fun bind(diveCenter: DiveCenter) {
             itemView.apply {
                 dive_center_name.text = diveCenter.name
                 setOnClickListener {
