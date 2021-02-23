@@ -10,8 +10,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.tabs.TabLayoutMediator
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.ui.adapters.viewpager.LogbookViewPagerAdapter
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_logbook.*
+import kotlinx.android.synthetic.main.activity_main.fab
+import kotlinx.android.synthetic.main.fragment_logbook.logbook_pager
+import kotlinx.android.synthetic.main.fragment_logbook.logbook_tab_layout
 
 class LogbookMainFragment : Fragment() {
 

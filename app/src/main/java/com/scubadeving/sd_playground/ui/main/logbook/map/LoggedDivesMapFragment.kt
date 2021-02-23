@@ -9,13 +9,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager.*
+import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.DiveLog
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.DiveLogAdapter
-import kotlinx.android.synthetic.main.fragment_logged_dives_map.*
+import kotlinx.android.synthetic.main.fragment_logged_dives_map.logged_dives_map_rv
 
 class LoggedDivesMapFragment : Fragment() {
 

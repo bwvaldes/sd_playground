@@ -14,12 +14,18 @@ import com.scubadeving.sd_playground.MainNavigationDirections
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.DiveSite
 import com.scubadeving.sd_playground.utils.inflate
-import kotlinx.android.synthetic.main.item_dive_site_card_large.view.*
-import kotlinx.android.synthetic.main.item_dive_site_card_small.view.*
+import kotlinx.android.synthetic.main.item_dive_site_card_large.view.dive_site_card_large_favorite
+import kotlinx.android.synthetic.main.item_dive_site_card_large.view.dive_site_card_large_location
+import kotlinx.android.synthetic.main.item_dive_site_card_large.view.dive_site_card_large_name
+import kotlinx.android.synthetic.main.item_dive_site_card_large.view.dive_site_card_large_rating
+import kotlinx.android.synthetic.main.item_dive_site_card_small.view.dive_site_card_small_favorite
+import kotlinx.android.synthetic.main.item_dive_site_card_small.view.dive_site_card_small_location
+import kotlinx.android.synthetic.main.item_dive_site_card_small.view.dive_site_card_small_name
+import kotlinx.android.synthetic.main.item_dive_site_card_small.view.dive_site_card_small_popularity
+import kotlinx.android.synthetic.main.item_dive_site_card_small.view.dive_site_card_small_rating
 
 class DiveSiteAdapter(private val diveSites: List<DiveSite>, val orientation: Boolean = true) :
     RecyclerView.Adapter<DiveSiteAdapter.DiveSiteViewHolder>() {
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DiveSiteViewHolder {
         val layout = if (orientation) R.layout.item_dive_site_card_small else R.layout.item_dive_site_card_large
@@ -101,9 +107,9 @@ class DiveSiteAdapter(private val diveSites: List<DiveSite>, val orientation: Bo
             dive_site_card_large_location.text = diveSite.location
         }
 
-        private fun navigateToDiveSiteDetail(it: View, diveSite: DiveSite) {
+        private fun navigateToDiveSiteDetail(view: View, diveSite: DiveSite) {
             val directions = MainNavigationDirections.actionGlobalDiveSiteDetailFragment(diveSite.name)
-            it.findNavController().navigate(directions)
+            view.findNavController().navigate(directions)
         }
     }
 }

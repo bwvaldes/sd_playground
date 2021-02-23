@@ -13,8 +13,13 @@ import androidx.navigation.fragment.navArgs
 import com.google.android.material.tabs.TabLayoutMediator
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.ui.adapters.viewpager.ProfileViewPagerAdapter
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_profile.*
+import kotlinx.android.synthetic.main.activity_main.fab
+import kotlinx.android.synthetic.main.fragment_profile.profile_appbar
+import kotlinx.android.synthetic.main.fragment_profile.profile_pager
+import kotlinx.android.synthetic.main.fragment_profile.profile_tab_layout
+import kotlinx.android.synthetic.main.fragment_profile.profile_toolbar
+import kotlinx.android.synthetic.main.fragment_profile.profile_toolbar_layout
+import kotlinx.android.synthetic.main.fragment_profile.profile_username
 
 class ProfileFragment : Fragment() {
 

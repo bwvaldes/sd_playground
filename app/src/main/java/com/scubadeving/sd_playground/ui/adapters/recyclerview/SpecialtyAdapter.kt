@@ -44,9 +44,9 @@ class SpecialtyAdapter(private val specialties: List<Specialty>) :
             }
         }
 
-        private fun navigateToSpecialtyDetail(it: View, specialty: Specialty) {
+        private fun navigateToSpecialtyDetail(view: View, specialty: Specialty) {
             val directions = MainNavigationDirections.actionGlobalCertDetailFragment(specialty.name)
-            it.findNavController().navigate(directions)
+            view.findNavController().navigate(directions)
         }
     }
 }

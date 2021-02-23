@@ -10,15 +10,15 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager.*
+import androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
 import com.google.android.material.chip.Chip
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.Certification
 import com.scubadeving.sd_playground.data.Specialty
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.CertificationAdapter
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_catalog.*
-
+import kotlinx.android.synthetic.main.activity_main.fab
+import kotlinx.android.synthetic.main.fragment_catalog.agency_filters
+import kotlinx.android.synthetic.main.fragment_catalog.cert_path_level_rv
 
 class CatalogFragment : Fragment() {
 

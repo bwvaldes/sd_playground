@@ -10,8 +10,19 @@ import com.scubadeving.sd_playground.MainNavigationDirections
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.Diver
 import com.scubadeving.sd_playground.utils.inflate
-import kotlinx.android.synthetic.main.item_explore_buddies_horizontal_card.view.*
-import kotlinx.android.synthetic.main.item_explore_buddies_vertical_card.view.*
+import kotlinx.android.synthetic.main.item_explore_buddies_horizontal_card.view.diver_card_horizontal_add_buddy
+import kotlinx.android.synthetic.main.item_explore_buddies_horizontal_card.view.diver_card_horizontal_avatar
+import kotlinx.android.synthetic.main.item_explore_buddies_horizontal_card.view.diver_card_horizontal_background
+import kotlinx.android.synthetic.main.item_explore_buddies_horizontal_card.view.diver_card_horizontal_buddy_count
+import kotlinx.android.synthetic.main.item_explore_buddies_horizontal_card.view.diver_card_horizontal_clear
+import kotlinx.android.synthetic.main.item_explore_buddies_horizontal_card.view.diver_card_horizontal_level
+import kotlinx.android.synthetic.main.item_explore_buddies_horizontal_card.view.diver_card_horizontal_name
+import kotlinx.android.synthetic.main.item_explore_buddies_vertical_card.view.diver_card_vertical_add_buddy
+import kotlinx.android.synthetic.main.item_explore_buddies_vertical_card.view.diver_card_vertical_avatar
+import kotlinx.android.synthetic.main.item_explore_buddies_vertical_card.view.diver_card_vertical_background
+import kotlinx.android.synthetic.main.item_explore_buddies_vertical_card.view.diver_card_vertical_clear
+import kotlinx.android.synthetic.main.item_explore_buddies_vertical_card.view.diver_card_vertical_level
+import kotlinx.android.synthetic.main.item_explore_buddies_vertical_card.view.diver_card_vertical_name
 
 class BuddyAdapter(private val divers: ArrayList<Diver>, val orientation: Boolean) :
     RecyclerView.Adapter<BuddyAdapter.BuddyViewHolder>() {
@@ -97,9 +108,9 @@ class BuddyAdapter(private val divers: ArrayList<Diver>, val orientation: Boolea
             notifyItemRangeChanged(position, divers.size)
         }
 
-        private fun navigateToProfile(it: View, diver: Diver) {
+        private fun navigateToProfile(view: View, diver: Diver) {
             val directions = MainNavigationDirections.actionGlobalProfileFragment(diver.name)
-            it.findNavController().navigate(directions)
+            view.findNavController().navigate(directions)
         }
     }
 

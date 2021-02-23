@@ -12,13 +12,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.Diver
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.ChatMemberAdapter
-import kotlinx.android.synthetic.main.fragment_chat_details.*
+import kotlinx.android.synthetic.main.fragment_chat_details.chat_detail_members_rv
+import kotlinx.android.synthetic.main.fragment_chat_details.chat_detail_toolbar
 
 class ChatDetailFragment : Fragment() {
 
     private lateinit var chatDetailViewModel: ChatDetailViewModel
     private val args: ChatDetailFragmentArgs by navArgs()
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,7 +32,7 @@ class ChatDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         chat_detail_toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
-        val members = listOf(Diver(args.diverName,"Open Water",2))
+        val members = listOf(Diver(args.diverName, "Open Water", 2))
         chat_detail_members_rv.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
             adapter = ChatMemberAdapter(members)

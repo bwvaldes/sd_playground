@@ -7,7 +7,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.utils.inflate
-import kotlinx.android.synthetic.main.item_detail_card.view.*
+import kotlinx.android.synthetic.main.item_detail_card.view.item_detail_text
 
 class ItemDetailAdapter(private val details: List<String>) :
     RecyclerView.Adapter<ItemDetailAdapter.ItemDetailViewHolder>() {
@@ -24,7 +24,7 @@ class ItemDetailAdapter(private val details: List<String>) :
         holder.bind(details, position)
     }
 
-    inner class ItemDetailViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+    inner class ItemDetailViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(detail: String, position: Int) {
             itemView.apply {

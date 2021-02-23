@@ -10,7 +10,7 @@ import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.SavedList
 import com.scubadeving.sd_playground.ui.main.saved.SavedFragmentDirections
 import com.scubadeving.sd_playground.utils.inflate
-import kotlinx.android.synthetic.main.item_saved_card.view.*
+import kotlinx.android.synthetic.main.item_saved_card.view.saved_list_text
 
 class SavedListAdapter(private val savedLists: List<SavedList>) :
     RecyclerView.Adapter<SavedListAdapter.SavedListViewHolder>() {
@@ -44,9 +44,9 @@ class SavedListAdapter(private val savedLists: List<SavedList>) :
             }
         }
 
-        private fun navigateToSavedList(it: View, savedList: SavedList) {
+        private fun navigateToSavedList(view: View, savedList: SavedList) {
             val directions = SavedFragmentDirections.actionSavedFragmentToSavedDetailFragment(savedList.name)
-            it.findNavController().navigate(directions)
+            view.findNavController().navigate(directions)
         }
     }
 }

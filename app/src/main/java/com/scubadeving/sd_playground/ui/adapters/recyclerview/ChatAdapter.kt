@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.RecyclerView
 import com.scubadeving.sd_playground.MainNavigationDirections
 import com.scubadeving.sd_playground.R
@@ -13,12 +12,15 @@ import com.scubadeving.sd_playground.data.ChatMessage.Companion.MESSAGE_TYPE_DAT
 import com.scubadeving.sd_playground.data.ChatMessage.Companion.MESSAGE_TYPE_GUEST
 import com.scubadeving.sd_playground.data.ChatMessage.Companion.MESSAGE_TYPE_HOST
 import com.scubadeving.sd_playground.data.Diver
-import com.scubadeving.sd_playground.ui.main.inbox.messages.chat.ChatFragmentArgs
-import kotlinx.android.synthetic.main.item_chat_container_date.view.*
-import kotlinx.android.synthetic.main.item_chat_container_guest.view.*
-import kotlinx.android.synthetic.main.item_chat_container_host.view.*
+import kotlinx.android.synthetic.main.item_chat_container_date.view.chat_date_message
+import kotlinx.android.synthetic.main.item_chat_container_guest.view.chat_guest_avatar
+import kotlinx.android.synthetic.main.item_chat_container_guest.view.chat_guest_message
+import kotlinx.android.synthetic.main.item_chat_container_guest.view.chat_guest_message_time
+import kotlinx.android.synthetic.main.item_chat_container_guest.view.chat_guest_name
+import kotlinx.android.synthetic.main.item_chat_container_host.view.chat_host_message
+import kotlinx.android.synthetic.main.item_chat_container_host.view.chat_host_message_time
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Locale
 
 class ChatAdapter(var chatMessages: MutableList<ChatMessage>) :
     RecyclerView.Adapter<ChatAdapter.ChatMessageViewHolder<*>>() {
@@ -89,9 +91,9 @@ class ChatAdapter(var chatMessages: MutableList<ChatMessage>) :
             }
         }
 
-        private fun navigateToProfile(it: View, diver: Diver) {
+        private fun navigateToProfile(view: View, diver: Diver) {
             val directions = MainNavigationDirections.actionGlobalProfileFragment(diver.name)
-            it.findNavController().navigate(directions)
+            view.findNavController().navigate(directions)
         }
     }
 
@@ -99,7 +101,7 @@ class ChatAdapter(var chatMessages: MutableList<ChatMessage>) :
         abstract fun bind(message: T)
     }
 
-    fun addMessage(message: ChatMessage){
+    fun addMessage(message: ChatMessage) {
         chatMessages.add(message)
         notifyDataSetChanged()
     }

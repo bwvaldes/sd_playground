@@ -10,7 +10,9 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.tabs.TabLayoutMediator
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.ui.adapters.viewpager.QRCodePagerAdapter
-import kotlinx.android.synthetic.main.fragment_detail_qrcode_main.*
+import kotlinx.android.synthetic.main.fragment_detail_qrcode_main.qrcode_pager
+import kotlinx.android.synthetic.main.fragment_detail_qrcode_main.qrcode_tab_layout
+import kotlinx.android.synthetic.main.fragment_detail_qrcode_main.qrcode_toolbar
 
 class QRCodeMainFragment : Fragment() {
 

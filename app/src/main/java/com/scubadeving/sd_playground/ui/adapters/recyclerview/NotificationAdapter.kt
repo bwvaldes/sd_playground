@@ -9,8 +9,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.InboxNotification
 import com.scubadeving.sd_playground.utils.inflate
-import kotlinx.android.synthetic.main.item_notification_card_dashboard.view.*
-import kotlinx.android.synthetic.main.item_notification_card_list.view.*
+import kotlinx.android.synthetic.main.item_notification_card_dashboard.view.notification_card_dashboard_clear
+import kotlinx.android.synthetic.main.item_notification_card_dashboard.view.notification_card_dashboard_count
+import kotlinx.android.synthetic.main.item_notification_card_dashboard.view.notification_card_dashboard_data
+import kotlinx.android.synthetic.main.item_notification_card_dashboard.view.notification_card_dashboard_date
+import kotlinx.android.synthetic.main.item_notification_card_list.view.notification_card_list_data
+import kotlinx.android.synthetic.main.item_notification_card_list.view.notification_card_list_date
 
 class NotificationAdapter(
     private val inboxNotifications: MutableList<InboxNotification>,
@@ -77,8 +81,8 @@ class NotificationAdapter(
             notification_card_list_data.text = inboxNotification.data
         }
 
-        private fun navigateToNotificationDetail(it: View) {
-            it.findNavController().navigate(R.id.inboxFragment)
+        private fun navigateToNotificationDetail(view: View) {
+            view.findNavController().navigate(R.id.inboxFragment)
         }
     }
 }

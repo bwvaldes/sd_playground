@@ -6,15 +6,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.*
-import androidx.recyclerview.widget.LinearLayoutManager.*
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager.HORIZONTAL
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.PagerSnapHelper
+import androidx.recyclerview.widget.SnapHelper
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.ExploreFilter
 import com.scubadeving.sd_playground.data.Wildlife
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.ExploreFilterAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.WildlifeAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.decorations.GridSpacingItemDecoration
-import kotlinx.android.synthetic.main.fragment_explore_wildlife.*
+import kotlinx.android.synthetic.main.fragment_explore_wildlife.explore_wildlife_filter_rv
+import kotlinx.android.synthetic.main.fragment_explore_wildlife.explore_wildlife_nearby_rv
 
 class ExploreWildlifeFragment : Fragment() {
 

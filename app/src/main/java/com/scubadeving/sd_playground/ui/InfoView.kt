@@ -15,12 +15,14 @@ import androidx.core.widget.ImageViewCompat
 import androidx.core.widget.TextViewCompat
 import com.google.android.material.card.MaterialCardView
 import com.scubadeving.sd_playground.R
-import kotlinx.android.synthetic.main.view_infoview.view.*
+import kotlinx.android.synthetic.main.view_infoview.view.info_view_data_text
+import kotlinx.android.synthetic.main.view_infoview.view.info_view_heading_text
+import kotlinx.android.synthetic.main.view_infoview.view.info_view_icon
 
 class InfoView @JvmOverloads constructor(
-        context: Context,
-        attrs: AttributeSet? = null,
-        defStyleAttr: Int = 0
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = 0
 ) : MaterialCardView(context, attrs, defStyleAttr) {
 
     init {
@@ -28,10 +30,10 @@ class InfoView @JvmOverloads constructor(
 
         attrs?.let {
             val styledAttributes = context.obtainStyledAttributes(
-                    it,
-                    R.styleable.InfoView,
-                    R.attr.infoViewStyle,
-                    R.style.Widget_AppTheme_InfoView
+                it,
+                R.styleable.InfoView,
+                R.attr.infoViewStyle,
+                R.style.Widget_AppTheme_InfoView
             )
 
             configureInfoViewIcon(styledAttributes, context)
@@ -105,10 +107,10 @@ class InfoView @JvmOverloads constructor(
     }
 
     private fun buildInfoViewHeading(
-            text: String?,
-            textSize: Int,
-            textColor: Int,
-            textStyle: Int
+        text: String?,
+        textSize: Int,
+        textColor: Int,
+        textStyle: Int
     ) {
         setHeadingText(text)
         setHeadingTextSize(textSize)
@@ -159,10 +161,10 @@ class InfoView @JvmOverloads constructor(
     }
 
     private fun buildInfoViewData(
-            text: String?,
-            textSize: Int,
-            textColor: Int,
-            textStyle: Int
+        text: String?,
+        textSize: Int,
+        textColor: Int,
+        textStyle: Int
     ) {
         setDataText(text)
         setDataTextSize(textSize)

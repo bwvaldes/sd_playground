@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.navArgs
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
 import com.scubadeving.sd_playground.R
@@ -15,13 +15,13 @@ import com.scubadeving.sd_playground.data.DiveSite
 import com.scubadeving.sd_playground.data.Wildlife
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.DiveSiteAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.WildlifeAdapter
-import kotlinx.android.synthetic.main.fragment_explore_details_filtered.*
+import kotlinx.android.synthetic.main.fragment_explore_details_filtered.explore_details_filtered_rv
+import kotlinx.android.synthetic.main.fragment_explore_details_filtered.explore_details_filtered_toolbar
 
 class ExploreDetailsFilteredFragment : Fragment() {
 
     private lateinit var exploreDetailsFilteredViewModel: ExploreDetailsFilteredViewModel
     private val args: ExploreDetailsFilteredFragmentArgs by navArgs()
-
 
     override fun onCreateView(
         inflater: LayoutInflater,

@@ -8,4 +8,5 @@ class AboutViewModel : ViewModel() {
     private val _text = MutableLiveData<String>().apply {
         value = "This is About Fragment"
     }
-    val text: LiveData<String> = _text}
+    val text: LiveData<String> = _text
+}

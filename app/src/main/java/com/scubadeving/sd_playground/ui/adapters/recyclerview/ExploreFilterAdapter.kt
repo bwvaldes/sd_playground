@@ -10,7 +10,7 @@ import com.scubadeving.sd_playground.MainNavigationDirections
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.ExploreFilter
 import com.scubadeving.sd_playground.utils.inflate
-import kotlinx.android.synthetic.main.item_explore_filter_card.view.*
+import kotlinx.android.synthetic.main.item_explore_filter_card.view.explore_filter_card_text
 
 class ExploreFilterAdapter(private val filters: List<ExploreFilter>) :
     RecyclerView.Adapter<ExploreFilterAdapter.ExploreFilterViewHolder>() {
@@ -44,9 +44,9 @@ class ExploreFilterAdapter(private val filters: List<ExploreFilter>) :
             }
         }
 
-        private fun navigateToExploreSitesDetail(it: View, filter: ExploreFilter) {
+        private fun navigateToExploreSitesDetail(view: View, filter: ExploreFilter) {
             val directions = MainNavigationDirections.actionGlobalExploreDetailsFilteredFragment(filter.name)
-            it.findNavController().navigate(directions)
+            view.findNavController().navigate(directions)
         }
     }
 }

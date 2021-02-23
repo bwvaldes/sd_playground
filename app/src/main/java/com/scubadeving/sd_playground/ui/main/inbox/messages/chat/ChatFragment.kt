@@ -18,7 +18,8 @@ import com.scubadeving.sd_playground.data.ChatMessage.Companion.MESSAGE_TYPE_GUE
 import com.scubadeving.sd_playground.data.ChatMessage.Companion.MESSAGE_TYPE_HOST
 import com.scubadeving.sd_playground.data.Diver
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.ChatAdapter
-import kotlinx.android.synthetic.main.fragment_chat.*
+import kotlinx.android.synthetic.main.fragment_chat.chat_message_rv
+import kotlinx.android.synthetic.main.fragment_chat.chat_toolbar
 
 class ChatFragment : Fragment() {
 
@@ -26,7 +27,8 @@ class ChatFragment : Fragment() {
     private val args: ChatFragmentArgs by navArgs()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         chatViewModel = ViewModelProvider(this).get(ChatViewModel::class.java)

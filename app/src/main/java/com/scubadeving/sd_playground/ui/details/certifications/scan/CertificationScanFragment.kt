@@ -9,7 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.scubadeving.sd_playground.R
-import kotlinx.android.synthetic.main.fragment_detail_cert_scan.*
+import kotlinx.android.synthetic.main.fragment_detail_cert_scan.cert_scan_add_manually
+import kotlinx.android.synthetic.main.fragment_detail_cert_scan.cert_scan_cert
+import kotlinx.android.synthetic.main.fragment_detail_cert_scan.cert_scan_toolbar
 
 class CertificationScanFragment : Fragment() {
 
@@ -29,11 +31,9 @@ class CertificationScanFragment : Fragment() {
         cert_scan_toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
         cert_scan_cert.setOnClickListener {
             Toast.makeText(activity, "Scan Cert", Toast.LENGTH_SHORT).show()
-
         }
         cert_scan_add_manually.setOnClickListener {
             Toast.makeText(activity, "Just Clicked Add Cert Manually", Toast.LENGTH_SHORT).show()
-
         }
     }
 }

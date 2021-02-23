@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.ui.adapters.viewpager.WildlifeViewPagerAdapter
-import kotlinx.android.synthetic.main.fragment_detail_wildlife_main.*
+import kotlinx.android.synthetic.main.fragment_detail_wildlife_main.wildlife_pager
 
 class WildlifeMainFragment : Fragment() {
 

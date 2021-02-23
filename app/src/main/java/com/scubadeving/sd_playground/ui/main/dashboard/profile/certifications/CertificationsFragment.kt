@@ -11,10 +11,10 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.GridLayoutManager.VERTICAL
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.Certification
-import com.scubadeving.sd_playground.ui.adapters.recyclerview.decorations.GridSpacingItemDecoration
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.CertificationAdapter
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_profile_certifications.*
+import com.scubadeving.sd_playground.ui.adapters.recyclerview.decorations.GridSpacingItemDecoration
+import kotlinx.android.synthetic.main.activity_main.fab
+import kotlinx.android.synthetic.main.fragment_profile_certifications.cert_card_rv
 
 class CertificationsFragment : Fragment() {
 

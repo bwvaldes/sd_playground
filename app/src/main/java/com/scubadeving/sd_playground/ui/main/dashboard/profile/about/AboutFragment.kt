@@ -8,14 +8,15 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.scubadeving.sd_playground.R
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.fab
 
 class AboutFragment : Fragment() {
 
     private lateinit var aboutViewModel: AboutViewModel
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         aboutViewModel = ViewModelProvider(this).get(AboutViewModel::class.java)

@@ -10,7 +10,7 @@ import com.scubadeving.sd_playground.MainNavigationDirections
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.Wildlife
 import com.scubadeving.sd_playground.utils.inflate
-import kotlinx.android.synthetic.main.item_wildlife_card_small.view.*
+import kotlinx.android.synthetic.main.item_wildlife_card_small.view.wildlife_card_name
 
 class WildlifeAdapter(private val wildlife: ArrayList<Wildlife>) :
     RecyclerView.Adapter<WildlifeAdapter.WildlifeViewHolder>() {
@@ -41,9 +41,9 @@ class WildlifeAdapter(private val wildlife: ArrayList<Wildlife>) :
             }
         }
 
-        private fun navigateToWildlifeDetail(it: View, wildlife: Wildlife) {
+        private fun navigateToWildlifeDetail(view: View, wildlife: Wildlife) {
             val directions = MainNavigationDirections.actionGlobalWildlifeDetailFragment(wildlife.commonName)
-            it.findNavController().navigate(directions)
+            view.findNavController().navigate(directions)
         }
     }
 }

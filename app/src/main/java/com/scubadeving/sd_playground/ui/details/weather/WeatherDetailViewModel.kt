@@ -8,4 +8,5 @@ class WeatherDetailViewModel : ViewModel() {
     private val _text = MutableLiveData<String>().apply {
         value = "This is Weather Detail Fragment"
     }
-    val text: LiveData<String> = _text}
+    val text: LiveData<String> = _text
+}

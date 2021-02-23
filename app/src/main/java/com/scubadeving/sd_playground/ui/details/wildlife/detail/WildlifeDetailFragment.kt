@@ -18,7 +18,10 @@ import com.scubadeving.sd_playground.data.ConservationStatus
 import com.scubadeving.sd_playground.data.Wildlife
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.ItemDetailAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.WildlifeAdapter
-import kotlinx.android.synthetic.main.fragment_detail_wildlife_details.*
+import kotlinx.android.synthetic.main.fragment_detail_wildlife_details.wildlife_detail_encounters_rv
+import kotlinx.android.synthetic.main.fragment_detail_wildlife_details.wildlife_detail_nearby_rv
+import kotlinx.android.synthetic.main.fragment_detail_wildlife_details.wildlife_detail_toolbar
+import kotlinx.android.synthetic.main.fragment_detail_wildlife_details.wildlife_detail_toolbar_layout
 
 class WildlifeDetailFragment : Fragment() {
 
@@ -26,7 +29,8 @@ class WildlifeDetailFragment : Fragment() {
     private val args: WildlifeDetailFragmentArgs by navArgs()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         wildlifeDetailViewModel = ViewModelProvider(this).get(WildlifeDetailViewModel::class.java)

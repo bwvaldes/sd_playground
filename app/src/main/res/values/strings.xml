@@ -22,6 +22,8 @@
     <string name="label_saved">SavedFragment</string>
     <string name="label_wildlife_detail">WildlifeDetailFragment</string>
     <string name="label_saved_detail">SavedDetailFragment</string>
+    <string name="label_chat_detail">ChatDetailsFragment</string>
+    <string name="label_gear_detail">GearProfileDetailFragment</string>
 
     <!-- Logbook -->
     <string name="logbook_tab_dives">Dives</string>
@@ -53,6 +55,5 @@
 
     <!-- InfoView -->
     <string name="infoview_content_description">An Icon for an InfoView</string>
-    <string name="label_chat_detail">ChatDetailsFragment</string>
 
 </resources>

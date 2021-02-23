@@ -5,15 +5,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.findNavController
-import androidx.recyclerview.widget.*
-import androidx.recyclerview.widget.LinearLayoutManager.*
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
+import androidx.recyclerview.widget.PagerSnapHelper
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.SnapHelper
 import com.scubadeving.sd_playground.MainNavigationDirections
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.Certification
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.CertificationAdapter.CertificationViewHolder
 import com.scubadeving.sd_playground.utils.inflate
-import kotlinx.android.synthetic.main.item_cert_card_profile.view.*
-import kotlinx.android.synthetic.main.item_cert_level.view.*
+import kotlinx.android.synthetic.main.item_cert_card_profile.view.profile_cert_card_text
+import kotlinx.android.synthetic.main.item_cert_level.view.cert_level_name
+import kotlinx.android.synthetic.main.item_cert_level.view.cert_level_specialty_rv
 
 class CertificationAdapter(
     private val certifications: List<Certification>,
@@ -76,9 +81,9 @@ class CertificationAdapter(
             profile_cert_card_text.text = certification.name
         }
 
-        private fun navigateToCertificationDetail(it: View, certification: Certification) {
+        private fun navigateToCertificationDetail(view: View, certification: Certification) {
             val directions = MainNavigationDirections.actionGlobalCertDetailFragment(certification.name)
-            it.findNavController().navigate(directions)
+            view.findNavController().navigate(directions)
         }
     }
 

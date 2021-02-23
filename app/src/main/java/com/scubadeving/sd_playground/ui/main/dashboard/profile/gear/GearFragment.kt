@@ -4,28 +4,28 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout.VERTICAL
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.*
+import androidx.recyclerview.widget.GridLayoutManager.VERTICAL
+import androidx.recyclerview.widget.GridLayoutManager.HORIZONTAL
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.scubadeving.sd_playground.R
-import com.scubadeving.sd_playground.data.Diver
 import com.scubadeving.sd_playground.data.Gear
 import com.scubadeving.sd_playground.data.GearProfile
-import com.scubadeving.sd_playground.ui.adapters.recyclerview.BuddyAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.GearAdapter
-import com.scubadeving.sd_playground.ui.adapters.recyclerview.decorations.GridSpacingItemDecoration
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_explore_buddies.*
-import kotlinx.android.synthetic.main.fragment_profile_gear.*
+import kotlinx.android.synthetic.main.activity_main.fab
+import kotlinx.android.synthetic.main.fragment_profile_gear.gear_filtered_rv
+import kotlinx.android.synthetic.main.fragment_profile_gear.gear_profile_gear_list
+import kotlinx.android.synthetic.main.fragment_profile_gear.gear_profiles_rv
 
 class GearFragment : Fragment() {
 
     private lateinit var gearViewModel: GearViewModel
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         gearViewModel = ViewModelProvider(this).get(GearViewModel::class.java)
@@ -54,7 +54,7 @@ class GearFragment : Fragment() {
                 GearProfile("Tropical", gearList)
             )
         gear_profiles_rv.apply {
-            layoutManager = LinearLayoutManager(context, GridLayoutManager.HORIZONTAL, false)
+            layoutManager = LinearLayoutManager(context, HORIZONTAL, false)
             adapter = GearAdapter(gearProfiles, true)
         }
         gear_profile_gear_list.text = gearList.toString()
@@ -70,12 +70,11 @@ class GearFragment : Fragment() {
                 GearProfile("Tropical", gearList)
             )
         gear_filtered_rv.apply {
-            layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+            layoutManager = LinearLayoutManager(context, VERTICAL, false)
             adapter = GearAdapter(gearProfiles, false)
             setOnClickListener {
                 Toast.makeText(context, "Just Clicked Gear Item!", Toast.LENGTH_SHORT).show()
             }
         }
     }
-
 }

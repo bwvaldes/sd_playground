@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.DiveCenter
 import com.scubadeving.sd_playground.utils.inflate
-import kotlinx.android.synthetic.main.item_dive_center_card.view.*
+import kotlinx.android.synthetic.main.item_dive_center_card.view.dive_center_name
 
 class DiveCenterAdapter(private val diveCenters: List<DiveCenter>) :
     RecyclerView.Adapter<DiveCenterAdapter.DiveCenterViewHolder>() {
@@ -41,12 +41,12 @@ class DiveCenterAdapter(private val diveCenters: List<DiveCenter>) :
             }
         }
 
-        private fun navigateToDiveCenterDetail(it: View) {
+        private fun navigateToDiveCenterDetail(view: View) {
             val gmmIntentUri =
                 Uri.parse("geo:33.7715323,-118.3633929?q=" + Uri.encode("Dive Center"))
             val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
             mapIntent.setPackage("com.google.android.apps.maps")
-            it.context.startActivity(mapIntent)
+            view.context.startActivity(mapIntent)
         }
     }
 }

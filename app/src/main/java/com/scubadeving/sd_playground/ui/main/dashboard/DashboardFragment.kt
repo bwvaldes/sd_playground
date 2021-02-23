@@ -1,7 +1,9 @@
 package com.scubadeving.sd_playground.ui.main.dashboard
 
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -20,9 +22,16 @@ import com.scubadeving.sd_playground.data.Diver
 import com.scubadeving.sd_playground.data.InboxNotification
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.DiveSiteAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.NotificationAdapter
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_dashboard.*
-import kotlinx.android.synthetic.main.view_dashboard_items.*
+import kotlinx.android.synthetic.main.activity_main.fab
+import kotlinx.android.synthetic.main.fragment_dashboard.dashboard_notifications_rv
+import kotlinx.android.synthetic.main.fragment_dashboard.dashboard_toolbar
+import kotlinx.android.synthetic.main.fragment_dashboard.notifications_icon
+import kotlinx.android.synthetic.main.fragment_dashboard.upcoming_dives_rv
+import kotlinx.android.synthetic.main.fragment_dashboard.welcome_username
+import kotlinx.android.synthetic.main.view_dashboard_items.dash_fly_card
+import kotlinx.android.synthetic.main.view_dashboard_items.dash_maintenance_card
+import kotlinx.android.synthetic.main.view_dashboard_items.dash_next_card
+import kotlinx.android.synthetic.main.view_dashboard_items.dash_weather_card
 
 class DashboardFragment : Fragment() {
 
@@ -52,7 +61,7 @@ class DashboardFragment : Fragment() {
             setOnMenuItemClickListener { item ->
                 when (item.itemId) {
                     R.id.action_profile -> {
-                        navigateToProfile(view,  currentUser)
+                        navigateToProfile(view, currentUser)
                         true
                     }
                     R.id.action_saved -> {
@@ -113,21 +122,21 @@ class DashboardFragment : Fragment() {
         }
     }
 
-    private fun navigateToLogbookEntry(it: View) {
-        it.findNavController().navigate(R.id.navigation_logbook)
+    private fun navigateToLogbookEntry(view: View) {
+        view.findNavController().navigate(R.id.navigation_logbook)
     }
 
-    private fun navigateToWeatherDetail(it: View) {
-        it.findNavController().navigate(R.id.weatherDetailFragment)
+    private fun navigateToWeatherDetail(view: View) {
+        view.findNavController().navigate(R.id.weatherDetailFragment)
     }
 
     private fun navigateToSaved() {
         findNavController().navigate(R.id.savedFragment)
     }
 
-    private fun navigateToProfile(it: View, diver: Diver) {
+    private fun navigateToProfile(view: View, diver: Diver) {
         val directions = MainNavigationDirections.actionGlobalProfileFragment(diver.name)
-        it.findNavController().navigate(directions)
+        view.findNavController().navigate(directions)
     }
 
     private fun navigateToNotifications(view: View) {
@@ -136,9 +145,9 @@ class DashboardFragment : Fragment() {
         }
     }
 
-    private fun navigateToCertificationDetail(it: View) {
+    private fun navigateToCertificationDetail(view: View) {
         val nextCertification = Certification("Rescue Diver")
         val directions = MainNavigationDirections.actionGlobalCertDetailFragment(nextCertification.name)
-        it.findNavController().navigate(directions)
+        view.findNavController().navigate(directions)
     }
 }

@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.scubadeving.sd_playground.R
-import kotlinx.android.synthetic.main.fragment_detail_qrcode_scan.*
+import kotlinx.android.synthetic.main.fragment_detail_qrcode_scan.qrcode_add_from_gallery
 
 class QRCodeScanFragment : Fragment() {
 

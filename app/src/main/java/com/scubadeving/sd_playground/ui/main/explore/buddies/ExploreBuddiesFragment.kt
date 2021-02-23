@@ -7,14 +7,22 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.*
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.GridLayoutManager.HORIZONTAL
 import androidx.recyclerview.widget.GridLayoutManager.VERTICAL
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.PagerSnapHelper
+import androidx.recyclerview.widget.SnapHelper
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.Diver
-import com.scubadeving.sd_playground.ui.adapters.recyclerview.decorations.GridSpacingItemDecoration
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.BuddyAdapter
-import kotlinx.android.synthetic.main.fragment_explore_buddies.*
+import com.scubadeving.sd_playground.ui.adapters.recyclerview.decorations.GridSpacingItemDecoration
+import kotlinx.android.synthetic.main.fragment_explore_buddies.dive_center_divers_rv
+import kotlinx.android.synthetic.main.fragment_explore_buddies.dive_center_divers_see_all
+import kotlinx.android.synthetic.main.fragment_explore_buddies.nearby_divers_rv
+import kotlinx.android.synthetic.main.fragment_explore_buddies.past_divers_rv
+import kotlinx.android.synthetic.main.fragment_explore_buddies.past_divers_see_all
 
 class ExploreBuddiesFragment : Fragment() {
 
@@ -84,7 +92,6 @@ class ExploreBuddiesFragment : Fragment() {
             Toast.makeText(context, "Just Clicked Dive Center Buddies!", Toast.LENGTH_SHORT).show()
         }
     }
-
 
     private fun configurePastDivers() {
         val pastDivers: ArrayList<Diver> =

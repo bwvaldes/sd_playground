@@ -6,16 +6,22 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.*
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
 import androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
+import androidx.recyclerview.widget.PagerSnapHelper
+import androidx.recyclerview.widget.SnapHelper
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.DiveSite
 import com.scubadeving.sd_playground.data.ExploreFilter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.DiveSiteAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.ExploreFilterAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.decorations.GridSpacingItemDecoration
-import kotlinx.android.synthetic.main.fragment_explore_sites.*
+import kotlinx.android.synthetic.main.fragment_explore_sites.explore_sites_all_rv
+import kotlinx.android.synthetic.main.fragment_explore_sites.explore_sites_filter_rv
+import kotlinx.android.synthetic.main.fragment_explore_sites.explore_sites_nearby_rv
 
 class ExploreSitesFragment : Fragment() {
 

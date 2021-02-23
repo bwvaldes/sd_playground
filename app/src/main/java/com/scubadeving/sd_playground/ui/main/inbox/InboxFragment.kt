@@ -10,7 +10,9 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.tabs.TabLayoutMediator
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.ui.adapters.viewpager.InboxPagerAdapter
-import kotlinx.android.synthetic.main.fragment_inbox.*
+import kotlinx.android.synthetic.main.fragment_inbox.inbox_pager
+import kotlinx.android.synthetic.main.fragment_inbox.inbox_tab_layout
+import kotlinx.android.synthetic.main.fragment_inbox.inbox_toolbar
 
 class InboxFragment : Fragment() {
 

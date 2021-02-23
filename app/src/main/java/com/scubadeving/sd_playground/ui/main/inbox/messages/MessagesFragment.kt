@@ -11,14 +11,15 @@ import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.Diver
 import com.scubadeving.sd_playground.data.InboxMessage
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.MessageAdapter
-import kotlinx.android.synthetic.main.fragment_inbox_messages.*
+import kotlinx.android.synthetic.main.fragment_inbox_messages.messages_rv
 
 class MessagesFragment : Fragment() {
 
     private lateinit var messagesViewModel: MessagesViewModel
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         messagesViewModel = ViewModelProvider(this).get(MessagesViewModel::class.java)

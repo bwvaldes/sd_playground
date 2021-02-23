@@ -43,6 +43,9 @@
         <argument
             android:name="userName"
             app:argType="string" />
+        <action
+            android:id="@+id/action_profileFragment_to_gearProfileDetailFragment"
+            app:destination="@id/gearProfileDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
@@ -176,6 +179,16 @@
         tools:layout="@layout/fragment_chat_details">
         <argument
             android:name="diverName"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/gearProfileDetailFragment"
+        android:name="com.scubadeving.sd_playground.ui.main.dashboard.profile.gear.detail.GearProfileDetailFragment"
+        android:label="@string/label_gear_detail"
+        tools:layout="@layout/fragment_profile_gear_detail">
+        <argument
+            android:name="gearProfileName"
             app:argType="string" />
     </fragment>
 

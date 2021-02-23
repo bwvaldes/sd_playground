@@ -11,22 +11,22 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager.*
+import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.Wildlife
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.WildlifeAdapter
-import com.scubadeving.sd_playground.ui.main.explore.filtered.ExploreDetailsFilteredFragmentArgs
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_logbook_entry.*
-
+import kotlinx.android.synthetic.main.activity_main.fab
+import kotlinx.android.synthetic.main.fragment_logbook_entry.logbook_entry_dive_site_name
+import kotlinx.android.synthetic.main.fragment_logbook_entry.logbook_entry_qr_scan
+import kotlinx.android.synthetic.main.fragment_logbook_entry.logbook_entry_toolbar
+import kotlinx.android.synthetic.main.fragment_logbook_entry.logbook_entry_wildlife_rv
 
 class LogbookEntryFragment : Fragment() {
 
     private lateinit var logbookEntryViewModel: LogbookEntryViewModel
     private val args: LogbookEntryFragmentArgs by navArgs()
-
 
     override fun onCreateView(
         inflater: LayoutInflater,

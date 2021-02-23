@@ -19,7 +19,11 @@ import com.scubadeving.sd_playground.data.Wildlife
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.DiveCenterAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.ItemDetailAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.WildlifeAdapter
-import kotlinx.android.synthetic.main.fragment_detail_dive_site.*
+import kotlinx.android.synthetic.main.fragment_detail_dive_site.dive_site_detail_conditions_rv
+import kotlinx.android.synthetic.main.fragment_detail_dive_site.dive_site_detail_dive_centers_rv
+import kotlinx.android.synthetic.main.fragment_detail_dive_site.dive_site_detail_toolbar
+import kotlinx.android.synthetic.main.fragment_detail_dive_site.dive_site_detail_toolbar_layout
+import kotlinx.android.synthetic.main.fragment_detail_dive_site.logbook_entry_wildlife_rv
 
 class DiveSiteDetailFragment : Fragment() {
 
@@ -27,7 +31,8 @@ class DiveSiteDetailFragment : Fragment() {
     private val args: DiveSiteDetailFragmentArgs by navArgs()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         diveSiteDetailViewModel = ViewModelProvider(this).get(DiveSiteDetailViewModel::class.java)

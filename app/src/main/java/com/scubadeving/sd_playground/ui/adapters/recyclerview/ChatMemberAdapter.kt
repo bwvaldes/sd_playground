@@ -7,11 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.scubadeving.sd_playground.MainNavigationDirections
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.Diver
-import com.scubadeving.sd_playground.data.InboxNotification
 import com.scubadeving.sd_playground.utils.inflate
-import kotlinx.android.synthetic.main.item_chat_detail_container_member_.view.*
-import kotlinx.android.synthetic.main.item_notification_card_dashboard.view.*
-import kotlinx.android.synthetic.main.item_notification_card_list.view.*
+import kotlinx.android.synthetic.main.item_chat_detail_container_member_.view.chat_detail_card_diver_name
+import kotlinx.android.synthetic.main.item_chat_detail_container_member_.view.chat_detail_card_diver_username
 
 class ChatMemberAdapter(
     private val chatMembers: List<Diver>
@@ -40,8 +38,8 @@ class ChatMemberAdapter(
         }
     }
 
-    private fun navigateToProfile(it: View, diver: Diver) {
+    private fun navigateToProfile(view: View, diver: Diver) {
         val directions = MainNavigationDirections.actionGlobalProfileFragment(diver.name)
-        it.findNavController().navigate(directions)
+        view.findNavController().navigate(directions)
     }
 }

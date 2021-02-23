@@ -15,7 +15,9 @@ import com.scubadeving.sd_playground.data.DiveSite
 import com.scubadeving.sd_playground.data.SavedList
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.DiveSiteAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.SavedListAdapter
-import kotlinx.android.synthetic.main.fragment_saved.*
+import kotlinx.android.synthetic.main.fragment_saved.saved_dive_sites_rv
+import kotlinx.android.synthetic.main.fragment_saved.saved_lists_rv
+import kotlinx.android.synthetic.main.fragment_saved.saved_toolbar
 
 class SavedFragment : Fragment() {
 
