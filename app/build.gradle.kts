@@ -6,6 +6,7 @@ plugins {
     id("org.jlleitschuh.gradle.ktlint") version PluginVersions.ktlint
     id("org.jmailen.kotlinter") version PluginVersions.kotlinter
     id("com.diffplug.spotless") version PluginVersions.spotless
+    kotlin("kapt")
 }
 
 android {
@@ -43,6 +44,11 @@ android {
 
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+
+    buildFeatures {
+        dataBinding = true
+        viewBinding = true
     }
 }
 

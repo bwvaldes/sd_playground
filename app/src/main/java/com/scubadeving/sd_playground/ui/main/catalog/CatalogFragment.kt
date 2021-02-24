@@ -15,10 +15,9 @@ import com.google.android.material.chip.Chip
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.Certification
 import com.scubadeving.sd_playground.data.Specialty
+import com.scubadeving.sd_playground.databinding.FragmentCatalogBinding
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.CertificationAdapter
 import kotlinx.android.synthetic.main.activity_main.fab
-import kotlinx.android.synthetic.main.fragment_catalog.agency_filters
-import kotlinx.android.synthetic.main.fragment_catalog.cert_path_level_rv
 
 class CatalogFragment : Fragment() {
 
@@ -114,32 +113,31 @@ class CatalogFragment : Fragment() {
         Certification("Rebreather", listOf(Specialty("Semi Closed rebreather")))
     )
 
-    private lateinit var homeViewModel: CatalogViewModel
+    private lateinit var catalogViewModel: CatalogViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        homeViewModel =
-            ViewModelProvider(this).get(CatalogViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_catalog, container, false)
-        activity?.fab?.setOnClickListener {
-            Toast.makeText(activity, "Search Catalog", Toast.LENGTH_SHORT).show()
-            findNavController().navigate(R.id.certificationScanFragment)
-        }
-        activity?.fab?.setImageDrawable(resources.getDrawable(R.drawable.ic_add))
-        return root
+        catalogViewModel = ViewModelProvider(this).get(CatalogViewModel::class.java)
+        return FragmentCatalogBinding.inflate(inflater, container, false).apply {
+            activity?.fab?.setOnClickListener {
+                Toast.makeText(activity, "Search Catalog", Toast.LENGTH_SHORT).show()
+                findNavController().navigate(R.id.certificationScanFragment)
+            }
+            activity?.fab?.setImageDrawable(resources.getDrawable(R.drawable.ic_add))
+            subscribeUi(this)
+        }.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        configureCertificationRecyclerView()
-        configureAgencyFilter()
+    private fun subscribeUi(binding: FragmentCatalogBinding) {
+        configureCertificationRecyclerView(binding)
+        configureAgencyFilter(binding)
     }
 
-    private fun configureCertificationRecyclerView() {
-        cert_path_level_rv.apply {
+    private fun configureCertificationRecyclerView(binding: FragmentCatalogBinding) {
+        binding.certPathLevelRv.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = CertificationAdapter(padiCertifications)
             val dividerItemDecoration = DividerItemDecoration(context, VERTICAL)
@@ -147,17 +145,23 @@ class CatalogFragment : Fragment() {
         }
     }
 
-    private fun configureAgencyFilter() {
-        agency_filters.setOnCheckedChangeListener { chipGroup, checkedId ->
-            val selectedChipText = chipGroup.findViewById<Chip>(checkedId)?.text
-            Toast.makeText(chipGroup.context, selectedChipText ?: "No Choice", Toast.LENGTH_LONG)
-                .show()
-            cert_path_level_rv.adapter = when (checkedId) {
-                R.id.chip_padi -> CertificationAdapter(padiCertifications)
-                R.id.chip_sdi -> CertificationAdapter(sdiCertifications)
-                R.id.chip_ssi -> CertificationAdapter(ssiCertifications)
-                R.id.chip_tdi -> CertificationAdapter(tdiCertifications)
-                else -> CertificationAdapter(padiCertifications)
+    private fun configureAgencyFilter(binding: FragmentCatalogBinding) {
+        binding.apply {
+            agencyFilters.setOnCheckedChangeListener { chipGroup, checkedId ->
+                val selectedChipText = chipGroup.findViewById<Chip>(checkedId)?.text
+                Toast.makeText(
+                    chipGroup.context,
+                    selectedChipText ?: "No Choice",
+                    Toast.LENGTH_LONG
+                )
+                    .show()
+                certPathLevelRv.adapter = when (checkedId) {
+                    R.id.chip_padi -> CertificationAdapter(padiCertifications)
+                    R.id.chip_sdi -> CertificationAdapter(sdiCertifications)
+                    R.id.chip_ssi -> CertificationAdapter(ssiCertifications)
+                    R.id.chip_tdi -> CertificationAdapter(tdiCertifications)
+                    else -> CertificationAdapter(padiCertifications)
+                }
             }
         }
     }

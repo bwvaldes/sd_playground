@@ -1,102 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginBottom="?attr/actionBarSize"
-    tools:context=".ui.main.dashboard.DashboardFragment">
+<layout>
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/dashboard_toolbar"
+    <data>
+
+        <variable
+            name="diver"
+            type="com.scubadeving.sd_playground.data.Diver" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@android:color/transparent"
-        app:contentInsetStartWithNavigation="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:menu="@menu/menu_dashboard" />
+        android:layout_height="match_parent"
+        android:layout_marginBottom="?attr/actionBarSize"
+        tools:context=".ui.main.dashboard.DashboardFragment">
 
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/dashboard_toolbar">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/dashboard_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="?attr/actionBarSize"
+            android:background="@android:color/transparent"
+            app:contentInsetStartWithNavigation="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:menu="@menu/menu_dashboard" />
 
-            <TextView
-                android:id="@+id/welcome_username"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
-                android:text="Welcome John Smith"
-                android:textSize="28sp"
-                app:layout_constraintEnd_toStartOf="@+id/notifications_icon"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/dashboard_toolbar">
 
-            <TextView
-                android:id="@+id/welcome_cert_level"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Advanced Open Water Diver"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="@+id/welcome_username"
-                app:layout_constraintStart_toStartOf="@id/welcome_username"
-                app:layout_constraintTop_toBottomOf="@id/welcome_username" />
-
-            <ImageView
-                android:id="@+id/notifications_icon"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:layout_marginEnd="15dp"
-                android:layout_marginRight="15dp"
-                android:src="@drawable/ic_notifications"
-                app:layout_constraintBottom_toBottomOf="@+id/welcome_cert_level"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/welcome_username" />
-
-            <include
-                android:id="@+id/welcome_dash"
-                layout="@layout/view_dashboard_items"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/welcome_cert_level" />
+                android:layout_height="match_parent">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/dashboard_notifications_rv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/welcome_dash" />
+                <TextView
+                    android:id="@+id/welcome_username"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:text="@{@string/dashboard_welcome(diver.name)}"
+                    android:textSize="28sp"
+                    app:layout_constraintEnd_toStartOf="@+id/notifications_icon"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/upcoming_dives"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:background="@android:color/darker_gray"
-                android:text="Upcoming Dives"
-                app:layout_constraintTop_toBottomOf="@id/dashboard_notifications_rv" />
+                <TextView
+                    android:id="@+id/welcome_cert_level"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Advanced Open Water Diver"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="@+id/welcome_username"
+                    app:layout_constraintStart_toStartOf="@id/welcome_username"
+                    app:layout_constraintTop_toBottomOf="@id/welcome_username" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/upcoming_dives_rv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="?attr/actionBarSize"
-                app:layout_constraintTop_toBottomOf="@id/upcoming_dives" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.core.widget.NestedScrollView>
+                <ImageView
+                    android:id="@+id/notifications_icon"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/ic_notifications"
+                    app:layout_constraintBottom_toBottomOf="@+id/welcome_cert_level"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/welcome_username" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <include
+                    android:id="@+id/welcome_dash"
+                    layout="@layout/view_dashboard_items"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/welcome_cert_level" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/dashboard_notifications_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/welcome_dash" />
+
+                <TextView
+                    android:id="@+id/upcoming_dives"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:background="@android:color/darker_gray"
+                    android:text="Upcoming Dives"
+                    app:layout_constraintTop_toBottomOf="@id/dashboard_notifications_rv" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/upcoming_dives_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="?attr/actionBarSize"
+                    app:layout_constraintTop_toBottomOf="@id/upcoming_dives" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

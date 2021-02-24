@@ -20,6 +20,7 @@ import com.scubadeving.sd_playground.data.Certification
 import com.scubadeving.sd_playground.data.DiveSite
 import com.scubadeving.sd_playground.data.Diver
 import com.scubadeving.sd_playground.data.InboxNotification
+import com.scubadeving.sd_playground.databinding.FragmentDashboardBinding
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.DiveSiteAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.NotificationAdapter
 import kotlinx.android.synthetic.main.activity_main.fab
@@ -46,22 +47,32 @@ class DashboardFragment : Fragment() {
         setHasOptionsMenu(true)
         dashboardViewModel =
             ViewModelProvider(this).get(DashboardViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_dashboard, container, false)
-        activity?.fab?.setOnClickListener {
-            Toast.makeText(activity, "Search Dashboard", Toast.LENGTH_SHORT).show()
-        }
-        activity?.fab?.setImageDrawable(resources.getDrawable(R.drawable.ic_search))
-        return root
+        return FragmentDashboardBinding.inflate(inflater, container, false).apply {
+            activity?.fab?.setOnClickListener {
+                Toast.makeText(activity, "Search Dashboard", Toast.LENGTH_SHORT).show()
+            }
+            activity?.fab?.setImageDrawable(resources.getDrawable(R.drawable.ic_search))
+            subscribeUi(this)
+        }.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        welcome_username.text = "Welcome ${currentUser.name}!"
-        dashboard_toolbar.apply {
+    private fun subscribeUi(binding: FragmentDashboardBinding) {
+        binding.apply {
+            diver = currentUser
+            configureToolbar()
+            configureUpcomingDivesRecyclerView()
+            configureDashboardNotificationsRecyclerView()
+            configureDashItems()
+            navigateToNotifications(notificationsIcon)
+        }
+    }
+
+    private fun FragmentDashboardBinding.configureToolbar() {
+        dashboardToolbar.apply {
             setOnMenuItemClickListener { item ->
                 when (item.itemId) {
                     R.id.action_profile -> {
-                        navigateToProfile(view, currentUser)
+                        navigateToProfile(this, currentUser)
                         true
                     }
                     R.id.action_saved -> {
@@ -72,13 +83,9 @@ class DashboardFragment : Fragment() {
                 }
             }
         }
-        navigateToNotifications(notifications_icon)
-        configureUpcomingDivesRecyclerView()
-        configureDashboardNotificationsRecyclerView()
-        configureDashItems()
     }
 
-    private fun configureUpcomingDivesRecyclerView() {
+    private fun FragmentDashboardBinding.configureUpcomingDivesRecyclerView() {
         val diveSites: List<DiveSite> = listOf(
             DiveSite("Shaw's Cove", "Newport Beach", 4.5, 112),
             DiveSite("Casino Point", "Catalina", 3.2, 14),
@@ -86,7 +93,7 @@ class DashboardFragment : Fragment() {
             DiveSite("Leo Carillo", "Malibu", 4.75, 42),
             DiveSite("Boat Dive 1", "Anacapa", 3.98, 8)
         )
-        upcoming_dives_rv.apply {
+        upcomingDivesRv.apply {
             layoutManager = LinearLayoutManager(context, HORIZONTAL, false)
             adapter = DiveSiteAdapter(diveSites)
             val dividerItemDecoration = DividerItemDecoration(context, HORIZONTAL)
@@ -96,14 +103,16 @@ class DashboardFragment : Fragment() {
         }
     }
 
-    private fun configureDashItems() {
-        dash_weather_card.setOnClickListener { navigateToWeatherDetail(it) }
-        dash_fly_card.setOnClickListener { navigateToLogbookEntry(it) }
-        dash_maintenance_card.setOnClickListener { navigateToProfile(it, currentUser) }
-        dash_next_card.setOnClickListener { navigateToCertificationDetail(it) }
+    private fun FragmentDashboardBinding.configureDashItems() {
+        welcomeDash.apply {
+            dashWeatherCard.setOnClickListener { navigateToWeatherDetail(it) }
+            dashFlyCard.setOnClickListener { navigateToLogbookEntry(it) }
+            dashMaintenanceCard.setOnClickListener { navigateToProfile(it, currentUser) }
+            dashNextCard.setOnClickListener { navigateToCertificationDetail(it) }
+        }
     }
 
-    private fun configureDashboardNotificationsRecyclerView() {
+    private fun FragmentDashboardBinding.configureDashboardNotificationsRecyclerView() {
         val inboxNotifications: ArrayList<InboxNotification> = arrayListOf(
             InboxNotification("Today", "This is a Notification"),
             InboxNotification("Feb 3rd", "This is a Notification"),
@@ -112,7 +121,7 @@ class DashboardFragment : Fragment() {
             InboxNotification("Dec 20th", "This is a Notification"),
             InboxNotification("Dec 3rd", "This is a Notification")
         )
-        dashboard_notifications_rv.apply {
+        dashboardNotificationsRv.apply {
             layoutManager = LinearLayoutManager(context, HORIZONTAL, false)
             adapter = NotificationAdapter(inboxNotifications, true)
             val dividerItemDecoration = DividerItemDecoration(context, HORIZONTAL)

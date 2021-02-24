@@ -25,6 +25,9 @@
     <string name="label_chat_detail">ChatDetailsFragment</string>
     <string name="label_gear_detail">GearProfileDetailFragment</string>
 
+    <!-- Dashboard -->
+    <string name="dashboard_welcome">Welcome %1$s!</string>
+
     <!-- Logbook -->
     <string name="logbook_tab_dives">Dives</string>
     <string name="logbook_tab_wildlife">Wildlife</string>
