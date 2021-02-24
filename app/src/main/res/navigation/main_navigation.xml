@@ -115,6 +115,9 @@
         <argument
             android:name="exploreDetailName"
             app:argType="string" />
+        <argument
+            android:name="isWildlife"
+            app:argType="boolean" />
     </fragment>
 
     <fragment

@@ -44,16 +44,16 @@ class ExploreWildlifeFragment : Fragment() {
     private fun configureExploreWildlifeFilter() {
         val filters: List<ExploreFilter> =
             listOf(
-                ExploreFilter("Mammals"),
-                ExploreFilter("Birds"),
-                ExploreFilter("Brackish"),
-                ExploreFilter("Night Dwellers"),
-                ExploreFilter("Micro"),
-                ExploreFilter("Deep"),
-                ExploreFilter("Turtles"),
-                ExploreFilter("Sharks"),
-                ExploreFilter("Rays"),
-                ExploreFilter("Reef")
+                ExploreFilter("Mammals", true),
+                ExploreFilter("Birds",true),
+                ExploreFilter("Brackish", true),
+                ExploreFilter("Night Dwellers", true),
+                ExploreFilter("Micro", true),
+                ExploreFilter("Deep", true),
+                ExploreFilter("Turtles", true),
+                ExploreFilter("Sharks", true),
+                ExploreFilter("Rays", true),
+                ExploreFilter("Reef", true)
             )
         val spanCount = 2
         val spacing = 15

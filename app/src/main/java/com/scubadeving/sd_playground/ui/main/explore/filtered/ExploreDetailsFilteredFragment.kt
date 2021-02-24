@@ -39,7 +39,7 @@ class ExploreDetailsFilteredFragment : Fragment() {
             setNavigationOnClickListener { findNavController().navigateUp() }
             title = args.exploreDetailName
         }
-        if (arguments?.isEmpty == true) {
+        if (args.isWildlife) {
             configureExploreFilteredWildlife()
         } else configureExploreFilteredDiveSites()
     }

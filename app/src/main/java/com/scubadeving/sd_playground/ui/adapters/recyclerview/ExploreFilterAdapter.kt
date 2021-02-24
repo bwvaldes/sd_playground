@@ -45,7 +45,7 @@ class ExploreFilterAdapter(private val filters: List<ExploreFilter>) :
         }
 
         private fun navigateToExploreSitesDetail(view: View, filter: ExploreFilter) {
-            val directions = MainNavigationDirections.actionGlobalExploreDetailsFilteredFragment(filter.name)
+            val directions = MainNavigationDirections.actionGlobalExploreDetailsFilteredFragment(filter.name, filter.isWildlife)
             view.findNavController().navigate(directions)
         }
     }
