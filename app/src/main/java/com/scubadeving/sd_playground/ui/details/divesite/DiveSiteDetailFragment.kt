@@ -19,11 +19,11 @@ import com.scubadeving.sd_playground.data.Wildlife
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.DiveCenterAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.ItemDetailAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.WildlifeAdapter
-import kotlinx.android.synthetic.main.fragment_detail_dive_site.dive_site_detail_conditions_rv
-import kotlinx.android.synthetic.main.fragment_detail_dive_site.dive_site_detail_dive_centers_rv
-import kotlinx.android.synthetic.main.fragment_detail_dive_site.dive_site_detail_toolbar
-import kotlinx.android.synthetic.main.fragment_detail_dive_site.dive_site_detail_toolbar_layout
-import kotlinx.android.synthetic.main.fragment_detail_dive_site.logbook_entry_wildlife_rv
+import kotlinx.android.synthetic.main.fragment_dive_site_details.dive_site_detail_conditions_rv
+import kotlinx.android.synthetic.main.fragment_dive_site_details.dive_site_detail_dive_centers_rv
+import kotlinx.android.synthetic.main.fragment_dive_site_details.dive_site_detail_toolbar
+import kotlinx.android.synthetic.main.fragment_dive_site_details.dive_site_detail_toolbar_layout
+import kotlinx.android.synthetic.main.fragment_dive_site_details.dive_site_detail_wildlife_rv
 
 class DiveSiteDetailFragment : Fragment() {
 
@@ -36,7 +36,7 @@ class DiveSiteDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         diveSiteDetailViewModel = ViewModelProvider(this).get(DiveSiteDetailViewModel::class.java)
-        return inflater.inflate(R.layout.fragment_detail_dive_site, container, false)
+        return inflater.inflate(R.layout.fragment_dive_site_details, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -94,7 +94,7 @@ class DiveSiteDetailFragment : Fragment() {
                 Wildlife("Blennie"),
                 Wildlife("Moray Eel")
             )
-        logbook_entry_wildlife_rv.apply {
+        dive_site_detail_wildlife_rv.apply {
             layoutManager = LinearLayoutManager(context, HORIZONTAL, false)
             adapter = WildlifeAdapter(wildLife)
             val dividerItemDecoration =

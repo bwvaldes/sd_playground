@@ -15,8 +15,8 @@ import com.scubadeving.sd_playground.data.DiveSite
 import com.scubadeving.sd_playground.data.Wildlife
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.DiveSiteAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.WildlifeAdapter
-import kotlinx.android.synthetic.main.fragment_explore_details_filtered.explore_details_filtered_rv
-import kotlinx.android.synthetic.main.fragment_explore_details_filtered.explore_details_filtered_toolbar
+import kotlinx.android.synthetic.main.fragment_explore_filtered_details.explore_details_filtered_rv
+import kotlinx.android.synthetic.main.fragment_explore_filtered_details.explore_details_filtered_toolbar
 
 class ExploreDetailsFilteredFragment : Fragment() {
 
@@ -30,7 +30,7 @@ class ExploreDetailsFilteredFragment : Fragment() {
     ): View? {
         exploreDetailsFilteredViewModel =
             ViewModelProvider(this).get(ExploreDetailsFilteredViewModel::class.java)
-        return inflater.inflate(R.layout.fragment_explore_details_filtered, container, false)
+        return inflater.inflate(R.layout.fragment_explore_filtered_details, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

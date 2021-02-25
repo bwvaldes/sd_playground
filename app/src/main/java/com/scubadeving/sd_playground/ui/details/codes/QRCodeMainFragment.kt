@@ -10,9 +10,9 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.tabs.TabLayoutMediator
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.ui.adapters.viewpager.QRCodePagerAdapter
-import kotlinx.android.synthetic.main.fragment_detail_qrcode_main.qrcode_pager
-import kotlinx.android.synthetic.main.fragment_detail_qrcode_main.qrcode_tab_layout
-import kotlinx.android.synthetic.main.fragment_detail_qrcode_main.qrcode_toolbar
+import kotlinx.android.synthetic.main.fragment_qrcode_main.qrcode_pager
+import kotlinx.android.synthetic.main.fragment_qrcode_main.qrcode_tab_layout
+import kotlinx.android.synthetic.main.fragment_qrcode_main.qrcode_toolbar
 
 class QRCodeMainFragment : Fragment() {
 
@@ -24,7 +24,7 @@ class QRCodeMainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         qrCodeViewModel = ViewModelProvider(this).get(QRCodeMainViewModel::class.java)
-        return inflater.inflate(R.layout.fragment_detail_qrcode_main, container, false)
+        return inflater.inflate(R.layout.fragment_qrcode_main, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

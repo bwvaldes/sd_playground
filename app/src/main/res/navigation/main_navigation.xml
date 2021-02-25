@@ -9,7 +9,7 @@
         android:id="@+id/navigation_catalog"
         android:name="com.scubadeving.sd_playground.ui.main.catalog.CatalogFragment"
         android:label="@string/label_catalog"
-        tools:layout="@layout/fragment_catalog" />
+        tools:layout="@layout/fragment_certification_catalog" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
@@ -56,7 +56,7 @@
         android:id="@+id/certDetailFragment"
         android:name="com.scubadeving.sd_playground.ui.details.certifications.CertificationDetailFragment"
         android:label="@string/label_certification_detail"
-        tools:layout="@layout/fragment_detail_cert">
+        tools:layout="@layout/fragment_certification_detail">
         <argument
             android:name="certificationName"
             app:argType="string" />
@@ -65,7 +65,7 @@
         android:id="@+id/diveSiteDetailFragment"
         android:name="com.scubadeving.sd_playground.ui.details.divesite.DiveSiteDetailFragment"
         android:label="@string/label_dive_site_detail"
-        tools:layout="@layout/fragment_detail_dive_site">
+        tools:layout="@layout/fragment_dive_site_details">
         <argument
             android:name="diveSiteName"
             app:argType="string" />
@@ -74,7 +74,7 @@
         android:id="@+id/wildlifeFragment"
         android:name="com.scubadeving.sd_playground.ui.details.wildlife.WildlifeMainFragment"
         android:label="@string/label_wildlife"
-        tools:layout="@layout/fragment_detail_wildlife_main">
+        tools:layout="@layout/fragment_wildlife_main">
         <argument
             android:name="wildlifeName"
             android:defaultValue="null"
@@ -83,9 +83,9 @@
     </fragment>
     <fragment
         android:id="@+id/logbookEntryFragment"
-        android:name="com.scubadeving.sd_playground.ui.main.logbook.entry.LogbookEntryFragment"
+        android:name="com.scubadeving.sd_playground.ui.main.logbook.entry.DiveLogEntryFragment"
         android:label="@string/label_logbook_entry"
-        tools:layout="@layout/fragment_logbook_entry">
+        tools:layout="@layout/fragment_logbook_dive_log_entry">
         <argument
             android:name="diveLogSite"
             app:argType="string" />
@@ -99,19 +99,19 @@
         android:id="@+id/weatherDetailFragment"
         android:name="com.scubadeving.sd_playground.ui.details.weather.WeatherDetailFragment"
         android:label="@string/label_weather_detail"
-        tools:layout="@layout/fragment_detail_weather" />
+        tools:layout="@layout/fragment_weather_details" />
 
     <fragment
         android:id="@+id/qrCodeFragment"
         android:name="com.scubadeving.sd_playground.ui.details.codes.QRCodeMainFragment"
         android:label="@string/label_qr_code"
-        tools:layout="@layout/fragment_detail_qrcode_main" />
+        tools:layout="@layout/fragment_qrcode_main" />
 
     <fragment
         android:id="@+id/exploreDetailsFilteredFragment"
         android:name="com.scubadeving.sd_playground.ui.main.explore.filtered.ExploreDetailsFilteredFragment"
         android:label="@string/label_explore_detail_filtered"
-        tools:layout="@layout/fragment_explore_details_filtered">
+        tools:layout="@layout/fragment_explore_filtered_details">
         <argument
             android:name="exploreDetailName"
             app:argType="string" />
@@ -124,7 +124,7 @@
         android:id="@+id/certificationScanFragment"
         android:name="com.scubadeving.sd_playground.ui.details.certifications.scan.CertificationScanFragment"
         android:label="@string/label_scan_certificayion"
-        tools:layout="@layout/fragment_detail_cert_scan" />
+        tools:layout="@layout/fragment_certification_detail_scan" />
 
     <fragment
         android:id="@+id/inboxFragment"
@@ -159,7 +159,7 @@
         android:id="@+id/wildlifeDetailFragment"
         android:name="com.scubadeving.sd_playground.ui.details.wildlife.detail.WildlifeDetailFragment"
         android:label="@string/label_wildlife_detail"
-        tools:layout="@layout/fragment_detail_wildlife_details">
+        tools:layout="@layout/fragment_wildlife_details">
         <argument
             android:name="wildlifeName"
             app:argType="string" />
@@ -169,7 +169,7 @@
         android:id="@+id/savedDetailFragment"
         android:name="com.scubadeving.sd_playground.ui.main.saved.detail.SavedDetailFragment"
         android:label="@string/label_saved_detail"
-        tools:layout="@layout/fragment_saved_detail">
+        tools:layout="@layout/fragment_saved_details">
         <argument
             android:name="savedListName"
             app:argType="string" />
@@ -189,7 +189,7 @@
         android:id="@+id/gearProfileDetailFragment"
         android:name="com.scubadeving.sd_playground.ui.main.dashboard.profile.gear.detail.GearProfileDetailFragment"
         android:label="@string/label_gear_detail"
-        tools:layout="@layout/fragment_profile_gear_detail">
+        tools:layout="@layout/fragment_profile_gear_details">
         <argument
             android:name="gearProfileName"
             app:argType="string" />

@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.Wildlife
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.WildlifeAdapter
-import kotlinx.android.synthetic.main.fragment_logged_wildlife.logged_wildlife_rv
+import kotlinx.android.synthetic.main.fragment_logbook_wildlife.logged_wildlife_rv
 
 class LoggedWildlifeFragment : Fragment() {
 
@@ -26,7 +26,7 @@ class LoggedWildlifeFragment : Fragment() {
     ): View? {
         loggedWildlifeViewModel =
             ViewModelProvider(this).get(LoggedWildlifeViewModel::class.java)
-        return inflater.inflate(R.layout.fragment_logged_wildlife, container, false)
+        return inflater.inflate(R.layout.fragment_logbook_wildlife, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

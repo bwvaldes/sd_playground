@@ -14,7 +14,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:menu="@menu/menu_chat"
-        app:navigationIcon="@drawable/ic_arrow_back"
+        app:navigationIcon="@drawable/ic_nav_arrow_back"
         app:titleTextColor="?attr/colorOnSurface" />
 
     <androidx.recyclerview.widget.RecyclerView

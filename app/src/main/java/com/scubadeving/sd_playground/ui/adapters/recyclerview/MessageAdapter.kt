@@ -11,16 +11,16 @@ import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.Diver
 import com.scubadeving.sd_playground.data.InboxMessage
 import com.scubadeving.sd_playground.utils.inflate
-import kotlinx.android.synthetic.main.item_message_card.view.message_card_avatar
-import kotlinx.android.synthetic.main.item_message_card.view.message_card_data
-import kotlinx.android.synthetic.main.item_message_card.view.message_card_date
-import kotlinx.android.synthetic.main.item_message_card.view.message_card_diver_name
+import kotlinx.android.synthetic.main.item_inbox_message_card.view.message_card_avatar
+import kotlinx.android.synthetic.main.item_inbox_message_card.view.message_card_data
+import kotlinx.android.synthetic.main.item_inbox_message_card.view.message_card_date
+import kotlinx.android.synthetic.main.item_inbox_message_card.view.message_card_diver_name
 
 class MessageAdapter(private val messages: ArrayList<InboxMessage>) :
     RecyclerView.Adapter<MessageAdapter.MessageViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MessageViewHolder {
-        val inflatedView = parent.inflate(R.layout.item_message_card, false)
+        val inflatedView = parent.inflate(R.layout.item_inbox_message_card, false)
         return MessageViewHolder(inflatedView)
     }
 

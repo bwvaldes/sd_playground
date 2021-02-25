@@ -31,7 +31,7 @@ class CertificationsFragment : Fragment() {
         activity?.fab?.setOnClickListener {
             Toast.makeText(activity, "Search My Certs", Toast.LENGTH_SHORT).show()
         }
-        activity?.fab?.setImageDrawable(resources.getDrawable(R.drawable.ic_search))
+        activity?.fab?.setImageDrawable(resources.getDrawable(R.drawable.ic_action_search))
         return root
     }
 

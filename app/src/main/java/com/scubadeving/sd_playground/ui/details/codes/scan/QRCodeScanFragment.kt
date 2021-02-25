@@ -8,7 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.scubadeving.sd_playground.R
-import kotlinx.android.synthetic.main.fragment_detail_qrcode_scan.qrcode_add_from_gallery
+import kotlinx.android.synthetic.main.fragment_qrcode_scan.qrcode_add_from_gallery
 
 class QRCodeScanFragment : Fragment() {
 
@@ -20,7 +20,7 @@ class QRCodeScanFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         qrCodeScanViewModel = ViewModelProvider(this).get(QRCodeScanViewModel::class.java)
-        return inflater.inflate(R.layout.fragment_detail_qrcode_scan, container, false)
+        return inflater.inflate(R.layout.fragment_qrcode_scan, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.scubadeving.sd_playground.R
-import kotlinx.android.synthetic.main.fragment_profile_gear_detail.gear_detail_toolbar
+import kotlinx.android.synthetic.main.fragment_profile_gear_details.gear_detail_toolbar
 
 class GearProfileDetailFragment : Fragment() {
 
@@ -23,7 +23,7 @@ class GearProfileDetailFragment : Fragment() {
     ): View? {
         gearProfileDetailViewModel =
             ViewModelProvider(this).get(GearProfileDetailViewModel::class.java)
-        return inflater.inflate(R.layout.fragment_profile_gear_detail, container, false)
+        return inflater.inflate(R.layout.fragment_profile_gear_details, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

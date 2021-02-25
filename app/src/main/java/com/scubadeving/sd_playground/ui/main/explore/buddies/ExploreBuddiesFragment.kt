@@ -85,8 +85,6 @@ class ExploreBuddiesFragment : Fragment() {
             layoutManager = GridLayoutManager(context, spanCount, VERTICAL, false)
             adapter = BuddyAdapter(diveCenterDivers, false)
             addItemDecoration(GridSpacingItemDecoration(spanCount, spacing, includeEdge))
-            val snapHelper: SnapHelper = PagerSnapHelper()
-            snapHelper.attachToRecyclerView(this)
         }
         dive_center_divers_see_all.setOnClickListener {
             Toast.makeText(context, "Just Clicked Dive Center Buddies!", Toast.LENGTH_SHORT).show()
@@ -112,8 +110,6 @@ class ExploreBuddiesFragment : Fragment() {
             layoutManager = GridLayoutManager(context, spanCount, VERTICAL, false)
             adapter = BuddyAdapter(pastDivers, false)
             addItemDecoration(GridSpacingItemDecoration(spanCount, spacing, includeEdge))
-            val snapHelper: SnapHelper = PagerSnapHelper()
-            snapHelper.attachToRecyclerView(this)
         }
         past_divers_see_all.setOnClickListener {
             Toast.makeText(context, "Just Clicked Past Dive Buddies!", Toast.LENGTH_SHORT).show()

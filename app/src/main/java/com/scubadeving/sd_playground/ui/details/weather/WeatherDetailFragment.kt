@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.scubadeving.sd_playground.R
 import kotlinx.android.synthetic.main.activity_main.fab
-import kotlinx.android.synthetic.main.fragment_detail_weather.weather_toolbar
+import kotlinx.android.synthetic.main.fragment_weather_details.weather_toolbar
 
 class WeatherDetailFragment : Fragment() {
 
@@ -23,7 +23,7 @@ class WeatherDetailFragment : Fragment() {
     ): View {
         weatherDetailViewModel = ViewModelProvider(this).get(WeatherDetailViewModel::class.java)
 
-        val root = inflater.inflate(R.layout.fragment_detail_weather, container, false)
+        val root = inflater.inflate(R.layout.fragment_weather_details, container, false)
         activity?.fab?.setOnClickListener {
             Toast.makeText(activity, "Add Gear", Toast.LENGTH_SHORT).show()
         }

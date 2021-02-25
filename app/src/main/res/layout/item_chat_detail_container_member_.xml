@@ -10,7 +10,7 @@
         android:id="@+id/chat_detail_card_avatar"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:src="@drawable/ic_avatar"
+        android:src="@drawable/ic_menu_avatar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

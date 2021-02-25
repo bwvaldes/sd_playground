@@ -3,26 +3,26 @@
 
     <item
         android:id="@+id/navigation_catalog"
-        android:icon="@drawable/ic_path"
+        android:icon="@drawable/ic_nav_catalog"
         android:title="Catalog"
         app:showAsAction="always" />
     <item
         android:id="@+id/navigation_explore"
-        android:icon="@drawable/ic_search"
+        android:icon="@drawable/ic_action_search"
         android:title="Explore"
         app:showAsAction="always" />
 
 
     <item
         android:id="@+id/navigation_logbook"
-        android:icon="@drawable/ic_logs"
+        android:icon="@drawable/ic_nav_logs"
         android:title="Logbook"
         app:showAsAction="always" />
 
 
     <item
         android:id="@+id/navigation_dashboard"
-        android:icon="@drawable/ic_dashboard"
+        android:icon="@drawable/ic_nav_dashboard"
         android:title="Dashboard"
         app:showAsAction="always" />
 </menu>

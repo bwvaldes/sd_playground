@@ -25,7 +25,7 @@ class AboutFragment : Fragment() {
         activity?.fab?.setOnClickListener {
             Toast.makeText(activity, "Edit About", Toast.LENGTH_SHORT).show()
         }
-        activity?.fab?.setImageDrawable(resources.getDrawable(R.drawable.ic_edit))
+        activity?.fab?.setImageDrawable(resources.getDrawable(R.drawable.ic_action_edit))
         return root
     }
 }

@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.scubadeving.sd_playground.R
-import kotlinx.android.synthetic.main.fragment_saved_detail.saved_detail_toolbar
+import kotlinx.android.synthetic.main.fragment_saved_details.saved_detail_toolbar
 
 class SavedDetailFragment : Fragment() {
 
@@ -23,7 +23,7 @@ class SavedDetailFragment : Fragment() {
     ): View? {
         savedDetailViewModel =
             ViewModelProvider(this).get(SavedDetailViewModel::class.java)
-        return inflater.inflate(R.layout.fragment_saved_detail, container, false)
+        return inflater.inflate(R.layout.fragment_saved_details, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

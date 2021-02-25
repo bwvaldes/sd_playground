@@ -356,7 +356,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/Applications/Android%20Studio%20Preview.app/Contents/plugins/android/lib/android.jar!/images/material/icons/materialiconsoutlined/info/outline_info_24.xml" />
+                                      <entry key="url" value="jar:file:/Applications/Android%20Studio%20Preview.app/Contents/plugins/android/lib/android.jar!/images/material/icons/materialicons/watch/baseline_watch_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -366,7 +366,7 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_info" />
+                            <entry key="outputName" value="ic_dive_computer" />
                           </map>
                         </option>
                       </PersistentState>

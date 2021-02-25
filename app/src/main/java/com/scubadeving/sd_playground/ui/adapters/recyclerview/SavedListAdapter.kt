@@ -10,13 +10,13 @@ import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.SavedList
 import com.scubadeving.sd_playground.ui.main.saved.SavedFragmentDirections
 import com.scubadeving.sd_playground.utils.inflate
-import kotlinx.android.synthetic.main.item_saved_card.view.saved_list_text
+import kotlinx.android.synthetic.main.item_saved_list_card.view.saved_list_text
 
 class SavedListAdapter(private val savedLists: List<SavedList>) :
     RecyclerView.Adapter<SavedListAdapter.SavedListViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SavedListViewHolder {
-        val inflatedView = parent.inflate(R.layout.item_saved_card, false)
+        val inflatedView = parent.inflate(R.layout.item_saved_list_card, false)
         return SavedListViewHolder(inflatedView)
     }
 

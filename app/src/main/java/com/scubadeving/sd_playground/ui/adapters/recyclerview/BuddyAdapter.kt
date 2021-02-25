@@ -10,28 +10,28 @@ import com.scubadeving.sd_playground.MainNavigationDirections
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.Diver
 import com.scubadeving.sd_playground.utils.inflate
-import kotlinx.android.synthetic.main.item_explore_buddies_horizontal_card.view.diver_card_horizontal_add_buddy
-import kotlinx.android.synthetic.main.item_explore_buddies_horizontal_card.view.diver_card_horizontal_avatar
-import kotlinx.android.synthetic.main.item_explore_buddies_horizontal_card.view.diver_card_horizontal_background
-import kotlinx.android.synthetic.main.item_explore_buddies_horizontal_card.view.diver_card_horizontal_buddy_count
-import kotlinx.android.synthetic.main.item_explore_buddies_horizontal_card.view.diver_card_horizontal_clear
-import kotlinx.android.synthetic.main.item_explore_buddies_horizontal_card.view.diver_card_horizontal_level
-import kotlinx.android.synthetic.main.item_explore_buddies_horizontal_card.view.diver_card_horizontal_name
-import kotlinx.android.synthetic.main.item_explore_buddies_vertical_card.view.diver_card_vertical_add_buddy
-import kotlinx.android.synthetic.main.item_explore_buddies_vertical_card.view.diver_card_vertical_avatar
-import kotlinx.android.synthetic.main.item_explore_buddies_vertical_card.view.diver_card_vertical_background
-import kotlinx.android.synthetic.main.item_explore_buddies_vertical_card.view.diver_card_vertical_clear
-import kotlinx.android.synthetic.main.item_explore_buddies_vertical_card.view.diver_card_vertical_level
-import kotlinx.android.synthetic.main.item_explore_buddies_vertical_card.view.diver_card_vertical_name
+import kotlinx.android.synthetic.main.item_explore_buddy_card_horizontal.view.diver_card_horizontal_add_buddy
+import kotlinx.android.synthetic.main.item_explore_buddy_card_horizontal.view.diver_card_horizontal_avatar
+import kotlinx.android.synthetic.main.item_explore_buddy_card_horizontal.view.diver_card_horizontal_background
+import kotlinx.android.synthetic.main.item_explore_buddy_card_horizontal.view.diver_card_horizontal_buddy_count
+import kotlinx.android.synthetic.main.item_explore_buddy_card_horizontal.view.diver_card_horizontal_clear
+import kotlinx.android.synthetic.main.item_explore_buddy_card_horizontal.view.diver_card_horizontal_level
+import kotlinx.android.synthetic.main.item_explore_buddy_card_horizontal.view.diver_card_horizontal_name
+import kotlinx.android.synthetic.main.item_explore_buddy_card_vertical.view.diver_card_vertical_add_buddy
+import kotlinx.android.synthetic.main.item_explore_buddy_card_vertical.view.diver_card_vertical_avatar
+import kotlinx.android.synthetic.main.item_explore_buddy_card_vertical.view.diver_card_vertical_background
+import kotlinx.android.synthetic.main.item_explore_buddy_card_vertical.view.diver_card_vertical_clear
+import kotlinx.android.synthetic.main.item_explore_buddy_card_vertical.view.diver_card_vertical_level
+import kotlinx.android.synthetic.main.item_explore_buddy_card_vertical.view.diver_card_vertical_name
 
 class BuddyAdapter(private val divers: ArrayList<Diver>, val orientation: Boolean) :
     RecyclerView.Adapter<BuddyAdapter.BuddyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BuddyViewHolder {
         val inflatedView = if (orientation) {
-            parent.inflate(R.layout.item_explore_buddies_horizontal_card, false)
+            parent.inflate(R.layout.item_explore_buddy_card_horizontal, false)
         } else {
-            parent.inflate(R.layout.item_explore_buddies_vertical_card, false)
+            parent.inflate(R.layout.item_explore_buddy_card_vertical, false)
         }
         return BuddyViewHolder(inflatedView)
     }
@@ -72,7 +72,7 @@ class BuddyAdapter(private val divers: ArrayList<Diver>, val orientation: Boolea
 
         private fun View.configureHorizontalBuddyLayout(position: Int, diver: Diver) {
             diver_card_horizontal_clear.setOnClickListener { dismissBuddy(position) }
-            diver_card_horizontal_avatar.setImageResource(R.drawable.ic_avatar)
+            diver_card_horizontal_avatar.setImageResource(R.drawable.ic_menu_avatar)
             diver_card_horizontal_background.setImageResource(R.color.purple_200)
             diver_card_horizontal_name.text = diver.name
             diver_card_horizontal_level.text = diver.certLevel
@@ -84,7 +84,7 @@ class BuddyAdapter(private val divers: ArrayList<Diver>, val orientation: Boolea
 
         private fun View.configureVerticalBuddyLayout(position: Int, diver: Diver) {
             diver_card_vertical_clear.setOnClickListener { dismissBuddy(position) }
-            diver_card_vertical_avatar.setImageResource(R.drawable.ic_avatar)
+            diver_card_vertical_avatar.setImageResource(R.drawable.ic_menu_avatar)
             diver_card_vertical_background.setImageResource(R.color.teel_200)
             diver_card_vertical_name.text = diver.name
             diver_card_vertical_level.text = diver.certLevel

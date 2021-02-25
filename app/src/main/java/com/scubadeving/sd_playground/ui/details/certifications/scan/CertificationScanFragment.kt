@@ -9,9 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.scubadeving.sd_playground.R
-import kotlinx.android.synthetic.main.fragment_detail_cert_scan.cert_scan_add_manually
-import kotlinx.android.synthetic.main.fragment_detail_cert_scan.cert_scan_cert
-import kotlinx.android.synthetic.main.fragment_detail_cert_scan.cert_scan_toolbar
+import kotlinx.android.synthetic.main.fragment_certification_detail_scan.cert_scan_add_manually
+import kotlinx.android.synthetic.main.fragment_certification_detail_scan.cert_scan_cert
+import kotlinx.android.synthetic.main.fragment_certification_detail_scan.cert_scan_toolbar
 
 class CertificationScanFragment : Fragment() {
 
@@ -23,7 +23,7 @@ class CertificationScanFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         certificationScanViewModel = ViewModelProvider(this).get(CertificationScanViewModel::class.java)
-        return inflater.inflate(R.layout.fragment_detail_cert_scan, container, false)
+        return inflater.inflate(R.layout.fragment_certification_detail_scan, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

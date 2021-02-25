@@ -8,8 +8,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.scubadeving.sd_playground.R
-import kotlinx.android.synthetic.main.fragment_detail_qrcode_details.qrcode_save
-import kotlinx.android.synthetic.main.fragment_detail_qrcode_details.qrcode_share
+import kotlinx.android.synthetic.main.fragment_qrcode_details.qrcode_save
+import kotlinx.android.synthetic.main.fragment_qrcode_details.qrcode_share
 
 class QRCodeDetailFragment : Fragment() {
 
@@ -21,7 +21,7 @@ class QRCodeDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         qrCodeDetailViewModel = ViewModelProvider(this).get(QRCodeDetailViewModel::class.java)
-        return inflater.inflate(R.layout.fragment_detail_qrcode_details, container, false)
+        return inflater.inflate(R.layout.fragment_qrcode_details, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

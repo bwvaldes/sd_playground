@@ -1,5 +1,6 @@
 package com.scubadeving.sd_playground.ui.details.certifications
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,13 +15,15 @@ import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.scubadeving.sd_playground.R
+import com.scubadeving.sd_playground.data.EligibilityStatus
 import com.scubadeving.sd_playground.data.Specialty
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.ItemDetailAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.SpecialtyAdapter
-import kotlinx.android.synthetic.main.fragment_detail_cert.cert_detail_next_steps_rv
-import kotlinx.android.synthetic.main.fragment_detail_cert.cert_detail_prerequisites_rv
-import kotlinx.android.synthetic.main.fragment_detail_cert.cert_detail_toolbar
-import kotlinx.android.synthetic.main.fragment_detail_cert.cert_detail_toolbar_layout
+import kotlinx.android.synthetic.main.fragment_certification_detail.cert_detail_next_steps_rv
+import kotlinx.android.synthetic.main.fragment_certification_detail.cert_detail_prerequisites_rv
+import kotlinx.android.synthetic.main.fragment_certification_detail.cert_detail_status
+import kotlinx.android.synthetic.main.fragment_certification_detail.cert_detail_toolbar
+import kotlinx.android.synthetic.main.fragment_certification_detail.cert_detail_toolbar_layout
 
 class CertificationDetailFragment : Fragment() {
 
@@ -33,7 +36,7 @@ class CertificationDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         certificationDetailViewModel = ViewModelProvider(this).get(CertificationDetailViewModel::class.java)
-        return inflater.inflate(R.layout.fragment_detail_cert, container, false)
+        return inflater.inflate(R.layout.fragment_certification_detail, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -42,6 +45,12 @@ class CertificationDetailFragment : Fragment() {
         configurePrerequisites()
         configureNextSteps()
         cert_detail_toolbar_layout.title = args.certificationName
+        if (args.certificationName == "Advanced Open Water Diver") {
+            cert_detail_status.apply {
+                text = EligibilityStatus.COMPLETED.name
+                setBackgroundColor(Color.GREEN)
+            }
+        }
     }
 
     private fun configurePrerequisites() {

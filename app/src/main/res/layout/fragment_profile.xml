@@ -52,7 +52,7 @@
                     android:layout_width="96dp"
                     android:layout_height="96dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_avatar"
+                    android:src="@drawable/ic_menu_avatar"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -130,7 +130,7 @@
                 app:contentInsetStartWithNavigation="0dp"
                 app:layout_collapseMode="pin"
                 app:menu="@menu/menu_profile"
-                app:navigationIcon="@drawable/ic_arrow_back"
+                app:navigationIcon="@drawable/ic_nav_arrow_back"
                 app:titleTextColor="?attr/colorOnSurface" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>

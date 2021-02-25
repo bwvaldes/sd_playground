@@ -45,7 +45,9 @@ class SavedFragment : Fragment() {
             arrayListOf(
                 SavedList("Winter Dives"),
                 SavedList("Training"),
-                SavedList("Night Dives")
+                SavedList("Night Dives"),
+                SavedList("Cave Dives"),
+                SavedList("Ice Dives")
             )
         saved_lists_rv.apply {
             layoutManager = LinearLayoutManager(context, HORIZONTAL, false)

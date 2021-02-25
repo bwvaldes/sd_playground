@@ -18,10 +18,12 @@ import com.scubadeving.sd_playground.data.ConservationStatus
 import com.scubadeving.sd_playground.data.Wildlife
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.ItemDetailAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.WildlifeAdapter
-import kotlinx.android.synthetic.main.fragment_detail_wildlife_details.wildlife_detail_encounters_rv
-import kotlinx.android.synthetic.main.fragment_detail_wildlife_details.wildlife_detail_nearby_rv
-import kotlinx.android.synthetic.main.fragment_detail_wildlife_details.wildlife_detail_toolbar
-import kotlinx.android.synthetic.main.fragment_detail_wildlife_details.wildlife_detail_toolbar_layout
+import kotlinx.android.synthetic.main.fragment_wildlife_details.wildlife_detail_conservation_status
+import kotlinx.android.synthetic.main.fragment_wildlife_details.wildlife_detail_encounters_rv
+import kotlinx.android.synthetic.main.fragment_wildlife_details.wildlife_detail_focus
+import kotlinx.android.synthetic.main.fragment_wildlife_details.wildlife_detail_nearby_rv
+import kotlinx.android.synthetic.main.fragment_wildlife_details.wildlife_detail_toolbar
+import kotlinx.android.synthetic.main.fragment_wildlife_details.wildlife_detail_toolbar_layout
 
 class WildlifeDetailFragment : Fragment() {
 
@@ -34,7 +36,7 @@ class WildlifeDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         wildlifeDetailViewModel = ViewModelProvider(this).get(WildlifeDetailViewModel::class.java)
-        return inflater.inflate(R.layout.fragment_detail_wildlife_details, container, false)
+        return inflater.inflate(R.layout.fragment_wildlife_details, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -43,6 +45,13 @@ class WildlifeDetailFragment : Fragment() {
         wildlife_detail_toolbar_layout.title = args.wildlifeName
         configureEncounters()
         configureWildlife()
+        if (args.wildlifeName == "Megalodon") {
+            wildlife_detail_focus.apply {
+                isEnabled = false
+                setBackgroundResource(R.drawable.ic_action_focus_unavailable)
+            }
+            wildlife_detail_conservation_status.text = "Red List Status:\n${ConservationStatus.EXTINCT.name}"
+        }
     }
 
     private fun configureEncounters() {
@@ -64,6 +73,13 @@ class WildlifeDetailFragment : Fragment() {
     private fun configureWildlife() {
         val wildLife: ArrayList<Wildlife> =
             arrayListOf(
+                Wildlife(
+                    "Megalodon",
+                    "Megalodon",
+                    ConservationStatus.EXTINCT,
+                    "Largest Shark",
+                    "Pacific Ocean"
+                ),
                 Wildlife(
                     "Whale Shark",
                     "Rhincodon typus",

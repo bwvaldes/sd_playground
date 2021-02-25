@@ -9,12 +9,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.InboxNotification
 import com.scubadeving.sd_playground.utils.inflate
-import kotlinx.android.synthetic.main.item_notification_card_dashboard.view.notification_card_dashboard_clear
-import kotlinx.android.synthetic.main.item_notification_card_dashboard.view.notification_card_dashboard_count
-import kotlinx.android.synthetic.main.item_notification_card_dashboard.view.notification_card_dashboard_data
-import kotlinx.android.synthetic.main.item_notification_card_dashboard.view.notification_card_dashboard_date
-import kotlinx.android.synthetic.main.item_notification_card_list.view.notification_card_list_data
-import kotlinx.android.synthetic.main.item_notification_card_list.view.notification_card_list_date
+import kotlinx.android.synthetic.main.item_inbox_notification_card_dashboard.view.notification_card_dashboard_clear
+import kotlinx.android.synthetic.main.item_inbox_notification_card_dashboard.view.notification_card_dashboard_count
+import kotlinx.android.synthetic.main.item_inbox_notification_card_dashboard.view.notification_card_dashboard_data
+import kotlinx.android.synthetic.main.item_inbox_notification_card_dashboard.view.notification_card_dashboard_date
+import kotlinx.android.synthetic.main.item_inbox_notification_card_list.view.notification_card_list_data
+import kotlinx.android.synthetic.main.item_inbox_notification_card_list.view.notification_card_list_date
 
 class NotificationAdapter(
     private val inboxNotifications: MutableList<InboxNotification>,
@@ -23,9 +23,9 @@ class NotificationAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotificationsViewHolder {
         val inflatedView = if (orientation) {
-            parent.inflate(R.layout.item_notification_card_dashboard, false)
+            parent.inflate(R.layout.item_inbox_notification_card_dashboard, false)
         } else {
-            parent.inflate(R.layout.item_notification_card_list, false)
+            parent.inflate(R.layout.item_inbox_notification_card_list, false)
         }
         return NotificationsViewHolder(inflatedView)
     }

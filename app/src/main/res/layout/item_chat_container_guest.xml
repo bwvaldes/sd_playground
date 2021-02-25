@@ -11,7 +11,7 @@
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:cropToPadding="true"
-        android:src="@drawable/ic_avatar"
+        android:src="@drawable/ic_menu_avatar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,7 +31,7 @@
         android:id="@+id/chat_guest_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/chat_guest_bubble"
+        android:background="@drawable/view_chat_guest_bubble"
         android:padding="16dp"
         android:textColor="@color/white"
         android:textSize="16sp"

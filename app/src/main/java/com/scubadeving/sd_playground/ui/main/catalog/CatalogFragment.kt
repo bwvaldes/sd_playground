@@ -15,7 +15,7 @@ import com.google.android.material.chip.Chip
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.Certification
 import com.scubadeving.sd_playground.data.Specialty
-import com.scubadeving.sd_playground.databinding.FragmentCatalogBinding
+import com.scubadeving.sd_playground.databinding.FragmentCertificationCatalogBinding
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.CertificationAdapter
 import kotlinx.android.synthetic.main.activity_main.fab
 
@@ -121,22 +121,22 @@ class CatalogFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         catalogViewModel = ViewModelProvider(this).get(CatalogViewModel::class.java)
-        return FragmentCatalogBinding.inflate(inflater, container, false).apply {
+        return FragmentCertificationCatalogBinding.inflate(inflater, container, false).apply {
             activity?.fab?.setOnClickListener {
                 Toast.makeText(activity, "Search Catalog", Toast.LENGTH_SHORT).show()
                 findNavController().navigate(R.id.certificationScanFragment)
             }
-            activity?.fab?.setImageDrawable(resources.getDrawable(R.drawable.ic_add))
+            activity?.fab?.setImageDrawable(resources.getDrawable(R.drawable.ic_action_add))
             subscribeUi(this)
         }.root
     }
 
-    private fun subscribeUi(binding: FragmentCatalogBinding) {
+    private fun subscribeUi(binding: FragmentCertificationCatalogBinding) {
         configureCertificationRecyclerView(binding)
         configureAgencyFilter(binding)
     }
 
-    private fun configureCertificationRecyclerView(binding: FragmentCatalogBinding) {
+    private fun configureCertificationRecyclerView(binding: FragmentCertificationCatalogBinding) {
         binding.certPathLevelRv.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = CertificationAdapter(padiCertifications)
@@ -145,7 +145,7 @@ class CatalogFragment : Fragment() {
         }
     }
 
-    private fun configureAgencyFilter(binding: FragmentCatalogBinding) {
+    private fun configureAgencyFilter(binding: FragmentCertificationCatalogBinding) {
         binding.apply {
             agencyFilters.setOnCheckedChangeListener { chipGroup, checkedId ->
                 val selectedChipText = chipGroup.findViewById<Chip>(checkedId)?.text

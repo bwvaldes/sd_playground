@@ -45,7 +45,7 @@ class ExploreWildlifeFragment : Fragment() {
         val filters: List<ExploreFilter> =
             listOf(
                 ExploreFilter("Mammals", true),
-                ExploreFilter("Birds",true),
+                ExploreFilter("Birds", true),
                 ExploreFilter("Brackish", true),
                 ExploreFilter("Night Dwellers", true),
                 ExploreFilter("Micro", true),

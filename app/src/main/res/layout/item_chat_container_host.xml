@@ -10,7 +10,7 @@
         android:id="@+id/chat_host_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/chat_host_bubble"
+        android:background="@drawable/view_chat_host_bubble"
         android:padding="15dp"
         android:textColor="@color/white"
         android:textSize="15sp"

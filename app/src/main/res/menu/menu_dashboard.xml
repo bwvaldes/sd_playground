@@ -3,15 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/action_inbox"
+        android:icon="@drawable/ic_inbox"
+        android:orderInCategory="98"
+        android:title="Inbox"
+        app:showAsAction="always" />
+
+    <item
         android:id="@+id/action_saved"
-        android:icon="@drawable/ic_favorite_toggle_off"
+        android:icon="@drawable/ic_action_favorite_off"
         android:orderInCategory="99"
         android:title="Saved"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/action_profile"
-        android:icon="@drawable/ic_avatar"
+        android:icon="@drawable/ic_menu_avatar"
         android:orderInCategory="100"
         android:title="Profile"
         app:showAsAction="always" />

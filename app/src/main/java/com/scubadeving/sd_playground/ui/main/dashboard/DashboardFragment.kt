@@ -8,7 +8,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
@@ -24,20 +23,11 @@ import com.scubadeving.sd_playground.databinding.FragmentDashboardBinding
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.DiveSiteAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.NotificationAdapter
 import kotlinx.android.synthetic.main.activity_main.fab
-import kotlinx.android.synthetic.main.fragment_dashboard.dashboard_notifications_rv
-import kotlinx.android.synthetic.main.fragment_dashboard.dashboard_toolbar
-import kotlinx.android.synthetic.main.fragment_dashboard.notifications_icon
-import kotlinx.android.synthetic.main.fragment_dashboard.upcoming_dives_rv
-import kotlinx.android.synthetic.main.fragment_dashboard.welcome_username
-import kotlinx.android.synthetic.main.view_dashboard_items.dash_fly_card
-import kotlinx.android.synthetic.main.view_dashboard_items.dash_maintenance_card
-import kotlinx.android.synthetic.main.view_dashboard_items.dash_next_card
-import kotlinx.android.synthetic.main.view_dashboard_items.dash_weather_card
 
 class DashboardFragment : Fragment() {
 
     private lateinit var dashboardViewModel: DashboardViewModel
-    private val currentUser = Diver("Brian Valdes", "Open Water", 2)
+    private val currentUser = Diver("Brian Valdes", "Advanced Open Water Diver", 2)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -51,7 +41,7 @@ class DashboardFragment : Fragment() {
             activity?.fab?.setOnClickListener {
                 Toast.makeText(activity, "Search Dashboard", Toast.LENGTH_SHORT).show()
             }
-            activity?.fab?.setImageDrawable(resources.getDrawable(R.drawable.ic_search))
+            activity?.fab?.setImageDrawable(resources.getDrawable(R.drawable.ic_action_search))
             subscribeUi(this)
         }.root
     }
@@ -63,7 +53,6 @@ class DashboardFragment : Fragment() {
             configureUpcomingDivesRecyclerView()
             configureDashboardNotificationsRecyclerView()
             configureDashItems()
-            navigateToNotifications(notificationsIcon)
         }
     }
 
@@ -76,7 +65,11 @@ class DashboardFragment : Fragment() {
                         true
                     }
                     R.id.action_saved -> {
-                        navigateToSaved()
+                        navigateToSaved(this)
+                        true
+                    }
+                    R.id.action_inbox -> {
+                        navigateToInbox(this)
                         true
                     }
                     else -> true
@@ -106,7 +99,7 @@ class DashboardFragment : Fragment() {
     private fun FragmentDashboardBinding.configureDashItems() {
         welcomeDash.apply {
             dashWeatherCard.setOnClickListener { navigateToWeatherDetail(it) }
-            dashFlyCard.setOnClickListener { navigateToLogbookEntry(it) }
+            dashFlyCard.setOnClickListener { navigateToDiveLogEntry(it) }
             dashMaintenanceCard.setOnClickListener { navigateToProfile(it, currentUser) }
             dashNextCard.setOnClickListener { navigateToCertificationDetail(it) }
         }
@@ -131,7 +124,7 @@ class DashboardFragment : Fragment() {
         }
     }
 
-    private fun navigateToLogbookEntry(view: View) {
+    private fun navigateToDiveLogEntry(view: View) {
         view.findNavController().navigate(R.id.navigation_logbook)
     }
 
@@ -139,8 +132,8 @@ class DashboardFragment : Fragment() {
         view.findNavController().navigate(R.id.weatherDetailFragment)
     }
 
-    private fun navigateToSaved() {
-        findNavController().navigate(R.id.savedFragment)
+    private fun navigateToSaved(view: View) {
+        view.findNavController().navigate(R.id.savedFragment)
     }
 
     private fun navigateToProfile(view: View, diver: Diver) {
@@ -148,10 +141,8 @@ class DashboardFragment : Fragment() {
         view.findNavController().navigate(directions)
     }
 
-    private fun navigateToNotifications(view: View) {
-        view.setOnClickListener {
-            it.findNavController().navigate(R.id.notificationsFragment)
-        }
+    private fun navigateToInbox(view: View) {
+        view.findNavController().navigate(R.id.inboxFragment)
     }
 
     private fun navigateToCertificationDetail(view: View) {

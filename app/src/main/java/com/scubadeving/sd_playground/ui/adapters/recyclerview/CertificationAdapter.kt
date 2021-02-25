@@ -16,9 +16,9 @@ import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.Certification
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.CertificationAdapter.CertificationViewHolder
 import com.scubadeving.sd_playground.utils.inflate
-import kotlinx.android.synthetic.main.item_cert_card_profile.view.profile_cert_card_text
-import kotlinx.android.synthetic.main.item_cert_level.view.cert_level_name
-import kotlinx.android.synthetic.main.item_cert_level.view.cert_level_specialty_rv
+import kotlinx.android.synthetic.main.item_certification_card_profile.view.profile_cert_card_text
+import kotlinx.android.synthetic.main.item_certification_level.view.cert_level_name
+import kotlinx.android.synthetic.main.item_certification_level.view.cert_level_specialty_rv
 
 class CertificationAdapter(
     private val certifications: List<Certification>,
@@ -29,9 +29,9 @@ class CertificationAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CertificationViewHolder {
         val inflatedView = if (orientation) {
-            parent.inflate(R.layout.item_cert_level, false)
+            parent.inflate(R.layout.item_certification_level, false)
         } else {
-            parent.inflate(R.layout.item_cert_card_profile, false)
+            parent.inflate(R.layout.item_certification_card_profile, false)
         }
         return CertificationViewHolder(inflatedView)
     }

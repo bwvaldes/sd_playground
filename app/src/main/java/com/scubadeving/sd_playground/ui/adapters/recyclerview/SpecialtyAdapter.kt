@@ -10,13 +10,13 @@ import com.scubadeving.sd_playground.MainNavigationDirections
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.Specialty
 import com.scubadeving.sd_playground.utils.inflate
-import kotlinx.android.synthetic.main.item_cert_card.view.cert_card_text
+import kotlinx.android.synthetic.main.item_certification_card.view.cert_card_text
 
 class SpecialtyAdapter(private val specialties: List<Specialty>) :
     RecyclerView.Adapter<SpecialtyAdapter.SpecialtyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SpecialtyViewHolder {
-        val inflatedView = parent.inflate(R.layout.item_cert_card, false)
+        val inflatedView = parent.inflate(R.layout.item_certification_card, false)
         return SpecialtyViewHolder(inflatedView)
     }
 
