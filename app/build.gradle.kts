@@ -6,6 +6,7 @@ plugins {
     id("org.jlleitschuh.gradle.ktlint") version PluginVersions.ktlint
     id("org.jmailen.kotlinter") version PluginVersions.kotlinter
     id("com.diffplug.spotless") version PluginVersions.spotless
+    id("com.google.gms.google-services")
     kotlin("kapt")
 }
 
@@ -20,6 +21,7 @@ android {
         versionName = AppConfig.versionName
         applicationId = AppConfig.applicationId
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled = true
     }
 
     buildTypes {
@@ -56,8 +58,12 @@ dependencies {
     AndroidXLibs.implementations.forEach { dependency -> implementation(dependency) }
     KotlinLibs.implementations.forEach { dependency -> implementation(dependency) }
     ThirdPartyLibs.implementations.forEach { dependency -> implementation(dependency) }
+    FirebaseLibs.apply {
+//        platform(billOfMaterials)
+        implementations.forEach { dependency -> implementation(dependency) }
+    }
     TestLibs.run {
-        testImplementations.forEach { dependency -> implementation(dependency) }
-        androidTestImplementations.forEach { dependency -> implementation(dependency) }
+        testImplementations.forEach { dependency -> testImplementation(dependency) }
+        androidTestImplementations.forEach { dependency -> androidTestImplementation(dependency) }
     }
 }

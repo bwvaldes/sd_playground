@@ -5,7 +5,7 @@
 
         <variable
             name="diver"
-            type="com.scubadeving.sd_playground.data.Diver" />
+            type="com.scubadeving.sd_playground.data.diver.Diver" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -45,9 +45,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
                     android:layout_marginEnd="15dp"
-                    android:text="@{@string/dashboard_welcome(diver.name)}"
+                    android:text="@{@string/dashboard_welcome(diver.firstName)}"
                     android:textSize="28sp"
-                    app:layout_constraintEnd_toStartOf="@+id/notifications_icon"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="Welcome John Smith!" />
@@ -56,7 +56,6 @@
                     android:id="@+id/welcome_cert_level"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@{diver.certLevel}"
                     android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="@+id/welcome_username"
                     app:layout_constraintStart_toStartOf="@id/welcome_username"

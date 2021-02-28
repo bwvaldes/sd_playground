@@ -8,7 +8,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.scubadeving.sd_playground.MainNavigationDirections
 import com.scubadeving.sd_playground.R
-import com.scubadeving.sd_playground.data.Specialty
+import com.scubadeving.sd_playground.data.certification.Specialty
 import com.scubadeving.sd_playground.utils.inflate
 import kotlinx.android.synthetic.main.item_certification_card.view.cert_card_text
 
@@ -45,7 +45,7 @@ class SpecialtyAdapter(private val specialties: List<Specialty>) :
         }
 
         private fun navigateToSpecialtyDetail(view: View, specialty: Specialty) {
-            val directions = MainNavigationDirections.actionGlobalCertDetailFragment(specialty.name)
+            val directions = MainNavigationDirections.actionGlobalCertDetailFragment(specialty.name!!)
             view.findNavController().navigate(directions)
         }
     }

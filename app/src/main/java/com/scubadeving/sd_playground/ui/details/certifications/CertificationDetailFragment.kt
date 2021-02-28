@@ -15,8 +15,8 @@ import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.scubadeving.sd_playground.R
-import com.scubadeving.sd_playground.data.EligibilityStatus
-import com.scubadeving.sd_playground.data.Specialty
+import com.scubadeving.sd_playground.data.certification.EligibilityStatus
+import com.scubadeving.sd_playground.data.certification.Specialty
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.ItemDetailAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.SpecialtyAdapter
 import kotlinx.android.synthetic.main.fragment_certification_detail.cert_detail_next_steps_rv

@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
 import com.scubadeving.sd_playground.R
-import com.scubadeving.sd_playground.data.Wildlife
+import com.scubadeving.sd_playground.data.wildlife.Wildlife
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.WildlifeAdapter
 import kotlinx.android.synthetic.main.fragment_logbook_wildlife.logged_wildlife_rv
 

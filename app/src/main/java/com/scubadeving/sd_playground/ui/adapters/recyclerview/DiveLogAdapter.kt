@@ -8,8 +8,9 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.scubadeving.sd_playground.MainNavigationDirections
 import com.scubadeving.sd_playground.R
-import com.scubadeving.sd_playground.data.DiveLog
+import com.scubadeving.sd_playground.data.divelog.DiveLog
 import com.scubadeving.sd_playground.utils.inflate
+import kotlin.time.seconds
 import kotlinx.android.synthetic.main.item_divelog_card_horizontal.view.logged_dive_map_bottom_time
 import kotlinx.android.synthetic.main.item_divelog_card_horizontal.view.logged_dive_map_date
 import kotlinx.android.synthetic.main.item_divelog_card_horizontal.view.logged_dive_map_depth
@@ -62,26 +63,26 @@ class DiveLogAdapter(private val diveLogs: ArrayList<DiveLog>, val orientation: 
 
         private fun View.configureLogbookListLayout(loggedDive: DiveLog) {
             logged_dive_site_image.setBackgroundResource(R.drawable.ic_next_steps)
-            logged_dive_rating.text = loggedDive.rating.toString()
+//            logged_dive_rating.text = loggedDive.diveSite?.rating.toString()
             logged_dive_details.text =
-                context.getString(R.string.logbook_details, loggedDive.id, loggedDive.diveSite)
+                context.getString(R.string.logbook_details, loggedDive.id, "loggedDive.diveSite?.name")
             logged_dive_date.text = loggedDive.date
-            logged_dive_depth.text = loggedDive.depth
-            logged_dive_bottom_time.text = loggedDive.bottomTime
+            logged_dive_depth.text = loggedDive.depth.toString()
+            logged_dive_bottom_time.text = loggedDive.bottomTime.toString()
         }
 
         private fun View.configureLogbookMapLayout(loggedDive: DiveLog) {
             logged_dive_map_site_image.setBackgroundResource(R.drawable.ic_next_steps)
-            logged_dive_map_rating.text = loggedDive.rating.toString()
+//            logged_dive_map_rating.text = loggedDive.diveSite?.rating.toString()
             logged_dive_map_details.text =
-                context.getString(R.string.logbook_details, loggedDive.id, loggedDive.diveSite)
+                context.getString(R.string.logbook_details, loggedDive.id, "loggedDive.diveSite?.name")
             logged_dive_map_date.text = loggedDive.date
-            logged_dive_map_depth.text = loggedDive.depth
-            logged_dive_map_bottom_time.text = loggedDive.bottomTime
+            logged_dive_map_depth.text = loggedDive.depth.toString()
+            logged_dive_map_bottom_time.text = loggedDive.bottomTime.toString()
         }
 
         private fun navigateToDiveLogDetail(view: View, diveLog: DiveLog) {
-            val directions = MainNavigationDirections.actionGlobalLogbookEntryFragment(diveLog.diveSite)
+            val directions = MainNavigationDirections.actionGlobalLogbookEntryFragment("diveLog.diveSite?.name!!")
             view.findNavController().navigate(directions)
         }
     }

@@ -1,3 +1,5 @@
 package com.scubadeving.sd_playground.data
 
-data class DiveCenter(val name: String)
+data class DiveCenter(
+    val name: String
+)

@@ -11,7 +11,7 @@ import com.scubadeving.sd_playground.data.ChatMessage
 import com.scubadeving.sd_playground.data.ChatMessage.Companion.MESSAGE_TYPE_DATE
 import com.scubadeving.sd_playground.data.ChatMessage.Companion.MESSAGE_TYPE_GUEST
 import com.scubadeving.sd_playground.data.ChatMessage.Companion.MESSAGE_TYPE_HOST
-import com.scubadeving.sd_playground.data.Diver
+import com.scubadeving.sd_playground.data.diver.Diver
 import kotlinx.android.synthetic.main.item_chat_container_date.view.chat_date_message
 import kotlinx.android.synthetic.main.item_chat_container_guest.view.chat_guest_avatar
 import kotlinx.android.synthetic.main.item_chat_container_guest.view.chat_guest_message
@@ -85,14 +85,14 @@ class ChatAdapter(var chatMessages: MutableList<ChatMessage>) :
         override fun bind(message: ChatMessage) {
             itemView.apply {
                 chat_guest_avatar.setOnClickListener { navigateToProfile(it, message.diver!!) }
-                chat_guest_name.text = message.diver?.name
+                chat_guest_name.text = message.diver?.firstName
                 chat_guest_message.text = message.content
                 chat_guest_message_time.text = getChatMessageTime(message)
             }
         }
 
         private fun navigateToProfile(view: View, diver: Diver) {
-            val directions = MainNavigationDirections.actionGlobalProfileFragment(diver.name)
+            val directions = MainNavigationDirections.actionGlobalProfileFragment(diver.firstName!!)
             view.findNavController().navigate(directions)
         }
     }

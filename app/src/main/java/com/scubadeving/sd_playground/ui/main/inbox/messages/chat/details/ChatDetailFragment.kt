@@ -10,7 +10,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.scubadeving.sd_playground.R
-import com.scubadeving.sd_playground.data.Diver
+import com.scubadeving.sd_playground.data.diver.Certification
+import com.scubadeving.sd_playground.data.diver.Diver
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.ChatMemberAdapter
 import kotlinx.android.synthetic.main.fragment_chat_details.chat_detail_members_rv
 import kotlinx.android.synthetic.main.fragment_chat_details.chat_detail_toolbar
@@ -32,7 +33,7 @@ class ChatDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         chat_detail_toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
-        val members = listOf(Diver(args.diverName, "Open Water", 2))
+        val members = listOf(Diver(args.diverName, certifications = listOf(Certification(certificationName = "Open Water"))))
         chat_detail_members_rv.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
             adapter = ChatMemberAdapter(members)

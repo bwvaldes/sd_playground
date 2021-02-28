@@ -8,7 +8,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.scubadeving.sd_playground.MainNavigationDirections
 import com.scubadeving.sd_playground.R
-import com.scubadeving.sd_playground.data.Wildlife
+import com.scubadeving.sd_playground.data.wildlife.Wildlife
 import com.scubadeving.sd_playground.utils.inflate
 import kotlinx.android.synthetic.main.item_wildlife_card_small.view.wildlife_card_name
 
@@ -42,7 +42,7 @@ class WildlifeAdapter(private val wildlife: ArrayList<Wildlife>) :
         }
 
         private fun navigateToWildlifeDetail(view: View, wildlife: Wildlife) {
-            val directions = MainNavigationDirections.actionGlobalWildlifeDetailFragment(wildlife.commonName)
+            val directions = MainNavigationDirections.actionGlobalWildlifeDetailFragment(wildlife.commonName!!)
             view.findNavController().navigate(directions)
         }
     }

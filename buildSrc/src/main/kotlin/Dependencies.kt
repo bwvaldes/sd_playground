@@ -15,9 +15,13 @@ private object Versions {
     const val gradle = "7.0.0-alpha07"
     const val kotlin = "1.3.61"
     const val navigation = "2.3.3"
+    const val googleServices = "4.3.5"
 
     /* UI */
     const val materialDesign = "1.3.0"
+
+    /* Firebase */
+    const val firebaseBom = "26.5.0"
 
     /* Testing */
     const val junit = "4.13.1"
@@ -43,12 +47,9 @@ object AppClassPaths {
     private const val gradle = "com.android.tools.build:gradle:${Versions.gradle}"
     private const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
     private const val navArgs = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navigation}"
+    private const val googleServices = "com.google.gms:google-services:${Versions.googleServices}"
 
-    val classPaths = listOf(
-        gradle,
-        kotlin,
-        navArgs
-    )
+    val classPaths = listOf(gradle, kotlin, navArgs, googleServices)
 }
 
 object AndroidXLibs {
@@ -78,6 +79,14 @@ object ThirdPartyLibs {
     private const val material = "com.google.android.material:material:${Versions.materialDesign}"
 
     val implementations = listOf(material)
+}
+
+object FirebaseLibs {
+//    const val billOfMaterials = "com.google.firebase:firebase-bom:${Versions.firebaseBom}"
+//    private const val analytics = "com.google.firebase:firebase-analytics-ktx:"
+    private const val firestore = "com.google.firebase:firebase-firestore:22.1.0"
+
+    val implementations = listOf(firestore)
 }
 
 object TestLibs {

@@ -8,8 +8,8 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.scubadeving.sd_playground.MainNavigationDirections
 import com.scubadeving.sd_playground.R
-import com.scubadeving.sd_playground.data.Diver
 import com.scubadeving.sd_playground.data.InboxMessage
+import com.scubadeving.sd_playground.data.diver.Diver
 import com.scubadeving.sd_playground.utils.inflate
 import kotlinx.android.synthetic.main.item_inbox_message_card.view.message_card_avatar
 import kotlinx.android.synthetic.main.item_inbox_message_card.view.message_card_data
@@ -36,7 +36,7 @@ class MessageAdapter(private val messages: ArrayList<InboxMessage>) :
         fun bind(message: InboxMessage) {
             itemView.apply {
                 message_card_avatar.setOnClickListener { navigateToProfile(it, message.diver) }
-                message_card_diver_name.text = message.diver.name
+                message_card_diver_name.text = message.diver.firstName
                 message_card_date.text = message.date
                 message_card_data.text = message.data
                 setOnClickListener {
@@ -52,12 +52,12 @@ class MessageAdapter(private val messages: ArrayList<InboxMessage>) :
         }
 
         private fun navigateToChatDetail(view: View, diver: Diver) {
-            val directions = MainNavigationDirections.actionGlobalChatFragment(diver.name)
+            val directions = MainNavigationDirections.actionGlobalChatFragment(diver.firstName!!)
             view.findNavController().navigate(directions)
         }
 
         private fun navigateToProfile(view: View, diver: Diver) {
-            val directions = MainNavigationDirections.actionGlobalProfileFragment(diver.name)
+            val directions = MainNavigationDirections.actionGlobalProfileFragment(diver.firstName!!)
             view.findNavController().navigate(directions)
         }
     }

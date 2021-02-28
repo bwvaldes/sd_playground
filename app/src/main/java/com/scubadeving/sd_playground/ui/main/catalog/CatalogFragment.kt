@@ -13,8 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
 import com.google.android.material.chip.Chip
 import com.scubadeving.sd_playground.R
-import com.scubadeving.sd_playground.data.Certification
-import com.scubadeving.sd_playground.data.Specialty
+import com.scubadeving.sd_playground.data.certification.CatalogCertification
+import com.scubadeving.sd_playground.data.certification.Specialty
 import com.scubadeving.sd_playground.databinding.FragmentCertificationCatalogBinding
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.CertificationAdapter
 import kotlinx.android.synthetic.main.activity_main.fab
@@ -75,18 +75,18 @@ class CatalogFragment : Fragment() {
         Specialty("Master Instructor"),
         Specialty("Course Director")
     )
-    private val padiCertifications: List<Certification> = listOf(
-        Certification("Discover Snorkeling", listOf(Specialty("Discover Snorkeling"))),
-        Certification("Seal Team", beginnerSpecialties),
-        Certification("Bubble Maker", beginnerSpecialties),
-        Certification("Discover Scuba Diving", beginnerSpecialties),
-        Certification("Skin Diver", beginnerSpecialties),
-        Certification("Open Water Diver", intermediateSpecialties),
-        Certification("Scuba Diver", intermediateSpecialties),
-        Certification("Adventure Diver", adventureSpecialties),
-        Certification("Advanced Open Water Diver", advancedSpecialties.plus(emergencySpecialties)),
-        Certification("Rescue Diver", rescueSpecialties),
-        Certification("Master Scuba Diver", listOf(Specialty("Master Scuba Diver")))
+    private val padiCatalogCertifications: List<CatalogCertification> = listOf(
+        CatalogCertification("Discover Snorkeling", specialties = listOf(Specialty("Discover Snorkeling"))),
+        CatalogCertification("Seal Team", specialties = beginnerSpecialties),
+        CatalogCertification("Bubble Maker", specialties = beginnerSpecialties),
+        CatalogCertification("Discover Scuba Diving", specialties = beginnerSpecialties),
+        CatalogCertification("Skin Diver", specialties = beginnerSpecialties),
+        CatalogCertification("Open Water Diver", specialties = intermediateSpecialties),
+        CatalogCertification("Scuba Diver", specialties = intermediateSpecialties),
+        CatalogCertification("Adventure Diver", specialties = adventureSpecialties),
+        CatalogCertification("Advanced Open Water Diver", specialties = advancedSpecialties.plus(emergencySpecialties)),
+        CatalogCertification("Rescue Diver", specialties = rescueSpecialties),
+        CatalogCertification("Master Scuba Diver", specialties = listOf(Specialty("Master Scuba Diver")))
     )
 
     private val sdiIntermediateSpecialties: List<Specialty> = listOf(
@@ -96,21 +96,21 @@ class CatalogFragment : Fragment() {
         Specialty("Boat")
     )
 
-    private val sdiCertifications: List<Certification> = listOf(
-        Certification("Open Water Scuba Diver", sdiIntermediateSpecialties),
-        Certification("Advanced Diver", sdiIntermediateSpecialties),
-        Certification("Rescue Diver", sdiIntermediateSpecialties)
+    private val sdiCatalogCertifications: List<CatalogCertification> = listOf(
+        CatalogCertification("Open Water Scuba Diver", specialties = sdiIntermediateSpecialties),
+        CatalogCertification("Advanced Diver", specialties = sdiIntermediateSpecialties),
+        CatalogCertification("Rescue Diver", specialties = sdiIntermediateSpecialties)
     )
 
-    private val ssiCertifications: List<Certification> = listOf(
-        Certification("Try Scuba Diving", listOf(Specialty("Try Scuba Diving"))),
-        Certification("Scuba Diver", listOf(Specialty("Altitude Diving"))),
-        Certification("Open Water Diver", listOf(Specialty("Ice Diving")))
+    private val ssiCatalogCertifications: List<CatalogCertification> = listOf(
+        CatalogCertification("Try Scuba Diving", specialties = listOf(Specialty("Try Scuba Diving"))),
+        CatalogCertification("Scuba Diver", specialties = listOf(Specialty("Altitude Diving"))),
+        CatalogCertification("Open Water Diver", specialties = listOf(Specialty("Ice Diving")))
     )
 
-    private val tdiCertifications: List<Certification> = listOf(
-        Certification("Open Circuit", listOf(Specialty("Nitrox"))),
-        Certification("Rebreather", listOf(Specialty("Semi Closed rebreather")))
+    private val tdiCatalogCertifications: List<CatalogCertification> = listOf(
+        CatalogCertification("Open Circuit", specialties = listOf(Specialty("Nitrox"))),
+        CatalogCertification("Rebreather", specialties = listOf(Specialty("Semi Closed rebreather")))
     )
 
     private lateinit var catalogViewModel: CatalogViewModel
@@ -139,7 +139,7 @@ class CatalogFragment : Fragment() {
     private fun configureCertificationRecyclerView(binding: FragmentCertificationCatalogBinding) {
         binding.certPathLevelRv.apply {
             layoutManager = LinearLayoutManager(context)
-            adapter = CertificationAdapter(padiCertifications)
+            adapter = CertificationAdapter(padiCatalogCertifications)
             val dividerItemDecoration = DividerItemDecoration(context, VERTICAL)
             addItemDecoration(dividerItemDecoration)
         }
@@ -156,11 +156,11 @@ class CatalogFragment : Fragment() {
                 )
                     .show()
                 certPathLevelRv.adapter = when (checkedId) {
-                    R.id.chip_padi -> CertificationAdapter(padiCertifications)
-                    R.id.chip_sdi -> CertificationAdapter(sdiCertifications)
-                    R.id.chip_ssi -> CertificationAdapter(ssiCertifications)
-                    R.id.chip_tdi -> CertificationAdapter(tdiCertifications)
-                    else -> CertificationAdapter(padiCertifications)
+                    R.id.chip_padi -> CertificationAdapter(padiCatalogCertifications)
+                    R.id.chip_sdi -> CertificationAdapter(sdiCatalogCertifications)
+                    R.id.chip_ssi -> CertificationAdapter(ssiCatalogCertifications)
+                    R.id.chip_tdi -> CertificationAdapter(tdiCatalogCertifications)
+                    else -> CertificationAdapter(padiCatalogCertifications)
                 }
             }
         }

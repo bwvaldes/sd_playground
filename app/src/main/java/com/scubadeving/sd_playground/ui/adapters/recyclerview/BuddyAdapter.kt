@@ -8,7 +8,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.scubadeving.sd_playground.MainNavigationDirections
 import com.scubadeving.sd_playground.R
-import com.scubadeving.sd_playground.data.Diver
+import com.scubadeving.sd_playground.data.diver.Diver
 import com.scubadeving.sd_playground.utils.inflate
 import kotlinx.android.synthetic.main.item_explore_buddy_card_horizontal.view.diver_card_horizontal_add_buddy
 import kotlinx.android.synthetic.main.item_explore_buddy_card_horizontal.view.diver_card_horizontal_avatar
@@ -74,8 +74,8 @@ class BuddyAdapter(private val divers: ArrayList<Diver>, val orientation: Boolea
             diver_card_horizontal_clear.setOnClickListener { dismissBuddy(position) }
             diver_card_horizontal_avatar.setImageResource(R.drawable.ic_menu_avatar)
             diver_card_horizontal_background.setImageResource(R.color.purple_200)
-            diver_card_horizontal_name.text = diver.name
-            diver_card_horizontal_level.text = diver.certLevel
+            diver_card_horizontal_name.text = diver.firstName
+            diver_card_horizontal_level.text = diver.certifications?.first()?.certificationName
             configureBuddyCountText(diver)
             diver_card_horizontal_add_buddy.setOnClickListener {
                 Toast.makeText(context, "Just Clicked Add Buddy!", Toast.LENGTH_SHORT).show()
@@ -86,8 +86,8 @@ class BuddyAdapter(private val divers: ArrayList<Diver>, val orientation: Boolea
             diver_card_vertical_clear.setOnClickListener { dismissBuddy(position) }
             diver_card_vertical_avatar.setImageResource(R.drawable.ic_menu_avatar)
             diver_card_vertical_background.setImageResource(R.color.teel_200)
-            diver_card_vertical_name.text = diver.name
-            diver_card_vertical_level.text = diver.certLevel
+            diver_card_vertical_name.text = diver.firstName
+            diver_card_vertical_level.text = diver.certifications?.first()?.certificationName
             diver_card_vertical_add_buddy.setOnClickListener {
                 Toast.makeText(context, "Just Clicked Add Buddy!", Toast.LENGTH_SHORT).show()
             }
@@ -95,10 +95,10 @@ class BuddyAdapter(private val divers: ArrayList<Diver>, val orientation: Boolea
 
         private fun View.configureBuddyCountText(diver: Diver) {
             diver_card_horizontal_buddy_count.text =
-                if (diver.buddyCount != SINGULAR_BUDDY_COUNT) {
-                    diver.buddyCount.toString().plus(" Buddies")
+                if (diver.buddies?.size != SINGULAR_BUDDY_COUNT) {
+                    diver.buddies?.size.toString().plus(" Buddies")
                 } else {
-                    diver.buddyCount.toString().plus(" Buddy")
+                    diver.buddies.size.toString().plus(" Buddy")
                 }
         }
 
@@ -109,7 +109,7 @@ class BuddyAdapter(private val divers: ArrayList<Diver>, val orientation: Boolea
         }
 
         private fun navigateToProfile(view: View, diver: Diver) {
-            val directions = MainNavigationDirections.actionGlobalProfileFragment(diver.name)
+            val directions = MainNavigationDirections.actionGlobalProfileFragment(diver.firstName!!)
             view.findNavController().navigate(directions)
         }
     }

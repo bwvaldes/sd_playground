@@ -1,5 +1,7 @@
 package com.scubadeving.sd_playground.data
 
+import com.scubadeving.sd_playground.data.diver.Diver
+
 data class ChatMessage(
     var diver: Diver?,
     var content: String,

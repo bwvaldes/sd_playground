@@ -15,7 +15,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.scubadeving.sd_playground.R
-import com.scubadeving.sd_playground.data.Diver
+import com.scubadeving.sd_playground.data.diver.Certification
+import com.scubadeving.sd_playground.data.diver.Diver
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.BuddyAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.decorations.GridSpacingItemDecoration
 import kotlinx.android.synthetic.main.fragment_explore_buddies.dive_center_divers_rv
@@ -47,14 +48,14 @@ class ExploreBuddiesFragment : Fragment() {
     private fun configureNearbyDivers() {
         val nearbyDivers: ArrayList<Diver> =
             arrayListOf(
-                Diver("Bob", "Open Water", 1),
-                Diver("Billy", "Rescue Diver", (0..100).random()),
-                Diver("Jill", "Advanced Open Water", (0..100).random()),
-                Diver("Karen", "Open Water", 0),
-                Diver("Molly", "Night Diver", (0..100).random()),
-                Diver("Don", "Open Water", (0..100).random()),
-                Diver("Bill", "Open Water", (0..100).random()),
-                Diver("Greg", "Open Water", (0..100).random())
+                Diver(firstName = "Bob", certifications = listOf(Certification(certificationName = "Open Water"))),
+                Diver(firstName = "Billy", certifications = listOf(Certification(certificationName = "Rescue Diver"))),
+                Diver(firstName = "Jill", certifications = listOf(Certification(certificationName = "Advanced Open Water"))),
+                Diver(firstName = "Karen", certifications =  listOf(Certification(certificationName = "Open Water"))),
+                Diver(firstName = "Molly",certifications = listOf(Certification(certificationName =  "Night Diver"))),
+                Diver(firstName = "Don", certifications = listOf(Certification(certificationName = "Open Water"))),
+                Diver(firstName = "Bill",certifications = listOf(Certification(certificationName =  "Open Water"))),
+                Diver(firstName = "Greg", certifications = listOf(Certification(certificationName = "Open Water")))
             )
         nearby_divers_rv.apply {
             layoutManager = LinearLayoutManager(context, HORIZONTAL, false)
@@ -70,13 +71,13 @@ class ExploreBuddiesFragment : Fragment() {
     private fun configureDiveCenterDivers() {
         val diveCenterDivers: ArrayList<Diver> =
             arrayListOf(
-                Diver("Jill", "Open Water", (0..100).random()),
-                Diver("Jack", "Open Water", (0..100).random()),
-                Diver("Pedro", "Open Water", (0..100).random()),
-                Diver("Nick", "Open Water", (0..100).random()),
-                Diver("Jill", "Advanced Open Water", (0..100).random()),
-                Diver("Karen", "Open Water", 0),
-                Diver("Molly", "Night Diver", (0..100).random())
+                Diver(firstName = "Jill",certifications = listOf(Certification(certificationName = "Open Water"))),
+                Diver(firstName = "Jack", certifications = listOf(Certification(certificationName = "Open Water"))),
+                Diver(firstName = "Pedro", certifications = listOf(Certification(certificationName = "Open Water"))),
+                Diver(firstName = "Nick", certifications = listOf(Certification(certificationName = "Open Water"))),
+                Diver(firstName = "Jill", certifications = listOf(Certification(certificationName = "Open Water"))),
+                Diver(firstName = "Karen", certifications = listOf(Certification(certificationName = "Open Water"))),
+                Diver(firstName = "Molly", certifications = listOf(Certification(certificationName = "Open Water")))
             )
         val spanCount = 2
         val spacing = 15
@@ -94,14 +95,14 @@ class ExploreBuddiesFragment : Fragment() {
     private fun configurePastDivers() {
         val pastDivers: ArrayList<Diver> =
             arrayListOf(
-                Diver("Lia", "Discover Diver", (0..100).random()),
-                Diver("Arnold", "Open Water", (0..100).random()),
-                Diver("Richard", "Open Water", (0..100).random()),
-                Diver("Brandon", "Open Water", (0..100).random()),
-                Diver("Jill", "Open Water", (0..100).random()),
-                Diver("Jack", "Open Water", (0..100).random()),
-                Diver("Pedro", "Open Water", (0..100).random()),
-                Diver("Nick", "Open Water", (0..100).random())
+                Diver(firstName = "Lia",certifications = listOf(Certification(certificationName = "Discover Diver"))),
+                Diver(firstName = "Arnold",certifications = listOf(Certification(certificationName = "Open Water"))),
+                Diver(firstName = "Richard", certifications = listOf(Certification(certificationName = "Open Water"))),
+                Diver(firstName = "Brandon", certifications = listOf(Certification(certificationName = "Open Water"))),
+                Diver(firstName = "Jill", certifications = listOf(Certification(certificationName = "Open Water"))),
+                Diver(firstName = "Jack", certifications = listOf(Certification(certificationName = "Open Water"))),
+                Diver(firstName = "Pedro", certifications = listOf(Certification(certificationName = "Open Water"))),
+                Diver(firstName = "Nick", certifications = listOf(Certification(certificationName = "Open Water")))
             )
         val spanCount = 2
         val spacing = 15

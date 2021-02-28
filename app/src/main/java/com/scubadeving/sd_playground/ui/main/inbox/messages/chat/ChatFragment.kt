@@ -16,7 +16,8 @@ import com.scubadeving.sd_playground.data.ChatMessage
 import com.scubadeving.sd_playground.data.ChatMessage.Companion.MESSAGE_TYPE_DATE
 import com.scubadeving.sd_playground.data.ChatMessage.Companion.MESSAGE_TYPE_GUEST
 import com.scubadeving.sd_playground.data.ChatMessage.Companion.MESSAGE_TYPE_HOST
-import com.scubadeving.sd_playground.data.Diver
+import com.scubadeving.sd_playground.data.diver.Certification
+import com.scubadeving.sd_playground.data.diver.Diver
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.ChatAdapter
 import kotlinx.android.synthetic.main.fragment_chat.chat_message_rv
 import kotlinx.android.synthetic.main.fragment_chat.chat_toolbar
@@ -60,8 +61,8 @@ class ChatFragment : Fragment() {
     }
 
     private fun configureChatRecyclerView() {
-        val guestDiver = Diver(args.diverName, "Advanced Open Water", 13)
-        val hostDiver = Diver("Brian", "Advanced Open Water", 17)
+        val guestDiver = Diver(args.diverName, certifications = listOf(Certification(certificationName = "Advanced Open Water")))
+        val hostDiver = Diver(firstName = "Brian", certifications = listOf(Certification(certificationName = "Advanced Open Water")))
         val chatMessages = mutableListOf(
             ChatMessage(null, "Wednesday, Mar 3rd 2021 ", MESSAGE_TYPE_DATE, 1200),
             ChatMessage(hostDiver, "Hey bud, long time no dive!", MESSAGE_TYPE_HOST, 1300),

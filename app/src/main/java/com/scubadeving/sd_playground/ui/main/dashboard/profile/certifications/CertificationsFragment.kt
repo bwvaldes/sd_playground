@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.GridLayoutManager.VERTICAL
 import com.scubadeving.sd_playground.R
-import com.scubadeving.sd_playground.data.Certification
+import com.scubadeving.sd_playground.data.certification.CatalogCertification
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.CertificationAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.decorations.GridSpacingItemDecoration
 import kotlinx.android.synthetic.main.activity_main.fab
@@ -37,22 +37,22 @@ class CertificationsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val certCards: List<Certification> = listOf(
-            Certification("Discover Diver"),
-            Certification("Project AWARE Diver"),
-            Certification("Open Water Diver"),
-            Certification("Advanced Open Water Diver"),
-            Certification("Equipment Specialist"),
-            Certification("Night Dive"),
-            Certification("Nitrox Diver"),
-            Certification("Deep Diver"),
-            Certification("Public Safety Diver"),
-            Certification("Cavern Diver"),
-            Certification("Against Debris"),
-            Certification("Rebreather Diver"),
-            Certification("Sidemount Diver"),
-            Certification("Peak Performance Buoyancy"),
-            Certification("Search and Recovery")
+        val certCards: List<CatalogCertification> = listOf(
+            CatalogCertification("Discover Diver"),
+            CatalogCertification("Project AWARE Diver"),
+            CatalogCertification("Open Water Diver"),
+            CatalogCertification("Advanced Open Water Diver"),
+            CatalogCertification("Equipment Specialist"),
+            CatalogCertification("Night Dive"),
+            CatalogCertification("Nitrox Diver"),
+            CatalogCertification("Deep Diver"),
+            CatalogCertification("Public Safety Diver"),
+            CatalogCertification("Cavern Diver"),
+            CatalogCertification("Against Debris"),
+            CatalogCertification("Rebreather Diver"),
+            CatalogCertification("Sidemount Diver"),
+            CatalogCertification("Peak Performance Buoyancy"),
+            CatalogCertification("Search and Recovery")
         )
         val spanCount = 2
         val spacing = 15

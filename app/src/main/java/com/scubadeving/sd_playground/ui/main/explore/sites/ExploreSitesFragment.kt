@@ -14,8 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.scubadeving.sd_playground.R
-import com.scubadeving.sd_playground.data.DiveSite
 import com.scubadeving.sd_playground.data.ExploreFilter
+import com.scubadeving.sd_playground.data.sites.DiveSite
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.DiveSiteAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.ExploreFilterAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.decorations.GridSpacingItemDecoration
@@ -70,9 +70,9 @@ class ExploreSitesFragment : Fragment() {
 
     private fun configureExploreNearbyDiveSites() {
         val nearbyDiveSites: List<DiveSite> = listOf(
-            DiveSite("Casino Point", "Catalina", 3.2, 14),
-            DiveSite("Leo Carillo", "Malibu", 4.75, 42),
-            DiveSite("Boat Dive 1", "Anacapa", 3.98, 8)
+            DiveSite("Casino Point", rating =  3.2, reviews = 14),
+            DiveSite("Leo Carillo", rating = 4.75, reviews = 42),
+            DiveSite("Boat Dive 1", rating =  3.98, reviews = 8)
         )
         explore_sites_nearby_rv.apply {
             layoutManager = LinearLayoutManager(context, HORIZONTAL, false)
@@ -86,15 +86,15 @@ class ExploreSitesFragment : Fragment() {
 
     private fun configureExploreAllDiveSites() {
         val allDiveSites: List<DiveSite> = listOf(
-            DiveSite("Casino Point", "Catalina", 3.2, 14),
-            DiveSite("Leo Carillo", "Malibu", 4.75, 42),
-            DiveSite("Boat Dive 1", "Anacapa", 3.98, 8),
-            DiveSite("Casino Point", "Catalina", 3.2, 14),
-            DiveSite("Leo Carillo", "Malibu", 4.75, 42),
-            DiveSite("Boat Dive 1", "Anacapa", 3.98, 8),
-            DiveSite("Casino Point", "Catalina", 3.2, 14),
-            DiveSite("Leo Carillo", "Malibu", 4.75, 42),
-            DiveSite("Boat Dive 1", "Anacapa", 3.98, 8)
+            DiveSite("Casino Point", rating =  3.2, reviews = 14),
+            DiveSite("Leo Carillo", rating =  4.75, reviews = 42),
+            DiveSite("Boat Dive 1", rating =  3.98, reviews = 8),
+            DiveSite("Casino Point", rating = 3.2, reviews = 14),
+            DiveSite("Leo Carillo", rating =  4.75, reviews = 42),
+            DiveSite("Boat Dive 1", rating =  3.98, reviews = 8),
+            DiveSite("Casino Point", rating =  3.2, reviews = 14),
+            DiveSite("Leo Carillo", rating =  4.75, reviews = 42),
+            DiveSite("Boat Dive 1", rating = 3.98, reviews = 8)
         )
         explore_sites_all_rv.apply {
             layoutManager = LinearLayoutManager(context, VERTICAL, false)

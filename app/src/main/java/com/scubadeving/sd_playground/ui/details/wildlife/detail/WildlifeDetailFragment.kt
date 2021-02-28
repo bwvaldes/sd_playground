@@ -14,8 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.scubadeving.sd_playground.R
-import com.scubadeving.sd_playground.data.ConservationStatus
-import com.scubadeving.sd_playground.data.Wildlife
+import com.scubadeving.sd_playground.data.wildlife.ConservationStatus
+import com.scubadeving.sd_playground.data.wildlife.Wildlife
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.ItemDetailAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.WildlifeAdapter
 import kotlinx.android.synthetic.main.fragment_wildlife_details.wildlife_detail_conservation_status
@@ -77,36 +77,31 @@ class WildlifeDetailFragment : Fragment() {
                     "Megalodon",
                     "Megalodon",
                     ConservationStatus.EXTINCT,
-                    "Largest Shark",
-                    "Pacific Ocean"
+                    "Largest Shark"
                 ),
                 Wildlife(
                     "Whale Shark",
                     "Rhincodon typus",
                     ConservationStatus.VULNERABLE,
-                    "Gentle Giant",
-                    "Phillipines"
+                    "Gentle Giant"
                 ),
                 Wildlife(
                     "Sunfish",
                     "Mola-Mola",
                     ConservationStatus.ENDANGERED,
-                    "Heavy Bony fishy",
-                    "Oregon"
+                    "Heavy Bony fishy"
                 ),
                 Wildlife(
                     "Spotted Sting Ray",
                     "Taeniura lymma",
                     ConservationStatus.VULNERABLE,
-                    "Poisonous looking Ray",
-                    "Australia"
+                    "Poisonous looking Ray"
                 ),
                 Wildlife(
                     "Remora",
                     "Echeneidae",
                     ConservationStatus.LEAST_CONCERN,
-                    "Symbiotic Fish",
-                    "Dubai"
+                    "Symbiotic Fish"
                 )
             )
         wildlife_detail_nearby_rv.apply {

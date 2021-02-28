@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.GridLayoutManager.HORIZONTAL
 import androidx.recyclerview.widget.GridLayoutManager.VERTICAL
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.scubadeving.sd_playground.R
-import com.scubadeving.sd_playground.data.Gear
-import com.scubadeving.sd_playground.data.GearProfile
+import com.scubadeving.sd_playground.data.gear.Gear
+import com.scubadeving.sd_playground.data.gear.GearProfile
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.GearAdapter
 import kotlinx.android.synthetic.main.activity_main.fab
 import kotlinx.android.synthetic.main.fragment_profile_gear.gear_filtered_rv

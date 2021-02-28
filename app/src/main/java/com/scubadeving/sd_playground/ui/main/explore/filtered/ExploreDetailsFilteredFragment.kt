@@ -11,8 +11,8 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
 import com.scubadeving.sd_playground.R
-import com.scubadeving.sd_playground.data.DiveSite
-import com.scubadeving.sd_playground.data.Wildlife
+import com.scubadeving.sd_playground.data.sites.DiveSite
+import com.scubadeving.sd_playground.data.wildlife.Wildlife
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.DiveSiteAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.WildlifeAdapter
 import kotlinx.android.synthetic.main.fragment_explore_filtered_details.explore_details_filtered_rv
@@ -46,15 +46,15 @@ class ExploreDetailsFilteredFragment : Fragment() {
 
     private fun configureExploreFilteredDiveSites() {
         val filteredDiveSites: List<DiveSite> = listOf(
-            DiveSite("Casino Point", "Catalina", 3.2, 14),
-            DiveSite("Leo Carillo", "Malibu", 4.75, 42),
-            DiveSite("Boat Dive 1", "Anacapa", 3.98, 8),
-            DiveSite("Casino Point", "Catalina", 3.2, 14),
-            DiveSite("Leo Carillo", "Malibu", 4.75, 42),
-            DiveSite("Boat Dive 1", "Anacapa", 3.98, 8),
-            DiveSite("Casino Point", "Catalina", 3.2, 14),
-            DiveSite("Leo Carillo", "Malibu", 4.75, 42),
-            DiveSite("Boat Dive 1", "Anacapa", 3.98, 8)
+            DiveSite("Casino Point", rating = 3.2, reviews = 14),
+            DiveSite("Leo Carillo", rating =  4.75, reviews = 42),
+            DiveSite("Boat Dive 1", rating =  3.98, reviews = 8),
+            DiveSite("Casino Point", rating =  3.2, reviews = 14),
+            DiveSite("Leo Carillo", rating = 4.75, reviews = 42),
+            DiveSite("Boat Dive 1", rating =  3.98, reviews = 8),
+            DiveSite("Casino Point", rating =  3.2, reviews = 14),
+            DiveSite("Leo Carillo", rating =  4.75, reviews = 42),
+            DiveSite("Boat Dive 1", rating =  3.98, reviews = 8)
         )
         explore_details_filtered_rv.apply {
             layoutManager = LinearLayoutManager(context, VERTICAL, false)

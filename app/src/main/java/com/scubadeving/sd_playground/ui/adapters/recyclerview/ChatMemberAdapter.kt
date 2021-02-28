@@ -6,7 +6,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.scubadeving.sd_playground.MainNavigationDirections
 import com.scubadeving.sd_playground.R
-import com.scubadeving.sd_playground.data.Diver
+import com.scubadeving.sd_playground.data.diver.Diver
 import com.scubadeving.sd_playground.utils.inflate
 import kotlinx.android.synthetic.main.item_chat_detail_container_member_.view.chat_detail_card_diver_name
 import kotlinx.android.synthetic.main.item_chat_detail_container_member_.view.chat_detail_card_diver_username
@@ -32,14 +32,14 @@ class ChatMemberAdapter(
         fun bind(chatMember: Diver) {
             itemView.apply {
                 setOnClickListener { navigateToProfile(it, chatMember) }
-                chat_detail_card_diver_name.text = chatMember.name
+                chat_detail_card_diver_name.text = chatMember.firstName
                 chat_detail_card_diver_username.text = "username"
             }
         }
     }
 
     private fun navigateToProfile(view: View, diver: Diver) {
-        val directions = MainNavigationDirections.actionGlobalProfileFragment(diver.name)
+        val directions = MainNavigationDirections.actionGlobalProfileFragment(diver.firstName!!)
         view.findNavController().navigate(directions)
     }
 }
