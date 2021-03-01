@@ -48,10 +48,10 @@ class GearFragment : Fragment() {
         val gearList = listOf(Gear("Suit"), Gear("Suit"), Gear("Suit"))
         val gearProfiles: ArrayList<GearProfile> =
             arrayListOf(
-                GearProfile("Saltwater", gearList),
-                GearProfile("Freshwater", gearList),
-                GearProfile("Cold Setup", gearList),
-                GearProfile("Tropical", gearList)
+                GearProfile("Saltwater"),
+                GearProfile("Freshwater"),
+                GearProfile("Cold Setup"),
+                GearProfile("Tropical")
             )
         gear_profiles_rv.apply {
             layoutManager = LinearLayoutManager(context, HORIZONTAL, false)
@@ -64,10 +64,10 @@ class GearFragment : Fragment() {
         val gearList = listOf(Gear("Suit"), Gear("Suit"), Gear("Suit"))
         val gearProfiles: ArrayList<GearProfile> =
             arrayListOf(
-                GearProfile("Saltwater", gearList),
-                GearProfile("Freshwater", gearList),
-                GearProfile("Cold Setup", gearList),
-                GearProfile("Tropical", gearList)
+                GearProfile("Saltwater"),
+                GearProfile("Freshwater"),
+                GearProfile("Cold Setup"),
+                GearProfile("Tropical")
             )
         gear_filtered_rv.apply {
             layoutManager = LinearLayoutManager(context, VERTICAL, false)

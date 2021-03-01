@@ -15,11 +15,9 @@ import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.sites.DiveSite
 import com.scubadeving.sd_playground.utils.inflate
 import kotlinx.android.synthetic.main.item_dive_site_card_large.view.dive_site_card_large_favorite
-import kotlinx.android.synthetic.main.item_dive_site_card_large.view.dive_site_card_large_location
 import kotlinx.android.synthetic.main.item_dive_site_card_large.view.dive_site_card_large_name
 import kotlinx.android.synthetic.main.item_dive_site_card_large.view.dive_site_card_large_rating
 import kotlinx.android.synthetic.main.item_dive_site_card_small.view.dive_site_card_small_favorite
-import kotlinx.android.synthetic.main.item_dive_site_card_small.view.dive_site_card_small_location
 import kotlinx.android.synthetic.main.item_dive_site_card_small.view.dive_site_card_small_name
 import kotlinx.android.synthetic.main.item_dive_site_card_small.view.dive_site_card_small_popularity
 import kotlinx.android.synthetic.main.item_dive_site_card_small.view.dive_site_card_small_rating

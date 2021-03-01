@@ -8,7 +8,6 @@ import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.gear.GearProfile
 import com.scubadeving.sd_playground.ui.main.dashboard.profile.ProfileFragmentDirections
 import com.scubadeving.sd_playground.utils.inflate
-import kotlinx.android.synthetic.main.item_gear_card.view.gear_card_item_text
 import kotlinx.android.synthetic.main.item_gear_profile_card.view.gear_profile_card_text
 
 class GearAdapter(private val gearProfiles: ArrayList<GearProfile>, val orientation: Boolean) :
@@ -55,7 +54,7 @@ class GearAdapter(private val gearProfiles: ArrayList<GearProfile>, val orientat
         }
 
         private fun View.configureGearProfileItemLayout(gearProfile: GearProfile) {
-            gear_card_item_text.text = gearProfile.gearList?.first()?.name
+//            gear_card_item_text.text = gearProfile.gearList?.first()?.name!!
         }
     }
 }

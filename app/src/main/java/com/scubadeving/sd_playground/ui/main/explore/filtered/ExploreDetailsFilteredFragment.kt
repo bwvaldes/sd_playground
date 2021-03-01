@@ -47,14 +47,14 @@ class ExploreDetailsFilteredFragment : Fragment() {
     private fun configureExploreFilteredDiveSites() {
         val filteredDiveSites: List<DiveSite> = listOf(
             DiveSite("Casino Point", rating = 3.2, reviews = 14),
-            DiveSite("Leo Carillo", rating =  4.75, reviews = 42),
-            DiveSite("Boat Dive 1", rating =  3.98, reviews = 8),
-            DiveSite("Casino Point", rating =  3.2, reviews = 14),
             DiveSite("Leo Carillo", rating = 4.75, reviews = 42),
-            DiveSite("Boat Dive 1", rating =  3.98, reviews = 8),
-            DiveSite("Casino Point", rating =  3.2, reviews = 14),
-            DiveSite("Leo Carillo", rating =  4.75, reviews = 42),
-            DiveSite("Boat Dive 1", rating =  3.98, reviews = 8)
+            DiveSite("Boat Dive 1", rating = 3.98, reviews = 8),
+            DiveSite("Casino Point", rating = 3.2, reviews = 14),
+            DiveSite("Leo Carillo", rating = 4.75, reviews = 42),
+            DiveSite("Boat Dive 1", rating = 3.98, reviews = 8),
+            DiveSite("Casino Point", rating = 3.2, reviews = 14),
+            DiveSite("Leo Carillo", rating = 4.75, reviews = 42),
+            DiveSite("Boat Dive 1", rating = 3.98, reviews = 8)
         )
         explore_details_filtered_rv.apply {
             layoutManager = LinearLayoutManager(context, VERTICAL, false)

@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.divelog.DiveLog
-import com.scubadeving.sd_playground.data.sites.DiveSite
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.DiveLogAdapter
 import kotlinx.android.synthetic.main.fragment_logbook_dives_map.logbook_map_rv
 
@@ -39,16 +38,16 @@ class LogbookMapFragment : Fragment() {
     private fun configureLoggedDives() {
         val diveLogs: ArrayList<DiveLog> =
             arrayListOf(
-                DiveLog(1, date ="January 23rd, 2020", depth ="63ft".toDouble(), bottomTime = "37min".toDouble()),
-                DiveLog(2,  date ="February 2nd, 2020", depth ="35ft".toDouble(), bottomTime ="48min".toDouble()),
-                DiveLog(3,  date ="February 4th, 2020",depth = "105ft".toDouble(),bottomTime = "29min".toDouble()),
-                DiveLog(4,  date ="February 8th, 2020",depth = "120ft".toDouble(),bottomTime = "23min".toDouble()),
-                DiveLog(5, date = "February 10th, 2020", depth ="23ft".toDouble(), bottomTime ="1hr 2min".toDouble()),
-                DiveLog(6, date = "February 12th, 2020",depth = "38.2ft".toDouble(), bottomTime ="45min".toDouble()),
-                DiveLog(7, date = "February 14th, 2020", depth ="42ft".toDouble(),bottomTime = "38min".toDouble()),
-                DiveLog(8,  date ="February 16th, 2020", depth ="45ft".toDouble(), bottomTime ="34min".toDouble()),
-                DiveLog(9, date = "February 18th, 2020", depth = "30ft".toDouble(),bottomTime = "53min".toDouble()),
-                DiveLog(10,  date ="February 20th, 2020", depth ="135ft".toDouble(), bottomTime ="24min".toDouble())
+                DiveLog(1, date = "January 23rd, 2020", depth = 63.toDouble(), bottomTime = 37.toDouble()),
+                DiveLog(2, date = "February 2nd, 2020", depth = 35.toDouble(), bottomTime = 48.toDouble()),
+                DiveLog(3, date = "February 4th, 2020", depth = 105.toDouble(), bottomTime = 29.toDouble()),
+                DiveLog(4, date = "February 8th, 2020", depth = 120.toDouble(), bottomTime = 23.toDouble()),
+                DiveLog(5, date = "February 10th, 2020", depth = 23.toDouble(), bottomTime = 12.toDouble()),
+                DiveLog(6, date = "February 12th, 2020", depth = 38.2, bottomTime = 45.toDouble()),
+                DiveLog(7, date = "February 14th, 2020", depth = 42.toDouble(), bottomTime = 38.toDouble()),
+                DiveLog(8, date = "February 16th, 2020", depth = 45.toDouble(), bottomTime = 34.toDouble()),
+                DiveLog(9, date = "February 18th, 2020", depth = 30.toDouble(), bottomTime = 53.toDouble()),
+                DiveLog(10, date = "February 20th, 2020", depth = 135.toDouble(), bottomTime = 24.toDouble())
             )
         parentFragment?.view?.findViewById<Toolbar>(R.id.logbook_toolbar)?.setOnClickListener {
             diveLogs.asReversed()

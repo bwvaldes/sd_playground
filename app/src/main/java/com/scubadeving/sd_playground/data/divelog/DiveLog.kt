@@ -1,11 +1,6 @@
 package com.scubadeving.sd_playground.data.divelog
 
 import com.google.firebase.firestore.DocumentReference
-import com.scubadeving.sd_playground.data.DiveCenter
-import com.scubadeving.sd_playground.data.diver.Diver
-import com.scubadeving.sd_playground.data.sites.DiveSite
-import com.scubadeving.sd_playground.data.wildlife.Wildlife
-import java.util.Calendar
 
 data class DiveLog(
     val id: Int? = null,

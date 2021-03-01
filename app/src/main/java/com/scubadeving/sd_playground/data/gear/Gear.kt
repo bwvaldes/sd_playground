@@ -8,7 +8,7 @@ data class Gear(
     val iconUrl: String? = null,
     val description: String? = null,
     val lastMaintenanceDate: String? = null, // Converter
-    val maintenanceInterval: Int? = null
+    val maintenanceInterval: Int? = null // Day Interval
 ) {
     /**
      * Determines if the gear should be serviced. Returns true if [since]'s date > date of last

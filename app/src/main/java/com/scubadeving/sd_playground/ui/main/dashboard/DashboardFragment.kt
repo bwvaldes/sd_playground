@@ -14,13 +14,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.SnapHelper
+import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.scubadeving.sd_playground.MainNavigationDirections
 import com.scubadeving.sd_playground.R
+import com.scubadeving.sd_playground.data.DiveCenter
 import com.scubadeving.sd_playground.data.InboxNotification
 import com.scubadeving.sd_playground.data.certification.CatalogCertification
-import com.scubadeving.sd_playground.data.diver.Certification
 import com.scubadeving.sd_playground.data.diver.Diver
+import com.scubadeving.sd_playground.data.gear.Gear
+import com.scubadeving.sd_playground.data.gear.GearProfile
 import com.scubadeving.sd_playground.data.sites.DiveSite
 import com.scubadeving.sd_playground.databinding.FragmentDashboardBinding
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.DiveSiteAdapter
@@ -31,11 +34,6 @@ class DashboardFragment : Fragment() {
 
     private lateinit var dashboardViewModel: DashboardViewModel
     private lateinit var firestore: FirebaseFirestore
-
-    private val currentUser = Diver(
-        firstName = "Brian",
-        certifications = listOf(Certification(certificationName = "Advanced Open Water Diver"))
-    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,10 +58,26 @@ class DashboardFragment : Fragment() {
 
     private fun subscribeUi(binding: FragmentDashboardBinding) {
         binding.apply {
-            getAllDivers()
-//            addNewDiver()
-            getLePew { diver = it }
-            welcomeCertLevel.text = currentUser.certifications?.first()?.certificationName
+            getLePew {
+                diver = it
+                welcomeCertLevel.text = diver?.certifications?.first()?.certificationName
+            }
+            getGearProfiles { gearProfiles ->
+                Log.d("GEAR PROFILE RESULT", "$gearProfiles")
+                gearProfiles?.forEach { profile ->
+                    profile.gearList?.forEach {
+                        getGearFromGearProfiles(it) { gear ->
+                            Log.d(tag, "GEAR ITEM: $gear")
+                        }
+                    }
+                }
+            }
+            getEcoDiveCenter {
+                Log.d(tag, "DIVE CENTER: $it")
+            }
+            getDiveSiteCatalina {
+                Log.d(tag, "DIVE SITE: $it")
+            }
             configureToolbar()
             configureUpcomingDivesRecyclerView()
             configureDashboardNotificationsRecyclerView()
@@ -76,7 +90,7 @@ class DashboardFragment : Fragment() {
             setOnMenuItemClickListener { item ->
                 when (item.itemId) {
                     R.id.action_profile -> {
-                        navigateToProfile(this, currentUser)
+                        navigateToProfile(this, diver!!)
                         true
                     }
                     R.id.action_saved -> {
@@ -95,11 +109,11 @@ class DashboardFragment : Fragment() {
 
     private fun FragmentDashboardBinding.configureUpcomingDivesRecyclerView() {
         val diveSites: List<DiveSite> = listOf(
-            DiveSite("Shaw's Cove", rating =  4.5, reviews = 112),
-            DiveSite("Casino Point", rating =  3.2, reviews = 14),
+            DiveSite("Shaw's Cove", rating = 4.5, reviews = 112),
+            DiveSite("Casino Point", rating = 3.2, reviews = 14),
             DiveSite("Se lion Point", rating = 4.8, reviews = 86),
-            DiveSite("Leo Carillo", rating =  4.75, reviews = 42),
-            DiveSite("Boat Dive 1", rating =  3.98, reviews = 8)
+            DiveSite("Leo Carillo", rating = 4.75, reviews = 42),
+            DiveSite("Boat Dive 1", rating = 3.98, reviews = 8)
         )
         upcomingDivesRv.apply {
             layoutManager = LinearLayoutManager(context, HORIZONTAL, false)
@@ -115,7 +129,7 @@ class DashboardFragment : Fragment() {
         welcomeDash.apply {
             dashWeatherCard.setOnClickListener { navigateToWeatherDetail(it) }
             dashFlyCard.setOnClickListener { navigateToDiveLogEntry(it) }
-            dashMaintenanceCard.setOnClickListener { navigateToProfile(it, currentUser) }
+            dashMaintenanceCard.setOnClickListener { navigateToProfile(it, diver!!) }
             dashNextCard.setOnClickListener { navigateToCertificationDetail(it) }
         }
     }
@@ -162,8 +176,7 @@ class DashboardFragment : Fragment() {
 
     private fun navigateToCertificationDetail(view: View) {
         val nextCertification = CatalogCertification("Rescue Diver")
-        val directions =
-            MainNavigationDirections.actionGlobalCertDetailFragment(nextCertification.name!!)
+        val directions = MainNavigationDirections.actionGlobalCertDetailFragment(nextCertification.name!!)
         view.findNavController().navigate(directions)
     }
 
@@ -182,7 +195,7 @@ class DashboardFragment : Fragment() {
     }
 
     private fun getLePew(diver: (Diver?) -> Unit) {
-        val tag = "Firestore: Read Divers"
+        val tag = "Firestore: Read Diver"
         firestore.collection("divers").document("lEnWGcqDvI87XZvieJfY")
             .get()
             .addOnSuccessListener { result ->
@@ -191,8 +204,6 @@ class DashboardFragment : Fragment() {
             }
             .addOnFailureListener { exception ->
                 Log.w(tag, "Error getting documents.", exception)
-            }
-            .addOnCompleteListener {
             }
     }
 
@@ -208,13 +219,89 @@ class DashboardFragment : Fragment() {
         firestore.collection("divers")
             .add(diver)
             .addOnSuccessListener { documentReference ->
-                Log.d(
-                    tag,
-                    "DocumentSnapshot added with ID: ${documentReference.id}"
-                )
+                Log.d(tag, "DocumentSnapshot added with ID: ${documentReference.id}")
             }
             .addOnFailureListener { exception ->
                 Log.w(tag, "Error adding document", exception)
+            }
+    }
+
+    private fun getGearProfiles(gearProfiles: (List<GearProfile>?) -> Unit) {
+        firestore.collection("divers/lEnWGcqDvI87XZvieJfY/gearProfiles")
+            .get()
+            .addOnSuccessListener { result ->
+                gearProfiles(result?.toObjects(GearProfile::class.java))
+            }
+            .addOnFailureListener { exception ->
+                Log.w(tag, "Error adding document", exception)
+            }
+    }
+
+    private fun getGearFromGearProfiles(docRef: DocumentReference, gear: (Gear?) -> Unit) {
+        firestore.document(docRef.path)
+            .get()
+            .addOnSuccessListener { result ->
+                Log.d(tag, "GET GEAR FROM PROFILE RESULT: $result")
+
+                gear(result?.toObject(Gear::class.java))
+            }
+            .addOnFailureListener { exception ->
+                Log.w(tag, "Error adding document", exception)
+            }
+    }
+
+
+    private fun getAllDiveCenters() {
+        val tag = "Firestore: Read Dive Centers"
+        firestore.collection("diveCenters")
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    Log.d(tag, "${document.id} => ${document.data}")
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.w(tag, "Error getting documents.", exception)
+            }
+    }
+
+    private fun getEcoDiveCenter(diveCenter: (DiveCenter?) -> Unit) {
+        val tag = "Firestore: Read Dive Center"
+        firestore.collection("diveCenters").document("3eyk7ZbWvWWFtQ71N7VA")
+            .get()
+            .addOnSuccessListener { result ->
+                Log.d(tag, "${result.id} => ${result.data}")
+                diveCenter(result?.toObject(DiveCenter::class.java))
+            }
+            .addOnFailureListener { exception ->
+                Log.w(tag, "Error getting documents.", exception)
+            }
+    }
+
+    private fun getAllDiveSites() {
+        val tag = "Firestore: Read Dive Sites"
+        firestore.collection("diveSites")
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    Log.d(tag, "${document.id} => ${document.data}")
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.w(tag, "Error getting documents.", exception)
+            }
+    }
+
+    private fun getDiveSiteCatalina(diveSite: (DiveSite?) -> Unit) {
+        val tag = "Firestore: Read Dive Site"
+        firestore.collection("diveSites").document("dyhJj73cKyKtptsj6wLJ")
+            .get()
+            .addOnSuccessListener { result ->
+                Log.d(tag, "${result.id} => ${result.data}")
+                diveSite(result?.toObject(DiveSite::class.java))
+            }
+            .addOnFailureListener { exception ->
+                Log.w(tag, "Error getting documents.", exception)
             }
     }
 }

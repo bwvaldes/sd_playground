@@ -57,15 +57,15 @@ class SavedFragment : Fragment() {
 
     private fun configureSavedDiveSitesRecyclerview() {
         val savedDiveSites: List<DiveSite> = listOf(
-            DiveSite("Casino Point", rating =  3.2, reviews = 14),
+            DiveSite("Casino Point", rating = 3.2, reviews = 14),
             DiveSite("Leo Carillo", rating = 4.75, reviews = 42),
-            DiveSite("Boat Dive 1", rating =  3.98, reviews = 8),
-            DiveSite("Casino Point", rating =  3.2, reviews = 14),
+            DiveSite("Boat Dive 1", rating = 3.98, reviews = 8),
+            DiveSite("Casino Point", rating = 3.2, reviews = 14),
             DiveSite("Leo Carillo", rating = 4.75, reviews = 42),
-            DiveSite("Boat Dive 1", rating =  3.98, reviews = 8),
-            DiveSite("Casino Point", rating =  3.2, reviews = 14),
-            DiveSite("Leo Carillo", rating =  4.75, reviews = 42),
-            DiveSite("Boat Dive 1", rating =  3.98, reviews = 8)
+            DiveSite("Boat Dive 1", rating = 3.98, reviews = 8),
+            DiveSite("Casino Point", rating = 3.2, reviews = 14),
+            DiveSite("Leo Carillo", rating = 4.75, reviews = 42),
+            DiveSite("Boat Dive 1", rating = 3.98, reviews = 8)
         )
         saved_dive_sites_rv.apply {
             layoutManager = LinearLayoutManager(context, VERTICAL, false)

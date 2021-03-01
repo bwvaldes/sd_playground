@@ -10,18 +10,15 @@ import com.scubadeving.sd_playground.MainNavigationDirections
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.divelog.DiveLog
 import com.scubadeving.sd_playground.utils.inflate
-import kotlin.time.seconds
 import kotlinx.android.synthetic.main.item_divelog_card_horizontal.view.logged_dive_map_bottom_time
 import kotlinx.android.synthetic.main.item_divelog_card_horizontal.view.logged_dive_map_date
 import kotlinx.android.synthetic.main.item_divelog_card_horizontal.view.logged_dive_map_depth
 import kotlinx.android.synthetic.main.item_divelog_card_horizontal.view.logged_dive_map_details
-import kotlinx.android.synthetic.main.item_divelog_card_horizontal.view.logged_dive_map_rating
 import kotlinx.android.synthetic.main.item_divelog_card_horizontal.view.logged_dive_map_site_image
 import kotlinx.android.synthetic.main.item_divelog_card_vertical.view.logged_dive_bottom_time
 import kotlinx.android.synthetic.main.item_divelog_card_vertical.view.logged_dive_date
 import kotlinx.android.synthetic.main.item_divelog_card_vertical.view.logged_dive_depth
 import kotlinx.android.synthetic.main.item_divelog_card_vertical.view.logged_dive_details
-import kotlinx.android.synthetic.main.item_divelog_card_vertical.view.logged_dive_rating
 import kotlinx.android.synthetic.main.item_divelog_card_vertical.view.logged_dive_site_image
 
 class DiveLogAdapter(private val diveLogs: ArrayList<DiveLog>, val orientation: Boolean) :

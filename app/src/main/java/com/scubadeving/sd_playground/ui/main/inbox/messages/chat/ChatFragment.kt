@@ -61,8 +61,8 @@ class ChatFragment : Fragment() {
     }
 
     private fun configureChatRecyclerView() {
-        val guestDiver = Diver(args.diverName, certifications = listOf(Certification(certificationName = "Advanced Open Water")))
-        val hostDiver = Diver(firstName = "Brian", certifications = listOf(Certification(certificationName = "Advanced Open Water")))
+        val guestDiver = Diver(args.diverName, certifications = arrayListOf(Certification(certificationName = "Advanced Open Water")))
+        val hostDiver = Diver(firstName = "Brian", certifications = arrayListOf(Certification(certificationName = "Advanced Open Water")))
         val chatMessages = mutableListOf(
             ChatMessage(null, "Wednesday, Mar 3rd 2021 ", MESSAGE_TYPE_DATE, 1200),
             ChatMessage(hostDiver, "Hey bud, long time no dive!", MESSAGE_TYPE_HOST, 1300),

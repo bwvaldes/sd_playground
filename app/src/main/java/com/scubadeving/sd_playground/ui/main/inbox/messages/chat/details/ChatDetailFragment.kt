@@ -33,7 +33,7 @@ class ChatDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         chat_detail_toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
-        val members = listOf(Diver(args.diverName, certifications = listOf(Certification(certificationName = "Open Water"))))
+        val members = listOf(Diver(args.diverName, certifications = arrayListOf(Certification(certificationName = "Open Water"))))
         chat_detail_members_rv.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
             adapter = ChatMemberAdapter(members)

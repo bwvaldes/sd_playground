@@ -48,14 +48,14 @@ class ExploreBuddiesFragment : Fragment() {
     private fun configureNearbyDivers() {
         val nearbyDivers: ArrayList<Diver> =
             arrayListOf(
-                Diver(firstName = "Bob", certifications = listOf(Certification(certificationName = "Open Water"))),
-                Diver(firstName = "Billy", certifications = listOf(Certification(certificationName = "Rescue Diver"))),
-                Diver(firstName = "Jill", certifications = listOf(Certification(certificationName = "Advanced Open Water"))),
-                Diver(firstName = "Karen", certifications =  listOf(Certification(certificationName = "Open Water"))),
-                Diver(firstName = "Molly",certifications = listOf(Certification(certificationName =  "Night Diver"))),
-                Diver(firstName = "Don", certifications = listOf(Certification(certificationName = "Open Water"))),
-                Diver(firstName = "Bill",certifications = listOf(Certification(certificationName =  "Open Water"))),
-                Diver(firstName = "Greg", certifications = listOf(Certification(certificationName = "Open Water")))
+                Diver(firstName = "Bob", certifications = arrayListOf(Certification(certificationName = "Open Water"))),
+                Diver(firstName = "Billy", certifications = arrayListOf(Certification(certificationName = "Rescue Diver"))),
+                Diver(firstName = "Jill", certifications = arrayListOf(Certification(certificationName = "Advanced Open Water"))),
+                Diver(firstName = "Karen", certifications = arrayListOf(Certification(certificationName = "Open Water"))),
+                Diver(firstName = "Molly", certifications = arrayListOf(Certification(certificationName = "Night Diver"))),
+                Diver(firstName = "Don", certifications = arrayListOf(Certification(certificationName = "Open Water"))),
+                Diver(firstName = "Bill", certifications = arrayListOf(Certification(certificationName = "Open Water"))),
+                Diver(firstName = "Greg", certifications = arrayListOf(Certification(certificationName = "Open Water")))
             )
         nearby_divers_rv.apply {
             layoutManager = LinearLayoutManager(context, HORIZONTAL, false)
@@ -71,13 +71,13 @@ class ExploreBuddiesFragment : Fragment() {
     private fun configureDiveCenterDivers() {
         val diveCenterDivers: ArrayList<Diver> =
             arrayListOf(
-                Diver(firstName = "Jill",certifications = listOf(Certification(certificationName = "Open Water"))),
-                Diver(firstName = "Jack", certifications = listOf(Certification(certificationName = "Open Water"))),
-                Diver(firstName = "Pedro", certifications = listOf(Certification(certificationName = "Open Water"))),
-                Diver(firstName = "Nick", certifications = listOf(Certification(certificationName = "Open Water"))),
-                Diver(firstName = "Jill", certifications = listOf(Certification(certificationName = "Open Water"))),
-                Diver(firstName = "Karen", certifications = listOf(Certification(certificationName = "Open Water"))),
-                Diver(firstName = "Molly", certifications = listOf(Certification(certificationName = "Open Water")))
+                Diver(firstName = "Jill", certifications = arrayListOf(Certification(certificationName = "Open Water"))),
+                Diver(firstName = "Jack", certifications = arrayListOf(Certification(certificationName = "Open Water"))),
+                Diver(firstName = "Pedro", certifications = arrayListOf(Certification(certificationName = "Open Water"))),
+                Diver(firstName = "Nick", certifications = arrayListOf(Certification(certificationName = "Open Water"))),
+                Diver(firstName = "Jill", certifications = arrayListOf(Certification(certificationName = "Open Water"))),
+                Diver(firstName = "Karen", certifications = arrayListOf(Certification(certificationName = "Open Water"))),
+                Diver(firstName = "Molly", certifications = arrayListOf(Certification(certificationName = "Open Water")))
             )
         val spanCount = 2
         val spacing = 15
@@ -95,14 +95,14 @@ class ExploreBuddiesFragment : Fragment() {
     private fun configurePastDivers() {
         val pastDivers: ArrayList<Diver> =
             arrayListOf(
-                Diver(firstName = "Lia",certifications = listOf(Certification(certificationName = "Discover Diver"))),
-                Diver(firstName = "Arnold",certifications = listOf(Certification(certificationName = "Open Water"))),
-                Diver(firstName = "Richard", certifications = listOf(Certification(certificationName = "Open Water"))),
-                Diver(firstName = "Brandon", certifications = listOf(Certification(certificationName = "Open Water"))),
-                Diver(firstName = "Jill", certifications = listOf(Certification(certificationName = "Open Water"))),
-                Diver(firstName = "Jack", certifications = listOf(Certification(certificationName = "Open Water"))),
-                Diver(firstName = "Pedro", certifications = listOf(Certification(certificationName = "Open Water"))),
-                Diver(firstName = "Nick", certifications = listOf(Certification(certificationName = "Open Water")))
+                Diver(firstName = "Lia", certifications = arrayListOf(Certification(certificationName = "Discover Diver"))),
+                Diver(firstName = "Arnold", certifications = arrayListOf(Certification(certificationName = "Open Water"))),
+                Diver(firstName = "Richard", certifications = arrayListOf(Certification(certificationName = "Open Water"))),
+                Diver(firstName = "Brandon", certifications = arrayListOf(Certification(certificationName = "Open Water"))),
+                Diver(firstName = "Jill", certifications = arrayListOf(Certification(certificationName = "Open Water"))),
+                Diver(firstName = "Jack", certifications = arrayListOf(Certification(certificationName = "Open Water"))),
+                Diver(firstName = "Pedro", certifications = arrayListOf(Certification(certificationName = "Open Water"))),
+                Diver(firstName = "Nick", certifications = arrayListOf(Certification(certificationName = "Open Water")))
             )
         val spanCount = 2
         val spacing = 15

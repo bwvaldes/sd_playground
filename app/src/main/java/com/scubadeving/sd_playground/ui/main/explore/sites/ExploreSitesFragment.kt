@@ -70,9 +70,9 @@ class ExploreSitesFragment : Fragment() {
 
     private fun configureExploreNearbyDiveSites() {
         val nearbyDiveSites: List<DiveSite> = listOf(
-            DiveSite("Casino Point", rating =  3.2, reviews = 14),
+            DiveSite("Casino Point", rating = 3.2, reviews = 14),
             DiveSite("Leo Carillo", rating = 4.75, reviews = 42),
-            DiveSite("Boat Dive 1", rating =  3.98, reviews = 8)
+            DiveSite("Boat Dive 1", rating = 3.98, reviews = 8)
         )
         explore_sites_nearby_rv.apply {
             layoutManager = LinearLayoutManager(context, HORIZONTAL, false)
@@ -86,14 +86,14 @@ class ExploreSitesFragment : Fragment() {
 
     private fun configureExploreAllDiveSites() {
         val allDiveSites: List<DiveSite> = listOf(
-            DiveSite("Casino Point", rating =  3.2, reviews = 14),
-            DiveSite("Leo Carillo", rating =  4.75, reviews = 42),
-            DiveSite("Boat Dive 1", rating =  3.98, reviews = 8),
             DiveSite("Casino Point", rating = 3.2, reviews = 14),
-            DiveSite("Leo Carillo", rating =  4.75, reviews = 42),
-            DiveSite("Boat Dive 1", rating =  3.98, reviews = 8),
-            DiveSite("Casino Point", rating =  3.2, reviews = 14),
-            DiveSite("Leo Carillo", rating =  4.75, reviews = 42),
+            DiveSite("Leo Carillo", rating = 4.75, reviews = 42),
+            DiveSite("Boat Dive 1", rating = 3.98, reviews = 8),
+            DiveSite("Casino Point", rating = 3.2, reviews = 14),
+            DiveSite("Leo Carillo", rating = 4.75, reviews = 42),
+            DiveSite("Boat Dive 1", rating = 3.98, reviews = 8),
+            DiveSite("Casino Point", rating = 3.2, reviews = 14),
+            DiveSite("Leo Carillo", rating = 4.75, reviews = 42),
             DiveSite("Boat Dive 1", rating = 3.98, reviews = 8)
         )
         explore_sites_all_rv.apply {

@@ -33,8 +33,8 @@ class MessagesFragment : Fragment() {
     }
 
     private fun configureMessagesRecyclerView() {
-        val guestDiver1 = Diver(firstName = "Arnold", certifications = listOf(Certification("Rescue Diver")))
-        val guestDiver2 = Diver(firstName = "Jack", certifications = listOf(Certification("Discover Diver")))
+        val guestDiver1 = Diver(firstName = "Arnold", certifications = arrayListOf(Certification("Rescue Diver")))
+        val guestDiver2 = Diver(firstName = "Jack", certifications = arrayListOf(Certification("Discover Diver")))
         val messages: ArrayList<InboxMessage> = arrayListOf(
             InboxMessage(guestDiver1, "15min ago", "This is a Message"),
             InboxMessage(guestDiver2, "Yesterday", "This is a Message")

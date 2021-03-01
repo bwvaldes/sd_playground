@@ -1,6 +1,5 @@
 package com.scubadeving.sd_playground.data.sites
 
-import android.location.Location
 import com.google.firebase.firestore.GeoPoint
 
 data class DiveSite(
