@@ -7,7 +7,7 @@ import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.scubadeving.sd_playground.R
-import com.scubadeving.sd_playground.data.SavedList
+import com.scubadeving.sd_playground.data.model.SavedList
 import com.scubadeving.sd_playground.ui.main.saved.SavedFragmentDirections
 import com.scubadeving.sd_playground.utils.inflate
 import kotlinx.android.synthetic.main.item_saved_list_card.view.saved_list_text

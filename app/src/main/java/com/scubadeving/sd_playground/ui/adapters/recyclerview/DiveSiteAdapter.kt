@@ -12,7 +12,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.scubadeving.sd_playground.MainNavigationDirections
 import com.scubadeving.sd_playground.R
-import com.scubadeving.sd_playground.data.sites.DiveSite
+import com.scubadeving.sd_playground.data.model.sites.DiveSite
 import com.scubadeving.sd_playground.utils.inflate
 import kotlinx.android.synthetic.main.item_dive_site_card_large.view.dive_site_card_large_favorite
 import kotlinx.android.synthetic.main.item_dive_site_card_large.view.dive_site_card_large_name

@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.SnapHelper
 import com.scubadeving.sd_playground.MainNavigationDirections
 import com.scubadeving.sd_playground.R
-import com.scubadeving.sd_playground.data.certification.CatalogCertification
+import com.scubadeving.sd_playground.data.model.certification.CatalogCertification
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.CertificationAdapter.CertificationViewHolder
 import com.scubadeving.sd_playground.utils.inflate
 import kotlinx.android.synthetic.main.item_certification_card_profile.view.profile_cert_card_text

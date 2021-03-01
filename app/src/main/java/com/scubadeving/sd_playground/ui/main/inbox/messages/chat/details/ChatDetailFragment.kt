@@ -10,8 +10,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.scubadeving.sd_playground.R
-import com.scubadeving.sd_playground.data.diver.Certification
-import com.scubadeving.sd_playground.data.diver.Diver
+import com.scubadeving.sd_playground.data.model.diver.Certification
+import com.scubadeving.sd_playground.data.model.diver.Diver
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.ChatMemberAdapter
 import kotlinx.android.synthetic.main.fragment_chat_details.chat_detail_members_rv
 import kotlinx.android.synthetic.main.fragment_chat_details.chat_detail_toolbar

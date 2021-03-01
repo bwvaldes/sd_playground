@@ -14,8 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.scubadeving.sd_playground.R
-import com.scubadeving.sd_playground.data.wildlife.ConservationStatus
-import com.scubadeving.sd_playground.data.wildlife.Wildlife
+import com.scubadeving.sd_playground.data.model.wildlife.ConservationStatus
+import com.scubadeving.sd_playground.data.model.wildlife.Wildlife
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.ItemDetailAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.WildlifeAdapter
 import kotlinx.android.synthetic.main.fragment_wildlife_details.wildlife_detail_conservation_status

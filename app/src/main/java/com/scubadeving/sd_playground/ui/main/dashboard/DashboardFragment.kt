@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -16,15 +17,17 @@ import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.toObject
+import com.google.firebase.firestore.ktx.toObjects
 import com.scubadeving.sd_playground.MainNavigationDirections
 import com.scubadeving.sd_playground.R
-import com.scubadeving.sd_playground.data.DiveCenter
-import com.scubadeving.sd_playground.data.InboxNotification
-import com.scubadeving.sd_playground.data.certification.CatalogCertification
-import com.scubadeving.sd_playground.data.diver.Diver
-import com.scubadeving.sd_playground.data.gear.Gear
-import com.scubadeving.sd_playground.data.gear.GearProfile
-import com.scubadeving.sd_playground.data.sites.DiveSite
+import com.scubadeving.sd_playground.data.model.DiveCenter
+import com.scubadeving.sd_playground.data.model.InboxNotification
+import com.scubadeving.sd_playground.data.model.certification.CatalogCertification
+import com.scubadeving.sd_playground.data.model.diver.Diver
+import com.scubadeving.sd_playground.data.model.gear.Gear
+import com.scubadeving.sd_playground.data.model.gear.GearProfile
+import com.scubadeving.sd_playground.data.model.sites.DiveSite
 import com.scubadeving.sd_playground.databinding.FragmentDashboardBinding
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.DiveSiteAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.NotificationAdapter
@@ -46,14 +49,14 @@ class DashboardFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         setHasOptionsMenu(true)
         dashboardViewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
         return FragmentDashboardBinding.inflate(inflater, container, false).apply {
             activity?.fab?.setOnClickListener {
                 Toast.makeText(activity, "Search Dashboard", Toast.LENGTH_SHORT).show()
             }
-            activity?.fab?.setImageDrawable(resources.getDrawable(R.drawable.ic_action_search))
+            activity?.fab?.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_action_search))
             subscribeUi(this)
         }.root
     }
@@ -62,7 +65,6 @@ class DashboardFragment : Fragment() {
         binding.apply {
             getLePew {
                 diver = it
-                diver.id
                 welcomeCertLevel.text = diver?.certifications?.first()?.certificationName
             }
             getGearProfiles { gearProfiles ->
@@ -201,7 +203,7 @@ class DashboardFragment : Fragment() {
             .get()
             .addOnSuccessListener { result ->
                 Log.d(TAG_FIRESTORE, "Read Diver: ${result.id} => ${result.data}")
-                diver(result?.toObject(Diver::class.java))
+                diver(result?.toObject<Diver>())
             }
             .addOnFailureListener { exception ->
                 Log.w(TAG_FIRESTORE, "Error getting documents.", exception)
@@ -230,7 +232,7 @@ class DashboardFragment : Fragment() {
         firestore.collection("divers/lEnWGcqDvI87XZvieJfY/gearProfiles")
             .get()
             .addOnSuccessListener { result ->
-                gearProfiles(result?.toObjects(GearProfile::class.java))
+                gearProfiles(result?.toObjects<GearProfile>())
             }
             .addOnFailureListener { exception ->
                 Log.w(TAG_FIRESTORE, "Error adding document", exception)
@@ -243,13 +245,12 @@ class DashboardFragment : Fragment() {
             .addOnSuccessListener { result ->
                 Log.d(TAG_FIRESTORE, "GET GEAR FROM PROFILE RESULT: $result")
 
-                gear(result?.toObject(Gear::class.java))
+                gear(result?.toObject<Gear>())
             }
             .addOnFailureListener { exception ->
                 Log.w(TAG_FIRESTORE, "Error adding document", exception)
             }
     }
-
 
     private fun getAllDiveCenters() {
         firestore.collection("diveCenters")
@@ -269,7 +270,7 @@ class DashboardFragment : Fragment() {
             .get()
             .addOnSuccessListener { result ->
                 Log.d(TAG_FIRESTORE, "Read Dive Center: ${result.id} => ${result.data}")
-                diveCenter(result?.toObject(DiveCenter::class.java))
+                diveCenter(result?.toObject<DiveCenter>())
             }
             .addOnFailureListener { exception ->
                 Log.w(TAG_FIRESTORE, "Error getting documents.", exception)
@@ -294,7 +295,7 @@ class DashboardFragment : Fragment() {
             .get()
             .addOnSuccessListener { result ->
                 Log.d(TAG_FIRESTORE, "Read Dive Site: ${result.id} => ${result.data}")
-                diveSite(result?.toObject(DiveSite::class.java))
+                diveSite(result?.toObject<DiveSite>())
             }
             .addOnFailureListener { exception ->
                 Log.w(TAG_FIRESTORE, "Error getting documents.", exception)

@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.scubadeving.sd_playground.R
-import com.scubadeving.sd_playground.data.DiveCenter
+import com.scubadeving.sd_playground.data.model.DiveCenter
 import com.scubadeving.sd_playground.utils.inflate
 import kotlinx.android.synthetic.main.item_dive_center_card.view.dive_center_name
 

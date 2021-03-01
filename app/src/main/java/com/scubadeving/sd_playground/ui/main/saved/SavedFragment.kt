@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
 import androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
 import com.scubadeving.sd_playground.R
-import com.scubadeving.sd_playground.data.SavedList
-import com.scubadeving.sd_playground.data.sites.DiveSite
+import com.scubadeving.sd_playground.data.model.SavedList
+import com.scubadeving.sd_playground.data.model.sites.DiveSite
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.DiveSiteAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.SavedListAdapter
 import kotlinx.android.synthetic.main.fragment_saved.saved_dive_sites_rv

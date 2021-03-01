@@ -4,6 +4,7 @@ private object Versions {
     const val androidAppCompat = "1.2.0"
     const val androidLegacy = "1.0.0"
     const val androidPreference = "1.1.1"
+    const val androidFragment = "1.2.5"
     const val androidLifeCycle = "2.3.0"
     const val androidNavigation = "2.3.3"
     const val androidJunit = "1.1.2"
@@ -56,16 +57,29 @@ object AndroidXLibs {
     private const val core = "androidx.core:core-ktx:${Versions.androidCore}"
     private const val appCompat = "androidx.appcompat:appcompat:${Versions.androidAppCompat}"
     private const val legacy = "androidx.legacy:legacy-support-v4:${Versions.androidLegacy}"
+    private const val fragment = "androidx.fragment:fragment-ktx:${Versions.androidFragment}"
     private const val preference = "androidx.preference:preference-ktx:${Versions.androidPreference}"
     private const val livedata = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.androidLifeCycle}"
     private const val viewmodel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.androidLifeCycle}"
-    private const val fragment = "androidx.navigation:navigation-fragment-ktx:${Versions.androidNavigation}"
-    private const val ui ="androidx.navigation:navigation-ui-ktx:${Versions.androidNavigation}"
+    private const val navRuntime = "androidx.navigation:navigation-runtime-ktx:${Versions.androidNavigation}"
+    private const val navFragment = "androidx.navigation:navigation-fragment-ktx:${Versions.androidNavigation}"
+    private const val navUi ="androidx.navigation:navigation-ui-ktx:${Versions.androidNavigation}"
     private const val constraintLayout ="androidx.constraintlayout:constraintlayout:${Versions.androidConstraintLayout}"
     private const val vectorDrawable = "androidx.vectordrawable:vectordrawable:${Versions.androidVectorDrawable}"
 
     val implementations = listOf(
-        core, appCompat, legacy, preference, livedata, viewmodel, fragment, ui, constraintLayout, vectorDrawable
+        core,
+        appCompat,
+        legacy,
+        preference,
+        fragment,
+        livedata,
+        viewmodel,
+        navRuntime,
+        navFragment,
+        navUi,
+        constraintLayout,
+        vectorDrawable
     )
 }
 
@@ -82,9 +96,10 @@ object ThirdPartyLibs {
 }
 
 object FirebaseLibs {
-//    const val billOfMaterials = "com.google.firebase:firebase-bom:${Versions.firebaseBom}"
-//    private const val analytics = "com.google.firebase:firebase-analytics-ktx:"
-    private const val firestore = "com.google.firebase:firebase-firestore:22.1.0"
+    const val billOfMaterials = "com.google.firebase:firebase-bom:${Versions.firebaseBom}"
+//    private const val analytics = "com.google.firebase:firebase-analytics-ktx"
+//    private const val firestore = "com.google.firebase:firebase-firestore-ktx"
+    private const val firestore = "com.google.firebase:firebase-firestore-ktx:22.1.0"
 
     val implementations = listOf(firestore)
 }

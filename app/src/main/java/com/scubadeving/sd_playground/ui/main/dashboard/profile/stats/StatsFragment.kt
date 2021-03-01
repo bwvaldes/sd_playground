@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.scubadeving.sd_playground.R
@@ -25,7 +26,7 @@ class StatsFragment : Fragment() {
         activity?.fab?.setOnClickListener {
             Toast.makeText(activity, "Search My Stats", Toast.LENGTH_SHORT).show()
         }
-        activity?.fab?.setImageDrawable(resources.getDrawable(R.drawable.ic_action_search))
+        activity?.fab?.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_action_search))
         return root
     }
 }

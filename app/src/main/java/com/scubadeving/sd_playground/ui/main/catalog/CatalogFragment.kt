@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -13,8 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
 import com.google.android.material.chip.Chip
 import com.scubadeving.sd_playground.R
-import com.scubadeving.sd_playground.data.certification.CatalogCertification
-import com.scubadeving.sd_playground.data.certification.Specialty
+import com.scubadeving.sd_playground.data.model.certification.CatalogCertification
+import com.scubadeving.sd_playground.data.model.certification.Specialty
 import com.scubadeving.sd_playground.databinding.FragmentCertificationCatalogBinding
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.CertificationAdapter
 import kotlinx.android.synthetic.main.activity_main.fab
@@ -126,7 +127,7 @@ class CatalogFragment : Fragment() {
                 Toast.makeText(activity, "Search Catalog", Toast.LENGTH_SHORT).show()
                 findNavController().navigate(R.id.certificationScanFragment)
             }
-            activity?.fab?.setImageDrawable(resources.getDrawable(R.drawable.ic_action_add))
+            activity?.fab?.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_action_add))
             subscribeUi(this)
         }.root
     }

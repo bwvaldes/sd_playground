@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.scubadeving.sd_playground.R
-import com.scubadeving.sd_playground.data.divelog.DiveLog
+import com.scubadeving.sd_playground.data.model.divelog.DiveLog
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.DiveLogAdapter
 import kotlinx.android.synthetic.main.fragment_logbook_dives_map.logbook_map_rv
 

@@ -8,7 +8,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.scubadeving.sd_playground.MainNavigationDirections
 import com.scubadeving.sd_playground.R
-import com.scubadeving.sd_playground.data.divelog.DiveLog
+import com.scubadeving.sd_playground.data.model.divelog.DiveLog
 import com.scubadeving.sd_playground.utils.inflate
 import kotlinx.android.synthetic.main.item_divelog_card_horizontal.view.logged_dive_map_bottom_time
 import kotlinx.android.synthetic.main.item_divelog_card_horizontal.view.logged_dive_map_date

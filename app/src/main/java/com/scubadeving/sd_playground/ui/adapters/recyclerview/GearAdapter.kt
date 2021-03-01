@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.scubadeving.sd_playground.R
-import com.scubadeving.sd_playground.data.gear.GearProfile
+import com.scubadeving.sd_playground.data.model.gear.GearProfile
 import com.scubadeving.sd_playground.ui.main.dashboard.profile.ProfileFragmentDirections
 import com.scubadeving.sd_playground.utils.inflate
 import kotlinx.android.synthetic.main.item_gear_profile_card.view.gear_profile_card_text

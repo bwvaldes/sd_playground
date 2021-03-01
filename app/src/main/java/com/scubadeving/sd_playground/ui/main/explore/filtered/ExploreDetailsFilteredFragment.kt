@@ -11,8 +11,8 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
 import com.scubadeving.sd_playground.R
-import com.scubadeving.sd_playground.data.sites.DiveSite
-import com.scubadeving.sd_playground.data.wildlife.Wildlife
+import com.scubadeving.sd_playground.data.model.sites.DiveSite
+import com.scubadeving.sd_playground.data.model.wildlife.Wildlife
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.DiveSiteAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.WildlifeAdapter
 import kotlinx.android.synthetic.main.fragment_explore_filtered_details.explore_details_filtered_rv

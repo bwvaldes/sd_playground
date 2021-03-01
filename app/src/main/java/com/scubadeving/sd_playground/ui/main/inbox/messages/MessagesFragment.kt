@@ -8,9 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.scubadeving.sd_playground.R
-import com.scubadeving.sd_playground.data.InboxMessage
-import com.scubadeving.sd_playground.data.diver.Certification
-import com.scubadeving.sd_playground.data.diver.Diver
+import com.scubadeving.sd_playground.data.model.InboxMessage
+import com.scubadeving.sd_playground.data.model.diver.Certification
+import com.scubadeving.sd_playground.data.model.diver.Diver
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.MessageAdapter
 import kotlinx.android.synthetic.main.fragment_inbox_messages.messages_rv
 

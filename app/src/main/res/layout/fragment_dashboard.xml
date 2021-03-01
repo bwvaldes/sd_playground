@@ -5,7 +5,7 @@
 
         <variable
             name="diver"
-            type="com.scubadeving.sd_playground.data.diver.Diver" />
+            type="com.scubadeving.sd_playground.data.model.diver.Diver" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"

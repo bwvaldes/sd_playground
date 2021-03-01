@@ -7,11 +7,11 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.scubadeving.sd_playground.MainNavigationDirections
 import com.scubadeving.sd_playground.R
-import com.scubadeving.sd_playground.data.ChatMessage
-import com.scubadeving.sd_playground.data.ChatMessage.Companion.MESSAGE_TYPE_DATE
-import com.scubadeving.sd_playground.data.ChatMessage.Companion.MESSAGE_TYPE_GUEST
-import com.scubadeving.sd_playground.data.ChatMessage.Companion.MESSAGE_TYPE_HOST
-import com.scubadeving.sd_playground.data.diver.Diver
+import com.scubadeving.sd_playground.data.model.ChatMessage
+import com.scubadeving.sd_playground.data.model.ChatMessage.Companion.MESSAGE_TYPE_DATE
+import com.scubadeving.sd_playground.data.model.ChatMessage.Companion.MESSAGE_TYPE_GUEST
+import com.scubadeving.sd_playground.data.model.ChatMessage.Companion.MESSAGE_TYPE_HOST
+import com.scubadeving.sd_playground.data.model.diver.Diver
 import kotlinx.android.synthetic.main.item_chat_container_date.view.chat_date_message
 import kotlinx.android.synthetic.main.item_chat_container_guest.view.chat_guest_avatar
 import kotlinx.android.synthetic.main.item_chat_container_guest.view.chat_guest_message

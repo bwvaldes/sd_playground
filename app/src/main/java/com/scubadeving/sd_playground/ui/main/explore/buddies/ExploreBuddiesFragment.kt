@@ -15,8 +15,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.scubadeving.sd_playground.R
-import com.scubadeving.sd_playground.data.diver.Certification
-import com.scubadeving.sd_playground.data.diver.Diver
+import com.scubadeving.sd_playground.data.model.diver.Certification
+import com.scubadeving.sd_playground.data.model.diver.Diver
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.BuddyAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.decorations.GridSpacingItemDecoration
 import kotlinx.android.synthetic.main.fragment_explore_buddies.dive_center_divers_rv

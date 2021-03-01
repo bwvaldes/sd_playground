@@ -8,7 +8,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.scubadeving.sd_playground.MainNavigationDirections
 import com.scubadeving.sd_playground.R
-import com.scubadeving.sd_playground.data.diver.Diver
+import com.scubadeving.sd_playground.data.model.diver.Diver
 import com.scubadeving.sd_playground.utils.inflate
 import kotlinx.android.synthetic.main.item_explore_buddy_card_horizontal.view.diver_card_horizontal_add_buddy
 import kotlinx.android.synthetic.main.item_explore_buddy_card_horizontal.view.diver_card_horizontal_avatar

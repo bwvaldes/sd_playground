@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.tabs.TabLayoutMediator
@@ -29,7 +30,7 @@ class LogbookMainFragment : Fragment() {
         activity?.fab?.setOnClickListener {
             Toast.makeText(activity, "Add Log", Toast.LENGTH_SHORT).show()
         }
-        activity?.fab?.setImageDrawable(resources.getDrawable(android.R.drawable.ic_input_add))
+        activity?.fab?.setImageDrawable(ContextCompat.getDrawable(requireContext(), android.R.drawable.ic_input_add))
         return root
     }
 

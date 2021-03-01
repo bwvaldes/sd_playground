@@ -59,7 +59,7 @@ dependencies {
     KotlinLibs.implementations.forEach { dependency -> implementation(dependency) }
     ThirdPartyLibs.implementations.forEach { dependency -> implementation(dependency) }
     FirebaseLibs.apply {
-//        platform(billOfMaterials)
+        platform(billOfMaterials)
         implementations.forEach { dependency -> implementation(dependency) }
     }
     TestLibs.run {

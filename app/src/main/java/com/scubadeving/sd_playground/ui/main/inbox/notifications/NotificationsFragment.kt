@@ -5,12 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
 import com.scubadeving.sd_playground.R
-import com.scubadeving.sd_playground.data.InboxNotification
+import com.scubadeving.sd_playground.data.model.InboxNotification
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.NotificationAdapter
 import kotlinx.android.synthetic.main.activity_main.fab
 import kotlinx.android.synthetic.main.fragment_inbox_notifications.notifications_rv
@@ -29,7 +30,7 @@ class NotificationsFragment : Fragment() {
         activity?.fab?.setOnClickListener {
             Toast.makeText(activity, "Add Gear", Toast.LENGTH_SHORT).show()
         }
-        activity?.fab?.setImageDrawable(resources.getDrawable(android.R.drawable.ic_input_add))
+        activity?.fab?.setImageDrawable(ContextCompat.getDrawable(requireContext(), android.R.drawable.ic_input_add))
         return root
     }
 

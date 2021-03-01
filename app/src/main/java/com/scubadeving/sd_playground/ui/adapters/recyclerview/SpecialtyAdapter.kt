@@ -8,7 +8,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.scubadeving.sd_playground.MainNavigationDirections
 import com.scubadeving.sd_playground.R
-import com.scubadeving.sd_playground.data.certification.Specialty
+import com.scubadeving.sd_playground.data.model.certification.Specialty
 import com.scubadeving.sd_playground.utils.inflate
 import kotlinx.android.synthetic.main.item_certification_card.view.cert_card_text
 
