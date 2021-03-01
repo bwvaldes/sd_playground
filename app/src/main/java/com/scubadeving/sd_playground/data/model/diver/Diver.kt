@@ -8,7 +8,6 @@ import com.scubadeving.sd_playground.data.model.gear.Gear
 import com.scubadeving.sd_playground.data.model.gear.GearProfile
 
 data class Diver(
-    val id: String? = null,
     val avatarUrl: String? = null,
     val handle: String? = null,
     val firstName: String? = null,

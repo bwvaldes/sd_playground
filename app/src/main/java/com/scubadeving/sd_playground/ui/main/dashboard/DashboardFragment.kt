@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -28,6 +29,7 @@ import com.scubadeving.sd_playground.data.model.diver.Diver
 import com.scubadeving.sd_playground.data.model.gear.Gear
 import com.scubadeving.sd_playground.data.model.gear.GearProfile
 import com.scubadeving.sd_playground.data.model.sites.DiveSite
+import com.scubadeving.sd_playground.data.source.repository.DiverRepository
 import com.scubadeving.sd_playground.databinding.FragmentDashboardBinding
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.DiveSiteAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.NotificationAdapter
@@ -38,6 +40,8 @@ import kotlinx.android.synthetic.main.activity_main.fab
 class DashboardFragment : Fragment() {
 
     private lateinit var dashboardViewModel: DashboardViewModel
+    private lateinit var dashboardViewModelFactory: DashboardViewModelFactory
+    private lateinit var diverRepository: DiverRepository
     private lateinit var firestore: FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,7 +55,10 @@ class DashboardFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         setHasOptionsMenu(true)
-        dashboardViewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
+        diverRepository = DiverRepository(FirebaseFirestore.getInstance())
+        dashboardViewModelFactory = DashboardViewModelFactory(diverRepository)
+        dashboardViewModel = ViewModelProvider(this, dashboardViewModelFactory).get(DashboardViewModel::class.java)
+
         return FragmentDashboardBinding.inflate(inflater, container, false).apply {
             activity?.fab?.setOnClickListener {
                 Toast.makeText(activity, "Search Dashboard", Toast.LENGTH_SHORT).show()
@@ -63,10 +70,13 @@ class DashboardFragment : Fragment() {
 
     private fun subscribeUi(binding: FragmentDashboardBinding) {
         binding.apply {
-            getLePew {
-                diver = it
-                welcomeCertLevel.text = diver?.certifications?.first()?.certificationName
-            }
+            dashboardViewModel.currentDiver.observe(
+                viewLifecycleOwner,
+                Observer {
+                    diver = it
+                    welcomeCertLevel.text = diver?.certifications?.first()?.certificationName
+                }
+            )
             getGearProfiles { gearProfiles ->
                 Log.d("GEAR PROFILE RESULT", "$gearProfiles")
                 gearProfiles?.forEach { profile ->
@@ -183,49 +193,6 @@ class DashboardFragment : Fragment() {
         val nextCertification = CatalogCertification("Rescue Diver")
         val directions = MainNavigationDirections.actionGlobalCertDetailFragment(nextCertification.name!!)
         view.findNavController().navigate(directions)
-    }
-
-    private fun getAllDivers() {
-        firestore.collection("divers")
-            .get()
-            .addOnSuccessListener { result ->
-                for (document in result) {
-                    Log.d(TAG_FIRESTORE, "Read Divers: ${document.id} => ${document.data}")
-                }
-            }
-            .addOnFailureListener { exception ->
-                Log.w(TAG_FIRESTORE, "Error getting documents.", exception)
-            }
-    }
-
-    private fun getLePew(diver: (Diver?) -> Unit) {
-        firestore.collection("divers").document("lEnWGcqDvI87XZvieJfY")
-            .get()
-            .addOnSuccessListener { result ->
-                Log.d(TAG_FIRESTORE, "Read Diver: ${result.id} => ${result.data}")
-                diver(result?.toObject<Diver>())
-            }
-            .addOnFailureListener { exception ->
-                Log.w(TAG_FIRESTORE, "Error getting documents.", exception)
-            }
-    }
-
-    private fun addNewDiver() {
-        // Create a new diver with a first and last name
-        val diver = hashMapOf(
-            "firstName" to "Brian",
-            "lastName" to "Valdes"
-        )
-
-        // Add a new document with a generated ID
-        firestore.collection("divers")
-            .add(diver)
-            .addOnSuccessListener { documentReference ->
-                Log.d(TAG_FIRESTORE, "Add Diver: DocumentSnapshot added with ID ${documentReference.id}")
-            }
-            .addOnFailureListener { exception ->
-                Log.w(TAG_FIRESTORE, "Error adding document", exception)
-            }
     }
 
     private fun getGearProfiles(gearProfiles: (List<GearProfile>?) -> Unit) {
