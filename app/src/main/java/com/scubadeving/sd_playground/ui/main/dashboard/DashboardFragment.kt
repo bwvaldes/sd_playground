@@ -28,6 +28,8 @@ import com.scubadeving.sd_playground.data.sites.DiveSite
 import com.scubadeving.sd_playground.databinding.FragmentDashboardBinding
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.DiveSiteAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.NotificationAdapter
+import com.scubadeving.sd_playground.utils.TAG_FIRESTORE
+import com.scubadeving.sd_playground.utils.TAG_POJO
 import kotlinx.android.synthetic.main.activity_main.fab
 
 class DashboardFragment : Fragment() {
@@ -60,6 +62,7 @@ class DashboardFragment : Fragment() {
         binding.apply {
             getLePew {
                 diver = it
+                diver.id
                 welcomeCertLevel.text = diver?.certifications?.first()?.certificationName
             }
             getGearProfiles { gearProfiles ->
@@ -67,16 +70,16 @@ class DashboardFragment : Fragment() {
                 gearProfiles?.forEach { profile ->
                     profile.gearList?.forEach {
                         getGearFromGearProfiles(it) { gear ->
-                            Log.d(tag, "GEAR ITEM: $gear")
+                            Log.d(TAG_POJO, "GEAR ITEM: $gear")
                         }
                     }
                 }
             }
             getEcoDiveCenter {
-                Log.d(tag, "DIVE CENTER: $it")
+                Log.d(TAG_POJO, "DIVE CENTER: $it")
             }
             getDiveSiteCatalina {
-                Log.d(tag, "DIVE SITE: $it")
+                Log.d(TAG_POJO, "DIVE SITE: $it")
             }
             configureToolbar()
             configureUpcomingDivesRecyclerView()
@@ -181,34 +184,31 @@ class DashboardFragment : Fragment() {
     }
 
     private fun getAllDivers() {
-        val tag = "Firestore: Read Divers"
         firestore.collection("divers")
             .get()
             .addOnSuccessListener { result ->
                 for (document in result) {
-                    Log.d(tag, "${document.id} => ${document.data}")
+                    Log.d(TAG_FIRESTORE, "Read Divers: ${document.id} => ${document.data}")
                 }
             }
             .addOnFailureListener { exception ->
-                Log.w(tag, "Error getting documents.", exception)
+                Log.w(TAG_FIRESTORE, "Error getting documents.", exception)
             }
     }
 
     private fun getLePew(diver: (Diver?) -> Unit) {
-        val tag = "Firestore: Read Diver"
         firestore.collection("divers").document("lEnWGcqDvI87XZvieJfY")
             .get()
             .addOnSuccessListener { result ->
-                Log.d(tag, "${result.id} => ${result.data}")
+                Log.d(TAG_FIRESTORE, "Read Diver: ${result.id} => ${result.data}")
                 diver(result?.toObject(Diver::class.java))
             }
             .addOnFailureListener { exception ->
-                Log.w(tag, "Error getting documents.", exception)
+                Log.w(TAG_FIRESTORE, "Error getting documents.", exception)
             }
     }
 
     private fun addNewDiver() {
-        val tag = "Firestore: Add Diver"
         // Create a new diver with a first and last name
         val diver = hashMapOf(
             "firstName" to "Brian",
@@ -219,10 +219,10 @@ class DashboardFragment : Fragment() {
         firestore.collection("divers")
             .add(diver)
             .addOnSuccessListener { documentReference ->
-                Log.d(tag, "DocumentSnapshot added with ID: ${documentReference.id}")
+                Log.d(TAG_FIRESTORE, "Add Diver: DocumentSnapshot added with ID ${documentReference.id}")
             }
             .addOnFailureListener { exception ->
-                Log.w(tag, "Error adding document", exception)
+                Log.w(TAG_FIRESTORE, "Error adding document", exception)
             }
     }
 
@@ -233,7 +233,7 @@ class DashboardFragment : Fragment() {
                 gearProfiles(result?.toObjects(GearProfile::class.java))
             }
             .addOnFailureListener { exception ->
-                Log.w(tag, "Error adding document", exception)
+                Log.w(TAG_FIRESTORE, "Error adding document", exception)
             }
     }
 
@@ -241,67 +241,63 @@ class DashboardFragment : Fragment() {
         firestore.document(docRef.path)
             .get()
             .addOnSuccessListener { result ->
-                Log.d(tag, "GET GEAR FROM PROFILE RESULT: $result")
+                Log.d(TAG_FIRESTORE, "GET GEAR FROM PROFILE RESULT: $result")
 
                 gear(result?.toObject(Gear::class.java))
             }
             .addOnFailureListener { exception ->
-                Log.w(tag, "Error adding document", exception)
+                Log.w(TAG_FIRESTORE, "Error adding document", exception)
             }
     }
 
 
     private fun getAllDiveCenters() {
-        val tag = "Firestore: Read Dive Centers"
         firestore.collection("diveCenters")
             .get()
             .addOnSuccessListener { result ->
                 for (document in result) {
-                    Log.d(tag, "${document.id} => ${document.data}")
+                    Log.d(TAG_FIRESTORE, "Read Dive Centers: ${document.id} => ${document.data}")
                 }
             }
             .addOnFailureListener { exception ->
-                Log.w(tag, "Error getting documents.", exception)
+                Log.w(TAG_FIRESTORE, "Error getting documents.", exception)
             }
     }
 
     private fun getEcoDiveCenter(diveCenter: (DiveCenter?) -> Unit) {
-        val tag = "Firestore: Read Dive Center"
         firestore.collection("diveCenters").document("3eyk7ZbWvWWFtQ71N7VA")
             .get()
             .addOnSuccessListener { result ->
-                Log.d(tag, "${result.id} => ${result.data}")
+                Log.d(TAG_FIRESTORE, "Read Dive Center: ${result.id} => ${result.data}")
                 diveCenter(result?.toObject(DiveCenter::class.java))
             }
             .addOnFailureListener { exception ->
-                Log.w(tag, "Error getting documents.", exception)
+                Log.w(TAG_FIRESTORE, "Error getting documents.", exception)
             }
     }
 
     private fun getAllDiveSites() {
-        val tag = "Firestore: Read Dive Sites"
         firestore.collection("diveSites")
             .get()
             .addOnSuccessListener { result ->
                 for (document in result) {
-                    Log.d(tag, "${document.id} => ${document.data}")
+                    Log.d(TAG_FIRESTORE, "Read Dive Sites: ${document.id} => ${document.data}")
                 }
             }
             .addOnFailureListener { exception ->
-                Log.w(tag, "Error getting documents.", exception)
+                Log.w(TAG_FIRESTORE, "Error getting documents.", exception)
             }
     }
 
     private fun getDiveSiteCatalina(diveSite: (DiveSite?) -> Unit) {
-        val tag = "Firestore: Read Dive Site"
         firestore.collection("diveSites").document("dyhJj73cKyKtptsj6wLJ")
             .get()
             .addOnSuccessListener { result ->
-                Log.d(tag, "${result.id} => ${result.data}")
+                Log.d(TAG_FIRESTORE, "Read Dive Site: ${result.id} => ${result.data}")
                 diveSite(result?.toObject(DiveSite::class.java))
             }
             .addOnFailureListener { exception ->
-                Log.w(tag, "Error getting documents.", exception)
+                Log.w(TAG_FIRESTORE, "Error getting documents.", exception)
             }
     }
 }
