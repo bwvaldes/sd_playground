@@ -27,12 +27,8 @@ class CertificationsFragment : Fragment() {
             certificationsViewModel.currentDiver.observe(
                 viewLifecycleOwner,
                 Observer { diver ->
-                    certCardRv.apply {
-                        diver.certifications?.let {
-                            adapter = CertificationAdapter(emptyList(), it, false)
-                        }
-//                        addItemDecoration(GridSpacingItemDecoration())
-                    }
+                    certCardRv.adapter =
+                        diver?.certifications?.let { CertificationAdapter(emptyList(), it, false) }
                 }
             )
         }.root

@@ -8,17 +8,15 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
-import androidx.recyclerview.widget.PagerSnapHelper
-import androidx.recyclerview.widget.SnapHelper
+import androidx.recyclerview.widget.RecyclerView.Adapter
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.model.DiveCenter
 import com.scubadeving.sd_playground.data.model.wildlife.Wildlife
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.DiveCenterAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.ItemDetailAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.WildlifeAdapter
+import com.scubadeving.sd_playground.utils.configureHorizontalRecyclerView
 import kotlinx.android.synthetic.main.fragment_dive_site_details.dive_site_detail_conditions_rv
 import kotlinx.android.synthetic.main.fragment_dive_site_details.dive_site_detail_dive_centers_rv
 import kotlinx.android.synthetic.main.fragment_dive_site_details.dive_site_detail_toolbar
@@ -57,14 +55,7 @@ class DiveSiteDetailFragment : Fragment() {
                 "Visibility: 15-30ft",
                 "Dive Type: Shore"
             )
-        dive_site_detail_conditions_rv.apply {
-            layoutManager = LinearLayoutManager(context, HORIZONTAL, false)
-            adapter = ItemDetailAdapter(conditions)
-            val dividerItemDecoration = DividerItemDecoration(context, HORIZONTAL)
-            addItemDecoration(dividerItemDecoration)
-            val snapHelper: SnapHelper = PagerSnapHelper()
-            snapHelper.attachToRecyclerView(this)
-        }
+        dive_site_detail_conditions_rv.configureHorizontalRecyclerView(ItemDetailAdapter(conditions) as Adapter<ViewHolder>)
     }
 
     private fun configureDiveCenters() {
@@ -73,14 +64,7 @@ class DiveSiteDetailFragment : Fragment() {
                 DiveCenter("Newport Divers"),
                 DiveCenter("Eco Dive Center")
             )
-        dive_site_detail_dive_centers_rv.apply {
-            layoutManager = LinearLayoutManager(context, HORIZONTAL, false)
-            adapter = DiveCenterAdapter(diveCenters)
-            val dividerItemDecoration = DividerItemDecoration(context, HORIZONTAL)
-            addItemDecoration(dividerItemDecoration)
-            val snapHelper: SnapHelper = PagerSnapHelper()
-            snapHelper.attachToRecyclerView(this)
-        }
+        dive_site_detail_dive_centers_rv.configureHorizontalRecyclerView(DiveCenterAdapter(diveCenters) as Adapter<ViewHolder>)
     }
 
     private fun configureWildlife() {
@@ -94,14 +78,6 @@ class DiveSiteDetailFragment : Fragment() {
                 Wildlife("Blennie"),
                 Wildlife("Moray Eel")
             )
-        dive_site_detail_wildlife_rv.apply {
-            layoutManager = LinearLayoutManager(context, HORIZONTAL, false)
-            adapter = WildlifeAdapter(wildLife)
-            val dividerItemDecoration =
-                DividerItemDecoration(context, HORIZONTAL)
-            addItemDecoration(dividerItemDecoration)
-            val snapHelper: SnapHelper = PagerSnapHelper()
-            snapHelper.attachToRecyclerView(this)
-        }
+        dive_site_detail_wildlife_rv.configureHorizontalRecyclerView(WildlifeAdapter(wildLife) as Adapter<ViewHolder>)
     }
 }

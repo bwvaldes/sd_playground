@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.model.diver.Certification
 import com.scubadeving.sd_playground.data.model.diver.Diver
@@ -34,9 +33,6 @@ class ChatDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         chat_detail_toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
         val members = listOf(Diver(args.diverName, certifications = arrayListOf(Certification(certificationName = "Open Water"))))
-        chat_detail_members_rv.apply {
-            layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-            adapter = ChatMemberAdapter(members)
-        }
+        chat_detail_members_rv.adapter = ChatMemberAdapter(members)
     }
 }

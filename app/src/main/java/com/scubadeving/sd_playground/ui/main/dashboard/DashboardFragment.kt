@@ -8,11 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
-import androidx.recyclerview.widget.PagerSnapHelper
-import androidx.recyclerview.widget.SnapHelper
+import androidx.recyclerview.widget.RecyclerView.Adapter
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.google.firebase.firestore.FirebaseFirestore
 import com.scubadeving.sd_playground.MainNavigationDirections
 import com.scubadeving.sd_playground.R
@@ -23,6 +20,7 @@ import com.scubadeving.sd_playground.data.source.repository.DiverRepository
 import com.scubadeving.sd_playground.databinding.FragmentDashboardBinding
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.DiveSiteAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.NotificationAdapter
+import com.scubadeving.sd_playground.utils.configureHorizontalRecyclerView
 
 class DashboardFragment : Fragment() {
 
@@ -87,14 +85,7 @@ class DashboardFragment : Fragment() {
             DiveSite("Leo Carillo", rating = 4.75, reviews = 42),
             DiveSite("Boat Dive 1", rating = 3.98, reviews = 8)
         )
-        upcomingDivesRv.apply {
-            layoutManager = LinearLayoutManager(context, HORIZONTAL, false)
-            adapter = DiveSiteAdapter(diveSites)
-            val dividerItemDecoration = DividerItemDecoration(context, HORIZONTAL)
-            addItemDecoration(dividerItemDecoration)
-            val snapHelper: SnapHelper = PagerSnapHelper()
-            snapHelper.attachToRecyclerView(this)
-        }
+        upcomingDivesRv.configureHorizontalRecyclerView(DiveSiteAdapter(diveSites) as Adapter<ViewHolder>)
     }
 
     private fun FragmentDashboardBinding.configureDashItems() {
@@ -115,14 +106,9 @@ class DashboardFragment : Fragment() {
             InboxNotification("Dec 20th", "This is a Notification"),
             InboxNotification("Dec 3rd", "This is a Notification")
         )
-        dashboardNotificationsRv.apply {
-            layoutManager = LinearLayoutManager(context, HORIZONTAL, false)
-            adapter = NotificationAdapter(inboxNotifications, true)
-            val dividerItemDecoration = DividerItemDecoration(context, HORIZONTAL)
-            addItemDecoration(dividerItemDecoration)
-            val snapHelper: SnapHelper = PagerSnapHelper()
-            snapHelper.attachToRecyclerView(this)
-        }
+        dashboardNotificationsRv.configureHorizontalRecyclerView(
+            NotificationAdapter(inboxNotifications, true) as Adapter<ViewHolder>
+        )
     }
 
     private fun navigateToDiveLogEntry(view: View) {

@@ -7,16 +7,14 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.GridLayoutManager.HORIZONTAL
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.PagerSnapHelper
-import androidx.recyclerview.widget.SnapHelper
+import androidx.recyclerview.widget.RecyclerView.Adapter
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.model.diver.Certification
 import com.scubadeving.sd_playground.data.model.diver.Diver
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.BuddyAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.decorations.GridSpacingItemDecoration
+import com.scubadeving.sd_playground.utils.configureHorizontalRecyclerView
 import kotlinx.android.synthetic.main.fragment_explore_buddies.dive_center_divers_rv
 import kotlinx.android.synthetic.main.fragment_explore_buddies.dive_center_divers_see_all
 import kotlinx.android.synthetic.main.fragment_explore_buddies.nearby_divers_rv
@@ -55,15 +53,7 @@ class ExploreBuddiesFragment : Fragment() {
                 Diver(firstName = "Bill", certifications = arrayListOf(Certification(certificationName = "Open Water"))),
                 Diver(firstName = "Greg", certifications = arrayListOf(Certification(certificationName = "Open Water")))
             )
-        nearby_divers_rv.apply {
-            layoutManager = LinearLayoutManager(context, HORIZONTAL, false)
-            adapter = BuddyAdapter(nearbyDivers, true)
-            val dividerItemDecoration =
-                DividerItemDecoration(context, HORIZONTAL)
-            addItemDecoration(dividerItemDecoration)
-            val snapHelper: SnapHelper = PagerSnapHelper()
-            snapHelper.attachToRecyclerView(this)
-        }
+        nearby_divers_rv.configureHorizontalRecyclerView(BuddyAdapter(nearbyDivers, true) as Adapter<ViewHolder>)
     }
 
     private fun configureDiveCenterDivers() {

@@ -8,14 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
-import androidx.recyclerview.widget.PagerSnapHelper
-import androidx.recyclerview.widget.SnapHelper
+import androidx.recyclerview.widget.RecyclerView.Adapter
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.model.wildlife.Wildlife
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.WildlifeAdapter
+import com.scubadeving.sd_playground.utils.configureHorizontalRecyclerView
 import kotlinx.android.synthetic.main.fragment_logbook_dive_log_entry.dive_log_entry_qr_scan
 import kotlinx.android.synthetic.main.fragment_logbook_dive_log_entry.dive_log_entry_site_name
 import kotlinx.android.synthetic.main.fragment_logbook_dive_log_entry.dive_log_entry_toolbar
@@ -54,14 +52,6 @@ class DiveLogEntryFragment : Fragment() {
                 Wildlife("Blennie"),
                 Wildlife("Moray Eel")
             )
-        dive_log_entry_wildlife_rv.apply {
-            layoutManager = LinearLayoutManager(context, HORIZONTAL, false)
-            adapter = WildlifeAdapter(wildLife)
-            val dividerItemDecoration =
-                DividerItemDecoration(context, HORIZONTAL)
-            addItemDecoration(dividerItemDecoration)
-            val snapHelper: SnapHelper = PagerSnapHelper()
-            snapHelper.attachToRecyclerView(this)
-        }
+        dive_log_entry_wildlife_rv.configureHorizontalRecyclerView(WildlifeAdapter(wildLife) as Adapter<ViewHolder>)
     }
 }

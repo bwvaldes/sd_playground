@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../../../../../layout/custom_preview.xml" value="0.1" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.35945945945945945" />
         <entry key="app/src/main/res/drawable/default_dot.xml" value="0.35945945945945945" />
         <entry key="app/src/main/res/drawable/ic_action_save.xml" value="0.35945945945945945" />
@@ -58,18 +59,22 @@
         <entry key="app/src/main/res/layout-v21/fragment_profile.xml" value="0.25677083333333334" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.16655405405405405" />
         <entry key="app/src/main/res/layout/fragment_catalog.xml" value="0.3489864864864865" />
+        <entry key="app/src/main/res/layout/fragment_certification_catalog.xml" value="0.16655405405405405" />
         <entry key="app/src/main/res/layout/fragment_certification_detail.xml" value="0.3489864864864865" />
         <entry key="app/src/main/res/layout/fragment_certification_detail_scan.xml" value="0.3489864864864865" />
         <entry key="app/src/main/res/layout/fragment_chat.xml" value="0.3489864864864865" />
-        <entry key="app/src/main/res/layout/fragment_chat_details.xml" value="0.3489864864864865" />
-        <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.16655405405405405" />
+        <entry key="app/src/main/res/layout/fragment_chat_details.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_detail_cert.xml" value="0.34548494983277594" />
         <entry key="app/src/main/res/layout/fragment_detail_qrcode_details.xml" value="0.3489864864864865" />
         <entry key="app/src/main/res/layout/fragment_detail_weather.xml" value="0.3489864864864865" />
         <entry key="app/src/main/res/layout/fragment_detail_wildlife_details.xml" value="0.3489864864864865" />
         <entry key="app/src/main/res/layout/fragment_dive_site_details.xml" value="0.3489864864864865" />
-        <entry key="app/src/main/res/layout/fragment_explore_sites.xml" value="0.16655405405405405" />
+        <entry key="app/src/main/res/layout/fragment_explore_filtered_details.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/fragment_explore_sites.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_explore_wildlife.xml" value="0.16655405405405405" />
+        <entry key="app/src/main/res/layout/fragment_inbox_messages.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/fragment_inbox_notifications.xml" value="0.16655405405405405" />
         <entry key="app/src/main/res/layout/fragment_logbook.xml" value="0.16655405405405405" />
         <entry key="app/src/main/res/layout/fragment_logbook_dive_log_entry.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_logbook_dives.xml" value="0.16655405405405405" />
@@ -79,10 +84,10 @@
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.4875" />
         <entry key="app/src/main/res/layout/fragment_profile_about.xml" value="0.4875" />
         <entry key="app/src/main/res/layout/fragment_profile_certifications.xml" value="0.3328831870357866" />
-        <entry key="app/src/main/res/layout/fragment_profile_gear.xml" value="0.38306138306138304" />
+        <entry key="app/src/main/res/layout/fragment_profile_gear.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_profile_gear_details.xml" value="0.16655405405405405" />
         <entry key="app/src/main/res/layout/fragment_profile_stats.xml" value="0.5" />
-        <entry key="app/src/main/res/layout/fragment_saved.xml" value="0.34548494983277594" />
+        <entry key="app/src/main/res/layout/fragment_saved.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.15416666666666667" />
         <entry key="app/src/main/res/layout/item_cert_card.xml" value="0.3489864864864865" />
         <entry key="app/src/main/res/layout/item_cert_card_profile.xml" value="0.3489864864864865" />
@@ -105,8 +110,9 @@
         <entry key="app/src/main/res/layout/item_message_card.xml" value="0.3489864864864865" />
         <entry key="app/src/main/res/layout/item_saved_card.xml" value="0.3489864864864865" />
         <entry key="app/src/main/res/layout/item_wildlife_card.xml" value="0.3489864864864865" />
-        <entry key="app/src/main/res/layout/item_wildlife_card_small.xml" value="0.3489864864864865" />
+        <entry key="app/src/main/res/layout/item_wildlife_card_small.xml" value="0.5" />
         <entry key="app/src/main/res/layout/view_dashboard_items.xml" value="0.1" />
+        <entry key="app/src/main/res/menu/menu_catalog.xml" value="0.16655405405405405" />
         <entry key="app/src/main/res/menu/menu_dashboard.xml" value="0.34548494983277594" />
         <entry key="app/src/main/res/menu/menu_profile.xml" value="0.3528428093645485" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.17702702702702702" />

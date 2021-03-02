@@ -6,17 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.GridLayoutManager.HORIZONTAL
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.PagerSnapHelper
-import androidx.recyclerview.widget.SnapHelper
+import androidx.recyclerview.widget.RecyclerView.Adapter
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.model.ExploreFilter
 import com.scubadeving.sd_playground.data.model.wildlife.Wildlife
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.ExploreFilterAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.WildlifeAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.decorations.GridSpacingItemDecoration
+import com.scubadeving.sd_playground.utils.configureHorizontalRecyclerView
 import kotlinx.android.synthetic.main.fragment_explore_wildlife.explore_wildlife_filter_rv
 import kotlinx.android.synthetic.main.fragment_explore_wildlife.explore_wildlife_nearby_rv
 
@@ -71,13 +69,6 @@ class ExploreWildlifeFragment : Fragment() {
                 Wildlife("Blennie"),
                 Wildlife("Moray Eel")
             )
-        explore_wildlife_nearby_rv.apply {
-            layoutManager = LinearLayoutManager(context, HORIZONTAL, false)
-            adapter = WildlifeAdapter(nearbyWildlife)
-            val dividerItemDecoration = DividerItemDecoration(context, HORIZONTAL)
-            addItemDecoration(dividerItemDecoration)
-            val snapHelper: SnapHelper = PagerSnapHelper()
-            snapHelper.attachToRecyclerView(this)
-        }
+        explore_wildlife_nearby_rv.configureHorizontalRecyclerView(WildlifeAdapter(nearbyWildlife) as Adapter<ViewHolder>)
     }
 }

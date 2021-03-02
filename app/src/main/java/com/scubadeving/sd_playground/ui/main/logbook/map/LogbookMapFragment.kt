@@ -7,14 +7,12 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
-import androidx.recyclerview.widget.PagerSnapHelper
-import androidx.recyclerview.widget.SnapHelper
+import androidx.recyclerview.widget.RecyclerView.Adapter
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.model.divelog.DiveLog
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.DiveLogAdapter
+import com.scubadeving.sd_playground.utils.configureHorizontalRecyclerView
 import kotlinx.android.synthetic.main.fragment_logbook_dives_map.logbook_map_rv
 
 class LogbookMapFragment : Fragment() {
@@ -52,13 +50,6 @@ class LogbookMapFragment : Fragment() {
         parentFragment?.view?.findViewById<Toolbar>(R.id.logbook_toolbar)?.setOnClickListener {
             diveLogs.asReversed()
         }
-        logbook_map_rv.apply {
-            layoutManager = LinearLayoutManager(context, HORIZONTAL, false)
-            adapter = DiveLogAdapter(diveLogs, false)
-            val dividerItemDecoration = DividerItemDecoration(context, HORIZONTAL)
-            addItemDecoration(dividerItemDecoration)
-            val snapHelper: SnapHelper = PagerSnapHelper()
-            snapHelper.attachToRecyclerView(this)
-        }
+        logbook_map_rv.configureHorizontalRecyclerView(DiveLogAdapter(diveLogs, false) as Adapter<ViewHolder>)
     }
 }

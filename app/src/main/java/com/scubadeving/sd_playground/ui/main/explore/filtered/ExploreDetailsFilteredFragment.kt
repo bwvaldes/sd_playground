@@ -8,8 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.model.sites.DiveSite
 import com.scubadeving.sd_playground.data.model.wildlife.Wildlife
@@ -56,10 +54,7 @@ class ExploreDetailsFilteredFragment : Fragment() {
             DiveSite("Leo Carillo", rating = 4.75, reviews = 42),
             DiveSite("Boat Dive 1", rating = 3.98, reviews = 8)
         )
-        explore_details_filtered_rv.apply {
-            layoutManager = LinearLayoutManager(context, VERTICAL, false)
-            adapter = DiveSiteAdapter(filteredDiveSites, false)
-        }
+        explore_details_filtered_rv.adapter = DiveSiteAdapter(filteredDiveSites, false)
     }
 
     private fun configureExploreFilteredWildlife() {
@@ -73,9 +68,6 @@ class ExploreDetailsFilteredFragment : Fragment() {
                 Wildlife("Blennie"),
                 Wildlife("Moray Eel")
             )
-        explore_details_filtered_rv.apply {
-            layoutManager = LinearLayoutManager(context, VERTICAL, false)
-            adapter = WildlifeAdapter(filteredWildlife)
-        }
+        explore_details_filtered_rv.adapter = WildlifeAdapter(filteredWildlife)
     }
 }

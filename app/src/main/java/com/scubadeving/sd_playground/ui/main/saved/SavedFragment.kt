@@ -7,9 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
-import androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.model.SavedList
 import com.scubadeving.sd_playground.data.model.sites.DiveSite
@@ -49,10 +46,7 @@ class SavedFragment : Fragment() {
                 SavedList("Cave Dives"),
                 SavedList("Ice Dives")
             )
-        saved_lists_rv.apply {
-            layoutManager = LinearLayoutManager(context, HORIZONTAL, false)
-            adapter = SavedListAdapter(savedLists)
-        }
+        saved_lists_rv.adapter = SavedListAdapter(savedLists)
     }
 
     private fun configureSavedDiveSitesRecyclerview() {
@@ -67,9 +61,6 @@ class SavedFragment : Fragment() {
             DiveSite("Leo Carillo", rating = 4.75, reviews = 42),
             DiveSite("Boat Dive 1", rating = 3.98, reviews = 8)
         )
-        saved_dive_sites_rv.apply {
-            layoutManager = LinearLayoutManager(context, VERTICAL, false)
-            adapter = DiveSiteAdapter(savedDiveSites, false)
-        }
+        saved_dive_sites_rv.adapter = DiveSiteAdapter(savedDiveSites, false)
     }
 }

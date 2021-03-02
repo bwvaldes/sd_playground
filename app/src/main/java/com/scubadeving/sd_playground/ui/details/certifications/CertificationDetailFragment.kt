@@ -9,16 +9,14 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
-import androidx.recyclerview.widget.PagerSnapHelper
-import androidx.recyclerview.widget.SnapHelper
+import androidx.recyclerview.widget.RecyclerView.Adapter
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.model.certification.EligibilityStatus
 import com.scubadeving.sd_playground.data.model.certification.Specialty
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.ItemDetailAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.SpecialtyAdapter
+import com.scubadeving.sd_playground.utils.configureHorizontalRecyclerView
 import kotlinx.android.synthetic.main.fragment_certification_detail.cert_detail_next_steps_rv
 import kotlinx.android.synthetic.main.fragment_certification_detail.cert_detail_prerequisites_rv
 import kotlinx.android.synthetic.main.fragment_certification_detail.cert_detail_status
@@ -35,7 +33,8 @@ class CertificationDetailFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        certificationDetailViewModel = ViewModelProvider(this).get(CertificationDetailViewModel::class.java)
+        certificationDetailViewModel =
+            ViewModelProvider(this).get(CertificationDetailViewModel::class.java)
         return inflater.inflate(R.layout.fragment_certification_detail, container, false)
     }
 
@@ -63,14 +62,7 @@ class CertificationDetailFragment : Fragment() {
                 "EFR Primary",
                 "EFR Secondary"
             )
-        cert_detail_prerequisites_rv.apply {
-            layoutManager = LinearLayoutManager(context, HORIZONTAL, false)
-            adapter = ItemDetailAdapter(prerequisites)
-            val dividerItemDecoration = DividerItemDecoration(context, HORIZONTAL)
-            addItemDecoration(dividerItemDecoration)
-            val snapHelper: SnapHelper = PagerSnapHelper()
-            snapHelper.attachToRecyclerView(this)
-        }
+        cert_detail_prerequisites_rv.configureHorizontalRecyclerView(ItemDetailAdapter(prerequisites) as Adapter<ViewHolder>)
     }
 
     private fun configureNextSteps() {
@@ -80,13 +72,6 @@ class CertificationDetailFragment : Fragment() {
             Specialty("Ice"),
             Specialty("DiveMaster")
         )
-        cert_detail_next_steps_rv.apply {
-            layoutManager = LinearLayoutManager(context, HORIZONTAL, false)
-            adapter = SpecialtyAdapter(specialties)
-            val dividerItemDecoration = DividerItemDecoration(context, HORIZONTAL)
-            addItemDecoration(dividerItemDecoration)
-            val snapHelper: SnapHelper = PagerSnapHelper()
-            snapHelper.attachToRecyclerView(this)
-        }
+        cert_detail_next_steps_rv.configureHorizontalRecyclerView(SpecialtyAdapter(specialties) as Adapter<ViewHolder>)
     }
 }

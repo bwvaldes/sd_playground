@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.scubadeving.sd_playground.ui.main.logbook.dives.LogbookFragment
 import com.scubadeving.sd_playground.ui.main.logbook.map.LogbookMapFragment
-import com.scubadeving.sd_playground.ui.main.logbook.wildlife.LoggedWildlifeFragment
+import com.scubadeving.sd_playground.ui.main.logbook.wildlife.LogbookWildlifeFragment
 
 class LogbookViewPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
 
@@ -13,7 +13,7 @@ class LogbookViewPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragmen
     override fun createFragment(position: Int): Fragment {
         return when (position) {
             LOGBOOK_DIVES -> LogbookFragment()
-            LOGBOOK_WILDLIFE -> LoggedWildlifeFragment()
+            LOGBOOK_WILDLIFE -> LogbookWildlifeFragment()
             LOGBOOK_DIVES_MAP -> LogbookMapFragment()
             else -> LogbookFragment()
         }

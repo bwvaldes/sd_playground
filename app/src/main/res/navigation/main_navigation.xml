@@ -127,7 +127,7 @@
     <fragment
         android:id="@+id/certificationScanFragment"
         android:name="com.scubadeving.sd_playground.ui.details.certifications.scan.CertificationScanFragment"
-        android:label="@string/label_scan_certificayion"
+        android:label="@string/label_scan_certification"
         tools:layout="@layout/fragment_certification_detail_scan" />
 
     <fragment

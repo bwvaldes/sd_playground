@@ -18,7 +18,7 @@
     <string name="label_weather_detail">WeatherDetailFragment</string>
     <string name="label_qr_code">QRCodeFragment</string>
     <string name="label_explore_detail_filtered">ExploreDetailsFilteredFragment</string>
-    <string name="label_scan_certificayion">ScanCertFragment</string>
+    <string name="label_scan_certification">ScanCertFragment</string>
     <string name="label_inbox">InboxFragment</string>
     <string name="label_chat">ChatFragment</string>
     <string name="label_saved">SavedFragment</string>

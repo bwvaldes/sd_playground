@@ -8,9 +8,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.GridLayoutManager.HORIZONTAL
-import androidx.recyclerview.widget.GridLayoutManager.VERTICAL
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.firestore.FirebaseFirestore
 import com.scubadeving.sd_playground.data.model.diver.Diver
 import com.scubadeving.sd_playground.data.source.repository.DiverRepository
@@ -41,16 +38,12 @@ class GearFragment : Fragment() {
     }
 
     private fun FragmentProfileGearBinding.configureGearProfileList(diver: Diver) {
-        gearProfilesRv.apply {
-            layoutManager = LinearLayoutManager(context, HORIZONTAL, false)
-            adapter = diver.gearProfiles?.let { GearAdapter(it, true) }
-        }
+        gearProfilesRv.adapter = diver.gearProfiles?.let { GearAdapter(it, true) }
         gearProfileGearList.text = diver.gear.toString()
     }
 
     private fun FragmentProfileGearBinding.configureGearItems(diver: Diver) {
         gearFilteredRv.apply {
-            layoutManager = LinearLayoutManager(context, VERTICAL, false)
             adapter = diver.gearProfiles?.let { GearAdapter(it, false) }
             setOnClickListener {
                 Toast.makeText(context, "Just Clicked Gear Item!", Toast.LENGTH_SHORT).show()

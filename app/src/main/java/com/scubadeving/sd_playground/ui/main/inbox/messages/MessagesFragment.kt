@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.model.InboxMessage
 import com.scubadeving.sd_playground.data.model.diver.Certification
@@ -39,9 +38,6 @@ class MessagesFragment : Fragment() {
             InboxMessage(guestDiver1, "15min ago", "This is a Message"),
             InboxMessage(guestDiver2, "Yesterday", "This is a Message")
         )
-        messages_rv.apply {
-            layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-            adapter = MessageAdapter(messages)
-        }
+        messages_rv.adapter = MessageAdapter(messages)
     }
 }
