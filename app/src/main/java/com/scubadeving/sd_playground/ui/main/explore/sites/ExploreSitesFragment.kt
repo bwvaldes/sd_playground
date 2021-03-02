@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
 import androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
@@ -58,13 +57,9 @@ class ExploreSitesFragment : Fragment() {
                 ExploreFilter("Night"),
                 ExploreFilter("Brackish")
             )
-        val spanCount = 2
-        val spacing = 15
-        val includeEdge = true
         explore_sites_filter_rv.apply {
-            layoutManager = GridLayoutManager(context, spanCount, HORIZONTAL, false)
             adapter = ExploreFilterAdapter(filters)
-            addItemDecoration(GridSpacingItemDecoration(spanCount, spacing, includeEdge))
+            addItemDecoration(GridSpacingItemDecoration())
         }
     }
 

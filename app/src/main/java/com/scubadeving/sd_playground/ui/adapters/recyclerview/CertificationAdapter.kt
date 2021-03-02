@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.SnapHelper
 import com.scubadeving.sd_playground.MainNavigationDirections
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.model.certification.CatalogCertification
+import com.scubadeving.sd_playground.data.model.diver.Certification
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.CertificationAdapter.CertificationViewHolder
 import com.scubadeving.sd_playground.utils.inflate
 import kotlinx.android.synthetic.main.item_certification_card_profile.view.profile_cert_card_text
@@ -22,6 +23,7 @@ import kotlinx.android.synthetic.main.item_certification_level.view.cert_level_s
 
 class CertificationAdapter(
     private val catalogCertifications: List<CatalogCertification>,
+    private val profileCertifications: List<Certification>,
     private val orientation: Boolean = true
 ) : RecyclerView.Adapter<CertificationViewHolder>() {
 
@@ -36,27 +38,30 @@ class CertificationAdapter(
         return CertificationViewHolder(inflatedView)
     }
 
-    override fun getItemCount(): Int = catalogCertifications.size
+    override fun getItemCount(): Int = if (orientation) catalogCertifications.size else profileCertifications.size
 
     override fun onBindViewHolder(holder: CertificationViewHolder, position: Int) {
-        val certification = catalogCertifications[position]
-        holder.bind(certification)
+        if (orientation) {
+            holder.bindCatalog(catalogCertifications[position])
+        } else {
+            holder.bindProfile(profileCertifications[position])
+        }
     }
 
     inner class CertificationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(catalogCertification: CatalogCertification) {
+        fun bindCatalog(catalogCertification: CatalogCertification) {
             itemView.apply {
-                if (orientation) {
-                    configureCertificationCatalogLayout(catalogCertification)
-                } else {
-                    configureCertificationProfileLayout(catalogCertification)
-                }
+                configureCertificationCatalogLayout(catalogCertification)
                 setOnClickListener {
                     Log.d("RecyclerView", "CLICK!")
-                    Toast.makeText(itemView.context, "Just Clicked Cert Path Item!", Toast.LENGTH_SHORT)
+                    Toast.makeText(
+                        itemView.context,
+                        "Just Clicked Cert Path Item!",
+                        Toast.LENGTH_SHORT
+                    )
                         .show()
-                    navigateToCertificationDetail(it, catalogCertification)
+                    navigateToCertificationDetail(it, "catalogCertification")
                 }
             }
         }
@@ -77,13 +82,29 @@ class CertificationAdapter(
             }
         }
 
-        private fun View.configureCertificationProfileLayout(catalogCertification: CatalogCertification) {
-            profile_cert_card_text.text = catalogCertification.name
+        private fun View.configureCertificationProfileLayout(profileCertification: Certification) {
+            profile_cert_card_text.text = profileCertification.certificationName
         }
 
-        private fun navigateToCertificationDetail(view: View, catalogCertification: CatalogCertification) {
-            val directions = MainNavigationDirections.actionGlobalCertDetailFragment(catalogCertification.name!!)
+        private fun navigateToCertificationDetail(view: View, certificationId: String) {
+            val directions = MainNavigationDirections.actionGlobalCertDetailFragment(certificationId)
             view.findNavController().navigate(directions)
+        }
+
+        fun bindProfile(certification: Certification) {
+            itemView.apply {
+                configureCertificationProfileLayout(certification)
+                setOnClickListener {
+                    Log.d("RecyclerView", "CLICK!")
+                    Toast.makeText(
+                        itemView.context,
+                        "Just Clicked Cert Path Item!",
+                        Toast.LENGTH_SHORT
+                    )
+                        .show()
+                    navigateToCertificationDetail(it, "profileCertification")
+                }
+            }
         }
     }
 

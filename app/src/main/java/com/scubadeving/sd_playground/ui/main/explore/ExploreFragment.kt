@@ -5,13 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.tabs.TabLayoutMediator
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.ui.adapters.viewpager.ExploreViewPagerAdapter
-import kotlinx.android.synthetic.main.activity_main.fab
 import kotlinx.android.synthetic.main.fragment_explore.explore_pager
 import kotlinx.android.synthetic.main.fragment_explore.explore_search
 import kotlinx.android.synthetic.main.fragment_explore.explore_tab_layout
@@ -27,12 +25,7 @@ class ExploreFragment : Fragment() {
     ): View? {
         exploreViewModel =
             ViewModelProvider(this).get(ExploreViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_explore, container, false)
-        activity?.fab?.setOnClickListener {
-            Toast.makeText(activity, "Explore", Toast.LENGTH_SHORT).show()
-        }
-        activity?.fab?.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_action_search))
-        return root
+        return inflater.inflate(R.layout.fragment_explore, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

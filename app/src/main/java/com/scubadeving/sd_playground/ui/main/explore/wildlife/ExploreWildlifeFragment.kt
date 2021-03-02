@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.GridLayoutManager.HORIZONTAL
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
@@ -55,13 +54,9 @@ class ExploreWildlifeFragment : Fragment() {
                 ExploreFilter("Rays", true),
                 ExploreFilter("Reef", true)
             )
-        val spanCount = 2
-        val spacing = 15
-        val includeEdge = true
         explore_wildlife_filter_rv.apply {
-            layoutManager = GridLayoutManager(context, spanCount, HORIZONTAL, false)
             adapter = ExploreFilterAdapter(filters)
-            addItemDecoration(GridSpacingItemDecoration(spanCount, spacing, includeEdge))
+            addItemDecoration(GridSpacingItemDecoration())
         }
     }
 

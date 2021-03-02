@@ -8,9 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.GridLayoutManager.HORIZONTAL
-import androidx.recyclerview.widget.GridLayoutManager.VERTICAL
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.SnapHelper
@@ -79,13 +77,9 @@ class ExploreBuddiesFragment : Fragment() {
                 Diver(firstName = "Karen", certifications = arrayListOf(Certification(certificationName = "Open Water"))),
                 Diver(firstName = "Molly", certifications = arrayListOf(Certification(certificationName = "Open Water")))
             )
-        val spanCount = 2
-        val spacing = 15
-        val includeEdge = true
         dive_center_divers_rv.apply {
-            layoutManager = GridLayoutManager(context, spanCount, VERTICAL, false)
             adapter = BuddyAdapter(diveCenterDivers, false)
-            addItemDecoration(GridSpacingItemDecoration(spanCount, spacing, includeEdge))
+            addItemDecoration(GridSpacingItemDecoration())
         }
         dive_center_divers_see_all.setOnClickListener {
             Toast.makeText(context, "Just Clicked Dive Center Buddies!", Toast.LENGTH_SHORT).show()
@@ -104,13 +98,9 @@ class ExploreBuddiesFragment : Fragment() {
                 Diver(firstName = "Pedro", certifications = arrayListOf(Certification(certificationName = "Open Water"))),
                 Diver(firstName = "Nick", certifications = arrayListOf(Certification(certificationName = "Open Water")))
             )
-        val spanCount = 2
-        val spacing = 15
-        val includeEdge = true
         past_divers_rv.apply {
-            layoutManager = GridLayoutManager(context, spanCount, VERTICAL, false)
             adapter = BuddyAdapter(pastDivers, false)
-            addItemDecoration(GridSpacingItemDecoration(spanCount, spacing, includeEdge))
+            addItemDecoration(GridSpacingItemDecoration())
         }
         past_divers_see_all.setOnClickListener {
             Toast.makeText(context, "Just Clicked Past Dive Buddies!", Toast.LENGTH_SHORT).show()

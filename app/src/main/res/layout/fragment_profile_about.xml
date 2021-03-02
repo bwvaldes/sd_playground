@@ -1,51 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout>
 
-    <LinearLayout
+    <data>
+
+        <variable
+            name="diver"
+            type="com.scubadeving.sd_playground.data.model.diver.Diver" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="15dp"
-        tools:context=".ui.main.dashboard.profile.about.AboutFragment">
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="15dp"
+            tools:context=".ui.main.dashboard.profile.about.AboutFragment">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@android:color/darker_gray"
+                android:text="Bio" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{diver.about.bio}"
+                tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pulvinar metus in massa aliquam placerat. Suspendisse congue dui velit, quis maximus" />
+
+            <TextView
+                android:id="@+id/profile_about_interests_heading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@android:color/darker_gray"
+                android:text="Interests" />
 
         <TextView
+            android:id="@+id/profile_about_interests"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:background="@android:color/darker_gray"
-            android:text="Bio" />
+            tools:text="Shore Diving, CaveDiving, NightDiving" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pulvinar metus in massa aliquam placerat. Suspendisse congue dui velit, quis maximus" />
+            <TextView
+                android:id="@+id/profile_about_causes_heading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@android:color/darker_gray"
+                android:text="@{@string/profile_about_causes_heading(diver.firstName)}" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:background="@android:color/darker_gray"
-            android:text="Interests" />
+            <TextView
+                android:id="@+id/profile_about_causes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Project AWARE, Shark's ANGELS, Clean our beaches, WWO, WORMS" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Shore Diving, CaveDiving, NightDiving" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:background="@android:color/darker_gray"
-            android:text="Causes $user Cares About" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Project AWARE, Shark's ANGELS, Clean our beaches, WWO, WORMS" />
-
-    </LinearLayout>
-</androidx.core.widget.NestedScrollView>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

@@ -27,9 +27,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="?attr/actionBarSize"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/explore_wildlife_heading" />
+        app:layout_constraintTop_toBottomOf="@+id/explore_wildlife_heading"
+        app:spanCount="@integer/grid_columns" />
 
     <TextView
         android:id="@+id/explore_wildlife_nearby"

@@ -1,152 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:context=".MainActivity">
+<layout xmlns:tools="http://schemas.android.com/tools">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/profile_appbar"
+    <data>
+
+        <variable
+            name="diver"
+            type="com.scubadeving.sd_playground.data.model.diver.Diver" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary">
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
 
-        <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:id="@+id/profile_toolbar_layout"
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/profile_appbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fitsSystemWindows="true"
-            app:contentScrim="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
-            app:title="John Smith"
-            app:titleEnabled="false"
-            app:toolbarId="@id/profile_toolbar">
+            android:background="?attr/colorPrimary">
 
-            <ImageView
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/profile_toolbar_layout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:scaleType="centerCrop"
-                app:layout_collapseMode="parallax"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="15dp">
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/v_guide"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_percent=".5" />
+                android:layout_height="wrap_content"
+                android:fitsSystemWindows="true"
+                app:contentScrim="?attr/colorPrimary"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+                app:title="John Smith"
+                app:titleEnabled="false"
+                app:toolbarId="@id/profile_toolbar">
 
                 <ImageView
-                    android:id="@+id/avatar"
-                    android:layout_width="96dp"
-                    android:layout_height="96dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_menu_avatar"
+                    android:scaleType="centerCrop"
+                    app:layout_collapseMode="parallax"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/profile_username"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableEnd="@drawable/ic_verified"
-                    android:drawablePadding="5dp"
-                    android:drawableTint="@android:color/holo_blue_dark"
-                    android:text="John Smith"
-                    android:textColor="@color/white"
-                    android:textSize="24sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/avatar" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="15dp">
 
-                <com.google.android.material.chip.ChipGroup
-                    android:id="@+id/chips"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/profile_username">
-
-                    <com.google.android.material.chip.Chip
-                        style="@style/Widget.MaterialComponents.Chip.Action"
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/v_guide"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="AOW" />
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_percent=".5" />
 
-                    <com.google.android.material.chip.Chip
-                        style="@style/Widget.MaterialComponents.Chip.Action"
+                    <ImageView
+                        android:id="@+id/avatar"
+                        android:layout_width="96dp"
+                        android:layout_height="96dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_menu_avatar"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/profile_diver_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Equipment Specialist" />
+                        android:drawablePadding="5dp"
+                        android:drawableTint="@android:color/holo_blue_dark"
+                        android:text="@{diver.firstName}"
+                        android:textColor="@color/white"
+                        android:textSize="24sp"
+                        app:drawableEndCompat="@drawable/ic_verified"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/avatar"
+                        tools:text="John Smith" />
 
-                    <com.google.android.material.chip.Chip
-                        style="@style/Widget.MaterialComponents.Chip.Action"
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/chips"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Wreck" />
-                </com.google.android.material.chip.ChipGroup>
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/profile_diver_name">
 
-                <TextView
-                    android:id="@+id/total_dives"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:gravity="center"
-                    android:text="76\nDives"
-                    android:textColor="@color/white"
-                    app:layout_constraintEnd_toStartOf="@id/v_guide"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/chips" />
+                        <com.google.android.material.chip.Chip
+                            style="@style/Widget.MaterialComponents.Chip.Action"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="AOW" />
 
-                <TextView
-                    android:id="@+id/total_buddies"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:gravity="center"
-                    android:text="26\nBuddies"
-                    android:textColor="@color/white"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/v_guide"
-                    app:layout_constraintTop_toTopOf="@+id/total_dives" />
+                        <com.google.android.material.chip.Chip
+                            style="@style/Widget.MaterialComponents.Chip.Action"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Equipment Specialist" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                        <com.google.android.material.chip.Chip
+                            style="@style/Widget.MaterialComponents.Chip.Action"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Wreck" />
+                    </com.google.android.material.chip.ChipGroup>
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/profile_toolbar"
+                    <TextView
+                        android:id="@+id/total_dives"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        app:diveCountText="@{diver.stats.diveCount}"
+                        app:layout_constraintEnd_toStartOf="@id/v_guide"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/chips"
+                        tools:text="76\nDives" />
+
+                    <TextView
+                        android:id="@+id/total_buddies"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        app:buddyCountText="@{diver.buddies}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/v_guide"
+                        app:layout_constraintTop_toTopOf="@+id/total_dives"
+                        tools:text="26\nBuddies" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/profile_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="@android:color/transparent"
+                    app:contentInsetStartWithNavigation="0dp"
+                    app:layout_collapseMode="pin"
+                    app:menu="@menu/menu_profile"
+                    app:navigationIcon="@drawable/ic_nav_arrow_back"
+                    app:titleTextColor="?attr/colorOnSurface" />
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/profile_tab_layout"
+                style="@style/Widget.MaterialComponents.TabLayout.Colored"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="@android:color/transparent"
-                app:contentInsetStartWithNavigation="0dp"
-                app:layout_collapseMode="pin"
-                app:menu="@menu/menu_profile"
-                app:navigationIcon="@drawable/ic_nav_arrow_back"
-                app:titleTextColor="?attr/colorOnSurface" />
+                android:layout_height="wrap_content" />
 
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/profile_tab_layout"
-            style="@style/Widget.MaterialComponents.TabLayout.Colored"
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/profile_pager"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/profile_pager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

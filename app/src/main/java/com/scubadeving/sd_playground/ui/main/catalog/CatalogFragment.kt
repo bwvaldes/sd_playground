@@ -5,10 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
@@ -18,7 +16,6 @@ import com.scubadeving.sd_playground.data.model.certification.CatalogCertificati
 import com.scubadeving.sd_playground.data.model.certification.Specialty
 import com.scubadeving.sd_playground.databinding.FragmentCertificationCatalogBinding
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.CertificationAdapter
-import kotlinx.android.synthetic.main.activity_main.fab
 
 class CatalogFragment : Fragment() {
 
@@ -123,11 +120,6 @@ class CatalogFragment : Fragment() {
     ): View? {
         catalogViewModel = ViewModelProvider(this).get(CatalogViewModel::class.java)
         return FragmentCertificationCatalogBinding.inflate(inflater, container, false).apply {
-            activity?.fab?.setOnClickListener {
-                Toast.makeText(activity, "Search Catalog", Toast.LENGTH_SHORT).show()
-                findNavController().navigate(R.id.certificationScanFragment)
-            }
-            activity?.fab?.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_action_add))
             subscribeUi(this)
         }.root
     }
@@ -140,7 +132,7 @@ class CatalogFragment : Fragment() {
     private fun configureCertificationRecyclerView(binding: FragmentCertificationCatalogBinding) {
         binding.certPathLevelRv.apply {
             layoutManager = LinearLayoutManager(context)
-            adapter = CertificationAdapter(padiCatalogCertifications)
+            adapter = CertificationAdapter(padiCatalogCertifications, emptyList())
             val dividerItemDecoration = DividerItemDecoration(context, VERTICAL)
             addItemDecoration(dividerItemDecoration)
         }
@@ -157,11 +149,11 @@ class CatalogFragment : Fragment() {
                 )
                     .show()
                 certPathLevelRv.adapter = when (checkedId) {
-                    R.id.chip_padi -> CertificationAdapter(padiCatalogCertifications)
-                    R.id.chip_sdi -> CertificationAdapter(sdiCatalogCertifications)
-                    R.id.chip_ssi -> CertificationAdapter(ssiCatalogCertifications)
-                    R.id.chip_tdi -> CertificationAdapter(tdiCatalogCertifications)
-                    else -> CertificationAdapter(padiCatalogCertifications)
+                    R.id.chip_padi -> CertificationAdapter(padiCatalogCertifications, emptyList())
+                    R.id.chip_sdi -> CertificationAdapter(sdiCatalogCertifications, emptyList())
+                    R.id.chip_ssi -> CertificationAdapter(ssiCatalogCertifications, emptyList())
+                    R.id.chip_tdi -> CertificationAdapter(tdiCatalogCertifications, emptyList())
+                    else -> CertificationAdapter(padiCatalogCertifications, emptyList())
                 }
             }
         }

@@ -10,7 +10,7 @@ import com.scubadeving.sd_playground.ui.main.dashboard.profile.ProfileFragmentDi
 import com.scubadeving.sd_playground.utils.inflate
 import kotlinx.android.synthetic.main.item_gear_profile_card.view.gear_profile_card_text
 
-class GearAdapter(private val gearProfiles: ArrayList<GearProfile>, val orientation: Boolean) :
+class GearAdapter(private val gearProfiles: List<GearProfile>, val orientation: Boolean) :
     RecyclerView.Adapter<GearAdapter.GearViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GearViewHolder {

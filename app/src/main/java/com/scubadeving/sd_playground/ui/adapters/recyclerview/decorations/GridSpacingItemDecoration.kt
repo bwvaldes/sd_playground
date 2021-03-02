@@ -5,11 +5,10 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 
 class GridSpacingItemDecoration(
-    private val spanCount: Int,
-    private val spacing: Int,
-    private val includeEdge: Boolean
-) :
-    RecyclerView.ItemDecoration() {
+    private val spanCount: Int = 2,
+    private val spacing: Int = 15,
+    private val includeEdge: Boolean = true
+) : RecyclerView.ItemDecoration() {
     override fun getItemOffsets(
         outRect: Rect,
         view: View,

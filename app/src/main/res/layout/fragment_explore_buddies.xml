@@ -45,9 +45,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="?attr/actionBarSize"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/dive_center_divers_heading" />
+            app:layout_constraintTop_toBottomOf="@id/dive_center_divers_heading"
+            app:spanCount="@integer/grid_columns" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/dive_center_divers_see_all"
@@ -79,9 +81,11 @@
             android:id="@+id/past_divers_rv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/past_divers_heading" />
+            app:layout_constraintTop_toBottomOf="@id/past_divers_heading"
+            app:spanCount="@integer/grid_columns" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/past_divers_see_all"

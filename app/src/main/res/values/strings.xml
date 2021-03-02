@@ -1,6 +1,8 @@
 <resources>
+    <!--==== Resources that do not require translation ====-->
     <string name="app_name">sd_playground</string>
 
+    <!--==== Translatable resources ====-->
     <!-- NavGraph Labels-->
     <string name="label_catalog">Catalog</string>
     <string name="label_dashboard">Dashboard</string>
@@ -44,6 +46,21 @@
     <string name="profile_tab_stats">Stats</string>
     <string name="profile_tab_gear">Gear</string>
     <string name="profile_tab_about">About</string>
+    <string name="profile_toolbar_dive_count">%1$d\nDives</string>
+    <string name="profile_toolbar_buddy_count">%1$d\nBuddies</string>
+
+    <!-- About -->
+    <string name="profile_about_causes_heading">Causes %1$s Cares About</string>
+
+    <!-- Stats -->
+    <string name="profile_stats_dive_count">%1$d\nTotal Dives</string>
+    <string name="profile_stats_country_count">%1$d\nCountries</string>
+    <string name="profile_stats_wildlife_count">%1$d\nWildlife Seen</string>
+    <string name="profile_stats_certification_count">%1$d\nCertifications</string>
+    <string name="profile_stats_max_depth">%1$.2f\nMax Depth</string>
+    <string name="profile_stats_max_dive_time">%1$.2f\nMax Dive Time</string>
+    <string name="profile_stats_bottom_time">%1$.2f\nBottom Time</string>
+    <string name="profile_stats_average_air_consumption">%1$.2f\nAverage Air Consumption</string>
 
     <!-- Dive Site Detail-->
     <string name="dive_site_rating">%1$.2f (%2$d)</string>
@@ -56,7 +73,20 @@
     <string name="inbox_tab_messages">Messages</string>
     <string name="inbox_tab_notifications">Notifications</string>
 
+    <!--==== String plurals and their related prefix / suffix strings ====-->
+    <plurals name="dive_count_suffix">
+        <item quantity="one" translation_description="Suffix for the text describing how many dives a diver has logged, singular. Not used with an existing prefix.">%d\nDive</item>
+        <item quantity="other" translation_description="Suffix for the text describing how many dives a diver has logged, plural. Not used with an existing prefix.">%d\nDives</item>
+    </plurals>
+    <plurals name="buddy_count_suffix">
+        <item quantity="one" translation_description="Suffix for the text describing how many buddies a diver has, singular. Not used with an existing prefix.">%d\nBuddy</item>
+        <item quantity="other" translation_description="Suffix for the text describing how many buddies a diver has, plural. Not used with an existing prefix.">%d\nBuddies</item>
+    </plurals>
+
+    <!--==== Custom Views ====-->
     <!-- InfoView -->
     <string name="infoview_content_description">An Icon for an InfoView</string>
+
+    <!--==== Accessibility ====-->
 
 </resources>

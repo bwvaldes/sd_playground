@@ -5,13 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.tabs.TabLayoutMediator
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.ui.adapters.viewpager.LogbookViewPagerAdapter
-import kotlinx.android.synthetic.main.activity_main.fab
 import kotlinx.android.synthetic.main.fragment_logbook.logbook_import
 import kotlinx.android.synthetic.main.fragment_logbook.logbook_pager
 import kotlinx.android.synthetic.main.fragment_logbook.logbook_tab_layout
@@ -26,12 +24,7 @@ class LogbookMainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         logbookMainViewModel = ViewModelProvider(this).get(LogbookMainViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_logbook, container, false)
-        activity?.fab?.setOnClickListener {
-            Toast.makeText(activity, "Add Log", Toast.LENGTH_SHORT).show()
-        }
-        activity?.fab?.setImageDrawable(ContextCompat.getDrawable(requireContext(), android.R.drawable.ic_input_add))
-        return root
+        return inflater.inflate(R.layout.fragment_logbook, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

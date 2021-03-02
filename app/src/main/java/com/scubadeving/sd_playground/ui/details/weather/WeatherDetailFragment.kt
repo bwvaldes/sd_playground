@@ -4,13 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.scubadeving.sd_playground.R
-import kotlinx.android.synthetic.main.activity_main.fab
 import kotlinx.android.synthetic.main.fragment_weather_details.weather_toolbar
 
 class WeatherDetailFragment : Fragment() {
@@ -24,12 +21,7 @@ class WeatherDetailFragment : Fragment() {
     ): View {
         weatherDetailViewModel = ViewModelProvider(this).get(WeatherDetailViewModel::class.java)
 
-        val root = inflater.inflate(R.layout.fragment_weather_details, container, false)
-        activity?.fab?.setOnClickListener {
-            Toast.makeText(activity, "Add Gear", Toast.LENGTH_SHORT).show()
-        }
-        activity?.fab?.setImageDrawable(ContextCompat.getDrawable(requireContext(), android.R.drawable.ic_input_add))
-        return root
+        return inflater.inflate(R.layout.fragment_weather_details, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

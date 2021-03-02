@@ -3,11 +3,14 @@ package com.scubadeving.sd_playground.ui.main.dashboard.profile.certifications
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.scubadeving.sd_playground.data.model.diver.Diver
+import com.scubadeving.sd_playground.data.source.repository.DiverRepository
 
-class CertificationsViewModel : ViewModel() {
+class CertificationsViewModel(private val diverRepository: DiverRepository) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is My Certs Fragment"
+    private val _currentDiver = MutableLiveData<Diver>().apply {
+        diverRepository.getDiver("lEnWGcqDvI87XZvieJfY") { value = it }
     }
-    val text: LiveData<String> = _text
+
+    val currentDiver: LiveData<Diver> = _currentDiver
 }

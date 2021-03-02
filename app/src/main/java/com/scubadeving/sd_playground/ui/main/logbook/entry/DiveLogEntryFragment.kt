@@ -4,8 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -18,7 +16,6 @@ import androidx.recyclerview.widget.SnapHelper
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.model.wildlife.Wildlife
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.WildlifeAdapter
-import kotlinx.android.synthetic.main.activity_main.fab
 import kotlinx.android.synthetic.main.fragment_logbook_dive_log_entry.dive_log_entry_qr_scan
 import kotlinx.android.synthetic.main.fragment_logbook_dive_log_entry.dive_log_entry_site_name
 import kotlinx.android.synthetic.main.fragment_logbook_dive_log_entry.dive_log_entry_toolbar
@@ -35,12 +32,7 @@ class DiveLogEntryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         diveLogEntryViewModel = ViewModelProvider(this).get(DiveLogEntryViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_logbook_dive_log_entry, container, false)
-        activity?.fab?.setOnClickListener {
-            Toast.makeText(activity, "Add Log", Toast.LENGTH_SHORT).show()
-        }
-        activity?.fab?.setImageDrawable(ContextCompat.getDrawable(requireContext(), android.R.drawable.ic_input_add))
-        return root
+        return inflater.inflate(R.layout.fragment_logbook_dive_log_entry, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
