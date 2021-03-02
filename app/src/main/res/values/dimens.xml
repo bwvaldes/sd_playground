@@ -5,4 +5,5 @@
     <dimen name="infoview_icon_size">24dp</dimen>
     <dimen name="infoview_heading_text_size">18sp</dimen>
     <dimen name="infoview_data_text_size">16sp</dimen>
+    <dimen name="toolbar_elevation">5dp</dimen>
 </resources>

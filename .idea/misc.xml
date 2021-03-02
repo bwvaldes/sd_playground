@@ -55,6 +55,7 @@
         <entry key="app/src/main/res/drawable/view_chat_host_bubble.xml" value="0.17702702702702702" />
         <entry key="app/src/main/res/drawable/view_default_dot.xml" value="0.35945945945945945" />
         <entry key="app/src/main/res/drawable/view_item_count_outline.xml" value="0.35945945945945945" />
+        <entry key="app/src/main/res/layout-v21/fragment_profile.xml" value="0.25677083333333334" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.16655405405405405" />
         <entry key="app/src/main/res/layout/fragment_catalog.xml" value="0.3489864864864865" />
         <entry key="app/src/main/res/layout/fragment_certification_detail.xml" value="0.3489864864864865" />
@@ -75,7 +76,7 @@
         <entry key="app/src/main/res/layout/fragment_logbook_entry.xml" value="0.16488294314381272" />
         <entry key="app/src/main/res/layout/fragment_logged_dives.xml" value="0.16488294314381272" />
         <entry key="app/src/main/res/layout/fragment_logged_dives_map.xml" value="0.16488294314381272" />
-        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.16655405405405405" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.4875" />
         <entry key="app/src/main/res/layout/fragment_profile_about.xml" value="0.4875" />
         <entry key="app/src/main/res/layout/fragment_profile_certifications.xml" value="0.3328831870357866" />
         <entry key="app/src/main/res/layout/fragment_profile_gear.xml" value="0.38306138306138304" />

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
@@ -74,7 +75,10 @@ class CatalogFragment : Fragment() {
         Specialty("Course Director")
     )
     private val padiCatalogCertifications: List<CatalogCertification> = listOf(
-        CatalogCertification("Discover Snorkeling", specialties = listOf(Specialty("Discover Snorkeling"))),
+        CatalogCertification(
+            "Discover Snorkeling",
+            specialties = listOf(Specialty("Discover Snorkeling"))
+        ),
         CatalogCertification("Seal Team", specialties = beginnerSpecialties),
         CatalogCertification("Bubble Maker", specialties = beginnerSpecialties),
         CatalogCertification("Discover Scuba Diving", specialties = beginnerSpecialties),
@@ -82,9 +86,15 @@ class CatalogFragment : Fragment() {
         CatalogCertification("Open Water Diver", specialties = intermediateSpecialties),
         CatalogCertification("Scuba Diver", specialties = intermediateSpecialties),
         CatalogCertification("Adventure Diver", specialties = adventureSpecialties),
-        CatalogCertification("Advanced Open Water Diver", specialties = advancedSpecialties.plus(emergencySpecialties)),
+        CatalogCertification(
+            "Advanced Open Water Diver",
+            specialties = advancedSpecialties.plus(emergencySpecialties)
+        ),
         CatalogCertification("Rescue Diver", specialties = rescueSpecialties),
-        CatalogCertification("Master Scuba Diver", specialties = listOf(Specialty("Master Scuba Diver")))
+        CatalogCertification(
+            "Master Scuba Diver",
+            specialties = listOf(Specialty("Master Scuba Diver"))
+        )
     )
 
     private val sdiIntermediateSpecialties: List<Specialty> = listOf(
@@ -101,14 +111,20 @@ class CatalogFragment : Fragment() {
     )
 
     private val ssiCatalogCertifications: List<CatalogCertification> = listOf(
-        CatalogCertification("Try Scuba Diving", specialties = listOf(Specialty("Try Scuba Diving"))),
+        CatalogCertification(
+            "Try Scuba Diving",
+            specialties = listOf(Specialty("Try Scuba Diving"))
+        ),
         CatalogCertification("Scuba Diver", specialties = listOf(Specialty("Altitude Diving"))),
         CatalogCertification("Open Water Diver", specialties = listOf(Specialty("Ice Diving")))
     )
 
     private val tdiCatalogCertifications: List<CatalogCertification> = listOf(
         CatalogCertification("Open Circuit", specialties = listOf(Specialty("Nitrox"))),
-        CatalogCertification("Rebreather", specialties = listOf(Specialty("Semi Closed rebreather")))
+        CatalogCertification(
+            "Rebreather",
+            specialties = listOf(Specialty("Semi Closed rebreather"))
+        )
     )
 
     private lateinit var catalogViewModel: CatalogViewModel
@@ -118,6 +134,7 @@ class CatalogFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        setHasOptionsMenu(true)
         catalogViewModel = ViewModelProvider(this).get(CatalogViewModel::class.java)
         return FragmentCertificationCatalogBinding.inflate(inflater, container, false).apply {
             subscribeUi(this)
@@ -125,12 +142,20 @@ class CatalogFragment : Fragment() {
     }
 
     private fun subscribeUi(binding: FragmentCertificationCatalogBinding) {
-        configureCertificationRecyclerView(binding)
-        configureAgencyFilter(binding)
+        binding.apply {
+            configureCertificationRecyclerView()
+            configureAgencyFilter()
+            catalogToolbar.apply {
+                setOnMenuItemClickListener {
+                    navigateToScanCertification(this)
+                    true
+                }
+            }
+        }
     }
 
-    private fun configureCertificationRecyclerView(binding: FragmentCertificationCatalogBinding) {
-        binding.certPathLevelRv.apply {
+    private fun FragmentCertificationCatalogBinding.configureCertificationRecyclerView() {
+        certPathLevelRv.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = CertificationAdapter(padiCatalogCertifications, emptyList())
             val dividerItemDecoration = DividerItemDecoration(context, VERTICAL)
@@ -138,24 +163,26 @@ class CatalogFragment : Fragment() {
         }
     }
 
-    private fun configureAgencyFilter(binding: FragmentCertificationCatalogBinding) {
-        binding.apply {
-            agencyFilters.setOnCheckedChangeListener { chipGroup, checkedId ->
-                val selectedChipText = chipGroup.findViewById<Chip>(checkedId)?.text
-                Toast.makeText(
-                    chipGroup.context,
-                    selectedChipText ?: "No Choice",
-                    Toast.LENGTH_LONG
-                )
-                    .show()
-                certPathLevelRv.adapter = when (checkedId) {
-                    R.id.chip_padi -> CertificationAdapter(padiCatalogCertifications, emptyList())
-                    R.id.chip_sdi -> CertificationAdapter(sdiCatalogCertifications, emptyList())
-                    R.id.chip_ssi -> CertificationAdapter(ssiCatalogCertifications, emptyList())
-                    R.id.chip_tdi -> CertificationAdapter(tdiCatalogCertifications, emptyList())
-                    else -> CertificationAdapter(padiCatalogCertifications, emptyList())
-                }
+    private fun FragmentCertificationCatalogBinding.configureAgencyFilter() {
+        agencyFilters.setOnCheckedChangeListener { chipGroup, checkedId ->
+            val selectedChipText = chipGroup.findViewById<Chip>(checkedId)?.text
+            Toast.makeText(
+                chipGroup.context,
+                selectedChipText ?: "No Choice",
+                Toast.LENGTH_LONG
+            )
+                .show()
+            certPathLevelRv.adapter = when (checkedId) {
+                R.id.chip_padi -> CertificationAdapter(padiCatalogCertifications, emptyList())
+                R.id.chip_sdi -> CertificationAdapter(sdiCatalogCertifications, emptyList())
+                R.id.chip_ssi -> CertificationAdapter(ssiCatalogCertifications, emptyList())
+                R.id.chip_tdi -> CertificationAdapter(tdiCatalogCertifications, emptyList())
+                else -> CertificationAdapter(padiCatalogCertifications, emptyList())
             }
         }
+    }
+
+    private fun navigateToScanCertification(view: View) {
+        view.findNavController().navigate(R.id.certificationScanFragment)
     }
 }

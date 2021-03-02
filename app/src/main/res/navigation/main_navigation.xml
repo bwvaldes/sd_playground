@@ -39,7 +39,11 @@
         tools:layout="@layout/fragment_profile">
         <action
             android:id="@+id/action_profileFragment_to_settingsFragment"
-            app:destination="@id/settingsFragment" />
+            app:destination="@id/settingsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
         <argument
             android:name="diverId"
             app:argType="string" />
@@ -142,7 +146,11 @@
             app:argType="string" />
         <action
             android:id="@+id/action_chatFragment_to_chatDetailsFragment"
-            app:destination="@id/chatDetailFragment" />
+            app:destination="@id/chatDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
     <fragment
@@ -152,7 +160,11 @@
         tools:layout="@layout/fragment_saved">
         <action
             android:id="@+id/action_savedFragment_to_savedDetailFragment"
-            app:destination="@id/savedDetailFragment" />
+            app:destination="@id/savedDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
     <fragment
@@ -198,27 +210,69 @@
     <!-- Global Actions -->
     <action
         android:id="@+id/action_global_certDetailFragment"
-        app:destination="@id/certDetailFragment" />
+        app:destination="@id/certDetailFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
     <action
         android:id="@+id/action_global_diveSiteDetailFragment"
-        app:destination="@id/diveSiteDetailFragment" />
+        app:destination="@id/diveSiteDetailFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
     <action
         android:id="@+id/action_global_wildlifeDetailFragment"
-        app:destination="@id/wildlifeDetailFragment" />
+        app:destination="@id/wildlifeDetailFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
     <action
         android:id="@+id/action_global_weatherDetailFragment"
-        app:destination="@id/weatherDetailFragment" />
+        app:destination="@id/weatherDetailFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
     <action
         android:id="@+id/action_global_profileFragment"
         app:destination="@id/profileFragment" />
     <action
         android:id="@+id/action_global_exploreDetailsFilteredFragment"
-        app:destination="@id/exploreDetailsFilteredFragment" />
+        app:destination="@id/exploreDetailsFilteredFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
     <action
         android:id="@+id/action_global_logbookEntryFragment"
-        app:destination="@id/logbookEntryFragment" />
+        app:destination="@id/logbookEntryFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
     <action
         android:id="@+id/action_global_chatFragment"
-        app:destination="@id/chatFragment" />
+        app:destination="@id/chatFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+    <action
+        android:id="@+id/action_global_certificationScanFragment"
+        app:destination="@id/certificationScanFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
+    <action
+        android:id="@+id/action_global_qrCodeFragment"
+        app:destination="@id/qrCodeFragment"
+        app:enterAnim="@anim/slide_in_right"
+        app:exitAnim="@anim/slide_out_left"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popExitAnim="@anim/slide_out_right" />
 
 </navigation>
