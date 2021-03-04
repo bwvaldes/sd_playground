@@ -1,204 +1,208 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/vg1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent=".33" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/vg2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent=".66" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/vg1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".33" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/hg1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".33" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/vg2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".66" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/hg2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".66" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/hg1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".33" />
 
-    <com.scubadeving.sd_playground.ui.InfoView
-        android:id="@+id/log_entry_difficulty"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="15dp"
-        android:backgroundTint="@android:color/holo_red_light"
-        app:cardCornerRadius="5dp"
-        app:dataText="74˚F"
-        app:dataTextColor="@android:color/white"
-        app:dataTextSize="16sp"
-        app:headingText="Difficulty"
-        app:headingTextColor="@android:color/white"
-        app:headingTextSize="18sp"
-        app:icon="@drawable/ic_weather"
-        app:layout_constraintBottom_toTopOf="@+id/hg1"
-        app:layout_constraintEnd_toStartOf="@+id/vg1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/hg2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".66" />
 
-
-    <com.scubadeving.sd_playground.ui.InfoView
-        android:id="@+id/dash_weather_card"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="15dp"
-        android:backgroundTint="@android:color/holo_red_light"
-        app:cardCornerRadius="5dp"
-        app:dataText="74˚F"
-        app:dataTextColor="@android:color/white"
-        app:dataTextSize="16sp"
-        app:headingText="Gas Type"
-        app:headingTextColor="@android:color/white"
-        app:headingTextSize="18sp"
-        app:icon="@drawable/ic_weather"
-        app:layout_constraintBottom_toTopOf="@+id/hg1"
-        app:layout_constraintEnd_toStartOf="@id/vg2"
-        app:layout_constraintStart_toEndOf="@+id/vg1"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.scubadeving.sd_playground.ui.InfoView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="15dp"
-        android:backgroundTint="@android:color/holo_red_light"
-        app:cardCornerRadius="5dp"
-        app:dataText="74˚F"
-        app:dataTextColor="@android:color/white"
-        app:dataTextSize="16sp"
-        app:headingText="Entry"
-        app:headingTextColor="@android:color/white"
-        app:headingTextSize="18sp"
-        app:icon="@drawable/ic_weather"
-        app:layout_constraintBottom_toTopOf="@+id/hg1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/vg2"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.scubadeving.sd_playground.ui.InfoView
-        android:id="@+id/depth"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="15dp"
-        android:backgroundTint="@android:color/holo_red_light"
-        app:cardCornerRadius="5dp"
-        app:dataText="74˚F"
-        app:dataTextColor="@android:color/white"
-        app:dataTextSize="16sp"
-        app:headingText="Depth"
-        app:headingTextColor="@android:color/white"
-        app:headingTextSize="18sp"
-        app:icon="@drawable/ic_weather"
-        app:layout_constraintBottom_toTopOf="@+id/hg2"
-        app:layout_constraintEnd_toStartOf="@+id/vg1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hg1" />
-
-    <com.scubadeving.sd_playground.ui.InfoView
-        android:id="@+id/infoView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="15dp"
-        android:backgroundTint="@android:color/holo_red_light"
-        app:cardCornerRadius="5dp"
-        app:dataText="74˚F"
-        app:dataTextColor="@android:color/white"
-        app:dataTextSize="16sp"
-        app:headingText="Time In"
-        app:headingTextColor="@android:color/white"
-        app:headingTextSize="18sp"
-        app:icon="@drawable/ic_weather"
-        app:layout_constraintBottom_toTopOf="@+id/hg2"
-        app:layout_constraintEnd_toStartOf="@id/vg2"
-        app:layout_constraintStart_toEndOf="@+id/vg1"
-        app:layout_constraintTop_toBottomOf="@+id/hg1" />
-
-    <com.scubadeving.sd_playground.ui.InfoView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="15dp"
-        android:backgroundTint="@android:color/holo_red_light"
-        app:cardCornerRadius="5dp"
-        app:dataText="74˚F"
-        app:dataTextColor="@android:color/white"
-        app:dataTextSize="16sp"
-        app:headingText="Time Out"
-        app:headingTextColor="@android:color/white"
-        app:headingTextSize="18sp"
-        app:icon="@drawable/ic_weather"
-        app:layout_constraintBottom_toTopOf="@+id/hg2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/vg2"
-        app:layout_constraintTop_toBottomOf="@id/hg1" />
-
-    <com.scubadeving.sd_playground.ui.InfoView
-        android:id="@+id/air_in"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="15dp"
-        android:backgroundTint="@android:color/holo_red_light"
-        app:cardCornerRadius="5dp"
-        app:dataText="74˚F"
-        app:dataTextColor="@android:color/white"
-        app:dataTextSize="16sp"
-        app:headingText="Weight"
-        app:headingTextColor="@android:color/white"
-        app:headingTextSize="18sp"
-        app:icon="@drawable/ic_weather"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/vg1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hg2" />
-
-    <com.scubadeving.sd_playground.ui.InfoView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="15dp"
-        android:backgroundTint="@android:color/holo_red_light"
-        app:cardCornerRadius="5dp"
-        app:dataText="74˚F"
-        app:dataTextColor="@android:color/white"
-        app:dataTextSize="16sp"
-        app:headingText="Air In"
-        app:headingTextColor="@android:color/white"
-        app:headingTextSize="18sp"
-        app:icon="@drawable/ic_weather"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/vg2"
-        app:layout_constraintStart_toEndOf="@+id/vg1"
-        app:layout_constraintTop_toBottomOf="@+id/hg2" />
-
-    <com.scubadeving.sd_playground.ui.InfoView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:backgroundTint="@android:color/holo_red_light"
-        app:cardCornerRadius="5dp"
-        app:dataText="74˚F"
-        app:dataTextColor="@android:color/white"
-        app:dataTextSize="16sp"
-        app:headingText="Air Out"
-        app:headingTextColor="@android:color/white"
-        app:headingTextSize="18sp"
-        app:icon="@drawable/ic_weather"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/vg2"
-        app:layout_constraintTop_toBottomOf="@id/hg2" />
+        <com.scubadeving.sd_playground.ui.InfoView
+            android:id="@+id/log_entry_difficulty"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="15dp"
+            android:backgroundTint="@android:color/holo_red_light"
+            app:cardCornerRadius="5dp"
+            app:dataText="74˚F"
+            app:dataTextColor="@android:color/white"
+            app:dataTextSize="16sp"
+            app:headingText="Difficulty"
+            app:headingTextColor="@android:color/white"
+            app:headingTextSize="18sp"
+            app:icon="@drawable/ic_weather"
+            app:layout_constraintBottom_toTopOf="@+id/hg1"
+            app:layout_constraintEnd_toStartOf="@+id/vg1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.scubadeving.sd_playground.ui.InfoView
+            android:id="@+id/dash_weather_card"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="15dp"
+            android:backgroundTint="@android:color/holo_red_light"
+            app:cardCornerRadius="5dp"
+            app:dataText="74˚F"
+            app:dataTextColor="@android:color/white"
+            app:dataTextSize="16sp"
+            app:headingText="Gas Type"
+            app:headingTextColor="@android:color/white"
+            app:headingTextSize="18sp"
+            app:icon="@drawable/ic_weather"
+            app:layout_constraintBottom_toTopOf="@+id/hg1"
+            app:layout_constraintEnd_toStartOf="@id/vg2"
+            app:layout_constraintStart_toEndOf="@+id/vg1"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.scubadeving.sd_playground.ui.InfoView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="15dp"
+            android:backgroundTint="@android:color/holo_red_light"
+            app:cardCornerRadius="5dp"
+            app:dataText="74˚F"
+            app:dataTextColor="@android:color/white"
+            app:dataTextSize="16sp"
+            app:headingText="Entry"
+            app:headingTextColor="@android:color/white"
+            app:headingTextSize="18sp"
+            app:icon="@drawable/ic_weather"
+            app:layout_constraintBottom_toTopOf="@+id/hg1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/vg2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.scubadeving.sd_playground.ui.InfoView
+            android:id="@+id/depth"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="15dp"
+            android:backgroundTint="@android:color/holo_red_light"
+            app:cardCornerRadius="5dp"
+            app:dataText="74˚F"
+            app:dataTextColor="@android:color/white"
+            app:dataTextSize="16sp"
+            app:headingText="Depth"
+            app:headingTextColor="@android:color/white"
+            app:headingTextSize="18sp"
+            app:icon="@drawable/ic_weather"
+            app:layout_constraintBottom_toTopOf="@+id/hg2"
+            app:layout_constraintEnd_toStartOf="@+id/vg1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hg1" />
+
+        <com.scubadeving.sd_playground.ui.InfoView
+            android:id="@+id/infoView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="15dp"
+            android:backgroundTint="@android:color/holo_red_light"
+            app:cardCornerRadius="5dp"
+            app:dataText="74˚F"
+            app:dataTextColor="@android:color/white"
+            app:dataTextSize="16sp"
+            app:headingText="Time In"
+            app:headingTextColor="@android:color/white"
+            app:headingTextSize="18sp"
+            app:icon="@drawable/ic_weather"
+            app:layout_constraintBottom_toTopOf="@+id/hg2"
+            app:layout_constraintEnd_toStartOf="@id/vg2"
+            app:layout_constraintStart_toEndOf="@+id/vg1"
+            app:layout_constraintTop_toBottomOf="@+id/hg1" />
+
+        <com.scubadeving.sd_playground.ui.InfoView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="15dp"
+            android:backgroundTint="@android:color/holo_red_light"
+            app:cardCornerRadius="5dp"
+            app:dataText="74˚F"
+            app:dataTextColor="@android:color/white"
+            app:dataTextSize="16sp"
+            app:headingText="Time Out"
+            app:headingTextColor="@android:color/white"
+            app:headingTextSize="18sp"
+            app:icon="@drawable/ic_weather"
+            app:layout_constraintBottom_toTopOf="@+id/hg2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/vg2"
+            app:layout_constraintTop_toBottomOf="@id/hg1" />
+
+        <com.scubadeving.sd_playground.ui.InfoView
+            android:id="@+id/air_in"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="15dp"
+            android:backgroundTint="@android:color/holo_red_light"
+            app:cardCornerRadius="5dp"
+            app:dataText="74˚F"
+            app:dataTextColor="@android:color/white"
+            app:dataTextSize="16sp"
+            app:headingText="Weight"
+            app:headingTextColor="@android:color/white"
+            app:headingTextSize="18sp"
+            app:icon="@drawable/ic_weather"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/vg1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hg2" />
+
+        <com.scubadeving.sd_playground.ui.InfoView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="15dp"
+            android:backgroundTint="@android:color/holo_red_light"
+            app:cardCornerRadius="5dp"
+            app:dataText="74˚F"
+            app:dataTextColor="@android:color/white"
+            app:dataTextSize="16sp"
+            app:headingText="Air In"
+            app:headingTextColor="@android:color/white"
+            app:headingTextSize="18sp"
+            app:icon="@drawable/ic_weather"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/vg2"
+            app:layout_constraintStart_toEndOf="@+id/vg1"
+            app:layout_constraintTop_toBottomOf="@+id/hg2" />
+
+        <com.scubadeving.sd_playground.ui.InfoView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:backgroundTint="@android:color/holo_red_light"
+            app:cardCornerRadius="5dp"
+            app:dataText="74˚F"
+            app:dataTextColor="@android:color/white"
+            app:dataTextSize="16sp"
+            app:headingText="Air Out"
+            app:headingTextColor="@android:color/white"
+            app:headingTextSize="18sp"
+            app:icon="@drawable/ic_weather"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/vg2"
+            app:layout_constraintTop_toBottomOf="@id/hg2" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

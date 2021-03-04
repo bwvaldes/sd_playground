@@ -1,119 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/logged_dive_card_container"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:elevation="8dp"
-    app:cardBackgroundColor="@android:color/holo_red_dark"
-    app:cardCornerRadius="5dp"
-    app:cardPreventCornerOverlap="true"
-    app:cardUseCompatPadding="true">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/logged_dive_card_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="15dp">
+        android:layout_height="wrap_content"
+        android:elevation="8dp"
+        app:cardBackgroundColor="@android:color/holo_red_dark"
+        app:cardCornerRadius="5dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true">
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/logged_dive_guideline"
-            android:layout_width="1dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent=".25" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="15dp">
 
-        <ImageView
-            android:id="@+id/logged_dive_site_image"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:src="@color/teel_200"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/logged_dive_guideline"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/logged_dive_guideline"
+                android:layout_width="1dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent=".25" />
 
-        <TextView
-            android:id="@+id/logged_dive_rating"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="15dp"
-            android:layout_marginLeft="15dp"
-            android:drawableStart="@drawable/ic_rating"
-            android:drawableLeft="@drawable/ic_rating"
-            android:ellipsize="end"
-            android:gravity="center|start"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/logged_dive_guideline"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="3.75 (14)" />
+            <ImageView
+                android:id="@+id/logged_dive_site_image"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:src="@color/teel_200"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/logged_dive_guideline"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/logged_dive_details"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="15dp"
-            android:layout_marginLeft="15dp"
-            android:ellipsize="end"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/logged_dive_guideline"
-            app:layout_constraintTop_toBottomOf="@+id/logged_dive_rating"
-            tools:text="7. Shaw's Cove, USA" />
+            <TextView
+                android:id="@+id/logged_dive_rating"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="15dp"
+                android:layout_marginLeft="15dp"
+                android:drawableStart="@drawable/ic_rating"
+                android:drawableLeft="@drawable/ic_rating"
+                android:ellipsize="end"
+                android:gravity="center|start"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/logged_dive_guideline"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="3.75 (14)" />
 
-        <TextView
-            android:id="@+id/logged_dive_date"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="15dp"
-            android:layout_marginLeft="15dp"
-            android:ellipsize="end"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/logged_dive_guideline"
-            app:layout_constraintTop_toBottomOf="@+id/logged_dive_details"
-            tools:text="January 23rd, 2020" />
+            <TextView
+                android:id="@+id/logged_dive_details"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="15dp"
+                android:layout_marginLeft="15dp"
+                android:ellipsize="end"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/logged_dive_guideline"
+                app:layout_constraintTop_toBottomOf="@+id/logged_dive_rating"
+                tools:text="7. Shaw's Cove, USA" />
 
-        <TextView
-            android:id="@+id/logged_dive_depth"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="15dp"
-            android:layout_marginLeft="15dp"
-            android:drawableStart="@drawable/ic_depth"
-            android:drawableLeft="@drawable/ic_depth"
-            android:drawablePadding="5dp"
-            android:ellipsize="end"
-            android:gravity="center"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/logged_dive_guideline"
-            app:layout_constraintTop_toBottomOf="@+id/logged_dive_date"
-            tools:text="44ft" />
+            <TextView
+                android:id="@+id/logged_dive_date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="15dp"
+                android:layout_marginLeft="15dp"
+                android:ellipsize="end"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/logged_dive_guideline"
+                app:layout_constraintTop_toBottomOf="@+id/logged_dive_details"
+                tools:text="January 23rd, 2020" />
 
-        <TextView
-            android:id="@+id/logged_dive_bottom_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="15dp"
-            android:layout_marginLeft="15dp"
-            android:drawableStart="@drawable/ic_timer"
-            android:drawableLeft="@drawable/ic_timer"
-            android:drawablePadding="5dp"
-            android:ellipsize="end"
-            android:gravity="center"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/logged_dive_depth"
-            app:layout_constraintTop_toBottomOf="@+id/logged_dive_date"
-            tools:text="38min" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/logged_dive_depth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="15dp"
+                android:layout_marginLeft="15dp"
+                android:drawableStart="@drawable/ic_depth"
+                android:drawableLeft="@drawable/ic_depth"
+                android:drawablePadding="5dp"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/logged_dive_guideline"
+                app:layout_constraintTop_toBottomOf="@+id/logged_dive_date"
+                tools:text="44ft" />
 
-</com.google.android.material.card.MaterialCardView>
+            <TextView
+                android:id="@+id/logged_dive_bottom_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="15dp"
+                android:layout_marginLeft="15dp"
+                android:drawableStart="@drawable/ic_timer"
+                android:drawableLeft="@drawable/ic_timer"
+                android:drawablePadding="5dp"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/logged_dive_depth"
+                app:layout_constraintTop_toBottomOf="@+id/logged_dive_date"
+                tools:text="38min" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>

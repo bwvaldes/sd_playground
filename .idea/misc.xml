@@ -59,12 +59,12 @@
         <entry key="app/src/main/res/layout-v21/fragment_profile.xml" value="0.25677083333333334" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.16655405405405405" />
         <entry key="app/src/main/res/layout/fragment_catalog.xml" value="0.3489864864864865" />
-        <entry key="app/src/main/res/layout/fragment_certification_catalog.xml" value="0.16655405405405405" />
-        <entry key="app/src/main/res/layout/fragment_certification_detail.xml" value="0.3489864864864865" />
-        <entry key="app/src/main/res/layout/fragment_certification_detail_scan.xml" value="0.3489864864864865" />
-        <entry key="app/src/main/res/layout/fragment_chat.xml" value="0.3489864864864865" />
+        <entry key="app/src/main/res/layout/fragment_certification_catalog.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/fragment_certification_detail.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/fragment_certification_detail_scan.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/fragment_chat.xml" value="0.4527777777777778" />
         <entry key="app/src/main/res/layout/fragment_chat_details.xml" value="0.5" />
-        <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/fragment_dashboard.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_detail_cert.xml" value="0.34548494983277594" />
         <entry key="app/src/main/res/layout/fragment_detail_qrcode_details.xml" value="0.3489864864864865" />
         <entry key="app/src/main/res/layout/fragment_detail_weather.xml" value="0.3489864864864865" />
@@ -72,35 +72,46 @@
         <entry key="app/src/main/res/layout/fragment_dive_site_details.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_explore_filtered_details.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_explore_sites.xml" value="0.5" />
-        <entry key="app/src/main/res/layout/fragment_explore_wildlife.xml" value="0.24305555555555555" />
+        <entry key="app/src/main/res/layout/fragment_explore_wildlife.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/fragment_inbox.xml" value="0.22508361204013377" />
         <entry key="app/src/main/res/layout/fragment_inbox_messages.xml" value="0.5" />
-        <entry key="app/src/main/res/layout/fragment_inbox_notifications.xml" value="0.16655405405405405" />
-        <entry key="app/src/main/res/layout/fragment_logbook.xml" value="0.16655405405405405" />
+        <entry key="app/src/main/res/layout/fragment_inbox_notifications.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/fragment_logbook.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_logbook_dive_log_entry.xml" value="0.5" />
-        <entry key="app/src/main/res/layout/fragment_logbook_dives.xml" value="0.16655405405405405" />
+        <entry key="app/src/main/res/layout/fragment_logbook_dives.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/fragment_logbook_dives_map.xml" value="0.22736486486486487" />
         <entry key="app/src/main/res/layout/fragment_logbook_entry.xml" value="0.16488294314381272" />
-        <entry key="app/src/main/res/layout/fragment_logbook_wildlife.xml" value="0.16655405405405405" />
+        <entry key="app/src/main/res/layout/fragment_logbook_wildlife.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_logged_dives.xml" value="0.16488294314381272" />
         <entry key="app/src/main/res/layout/fragment_logged_dives_map.xml" value="0.16488294314381272" />
-        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.4875" />
-        <entry key="app/src/main/res/layout/fragment_profile_about.xml" value="0.4875" />
-        <entry key="app/src/main/res/layout/fragment_profile_certifications.xml" value="0.3328831870357866" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/fragment_profile_about.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/fragment_profile_certifications.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_profile_gear.xml" value="0.5" />
-        <entry key="app/src/main/res/layout/fragment_profile_gear_details.xml" value="0.16655405405405405" />
+        <entry key="app/src/main/res/layout/fragment_profile_gear_details.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_profile_stats.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/fragment_qrcode_details.xml" value="0.22736486486486487" />
+        <entry key="app/src/main/res/layout/fragment_qrcode_main.xml" value="0.22736486486486487" />
+        <entry key="app/src/main/res/layout/fragment_qrcode_scan.xml" value="0.22736486486486487" />
         <entry key="app/src/main/res/layout/fragment_saved.xml" value="0.5" />
-        <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.15416666666666667" />
-        <entry key="app/src/main/res/layout/fragment_wildlife_details.xml" value="0.16655405405405405" />
+        <entry key="app/src/main/res/layout/fragment_saved_details.xml" value="0.22736486486486487" />
+        <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/fragment_weather_details.xml" value="0.22736486486486487" />
+        <entry key="app/src/main/res/layout/fragment_wildlife_details.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/fragment_wildlife_main.xml" value="0.22736486486486487" />
+        <entry key="app/src/main/res/layout/fragment_wildlife_overview.xml" value="0.22508361204013377" />
         <entry key="app/src/main/res/layout/item_cert_card.xml" value="0.3489864864864865" />
         <entry key="app/src/main/res/layout/item_cert_card_profile.xml" value="0.3489864864864865" />
         <entry key="app/src/main/res/layout/item_cert_level.xml" value="0.3489864864864865" />
-        <entry key="app/src/main/res/layout/item_certification_card_profile.xml" value="0.3489864864864865" />
-        <entry key="app/src/main/res/layout/item_chat_container_date.xml" value="0.3489864864864865" />
-        <entry key="app/src/main/res/layout/item_chat_container_guest.xml" value="0.3489864864864865" />
-        <entry key="app/src/main/res/layout/item_chat_container_host.xml" value="0.3489864864864865" />
-        <entry key="app/src/main/res/layout/item_chat_detail_container_member_.xml" value="0.3489864864864865" />
-        <entry key="app/src/main/res/layout/item_detail_card.xml" value="0.3489864864864865" />
-        <entry key="app/src/main/res/layout/item_dive_center_card.xml" value="0.3489864864864865" />
+        <entry key="app/src/main/res/layout/item_certification_card.xml" value="0.22736486486486487" />
+        <entry key="app/src/main/res/layout/item_certification_card_profile.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/item_certification_level.xml" value="0.22736486486486487" />
+        <entry key="app/src/main/res/layout/item_chat_container_date.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/item_chat_container_guest.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/item_chat_container_host.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/item_chat_detail_container_member_.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/item_detail_card.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/item_dive_center_card.xml" value="0.5" />
         <entry key="app/src/main/res/layout/item_dive_site_card_large.xml" value="0.3489864864864865" />
         <entry key="app/src/main/res/layout/item_dive_site_card_small.xml" value="0.3489864864864865" />
         <entry key="app/src/main/res/layout/item_divelog_card_horizontal.xml" value="0.16655405405405405" />
@@ -111,7 +122,7 @@
         <entry key="app/src/main/res/layout/item_logged_dive_card_horizontal.xml" value="0.3489864864864865" />
         <entry key="app/src/main/res/layout/item_message_card.xml" value="0.3489864864864865" />
         <entry key="app/src/main/res/layout/item_saved_card.xml" value="0.3489864864864865" />
-        <entry key="app/src/main/res/layout/item_wildlife_card.xml" value="0.125" />
+        <entry key="app/src/main/res/layout/item_wildlife_card.xml" value="0.5" />
         <entry key="app/src/main/res/layout/item_wildlife_card_small.xml" value="0.16655405405405405" />
         <entry key="app/src/main/res/layout/view_dashboard_items.xml" value="0.1" />
         <entry key="app/src/main/res/menu/menu_catalog.xml" value="0.16655405405405405" />

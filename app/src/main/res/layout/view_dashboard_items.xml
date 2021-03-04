@@ -1,90 +1,94 @@
-<?xml version="1.0" encoding="utf-8"?><!-- TODO: Make a custom view for dash-like cards-->
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent=".5" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/hguideline1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".5" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".5" />
 
-    <com.scubadeving.sd_playground.ui.InfoView
-        android:id="@+id/dash_weather_card"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        app:dataText="74˚F"
-        app:dataTextSize="16sp"
-        app:headingText="Weather"
-        app:headingTextSize="18sp"
-        app:icon="@drawable/ic_weather"
-        app:layout_constraintBottom_toTopOf="@id/hguideline1"
-        app:layout_constraintEnd_toStartOf="@+id/guideline1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/hguideline1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent=".5" />
 
-    <com.scubadeving.sd_playground.ui.InfoView
-        android:id="@+id/dash_fly_card"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="15dp"
-        app:cardCornerRadius="5dp"
-        app:dataText="32 Hours"
-        app:dataTextColor="@android:color/holo_blue_bright"
-        app:dataTextSize="16sp"
-        app:headingText="No Fly Time"
-        app:headingTextColor="@android:color/holo_red_dark"
-        app:headingTextSize="18sp"
-        app:icon="@drawable/ic_no_fly_time"
-        app:iconTint="@color/black"
-        app:layout_constraintBottom_toTopOf="@id/hguideline1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/guideline1"
-        app:layout_constraintTop_toTopOf="parent" />
+        <com.scubadeving.sd_playground.ui.InfoView
+            android:id="@+id/dash_weather_card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            app:dataText="74˚F"
+            app:dataTextSize="16sp"
+            app:headingText="Weather"
+            app:headingTextSize="18sp"
+            app:icon="@drawable/ic_weather"
+            app:layout_constraintBottom_toTopOf="@id/hguideline1"
+            app:layout_constraintEnd_toStartOf="@+id/guideline1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <com.scubadeving.sd_playground.ui.InfoView
-        android:id="@+id/dash_maintenance_card"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="15dp"
-        android:backgroundTint="@android:color/holo_red_light"
-        app:cardBackgroundColor="@android:color/holo_red_light"
-        app:cardCornerRadius="5dp"
-        app:dataText="48 Days"
-        app:dataTextSize="16sp"
-        app:headingText="Maintenance"
-        app:headingTextSize="18sp"
-        app:icon="@drawable/ic_health"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/guideline1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hguideline1" />
+        <com.scubadeving.sd_playground.ui.InfoView
+            android:id="@+id/dash_fly_card"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="15dp"
+            app:cardCornerRadius="5dp"
+            app:dataText="32 Hours"
+            app:dataTextColor="@android:color/holo_blue_bright"
+            app:dataTextSize="16sp"
+            app:headingText="No Fly Time"
+            app:headingTextColor="@android:color/holo_red_dark"
+            app:headingTextSize="18sp"
+            app:icon="@drawable/ic_no_fly_time"
+            app:iconTint="@color/black"
+            app:layout_constraintBottom_toTopOf="@id/hguideline1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/guideline1"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <com.scubadeving.sd_playground.ui.InfoView
-        android:id="@+id/dash_next_card"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="15dp"
-        android:backgroundTint="@android:color/holo_blue_light"
-        app:cardCornerRadius="5dp"
-        app:dataText="15 Dives"
-        app:dataTextSize="16sp"
-        app:headingText="Next Steps"
-        app:headingTextSize="18sp"
-        app:icon="@drawable/ic_next_steps"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/guideline1"
-        app:layout_constraintTop_toBottomOf="@+id/hguideline1" />
+        <com.scubadeving.sd_playground.ui.InfoView
+            android:id="@+id/dash_maintenance_card"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="15dp"
+            android:backgroundTint="@android:color/holo_red_light"
+            app:cardBackgroundColor="@android:color/holo_red_light"
+            app:cardCornerRadius="5dp"
+            app:dataText="48 Days"
+            app:dataTextSize="16sp"
+            app:headingText="Maintenance"
+            app:headingTextSize="18sp"
+            app:icon="@drawable/ic_health"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hguideline1" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.scubadeving.sd_playground.ui.InfoView
+            android:id="@+id/dash_next_card"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="15dp"
+            android:backgroundTint="@android:color/holo_blue_light"
+            app:cardCornerRadius="5dp"
+            app:dataText="15 Dives"
+            app:dataTextSize="16sp"
+            app:headingText="Next Steps"
+            app:headingTextSize="18sp"
+            app:icon="@drawable/ic_next_steps"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/guideline1"
+            app:layout_constraintTop_toBottomOf="@+id/hguideline1" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -12,12 +12,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.scubadeving.sd_playground.MainNavigationDirections
 import com.scubadeving.sd_playground.data.model.wildlife.Wildlife
 import com.scubadeving.sd_playground.databinding.ItemWildlifeCardSmallBinding
-import com.scubadeving.sd_playground.ui.details.wildlife.detail.WildlifeDetailFragment
 import com.scubadeving.sd_playground.ui.details.divesite.DiveSiteDetailFragment
+import com.scubadeving.sd_playground.ui.details.wildlife.detail.WildlifeDetailFragment
 import com.scubadeving.sd_playground.ui.main.explore.filtered.ExploreDetailsFilteredFragment
 import com.scubadeving.sd_playground.ui.main.explore.wildlife.ExploreWildlifeFragment
-import com.scubadeving.sd_playground.ui.main.logbook.wildlife.LogbookWildlifeFragment
 import com.scubadeving.sd_playground.ui.main.logbook.entry.DiveLogEntryFragment
+import com.scubadeving.sd_playground.ui.main.logbook.wildlife.LogbookWildlifeFragment
 
 /**
  * Adapter for the [RecyclerView] in:

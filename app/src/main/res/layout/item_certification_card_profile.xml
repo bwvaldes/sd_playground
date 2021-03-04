@@ -1,26 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/profile_cert_card_container"
-    android:layout_width="172dp"
-    android:layout_height="108dp"
-    android:elevation="@dimen/cardview_default_elevation"
-    app:cardBackgroundColor="@android:color/darker_gray"
-    app:cardCornerRadius="5dp"
-    app:cardPreventCornerOverlap="true"
-    app:cardUseCompatPadding="true">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/profile_cert_card_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:background="#33000000"
-        android:ellipsize="end"
-        android:gravity="center"
-        android:padding="5dp"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        tools:text="Open Water Diver" />
-</com.google.android.material.card.MaterialCardView>
+    <data>
+
+        <variable
+            name="certification"
+            type="com.scubadeving.sd_playground.data.model.diver.Certification" />
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/profile_cert_card_container"
+        android:layout_width="172dp"
+        android:layout_height="108dp"
+        android:elevation="@dimen/cardview_default_elevation"
+        app:cardBackgroundColor="@android:color/darker_gray"
+        app:cardCornerRadius="5dp"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true">
+
+        <TextView
+            android:id="@+id/profile_cert_card_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="#33000000"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:padding="5dp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            tools:text="Open Water Diver" />
+    </com.google.android.material.card.MaterialCardView>
+</layout>
