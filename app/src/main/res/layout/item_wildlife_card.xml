@@ -1,21 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/cert_card_container"
-    android:layout_width="344dp"
-    android:layout_height="216dp"
-    android:elevation="8dp"
-    app:cardBackgroundColor="@android:color/holo_blue_dark"
-    app:cardCornerRadius="5dp"
-    app:cardPreventCornerOverlap="true"
-    app:cardUseCompatPadding="true">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:id="@+id/wildlife_card_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textColor="@color/white"
-        tools:text="1" />
-</com.google.android.material.card.MaterialCardView>
+    <data>
+
+        <variable
+            name="wildlife"
+            type="com.scubadeving.sd_playground.data.model.wildlife.Wildlife" />
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/wildlife_card_large_container"
+        android:layout_width="344dp"
+        android:layout_height="216dp"
+        android:elevation="@dimen/card_elevation"
+        android:onClick="@{clickListener}"
+        app:cardBackgroundColor="@android:color/holo_blue_dark"
+        app:cardElevation="@dimen/card_elevation"
+        app:cardPreventCornerOverlap="true"
+        app:cardUseCompatPadding="true"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.SDPlayground.Card">
+
+        <TextView
+            android:id="@+id/wildlife_card_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@{wildlife.commonName}"
+            android:textColor="@color/white"
+            tools:text="Manta Ray" />
+    </com.google.android.material.card.MaterialCardView>
+</layout>

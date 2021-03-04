@@ -8,13 +8,12 @@ import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.model.wildlife.Wildlife
+import com.scubadeving.sd_playground.databinding.FragmentLogbookWildlifeBinding
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.WildlifeAdapter
-import kotlinx.android.synthetic.main.fragment_logbook_wildlife.logged_wildlife_rv
 
 class LogbookWildlifeFragment : Fragment() {
 
@@ -25,17 +24,13 @@ class LogbookWildlifeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        logbookWildlifeViewModel =
-            ViewModelProvider(this).get(LogbookWildlifeViewModel::class.java)
-        return inflater.inflate(R.layout.fragment_logbook_wildlife, container, false)
+        logbookWildlifeViewModel = ViewModelProvider(this).get(LogbookWildlifeViewModel::class.java)
+        return FragmentLogbookWildlifeBinding.inflate(inflater, container, false).apply {
+            configureWildlife()
+        }.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        configureWildlife()
-    }
-
-    private fun configureWildlife() {
+    private fun FragmentLogbookWildlifeBinding.configureWildlife() {
         val wildLife: ArrayList<Wildlife> =
             arrayListOf(
                 Wildlife("Garibaldi"),
@@ -49,9 +44,11 @@ class LogbookWildlifeFragment : Fragment() {
         parentFragment?.view?.findViewById<Toolbar>(R.id.logbook_toolbar)?.setOnClickListener {
             wildLife.asReversed()
         }
-        logged_wildlife_rv.apply {
+        val wildlifeAdapter = WildlifeAdapter()
+        wildlifeAdapter.submitList(wildLife)
+        loggedWildlifeRv.apply {
             layoutManager = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
-            adapter = WildlifeAdapter(wildLife)
+            adapter = wildlifeAdapter
             val dividerItemDecoration = DividerItemDecoration(context, VERTICAL)
             addItemDecoration(dividerItemDecoration)
         }

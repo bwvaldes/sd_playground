@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -8,8 +9,7 @@
             type="com.scubadeving.sd_playground.data.model.diver.Diver" />
     </data>
 
-    <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -41,11 +41,11 @@
                 android:background="@android:color/darker_gray"
                 android:text="Interests" />
 
-        <TextView
-            android:id="@+id/profile_about_interests"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:text="Shore Diving, CaveDiving, NightDiving" />
+            <TextView
+                android:id="@+id/profile_about_interests"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Shore Diving, CaveDiving, NightDiving" />
 
             <TextView
                 android:id="@+id/profile_about_causes_heading"

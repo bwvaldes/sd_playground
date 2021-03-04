@@ -8,16 +8,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.RecyclerView.Adapter
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.model.wildlife.Wildlife
+import com.scubadeving.sd_playground.databinding.FragmentLogbookDiveLogEntryBinding
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.WildlifeAdapter
 import com.scubadeving.sd_playground.utils.configureHorizontalRecyclerView
-import kotlinx.android.synthetic.main.fragment_logbook_dive_log_entry.dive_log_entry_qr_scan
-import kotlinx.android.synthetic.main.fragment_logbook_dive_log_entry.dive_log_entry_site_name
-import kotlinx.android.synthetic.main.fragment_logbook_dive_log_entry.dive_log_entry_toolbar
-import kotlinx.android.synthetic.main.fragment_logbook_dive_log_entry.dive_log_entry_wildlife_rv
 
 class DiveLogEntryFragment : Fragment() {
 
@@ -28,20 +23,17 @@ class DiveLogEntryFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         diveLogEntryViewModel = ViewModelProvider(this).get(DiveLogEntryViewModel::class.java)
-        return inflater.inflate(R.layout.fragment_logbook_dive_log_entry, container, false)
+        return FragmentLogbookDiveLogEntryBinding.inflate(inflater, container, false).apply {
+            diveLogEntryToolbar.setNavigationOnClickListener { findNavController().navigateUp() }
+            diveLogEntryQrScan.setOnClickListener { findNavController().navigate(R.id.qrCodeFragment) }
+            diveLogEntrySiteName.text = args.diveLogSite
+            configureWildlife()
+        }.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        dive_log_entry_toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
-        dive_log_entry_qr_scan.setOnClickListener { findNavController().navigate(R.id.qrCodeFragment) }
-        dive_log_entry_site_name.text = args.diveLogSite
-        configureWildlife()
-    }
-
-    private fun configureWildlife() {
+    private fun FragmentLogbookDiveLogEntryBinding.configureWildlife() {
         val wildLife: ArrayList<Wildlife> =
             arrayListOf(
                 Wildlife("Garibaldi"),
@@ -52,6 +44,8 @@ class DiveLogEntryFragment : Fragment() {
                 Wildlife("Blennie"),
                 Wildlife("Moray Eel")
             )
-        dive_log_entry_wildlife_rv.configureHorizontalRecyclerView(WildlifeAdapter(wildLife) as Adapter<ViewHolder>)
+        val adapter = WildlifeAdapter()
+        adapter.submitList(wildLife)
+        diveLogEntryWildlifeRv.configureHorizontalRecyclerView(adapter)
     }
 }

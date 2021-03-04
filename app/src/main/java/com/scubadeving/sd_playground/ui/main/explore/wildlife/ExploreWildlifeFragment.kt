@@ -6,17 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.RecyclerView.Adapter
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.model.ExploreFilter
 import com.scubadeving.sd_playground.data.model.wildlife.Wildlife
+import com.scubadeving.sd_playground.databinding.FragmentExploreWildlifeBinding
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.ExploreFilterAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.WildlifeAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.decorations.GridSpacingItemDecoration
 import com.scubadeving.sd_playground.utils.configureHorizontalRecyclerView
-import kotlinx.android.synthetic.main.fragment_explore_wildlife.explore_wildlife_filter_rv
-import kotlinx.android.synthetic.main.fragment_explore_wildlife.explore_wildlife_nearby_rv
 
 class ExploreWildlifeFragment : Fragment() {
 
@@ -29,16 +25,13 @@ class ExploreWildlifeFragment : Fragment() {
     ): View? {
         exploreWildlifeViewModel =
             ViewModelProvider(this).get(ExploreWildlifeViewModel::class.java)
-        return inflater.inflate(R.layout.fragment_explore_wildlife, container, false)
+        return FragmentExploreWildlifeBinding.inflate(inflater, container, false).apply {
+            configureExploreWildlifeFilter()
+            configureExploreWildlifeNearby()
+        }.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        configureExploreWildlifeFilter()
-        configureExploreWildlifeNearby()
-    }
-
-    private fun configureExploreWildlifeFilter() {
+    private fun FragmentExploreWildlifeBinding.configureExploreWildlifeFilter() {
         val filters: List<ExploreFilter> =
             listOf(
                 ExploreFilter("Mammals", true),
@@ -52,13 +45,13 @@ class ExploreWildlifeFragment : Fragment() {
                 ExploreFilter("Rays", true),
                 ExploreFilter("Reef", true)
             )
-        explore_wildlife_filter_rv.apply {
+        exploreWildlifeFilterRv.apply {
             adapter = ExploreFilterAdapter(filters)
             addItemDecoration(GridSpacingItemDecoration())
         }
     }
 
-    private fun configureExploreWildlifeNearby() {
+    private fun FragmentExploreWildlifeBinding.configureExploreWildlifeNearby() {
         val nearbyWildlife: ArrayList<Wildlife> =
             arrayListOf(
                 Wildlife("Garibaldi"),
@@ -69,6 +62,8 @@ class ExploreWildlifeFragment : Fragment() {
                 Wildlife("Blennie"),
                 Wildlife("Moray Eel")
             )
-        explore_wildlife_nearby_rv.configureHorizontalRecyclerView(WildlifeAdapter(nearbyWildlife) as Adapter<ViewHolder>)
+        val adapter = WildlifeAdapter()
+        adapter.submitList(nearbyWildlife)
+        exploreWildlifeNearbyRv.configureHorizontalRecyclerView(adapter)
     }
 }

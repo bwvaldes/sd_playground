@@ -13,15 +13,10 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.model.wildlife.ConservationStatus
 import com.scubadeving.sd_playground.data.model.wildlife.Wildlife
+import com.scubadeving.sd_playground.databinding.FragmentWildlifeDetailsBinding
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.ItemDetailAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.WildlifeAdapter
 import com.scubadeving.sd_playground.utils.configureHorizontalRecyclerView
-import kotlinx.android.synthetic.main.fragment_wildlife_details.wildlife_detail_conservation_status
-import kotlinx.android.synthetic.main.fragment_wildlife_details.wildlife_detail_encounters_rv
-import kotlinx.android.synthetic.main.fragment_wildlife_details.wildlife_detail_focus
-import kotlinx.android.synthetic.main.fragment_wildlife_details.wildlife_detail_nearby_rv
-import kotlinx.android.synthetic.main.fragment_wildlife_details.wildlife_detail_toolbar
-import kotlinx.android.synthetic.main.fragment_wildlife_details.wildlife_detail_toolbar_layout
 
 class WildlifeDetailFragment : Fragment() {
 
@@ -34,67 +29,71 @@ class WildlifeDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         wildlifeDetailViewModel = ViewModelProvider(this).get(WildlifeDetailViewModel::class.java)
-        return inflater.inflate(R.layout.fragment_wildlife_details, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        wildlife_detail_toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
-        wildlife_detail_toolbar_layout.title = args.wildlifeName
-        configureEncounters()
-        configureWildlife()
-        if (args.wildlifeName == "Megalodon") {
-            wildlife_detail_focus.apply {
-                isEnabled = false
-                setBackgroundResource(R.drawable.ic_action_focus_unavailable)
+        return FragmentWildlifeDetailsBinding.inflate(inflater, container, false).apply {
+            wildlifeDetailToolbar.setNavigationOnClickListener { findNavController().navigateUp() }
+            wildlifeDetailToolbarLayout.title = args.wildlifeName
+            configureEncounters()
+            configureWildlife()
+            if (args.wildlifeName == "Megalodon") {
+                wildlifeDetailFocus.apply {
+                    isEnabled = false
+                    setBackgroundResource(R.drawable.ic_action_focus_unavailable)
+                }
+                wildlifeDetailConservationStatus.text = "Red List Status:\n${ConservationStatus.EXTINCT.name}"
             }
-            wildlife_detail_conservation_status.text = "Red List Status:\n${ConservationStatus.EXTINCT.name}"
-        }
+        }.root
     }
 
-    private fun configureEncounters() {
+    private fun FragmentWildlifeDetailsBinding.configureEncounters() {
         val encounters: List<String> =
             listOf(
                 "Thailand:2",
                 "Phillipines:14"
             )
-        wildlife_detail_encounters_rv.configureHorizontalRecyclerView(ItemDetailAdapter(encounters) as Adapter<ViewHolder>)
+        wildlifeDetailEncountersRv.configureHorizontalRecyclerView(ItemDetailAdapter(encounters) as Adapter<ViewHolder>)
     }
 
-    private fun configureWildlife() {
+    private fun FragmentWildlifeDetailsBinding.configureWildlife() {
         val wildLife: ArrayList<Wildlife> =
             arrayListOf(
                 Wildlife(
+                    "",
                     "Megalodon",
                     "Megalodon",
                     ConservationStatus.EXTINCT,
                     "Largest Shark"
                 ),
                 Wildlife(
+                    "",
                     "Whale Shark",
                     "Rhincodon typus",
                     ConservationStatus.VULNERABLE,
                     "Gentle Giant"
                 ),
                 Wildlife(
+                    "",
                     "Sunfish",
                     "Mola-Mola",
                     ConservationStatus.ENDANGERED,
                     "Heavy Bony fishy"
                 ),
                 Wildlife(
+                    "",
                     "Spotted Sting Ray",
                     "Taeniura lymma",
                     ConservationStatus.VULNERABLE,
                     "Poisonous looking Ray"
                 ),
                 Wildlife(
+                    "",
                     "Remora",
                     "Echeneidae",
                     ConservationStatus.LEAST_CONCERN,
                     "Symbiotic Fish"
                 )
             )
-        wildlife_detail_nearby_rv.configureHorizontalRecyclerView(WildlifeAdapter(wildLife) as Adapter<ViewHolder>)
+        val adapter = WildlifeAdapter()
+        adapter.submitList(wildLife)
+        wildlifeDetailNearbyRv.configureHorizontalRecyclerView(adapter)
     }
 }

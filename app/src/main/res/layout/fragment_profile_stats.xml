@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -8,7 +9,7 @@
             type="com.scubadeving.sd_playground.data.model.diver.Diver" />
     </data>
 
-    <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -18,77 +19,77 @@
             android:columnCount="2"
             android:padding="15dp">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/stats_total_dives"
-            android:layout_width="120dp"
-            android:layout_height="100dp"
-            android:layout_columnWeight="1"
-            android:text="@{@string/profile_stats_dive_count(diver.stats.diveCount)}"
-            android:layout_gravity="fill"
-            tools:text="123\nTotal Dives" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/stats_total_dives"
+                android:layout_width="120dp"
+                android:layout_height="100dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:text="@{@string/profile_stats_dive_count(diver.stats.diveCount)}"
+                tools:text="123\nTotal Dives" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/stats_max_depth"
-            android:layout_width="120dp"
-            android:layout_height="100dp"
-            android:layout_columnWeight="1"
-            android:text="@{@string/profile_stats_max_depth(diver.stats.maxDepth)}"
-            android:layout_gravity="fill"
-            tools:text="126ft(38.4m)\nMax Depth" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/stats_max_depth"
+                android:layout_width="120dp"
+                android:layout_height="100dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:text="@{@string/profile_stats_max_depth(diver.stats.maxDepth)}"
+                tools:text="126ft(38.4m)\nMax Depth" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/stats_bottom_time"
-            android:layout_width="120dp"
-            android:layout_height="100dp"
-            android:layout_columnWeight="1"
-            android:text="@{@string/profile_stats_bottom_time(diver.stats.bottomTime)}"
-            android:layout_gravity="fill"
-            tools:text="10hrs 35m\nBottom Time" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/stats_bottom_time"
+                android:layout_width="120dp"
+                android:layout_height="100dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:text="@{@string/profile_stats_bottom_time(diver.stats.bottomTime)}"
+                tools:text="10hrs 35m\nBottom Time" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/stats_countries"
-            android:layout_width="120dp"
-            android:layout_height="100dp"
-            android:text="@{@string/profile_stats_country_count(diver.stats.countryCount)}"
-            android:layout_columnWeight="1"
-            android:layout_gravity="fill"
-            tools:text="4\nCountries" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/stats_countries"
+                android:layout_width="120dp"
+                android:layout_height="100dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:text="@{@string/profile_stats_country_count(diver.stats.countryCount)}"
+                tools:text="4\nCountries" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/stats_dive_time"
-            android:layout_width="120dp"
-            android:layout_height="100dp"
-            android:layout_columnWeight="1"
-            android:text="@{@string/profile_stats_max_dive_time(diver.stats.maxDiveTime)}"
-            android:layout_gravity="fill"
-            tools:text="72m\nMax Dive Time" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/stats_dive_time"
+                android:layout_width="120dp"
+                android:layout_height="100dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:text="@{@string/profile_stats_max_dive_time(diver.stats.maxDiveTime)}"
+                tools:text="72m\nMax Dive Time" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/stats_air_consumptions"
-            android:layout_width="120dp"
-            android:layout_height="100dp"
-            android:layout_columnWeight="1"
-            android:layout_gravity="fill"
-            android:text="@{@string/profile_stats_average_air_consumption(diver.stats.avgAirConsumption)}"
-            tools:text="2300psi\nAverage Air Consumption" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/stats_air_consumptions"
+                android:layout_width="120dp"
+                android:layout_height="100dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:text="@{@string/profile_stats_average_air_consumption(diver.stats.avgAirConsumption)}"
+                tools:text="2300psi\nAverage Air Consumption" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/stats_certifications"
-            android:layout_width="120dp"
-            android:layout_height="100dp"
-            android:layout_columnWeight="1"
-            android:layout_gravity="fill"
-            android:text="@{@string/profile_stats_certification_count(diver.stats.certificationCount)}"
-            tools:text="5\nCertifications" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/stats_certifications"
+                android:layout_width="120dp"
+                android:layout_height="100dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:text="@{@string/profile_stats_certification_count(diver.stats.certificationCount)}"
+                tools:text="5\nCertifications" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/stats_wildlife_seen"
-            android:layout_width="120dp"
-            android:layout_height="100dp"
-            android:layout_columnWeight="1"
-            android:layout_gravity="fill"
-            android:text="@{@string/profile_stats_wildlife_count(diver.stats.wildlifeCount)}"
-            tools:text="32\nWildlife seen" />
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/stats_wildlife_seen"
+                android:layout_width="120dp"
+                android:layout_height="100dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:text="@{@string/profile_stats_wildlife_count(diver.stats.wildlifeCount)}"
+                tools:text="32\nWildlife seen" />
 
         </GridLayout>
     </androidx.core.widget.NestedScrollView>

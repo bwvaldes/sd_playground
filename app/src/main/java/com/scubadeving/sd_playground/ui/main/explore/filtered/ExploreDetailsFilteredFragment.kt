@@ -8,13 +8,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.model.sites.DiveSite
 import com.scubadeving.sd_playground.data.model.wildlife.Wildlife
+import com.scubadeving.sd_playground.databinding.FragmentExploreFilteredDetailsBinding
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.DiveSiteAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.WildlifeAdapter
-import kotlinx.android.synthetic.main.fragment_explore_filtered_details.explore_details_filtered_rv
-import kotlinx.android.synthetic.main.fragment_explore_filtered_details.explore_details_filtered_toolbar
 
 class ExploreDetailsFilteredFragment : Fragment() {
 
@@ -28,21 +26,18 @@ class ExploreDetailsFilteredFragment : Fragment() {
     ): View? {
         exploreDetailsFilteredViewModel =
             ViewModelProvider(this).get(ExploreDetailsFilteredViewModel::class.java)
-        return inflater.inflate(R.layout.fragment_explore_filtered_details, container, false)
+        return FragmentExploreFilteredDetailsBinding.inflate(inflater, container, false).apply {
+            exploreDetailsFilteredToolbar.apply {
+                setNavigationOnClickListener { findNavController().navigateUp() }
+                title = args.exploreDetailName
+            }
+            if (args.isWildlife) {
+                configureExploreFilteredWildlife()
+            } else configureExploreFilteredDiveSites()
+        }.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        explore_details_filtered_toolbar.apply {
-            setNavigationOnClickListener { findNavController().navigateUp() }
-            title = args.exploreDetailName
-        }
-        if (args.isWildlife) {
-            configureExploreFilteredWildlife()
-        } else configureExploreFilteredDiveSites()
-    }
-
-    private fun configureExploreFilteredDiveSites() {
+    private fun FragmentExploreFilteredDetailsBinding.configureExploreFilteredDiveSites() {
         val filteredDiveSites: List<DiveSite> = listOf(
             DiveSite("Casino Point", rating = 3.2, reviews = 14),
             DiveSite("Leo Carillo", rating = 4.75, reviews = 42),
@@ -54,10 +49,10 @@ class ExploreDetailsFilteredFragment : Fragment() {
             DiveSite("Leo Carillo", rating = 4.75, reviews = 42),
             DiveSite("Boat Dive 1", rating = 3.98, reviews = 8)
         )
-        explore_details_filtered_rv.adapter = DiveSiteAdapter(filteredDiveSites, false)
+        exploreDetailsFilteredRv.adapter = DiveSiteAdapter(filteredDiveSites, false)
     }
 
-    private fun configureExploreFilteredWildlife() {
+    private fun FragmentExploreFilteredDetailsBinding.configureExploreFilteredWildlife() {
         val filteredWildlife: ArrayList<Wildlife> =
             arrayListOf(
                 Wildlife("Garibaldi"),
@@ -68,6 +63,8 @@ class ExploreDetailsFilteredFragment : Fragment() {
                 Wildlife("Blennie"),
                 Wildlife("Moray Eel")
             )
-        explore_details_filtered_rv.adapter = WildlifeAdapter(filteredWildlife)
+        val adapter = WildlifeAdapter()
+        adapter.submitList(filteredWildlife)
+        exploreDetailsFilteredRv.adapter = adapter
     }
 }

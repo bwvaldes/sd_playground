@@ -10,18 +10,13 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.model.DiveCenter
 import com.scubadeving.sd_playground.data.model.wildlife.Wildlife
+import com.scubadeving.sd_playground.databinding.FragmentDiveSiteDetailsBinding
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.DiveCenterAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.ItemDetailAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.WildlifeAdapter
 import com.scubadeving.sd_playground.utils.configureHorizontalRecyclerView
-import kotlinx.android.synthetic.main.fragment_dive_site_details.dive_site_detail_conditions_rv
-import kotlinx.android.synthetic.main.fragment_dive_site_details.dive_site_detail_dive_centers_rv
-import kotlinx.android.synthetic.main.fragment_dive_site_details.dive_site_detail_toolbar
-import kotlinx.android.synthetic.main.fragment_dive_site_details.dive_site_detail_toolbar_layout
-import kotlinx.android.synthetic.main.fragment_dive_site_details.dive_site_detail_wildlife_rv
 
 class DiveSiteDetailFragment : Fragment() {
 
@@ -32,21 +27,18 @@ class DiveSiteDetailFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         diveSiteDetailViewModel = ViewModelProvider(this).get(DiveSiteDetailViewModel::class.java)
-        return inflater.inflate(R.layout.fragment_dive_site_details, container, false)
+        return FragmentDiveSiteDetailsBinding.inflate(inflater, container, false).apply {
+            diveSiteDetailToolbar.setNavigationOnClickListener { findNavController().navigateUp() }
+            diveSiteDetailToolbarLayout.title = args.diveSiteName
+            configureConditions()
+            configureDiveCenters()
+            configureWildlife()
+        }.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        dive_site_detail_toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
-        dive_site_detail_toolbar_layout.title = args.diveSiteName
-        configureConditions()
-        configureDiveCenters()
-        configureWildlife()
-    }
-
-    private fun configureConditions() {
+    private fun FragmentDiveSiteDetailsBinding.configureConditions() {
         val conditions: List<String> =
             listOf(
                 "Difficulty: 5/10",
@@ -55,19 +47,19 @@ class DiveSiteDetailFragment : Fragment() {
                 "Visibility: 15-30ft",
                 "Dive Type: Shore"
             )
-        dive_site_detail_conditions_rv.configureHorizontalRecyclerView(ItemDetailAdapter(conditions) as Adapter<ViewHolder>)
+        diveSiteDetailConditionsRv.configureHorizontalRecyclerView(ItemDetailAdapter(conditions) as Adapter<ViewHolder>)
     }
 
-    private fun configureDiveCenters() {
+    private fun FragmentDiveSiteDetailsBinding.configureDiveCenters() {
         val diveCenters: List<DiveCenter> =
             listOf(
                 DiveCenter("Newport Divers"),
                 DiveCenter("Eco Dive Center")
             )
-        dive_site_detail_dive_centers_rv.configureHorizontalRecyclerView(DiveCenterAdapter(diveCenters) as Adapter<ViewHolder>)
+        diveSiteDetailDiveCentersRv.configureHorizontalRecyclerView(DiveCenterAdapter(diveCenters) as Adapter<ViewHolder>)
     }
 
-    private fun configureWildlife() {
+    private fun FragmentDiveSiteDetailsBinding.configureWildlife() {
         val wildLife: ArrayList<Wildlife> =
             arrayListOf(
                 Wildlife("Garibaldi"),
@@ -78,6 +70,8 @@ class DiveSiteDetailFragment : Fragment() {
                 Wildlife("Blennie"),
                 Wildlife("Moray Eel")
             )
-        dive_site_detail_wildlife_rv.configureHorizontalRecyclerView(WildlifeAdapter(wildLife) as Adapter<ViewHolder>)
+        val adapter = WildlifeAdapter()
+        adapter.submitList(wildLife)
+        diveSiteDetailWildlifeRv.configureHorizontalRecyclerView(adapter)
     }
 }

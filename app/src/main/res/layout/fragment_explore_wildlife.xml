@@ -1,52 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.main.explore.wildlife.ExploreWildlifeFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent=".5" />
-
-    <TextView
-        android:id="@+id/explore_wildlife_heading"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:background="@android:color/darker_gray"
-        android:text="Explore Wildlife"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        tools:context=".ui.main.explore.wildlife.ExploreWildlifeFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/explore_wildlife_filter_rv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="?attr/actionBarSize"
-        android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/explore_wildlife_heading"
-        app:spanCount="@integer/grid_columns" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent=".5" />
 
-    <TextView
-        android:id="@+id/explore_wildlife_nearby"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:background="@android:color/darker_gray"
-        android:text="Nearby Wildlife"
-        app:layout_constraintTop_toBottomOf="@id/explore_wildlife_filter_rv" />
+        <TextView
+            android:id="@+id/explore_wildlife_heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@android:color/darker_gray"
+            android:text="Explore Wildlife"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/explore_wildlife_nearby_rv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="?attr/actionBarSize"
-        app:layout_constraintTop_toBottomOf="@id/explore_wildlife_nearby" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/explore_wildlife_filter_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="?attr/actionBarSize"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/explore_wildlife_heading"
+            app:spanCount="@integer/grid_columns" />
+
+        <TextView
+            android:id="@+id/explore_wildlife_nearby"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@android:color/darker_gray"
+            android:text="Nearby Wildlife"
+            app:layout_constraintTop_toBottomOf="@id/explore_wildlife_filter_rv" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/explore_wildlife_nearby_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="?attr/actionBarSize"
+            app:layout_constraintTop_toBottomOf="@id/explore_wildlife_nearby" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -88,5 +88,8 @@
     <string name="infoview_content_description">An Icon for an InfoView</string>
 
     <!--==== Accessibility ====-->
+    <string name="a11y_wildlife_image" translation_description="Accessibility text for each of the wildlife images shown in RecyclerView Adapters and the 'Wildlife' screens.">Image of wildlife</string>
+    <string name="a11y_certification_image" translation_description="Accessibility text for each of the certification images shown in RecyclerView Adapters and the 'Certification' screens.">Image of certification</string>
+    <string name="a11y_dive_site_image" translation_description="Accessibility text for each of the dive site images shown in RecyclerView Adapters and the 'Dive Site' screens.">Image of dive site</string>
 
 </resources>
