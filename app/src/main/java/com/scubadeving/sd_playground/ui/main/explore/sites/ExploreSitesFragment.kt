@@ -6,18 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.RecyclerView.Adapter
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.model.ExploreFilter
 import com.scubadeving.sd_playground.data.model.sites.DiveSite
+import com.scubadeving.sd_playground.databinding.FragmentExploreSitesBinding
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.DiveSiteAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.ExploreFilterAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.decorations.GridSpacingItemDecoration
 import com.scubadeving.sd_playground.utils.configureHorizontalRecyclerView
-import kotlinx.android.synthetic.main.fragment_explore_sites.explore_sites_all_rv
-import kotlinx.android.synthetic.main.fragment_explore_sites.explore_sites_filter_rv
-import kotlinx.android.synthetic.main.fragment_explore_sites.explore_sites_nearby_rv
 
 class ExploreSitesFragment : Fragment() {
 
@@ -28,19 +23,15 @@ class ExploreSitesFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        exploreSitesViewModel =
-            ViewModelProvider(this).get(ExploreSitesViewModel::class.java)
-        return inflater.inflate(R.layout.fragment_explore_sites, container, false)
+        exploreSitesViewModel = ViewModelProvider(this).get(ExploreSitesViewModel::class.java)
+        return FragmentExploreSitesBinding.inflate(inflater, container, false).apply {
+            configureExploreNearbyDiveSites()
+            configureExploreAllDiveSites()
+            configureExploreSitesFilter()
+        }.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        configureExploreNearbyDiveSites()
-        configureExploreAllDiveSites()
-        configureExploreSitesFilter()
-    }
-
-    private fun configureExploreSitesFilter() {
+    private fun FragmentExploreSitesBinding.configureExploreSitesFilter() {
         val filters: List<ExploreFilter> =
             listOf(
                 ExploreFilter("Tropical"),
@@ -54,22 +45,26 @@ class ExploreSitesFragment : Fragment() {
                 ExploreFilter("Night"),
                 ExploreFilter("Brackish")
             )
-        explore_sites_filter_rv.apply {
-            adapter = ExploreFilterAdapter(filters)
+        val targetAdapter = ExploreFilterAdapter()
+        targetAdapter.submitList(filters)
+        exploreSitesFilterRv.apply {
+            adapter = targetAdapter
             addItemDecoration(GridSpacingItemDecoration())
         }
     }
 
-    private fun configureExploreNearbyDiveSites() {
+    private fun FragmentExploreSitesBinding.configureExploreNearbyDiveSites() {
         val nearbyDiveSites: List<DiveSite> = listOf(
             DiveSite("Casino Point", rating = 3.2, reviews = 14),
             DiveSite("Leo Carillo", rating = 4.75, reviews = 42),
             DiveSite("Boat Dive 1", rating = 3.98, reviews = 8)
         )
-        explore_sites_nearby_rv.configureHorizontalRecyclerView(DiveSiteAdapter(nearbyDiveSites, true) as Adapter<ViewHolder>)
+        val adapter = DiveSiteAdapter()
+        adapter.submitList(nearbyDiveSites)
+        exploreSitesNearbyRv.configureHorizontalRecyclerView(adapter)
     }
 
-    private fun configureExploreAllDiveSites() {
+    private fun FragmentExploreSitesBinding.configureExploreAllDiveSites() {
         val allDiveSites: List<DiveSite> = listOf(
             DiveSite("Casino Point", rating = 3.2, reviews = 14),
             DiveSite("Leo Carillo", rating = 4.75, reviews = 42),
@@ -81,6 +76,8 @@ class ExploreSitesFragment : Fragment() {
             DiveSite("Leo Carillo", rating = 4.75, reviews = 42),
             DiveSite("Boat Dive 1", rating = 3.98, reviews = 8)
         )
-        explore_sites_all_rv.adapter = DiveSiteAdapter(allDiveSites, false)
+        val adapter = DiveSiteAdapter()
+        adapter.submitList(allDiveSites)
+        exploreSitesAllRv.adapter = adapter
     }
 }

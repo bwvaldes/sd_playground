@@ -8,12 +8,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
-import androidx.recyclerview.widget.RecyclerView.Adapter
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.google.firebase.firestore.FirebaseFirestore
 import com.scubadeving.sd_playground.MainNavigationDirections
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.model.InboxNotification
+import com.scubadeving.sd_playground.data.model.InboxNotification.Companion.NOTIFICATION_TYPE_DASHBOARD
 import com.scubadeving.sd_playground.data.model.diver.Diver
 import com.scubadeving.sd_playground.data.model.sites.DiveSite
 import com.scubadeving.sd_playground.data.source.repository.DiverRepository
@@ -85,7 +84,9 @@ class DashboardFragment : Fragment() {
             DiveSite("Leo Carillo", rating = 4.75, reviews = 42),
             DiveSite("Boat Dive 1", rating = 3.98, reviews = 8)
         )
-        upcomingDivesRv.configureHorizontalRecyclerView(DiveSiteAdapter(diveSites) as Adapter<ViewHolder>)
+        val adapter = DiveSiteAdapter()
+        adapter.submitList(diveSites)
+        upcomingDivesRv.configureHorizontalRecyclerView(adapter)
     }
 
     private fun FragmentDashboardBinding.configureDashItems() {
@@ -99,16 +100,16 @@ class DashboardFragment : Fragment() {
 
     private fun FragmentDashboardBinding.configureDashboardNotificationsRecyclerView() {
         val inboxNotifications: ArrayList<InboxNotification> = arrayListOf(
-            InboxNotification("Today", "This is a Notification"),
-            InboxNotification("Feb 3rd", "This is a Notification"),
-            InboxNotification("Jan 30th", "This is a Notification"),
-            InboxNotification("Jan 18th", "This is a Notification"),
-            InboxNotification("Dec 20th", "This is a Notification"),
-            InboxNotification("Dec 3rd", "This is a Notification")
+            InboxNotification("Today", "This is a Notification", NOTIFICATION_TYPE_DASHBOARD),
+            InboxNotification("Feb 3rd", "This is a Notification", NOTIFICATION_TYPE_DASHBOARD),
+            InboxNotification("Jan 30th", "This is a Notification", NOTIFICATION_TYPE_DASHBOARD),
+            InboxNotification("Jan 18th", "This is a Notification", NOTIFICATION_TYPE_DASHBOARD),
+            InboxNotification("Dec 20th", "This is a Notification", NOTIFICATION_TYPE_DASHBOARD),
+            InboxNotification("Dec 3rd", "This is a Notification", NOTIFICATION_TYPE_DASHBOARD)
         )
-        dashboardNotificationsRv.configureHorizontalRecyclerView(
-            NotificationAdapter(inboxNotifications, true) as Adapter<ViewHolder>
-        )
+        val adapter = NotificationAdapter()
+        adapter.submitList(inboxNotifications)
+        dashboardNotificationsRv.configureHorizontalRecyclerView(adapter)
     }
 
     private fun navigateToDiveLogEntry(view: View) {

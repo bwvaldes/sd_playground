@@ -2,11 +2,19 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+    </data>
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/buddy_card_vertical_container"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:elevation="@dimen/cardview_default_elevation"
+        android:onClick="@{clickListener}"
         android:paddingBottom="0dp"
         app:cardBackgroundColor="@android:color/holo_red_dark"
         app:cardCornerRadius="5dp"

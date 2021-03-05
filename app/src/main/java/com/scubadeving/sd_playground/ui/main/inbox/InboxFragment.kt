@@ -9,10 +9,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.tabs.TabLayoutMediator
 import com.scubadeving.sd_playground.R
+import com.scubadeving.sd_playground.databinding.FragmentInboxBinding
 import com.scubadeving.sd_playground.ui.adapters.viewpager.InboxPagerAdapter
-import kotlinx.android.synthetic.main.fragment_inbox.inbox_pager
-import kotlinx.android.synthetic.main.fragment_inbox.inbox_tab_layout
-import kotlinx.android.synthetic.main.fragment_inbox.inbox_toolbar
 
 class InboxFragment : Fragment() {
 
@@ -22,24 +20,21 @@ class InboxFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         inboxViewModel = ViewModelProvider(this).get(InboxViewModel::class.java)
-        return inflater.inflate(R.layout.fragment_inbox, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        inbox_toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
-        inbox_pager.apply {
-            adapter = InboxPagerAdapter(requireParentFragment())
-            TabLayoutMediator(inbox_tab_layout, this) { tab, position ->
-                tab.text = when (position) {
-                    INBOX_TAB_MESSAGES -> getString(R.string.inbox_tab_messages)
-                    INBOX_TAB_NOTIFICATIONS -> getString(R.string.inbox_tab_notifications)
-                    else -> getString(R.string.qrcode_tab_scan)
-                }
-            }.attach()
-        }
+        return FragmentInboxBinding.inflate(inflater, container, false).apply {
+            inboxToolbar.setNavigationOnClickListener { findNavController().navigateUp() }
+            inboxPager.apply {
+                adapter = InboxPagerAdapter(requireParentFragment())
+                TabLayoutMediator(inboxTabLayout, this) { tab, position ->
+                    tab.text = when (position) {
+                        INBOX_TAB_MESSAGES -> getString(R.string.inbox_tab_messages)
+                        INBOX_TAB_NOTIFICATIONS -> getString(R.string.inbox_tab_notifications)
+                        else -> getString(R.string.qrcode_tab_scan)
+                    }
+                }.attach()
+            }
+        }.root
     }
 
     companion object {

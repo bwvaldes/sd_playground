@@ -7,8 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.scubadeving.sd_playground.R
-import kotlinx.android.synthetic.main.fragment_weather_details.weather_toolbar
+import com.scubadeving.sd_playground.databinding.FragmentWeatherDetailsBinding
 
 class WeatherDetailFragment : Fragment() {
 
@@ -21,11 +20,8 @@ class WeatherDetailFragment : Fragment() {
     ): View {
         weatherDetailViewModel = ViewModelProvider(this).get(WeatherDetailViewModel::class.java)
 
-        return inflater.inflate(R.layout.fragment_weather_details, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        weather_toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
+        return FragmentWeatherDetailsBinding.inflate(inflater, container, false).apply {
+            weatherToolbar.setNavigationOnClickListener { findNavController().navigateUp() }
+        }.root
     }
 }

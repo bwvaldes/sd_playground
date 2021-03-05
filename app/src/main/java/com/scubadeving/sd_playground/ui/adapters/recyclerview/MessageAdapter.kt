@@ -1,45 +1,47 @@
 package com.scubadeving.sd_playground.ui.adapters.recyclerview
 
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.databinding.adapters.ViewBindingAdapter.setClickListener
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.scubadeving.sd_playground.MainNavigationDirections
-import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.model.InboxMessage
 import com.scubadeving.sd_playground.data.model.diver.Diver
+import com.scubadeving.sd_playground.databinding.ItemInboxMessageCardBinding
 import com.scubadeving.sd_playground.utils.inflate
-import kotlinx.android.synthetic.main.item_inbox_message_card.view.message_card_avatar
-import kotlinx.android.synthetic.main.item_inbox_message_card.view.message_card_data
-import kotlinx.android.synthetic.main.item_inbox_message_card.view.message_card_date
-import kotlinx.android.synthetic.main.item_inbox_message_card.view.message_card_diver_name
 
-class MessageAdapter(private val messages: ArrayList<InboxMessage>) :
-    RecyclerView.Adapter<MessageAdapter.MessageViewHolder>() {
+class MessageAdapter : ListAdapter<InboxMessage, RecyclerView.ViewHolder>(MessageDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MessageViewHolder {
-        val inflatedView = parent.inflate(R.layout.item_inbox_message_card, false)
-        return MessageViewHolder(inflatedView)
+        return MessageViewHolder(
+            ItemInboxMessageCardBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
-    override fun getItemCount(): Int = messages.size
-
-    override fun onBindViewHolder(holder: MessageViewHolder, position: Int) {
-        val message = messages[position]
-        holder.bind(message)
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        val message = getItem(position)
+        (holder as MessageViewHolder).bind(message)
     }
 
-    inner class MessageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class MessageViewHolder(private val binding: ItemInboxMessageCardBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(message: InboxMessage) {
-            itemView.apply {
-                message_card_avatar.setOnClickListener { navigateToProfile(it, message.diver) }
-                message_card_diver_name.text = message.diver.firstName
-                message_card_date.text = message.date
-                message_card_data.text = message.data
-                setOnClickListener {
+            binding.apply {
+                messageCardAvatar.setOnClickListener { navigateToProfile(it, message.diver) }
+                messageCardDiverName.text = message.diver.firstName
+                messageCardDate.text = message.date
+                messageCardData.text = message.data
+                setClickListener {
                     Log.d("RecyclerView", "CLICK!")
                     Toast.makeText(
                         itemView.context,
@@ -59,6 +61,17 @@ class MessageAdapter(private val messages: ArrayList<InboxMessage>) :
         private fun navigateToProfile(view: View, diver: Diver) {
             val directions = MainNavigationDirections.actionGlobalProfileFragment(diver.firstName!!)
             view.findNavController().navigate(directions)
+        }
+    }
+
+    private class MessageDiffCallback : DiffUtil.ItemCallback<InboxMessage>() {
+
+        override fun areItemsTheSame(oldItem: InboxMessage, newItem: InboxMessage): Boolean {
+            return oldItem.diver == newItem.diver
+        }
+
+        override fun areContentsTheSame(oldItem: InboxMessage, newItem: InboxMessage): Boolean {
+            return oldItem == newItem
         }
     }
 }

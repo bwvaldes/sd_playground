@@ -4,63 +4,84 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Build
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.scubadeving.sd_playground.MainNavigationDirections
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.model.sites.DiveSite
-import com.scubadeving.sd_playground.utils.inflate
-import kotlinx.android.synthetic.main.item_dive_site_card_large.view.dive_site_card_large_favorite
-import kotlinx.android.synthetic.main.item_dive_site_card_large.view.dive_site_card_large_name
-import kotlinx.android.synthetic.main.item_dive_site_card_large.view.dive_site_card_large_rating
-import kotlinx.android.synthetic.main.item_dive_site_card_small.view.dive_site_card_small_favorite
-import kotlinx.android.synthetic.main.item_dive_site_card_small.view.dive_site_card_small_name
-import kotlinx.android.synthetic.main.item_dive_site_card_small.view.dive_site_card_small_popularity
-import kotlinx.android.synthetic.main.item_dive_site_card_small.view.dive_site_card_small_rating
+import com.scubadeving.sd_playground.data.model.sites.DiveSite.Companion.VIEW_TYPE_EXPANDED
+import com.scubadeving.sd_playground.data.model.sites.DiveSite.Companion.VIEW_TYPE_SMALL
+import com.scubadeving.sd_playground.databinding.ItemDiveSiteCardLargeBinding
+import com.scubadeving.sd_playground.databinding.ItemDiveSiteCardSmallBinding
 
-class DiveSiteAdapter(private val diveSites: List<DiveSite>, val orientation: Boolean = true) :
-    RecyclerView.Adapter<DiveSiteAdapter.DiveSiteViewHolder>() {
+class DiveSiteAdapter : ListAdapter<DiveSite, RecyclerView.ViewHolder>(DiveSiteDiffCallback()) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DiveSiteViewHolder {
-        val layout = if (orientation) R.layout.item_dive_site_card_small else R.layout.item_dive_site_card_large
-        val inflatedView = parent.inflate(layout, false)
-        return DiveSiteViewHolder(inflatedView)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<*> {
+        return when (viewType) {
+            VIEW_TYPE_SMALL -> {
+                DiveSiteSmallViewHolder(
+                    ItemDiveSiteCardSmallBinding.inflate(
+                        LayoutInflater.from(parent.context),
+                        parent,
+                        false
+                    )
+                )
+            }
+            VIEW_TYPE_EXPANDED -> {
+                DiveSiteLargeViewHolder(
+                    ItemDiveSiteCardLargeBinding.inflate(
+                        LayoutInflater.from(parent.context),
+                        parent,
+                        false
+                    )
+                )
+            }
+            else -> throw IllegalArgumentException("Invalid view type")
+        }
     }
-
-    override fun getItemCount(): Int = diveSites.size
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-    override fun onBindViewHolder(holder: DiveSiteViewHolder, position: Int) {
-        val sites = diveSites[position]
-        holder.bind(sites, position)
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        val diveSite = getItem(position)
+        when (holder) {
+            is DiveSiteSmallViewHolder -> holder.bind(diveSite)
+            is DiveSiteLargeViewHolder -> holder.bind(diveSite)
+            else -> throw IllegalArgumentException()
+        }
     }
 
-    inner class DiveSiteViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class DiveSiteSmallViewHolder(private val binding: ItemDiveSiteCardSmallBinding) :
+        BaseViewHolder<DiveSite>(binding.root) {
 
         @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-        fun bind(diveSite: DiveSite, position: Int) {
-            itemView.apply {
-                if (orientation) {
-                    configureDiveSitesSmallLayout(position, diveSite)
-                } else {
-                    configureDiveSitesLargeLayout(diveSite)
-                }
-                setOnClickListener {
+        override fun bind(diveSite: DiveSite) {
+            binding.apply {
+                configureDiveSitesSmallLayout(position, diveSite)
+                setClickListener {
                     Log.d("RecyclerView", "CLICK!")
-                    Toast.makeText(itemView.context, "Just Clicked Dive Site Item!", Toast.LENGTH_SHORT)
-                        .show()
+                    Toast.makeText(
+                        itemView.context,
+                        "Just Clicked Dive Site Item!",
+                        Toast.LENGTH_SHORT
+                    ).show()
                     navigateToDiveSiteDetail(it, diveSite)
                 }
             }
         }
 
         @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-        private fun View.configureDiveSitesSmallLayout(position: Int, diveSite: DiveSite) {
-            dive_site_card_small_favorite.apply {
+        private fun ItemDiveSiteCardSmallBinding.configureDiveSitesSmallLayout(
+            position: Int,
+            diveSite: DiveSite
+        ) {
+            diveSiteCardSmallFavorite.apply {
                 setOnCheckedChangeListener { _, isFavorite ->
                     if (isFavorite) {
                         Toast.makeText(context, "Favorited!", Toast.LENGTH_LONG).show()
@@ -70,24 +91,44 @@ class DiveSiteAdapter(private val diveSites: List<DiveSite>, val orientation: Bo
                 }
             }
             when (position) {
-                1 -> backgroundTintList = ColorStateList.valueOf(Color.RED)
-                2 -> backgroundTintList = ColorStateList.valueOf(Color.MAGENTA)
+                1 -> binding.root.backgroundTintList = ColorStateList.valueOf(Color.RED)
+                2 -> binding.root.backgroundTintList = ColorStateList.valueOf(Color.MAGENTA)
                 3 -> {
-                    backgroundTintList = ColorStateList.valueOf(Color.GREEN)
-                    dive_site_card_small_popularity.visibility = View.VISIBLE
+                    binding.root.backgroundTintList = ColorStateList.valueOf(Color.GREEN)
+                    diveSiteCardSmallPopularity.visibility = View.VISIBLE
                 }
             }
-            dive_site_card_small_rating.text = context.getString(
+            diveSiteCardSmallRating.text = binding.root.context.getString(
                 R.string.dive_site_rating,
                 diveSite.rating,
                 diveSite.reviews
             )
-            dive_site_card_small_name.text = diveSite.name
-//            dive_site_card_small_location.text = diveSite.location
+            diveSiteCardSmallName.text = diveSite.name
+            diveSiteCardSmallLocation.text = diveSite.location.toString()
+        }
+    }
+
+    inner class DiveSiteLargeViewHolder(private val binding: ItemDiveSiteCardLargeBinding) :
+        BaseViewHolder<DiveSite>(binding.root) {
+
+        @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+        override fun bind(diveSite: DiveSite) {
+            binding.apply {
+                configureDiveSitesLargeLayout(diveSite)
+                setClickListener {
+                    Log.d("RecyclerView", "CLICK!")
+                    Toast.makeText(
+                        itemView.context,
+                        "Just Clicked Dive Site Item!",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    navigateToDiveSiteDetail(it, diveSite)
+                }
+            }
         }
 
-        private fun View.configureDiveSitesLargeLayout(diveSite: DiveSite) {
-            dive_site_card_large_favorite.apply {
+        private fun ItemDiveSiteCardLargeBinding.configureDiveSitesLargeLayout(diveSite: DiveSite) {
+            diveSiteCardLargeFavorite.apply {
                 setOnCheckedChangeListener { _, isFavorite ->
                     if (isFavorite) {
                         Toast.makeText(context, "Favorited!", Toast.LENGTH_LONG).show()
@@ -96,18 +137,30 @@ class DiveSiteAdapter(private val diveSites: List<DiveSite>, val orientation: Bo
                     }
                 }
             }
-            dive_site_card_large_rating.text = context.getString(
+            diveSiteCardLargeRating.text = binding.root.context.getString(
                 R.string.dive_site_rating,
                 diveSite.rating,
                 diveSite.reviews
             )
-            dive_site_card_large_name.text = diveSite.name
-//            dive_site_card_large_location.text = diveSite.location
+            diveSiteCardLargeName.text = diveSite.name
+            diveSiteCardLargeLocation.text = diveSite.location.toString()
+        }
+    }
+
+    private fun navigateToDiveSiteDetail(view: View, diveSite: DiveSite) {
+        val directions =
+            MainNavigationDirections.actionGlobalDiveSiteDetailFragment(diveSite.name!!)
+        view.findNavController().navigate(directions)
+    }
+
+    private class DiveSiteDiffCallback : DiffUtil.ItemCallback<DiveSite>() {
+
+        override fun areItemsTheSame(oldItem: DiveSite, newItem: DiveSite): Boolean {
+            return oldItem.name == newItem.name
         }
 
-        private fun navigateToDiveSiteDetail(view: View, diveSite: DiveSite) {
-            val directions = MainNavigationDirections.actionGlobalDiveSiteDetailFragment(diveSite.name!!)
-            view.findNavController().navigate(directions)
+        override fun areContentsTheSame(oldItem: DiveSite, newItem: DiveSite): Boolean {
+            return oldItem == newItem
         }
     }
 }

@@ -1,38 +1,42 @@
 package com.scubadeving.sd_playground.ui.adapters.recyclerview
 
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.model.SavedList
+import com.scubadeving.sd_playground.databinding.ItemSavedListCardBinding
 import com.scubadeving.sd_playground.ui.main.saved.SavedFragmentDirections
-import com.scubadeving.sd_playground.utils.inflate
-import kotlinx.android.synthetic.main.item_saved_list_card.view.saved_list_text
 
-class SavedListAdapter(private val savedLists: List<SavedList>) :
-    RecyclerView.Adapter<SavedListAdapter.SavedListViewHolder>() {
+class SavedListAdapter : ListAdapter<SavedList, RecyclerView.ViewHolder>(SavedListDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SavedListViewHolder {
-        val inflatedView = parent.inflate(R.layout.item_saved_list_card, false)
-        return SavedListViewHolder(inflatedView)
+        return SavedListViewHolder(
+            ItemSavedListCardBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
-    override fun getItemCount(): Int = savedLists.size
-
-    override fun onBindViewHolder(holder: SavedListViewHolder, position: Int) {
-        val savedList = savedLists[position]
-        holder.bind(savedList)
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        val savedList = getItem(position)
+        (holder as SavedListViewHolder).bind(savedList)
     }
 
-    inner class SavedListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class SavedListViewHolder(private val binding: ItemSavedListCardBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(savedList: SavedList) {
-            itemView.apply {
-                saved_list_text.text = savedList.name
-                setOnClickListener {
+            binding.apply {
+                savedListText.text = savedList.name
+                setClickListener {
                     Log.d("RecyclerView", "CLICK!")
                     Toast.makeText(
                         itemView.context,
@@ -47,6 +51,17 @@ class SavedListAdapter(private val savedLists: List<SavedList>) :
         private fun navigateToSavedList(view: View, savedList: SavedList) {
             val directions = SavedFragmentDirections.actionSavedFragmentToSavedDetailFragment(savedList.name)
             view.findNavController().navigate(directions)
+        }
+    }
+
+    private class SavedListDiffCallback : DiffUtil.ItemCallback<SavedList>() {
+
+        override fun areItemsTheSame(oldItem: SavedList, newItem: SavedList): Boolean {
+            return oldItem.name == newItem.name
+        }
+
+        override fun areContentsTheSame(oldItem: SavedList, newItem: SavedList): Boolean {
+            return oldItem == newItem
         }
     }
 }

@@ -1,35 +1,38 @@
 package com.scubadeving.sd_playground.ui.adapters.recyclerview
 
 import android.util.Log
-import android.view.View
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.scubadeving.sd_playground.R
-import com.scubadeving.sd_playground.utils.inflate
-import kotlinx.android.synthetic.main.item_detail_card.view.item_detail_text
+import com.scubadeving.sd_playground.databinding.ItemDetailCardBinding
 
-class ItemDetailAdapter(private val details: List<String>) :
-    RecyclerView.Adapter<ItemDetailAdapter.ItemDetailViewHolder>() {
+class ItemDetailAdapter : ListAdapter<String, RecyclerView.ViewHolder>(ItemDetailDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemDetailViewHolder {
-        val inflatedView = parent.inflate(R.layout.item_detail_card, false)
-        return ItemDetailViewHolder(inflatedView)
+        return ItemDetailViewHolder(
+            ItemDetailCardBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
-    override fun getItemCount(): Int = details.size
-
-    override fun onBindViewHolder(holder: ItemDetailViewHolder, position: Int) {
-        val details = details[position]
-        holder.bind(details)
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        val itemDetail = getItem(position)
+        (holder as ItemDetailViewHolder).bind(itemDetail)
     }
 
-    inner class ItemDetailViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ItemDetailViewHolder(private val binding: ItemDetailCardBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(detail: String) {
-            itemView.apply {
-                item_detail_text.text = detail
-                setOnClickListener {
+            binding.apply {
+                itemDetailText.text = detail
+                setClickListener {
                     Log.d("RecyclerView", "CLICK!")
                     Toast.makeText(
                         itemView.context,
@@ -38,6 +41,17 @@ class ItemDetailAdapter(private val details: List<String>) :
                     ).show()
                 }
             }
+        }
+    }
+
+    private class ItemDetailDiffCallback : DiffUtil.ItemCallback<String>() {
+
+        override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
+            return oldItem == newItem
+        }
+
+        override fun areContentsTheSame(oldItem: String, newItem: String): Boolean {
+            return oldItem == newItem
         }
     }
 }

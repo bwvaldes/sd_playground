@@ -9,10 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.tabs.TabLayoutMediator
 import com.scubadeving.sd_playground.R
+import com.scubadeving.sd_playground.databinding.FragmentExploreBinding
 import com.scubadeving.sd_playground.ui.adapters.viewpager.ExploreViewPagerAdapter
-import kotlinx.android.synthetic.main.fragment_explore.explore_pager
-import kotlinx.android.synthetic.main.fragment_explore.explore_search
-import kotlinx.android.synthetic.main.fragment_explore.explore_tab_layout
 
 class ExploreFragment : Fragment() {
 
@@ -23,28 +21,24 @@ class ExploreFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        exploreViewModel =
-            ViewModelProvider(this).get(ExploreViewModel::class.java)
-        return inflater.inflate(R.layout.fragment_explore, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        explore_search.setOnClickListener {
-            Toast.makeText(activity, "Search", Toast.LENGTH_SHORT).show()
-        }
-        explore_pager.apply {
-            isUserInputEnabled = false
-            adapter = ExploreViewPagerAdapter(requireParentFragment())
-            TabLayoutMediator(explore_tab_layout, this) { tab, position ->
-                tab.text = when (position) {
-                    EXPLORE_TAB_SITES -> getString(R.string.explore_tab_sites)
-                    EXPLORE_TAB_WILDLIFE -> getString(R.string.explore_tab_wildlife)
-                    EXPLORE_TAB_BUDDIES -> getString(R.string.explore_tab_buddies)
-                    else -> getString(R.string.explore_tab_sites)
-                }
-            }.attach()
-        }
+        exploreViewModel = ViewModelProvider(this).get(ExploreViewModel::class.java)
+        return FragmentExploreBinding.inflate(inflater, container, false).apply {
+            exploreSearch.setOnClickListener {
+                Toast.makeText(activity, "Search", Toast.LENGTH_SHORT).show()
+            }
+            explorePager.apply {
+                isUserInputEnabled = false
+                adapter = ExploreViewPagerAdapter(requireParentFragment())
+                TabLayoutMediator(exploreTabLayout, this) { tab, position ->
+                    tab.text = when (position) {
+                        EXPLORE_TAB_SITES -> getString(R.string.explore_tab_sites)
+                        EXPLORE_TAB_WILDLIFE -> getString(R.string.explore_tab_wildlife)
+                        EXPLORE_TAB_BUDDIES -> getString(R.string.explore_tab_buddies)
+                        else -> getString(R.string.explore_tab_sites)
+                    }
+                }.attach()
+            }
+        }.root
     }
 
     companion object {

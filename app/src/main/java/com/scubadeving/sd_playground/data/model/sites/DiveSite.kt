@@ -8,5 +8,11 @@ data class DiveSite(
     val rating: Double? = null,
     val difficulty: Int? = null,
     val reviews: Int? = null,
-    val conditions: Conditions? = null
-)
+    val conditions: Conditions? = null,
+    val viewType: Int = VIEW_TYPE_EXPANDED
+) {
+    companion object {
+        const val VIEW_TYPE_SMALL = 0
+        const val VIEW_TYPE_EXPANDED = 1
+    }
+}

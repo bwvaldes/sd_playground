@@ -49,7 +49,9 @@ class ExploreDetailsFilteredFragment : Fragment() {
             DiveSite("Leo Carillo", rating = 4.75, reviews = 42),
             DiveSite("Boat Dive 1", rating = 3.98, reviews = 8)
         )
-        exploreDetailsFilteredRv.adapter = DiveSiteAdapter(filteredDiveSites, false)
+        val adapter = DiveSiteAdapter()
+        adapter.submitList(filteredDiveSites)
+        exploreDetailsFilteredRv.adapter = adapter
     }
 
     private fun FragmentExploreFilteredDetailsBinding.configureExploreFilteredWildlife() {

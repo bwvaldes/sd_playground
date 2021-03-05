@@ -7,8 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.scubadeving.sd_playground.R
-import kotlinx.android.synthetic.main.fragment_wildlife_overview.wildlife_overview_toolbar
+import com.scubadeving.sd_playground.databinding.FragmentWildlifeOverviewBinding
 
 class WildlifeOverviewFragment : Fragment() {
 
@@ -19,13 +18,9 @@ class WildlifeOverviewFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        wildlifeOverviewViewModel =
-            ViewModelProvider(this).get(WildlifeOverviewViewModel::class.java)
-        return inflater.inflate(R.layout.fragment_wildlife_overview, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        wildlife_overview_toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
+        wildlifeOverviewViewModel = ViewModelProvider(this).get(WildlifeOverviewViewModel::class.java)
+        return FragmentWildlifeOverviewBinding.inflate(inflater, container, false).apply {
+            wildlifeOverviewToolbar.setNavigationOnClickListener { findNavController().navigateUp() }
+        }.root
     }
 }

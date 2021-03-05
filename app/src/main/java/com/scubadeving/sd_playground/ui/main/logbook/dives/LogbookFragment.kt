@@ -12,8 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.model.divelog.DiveLog
+import com.scubadeving.sd_playground.databinding.FragmentLogbookDivesBinding
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.DiveLogAdapter
-import kotlinx.android.synthetic.main.fragment_logbook_dives.logbook_rv
 
 class LogbookFragment : Fragment() {
 
@@ -24,17 +24,13 @@ class LogbookFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        logbookViewModel =
-            ViewModelProvider(this).get(LogbookViewModel::class.java)
-        return inflater.inflate(R.layout.fragment_logbook_dives, container, false)
+        logbookViewModel = ViewModelProvider(this).get(LogbookViewModel::class.java)
+        return FragmentLogbookDivesBinding.inflate(inflater, container, false).apply {
+            configureLoggedDives()
+        }.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        configureLoggedDives()
-    }
-
-    private fun configureLoggedDives() {
+    private fun FragmentLogbookDivesBinding.configureLoggedDives() {
         val diveLogs: ArrayList<DiveLog> =
             arrayListOf(
                 DiveLog(1, date = "January 23rd, 2020", depth = 63.toDouble(), bottomTime = 37.toDouble()),
@@ -51,9 +47,11 @@ class LogbookFragment : Fragment() {
         parentFragment?.view?.findViewById<Toolbar>(R.id.logbook_toolbar)?.setOnClickListener {
             diveLogs.asReversed()
         }
-        logbook_rv.apply {
+        logbookRv.apply {
+            val targetAdapter = DiveLogAdapter()
+            targetAdapter.submitList(diveLogs)
             layoutManager = LinearLayoutManager(context, VERTICAL, false)
-            adapter = DiveLogAdapter(diveLogs, true)
+            adapter = targetAdapter
             val dividerItemDecoration = DividerItemDecoration(context, VERTICAL)
             addItemDecoration(dividerItemDecoration)
         }

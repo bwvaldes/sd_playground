@@ -7,19 +7,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.RecyclerView.Adapter
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.model.diver.Certification
 import com.scubadeving.sd_playground.data.model.diver.Diver
+import com.scubadeving.sd_playground.data.model.diver.Diver.Companion.VIEW_TYPE_HORIZONTAL
+import com.scubadeving.sd_playground.databinding.FragmentExploreBuddiesBinding
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.BuddyAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.decorations.GridSpacingItemDecoration
 import com.scubadeving.sd_playground.utils.configureHorizontalRecyclerView
-import kotlinx.android.synthetic.main.fragment_explore_buddies.dive_center_divers_rv
-import kotlinx.android.synthetic.main.fragment_explore_buddies.dive_center_divers_see_all
-import kotlinx.android.synthetic.main.fragment_explore_buddies.nearby_divers_rv
-import kotlinx.android.synthetic.main.fragment_explore_buddies.past_divers_rv
-import kotlinx.android.synthetic.main.fragment_explore_buddies.past_divers_see_all
 
 class ExploreBuddiesFragment : Fragment() {
 
@@ -29,34 +23,33 @@ class ExploreBuddiesFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         exploreBuddiesViewModel = ViewModelProvider(this).get(ExploreBuddiesViewModel::class.java)
-        return inflater.inflate(R.layout.fragment_explore_buddies, container, false)
+        return FragmentExploreBuddiesBinding.inflate(inflater, container, false).apply {
+            configureNearbyDivers()
+            configureDiveCenterDivers()
+            configurePastDivers()
+        }.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        configureNearbyDivers()
-        configureDiveCenterDivers()
-        configurePastDivers()
-    }
-
-    private fun configureNearbyDivers() {
+    private fun FragmentExploreBuddiesBinding.configureNearbyDivers() {
         val nearbyDivers: ArrayList<Diver> =
             arrayListOf(
-                Diver(firstName = "Bob", certifications = arrayListOf(Certification(certificationName = "Open Water"))),
-                Diver(firstName = "Billy", certifications = arrayListOf(Certification(certificationName = "Rescue Diver"))),
-                Diver(firstName = "Jill", certifications = arrayListOf(Certification(certificationName = "Advanced Open Water"))),
-                Diver(firstName = "Karen", certifications = arrayListOf(Certification(certificationName = "Open Water"))),
-                Diver(firstName = "Molly", certifications = arrayListOf(Certification(certificationName = "Night Diver"))),
-                Diver(firstName = "Don", certifications = arrayListOf(Certification(certificationName = "Open Water"))),
-                Diver(firstName = "Bill", certifications = arrayListOf(Certification(certificationName = "Open Water"))),
-                Diver(firstName = "Greg", certifications = arrayListOf(Certification(certificationName = "Open Water")))
+                Diver(firstName = "Bob", certifications = arrayListOf(Certification(certificationName = "Open Water")), diverType = VIEW_TYPE_HORIZONTAL),
+                Diver(firstName = "Billy", certifications = arrayListOf(Certification(certificationName = "Rescue Diver")), diverType = VIEW_TYPE_HORIZONTAL),
+                Diver(firstName = "Jill", certifications = arrayListOf(Certification(certificationName = "Advanced Open Water")), diverType = VIEW_TYPE_HORIZONTAL),
+                Diver(firstName = "Karen", certifications = arrayListOf(Certification(certificationName = "Open Water")), diverType = VIEW_TYPE_HORIZONTAL),
+                Diver(firstName = "Molly", certifications = arrayListOf(Certification(certificationName = "Night Diver")), diverType = VIEW_TYPE_HORIZONTAL),
+                Diver(firstName = "Don", certifications = arrayListOf(Certification(certificationName = "Open Water")), diverType = VIEW_TYPE_HORIZONTAL),
+                Diver(firstName = "Bill", certifications = arrayListOf(Certification(certificationName = "Open Water")), diverType = VIEW_TYPE_HORIZONTAL),
+                Diver(firstName = "Greg", certifications = arrayListOf(Certification(certificationName = "Open Water")), diverType = VIEW_TYPE_HORIZONTAL)
             )
-        nearby_divers_rv.configureHorizontalRecyclerView(BuddyAdapter(nearbyDivers, true) as Adapter<ViewHolder>)
+        val adapter = BuddyAdapter()
+        adapter.submitList(nearbyDivers)
+        nearbyDiversRv.configureHorizontalRecyclerView(adapter)
     }
 
-    private fun configureDiveCenterDivers() {
+    private fun FragmentExploreBuddiesBinding.configureDiveCenterDivers() {
         val diveCenterDivers: ArrayList<Diver> =
             arrayListOf(
                 Diver(firstName = "Jill", certifications = arrayListOf(Certification(certificationName = "Open Water"))),
@@ -67,16 +60,18 @@ class ExploreBuddiesFragment : Fragment() {
                 Diver(firstName = "Karen", certifications = arrayListOf(Certification(certificationName = "Open Water"))),
                 Diver(firstName = "Molly", certifications = arrayListOf(Certification(certificationName = "Open Water")))
             )
-        dive_center_divers_rv.apply {
-            adapter = BuddyAdapter(diveCenterDivers, false)
+        val targetAdapter = BuddyAdapter()
+        targetAdapter.submitList(diveCenterDivers)
+        diveCenterDiversRv.apply {
+            adapter = targetAdapter
             addItemDecoration(GridSpacingItemDecoration())
         }
-        dive_center_divers_see_all.setOnClickListener {
+        diveCenterDiversSeeAll.setOnClickListener {
             Toast.makeText(context, "Just Clicked Dive Center Buddies!", Toast.LENGTH_SHORT).show()
         }
     }
 
-    private fun configurePastDivers() {
+    private fun FragmentExploreBuddiesBinding.configurePastDivers() {
         val pastDivers: ArrayList<Diver> =
             arrayListOf(
                 Diver(firstName = "Lia", certifications = arrayListOf(Certification(certificationName = "Discover Diver"))),
@@ -88,11 +83,13 @@ class ExploreBuddiesFragment : Fragment() {
                 Diver(firstName = "Pedro", certifications = arrayListOf(Certification(certificationName = "Open Water"))),
                 Diver(firstName = "Nick", certifications = arrayListOf(Certification(certificationName = "Open Water")))
             )
-        past_divers_rv.apply {
-            adapter = BuddyAdapter(pastDivers, false)
+        val targetAdapter = BuddyAdapter()
+        targetAdapter.submitList(pastDivers)
+        pastDiversRv.apply {
+            adapter = targetAdapter
             addItemDecoration(GridSpacingItemDecoration())
         }
-        past_divers_see_all.setOnClickListener {
+        diveCenterDiversSeeAll.setOnClickListener {
             Toast.makeText(context, "Just Clicked Past Dive Buddies!", Toast.LENGTH_SHORT).show()
         }
     }

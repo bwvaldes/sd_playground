@@ -3,38 +3,49 @@ package com.scubadeving.sd_playground.ui.adapters.recyclerview
 import android.content.Intent
 import android.net.Uri
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.databinding.adapters.ViewBindingAdapter.setClickListener
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.model.DiveCenter
+import com.scubadeving.sd_playground.databinding.ItemDiveCenterCardBinding
 import com.scubadeving.sd_playground.utils.inflate
-import kotlinx.android.synthetic.main.item_dive_center_card.view.dive_center_name
 
-class DiveCenterAdapter(private val diveCenters: List<DiveCenter>) :
-    RecyclerView.Adapter<DiveCenterAdapter.DiveCenterViewHolder>() {
+class DiveCenterAdapter :
+    ListAdapter<DiveCenter, RecyclerView.ViewHolder>(DiveCenterDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DiveCenterViewHolder {
-        val inflatedView = parent.inflate(R.layout.item_dive_center_card, false)
-        return DiveCenterViewHolder(inflatedView)
+        return DiveCenterViewHolder(
+            ItemDiveCenterCardBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
-    override fun getItemCount(): Int = diveCenters.size
-
-    override fun onBindViewHolder(holder: DiveCenterViewHolder, position: Int) {
-        val diveCenter = diveCenters[position]
-        holder.bind(diveCenter)
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        val diveCenter = getItem(position)
+        (holder as DiveCenterViewHolder).bind(diveCenter)
     }
 
-    inner class DiveCenterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class DiveCenterViewHolder(private val binding: ItemDiveCenterCardBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(diveCenter: DiveCenter) {
-            itemView.apply {
-                dive_center_name.text = diveCenter.name
-                setOnClickListener {
+            binding.apply {
+                diveCenterName.text = diveCenter.name
+                setClickListener {
                     Log.d("RecyclerView", "CLICK!")
-                    Toast.makeText(itemView.context, "Just Clicked Dive Center Item!", Toast.LENGTH_SHORT)
+                    Toast.makeText(
+                        itemView.context,
+                        "Just Clicked Dive Center Item!",
+                        Toast.LENGTH_SHORT
+                    )
                         .show()
                     navigateToDiveCenterDetail(it)
                 }
@@ -47,6 +58,17 @@ class DiveCenterAdapter(private val diveCenters: List<DiveCenter>) :
             val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
             mapIntent.setPackage("com.google.android.apps.maps")
             view.context.startActivity(mapIntent)
+        }
+    }
+
+    private class DiveCenterDiffCallback : DiffUtil.ItemCallback<DiveCenter>() {
+
+        override fun areItemsTheSame(oldItem: DiveCenter, newItem: DiveCenter): Boolean {
+            return oldItem.name == newItem.name
+        }
+
+        override fun areContentsTheSame(oldItem: DiveCenter, newItem: DiveCenter): Boolean {
+            return oldItem == newItem
         }
     }
 }

@@ -9,10 +9,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.tabs.TabLayoutMediator
 import com.scubadeving.sd_playground.R
+import com.scubadeving.sd_playground.databinding.FragmentQrcodeMainBinding
 import com.scubadeving.sd_playground.ui.adapters.viewpager.QRCodePagerAdapter
-import kotlinx.android.synthetic.main.fragment_qrcode_main.qrcode_pager
-import kotlinx.android.synthetic.main.fragment_qrcode_main.qrcode_tab_layout
-import kotlinx.android.synthetic.main.fragment_qrcode_main.qrcode_toolbar
 
 class QRCodeMainFragment : Fragment() {
 
@@ -24,22 +22,19 @@ class QRCodeMainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         qrCodeViewModel = ViewModelProvider(this).get(QRCodeMainViewModel::class.java)
-        return inflater.inflate(R.layout.fragment_qrcode_main, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        qrcode_toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
-        qrcode_pager.apply {
-            adapter = QRCodePagerAdapter(requireParentFragment())
-            TabLayoutMediator(qrcode_tab_layout, this) { tab, position ->
-                tab.text = when (position) {
-                    QR_CODE_TAB_SCAN -> getString(R.string.qrcode_tab_scan)
-                    QR_CODE_TAB_CODE -> getString(R.string.qrcode_tab_code)
-                    else -> getString(R.string.qrcode_tab_scan)
-                }
-            }.attach()
-        }
+        return FragmentQrcodeMainBinding.inflate(inflater, container, false).apply {
+            qrcodeToolbar.setNavigationOnClickListener { findNavController().navigateUp() }
+            qrcodePager.apply {
+                adapter = QRCodePagerAdapter(requireParentFragment())
+                TabLayoutMediator(qrcodeTabLayout, this) { tab, position ->
+                    tab.text = when (position) {
+                        QR_CODE_TAB_SCAN -> getString(R.string.qrcode_tab_scan)
+                        QR_CODE_TAB_CODE -> getString(R.string.qrcode_tab_code)
+                        else -> getString(R.string.qrcode_tab_scan)
+                    }
+                }.attach()
+            }
+        }.root
     }
 
     companion object {

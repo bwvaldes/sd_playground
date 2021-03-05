@@ -6,10 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.model.InboxNotification
+import com.scubadeving.sd_playground.data.model.InboxNotification.Companion.NOTIFICATION_TYPE_INBOX
+import com.scubadeving.sd_playground.databinding.FragmentInboxNotificationsBinding
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.NotificationAdapter
-import kotlinx.android.synthetic.main.fragment_inbox_notifications.notifications_rv
 
 class NotificationsFragment : Fragment() {
 
@@ -21,23 +21,22 @@ class NotificationsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         notificationsViewModel = ViewModelProvider(this).get(NotificationsViewModel::class.java)
-        return inflater.inflate(R.layout.fragment_inbox_notifications, container, false)
+        return FragmentInboxNotificationsBinding.inflate(inflater, container, false).apply {
+            configureNotificationsRecyclerView()
+        }.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        configureNotificationsRecyclerView()
-    }
-
-    private fun configureNotificationsRecyclerView() {
+    private fun FragmentInboxNotificationsBinding.configureNotificationsRecyclerView() {
         val inboxNotifications: ArrayList<InboxNotification> = arrayListOf(
-            InboxNotification("Today", "This is a Notification"),
-            InboxNotification("Feb 3rd", "This is a Notification"),
-            InboxNotification("Jan 30th", "This is a Notification"),
-            InboxNotification("Jan 18th", "This is a Notification"),
-            InboxNotification("Dec 20th", "This is a Notification"),
-            InboxNotification("Dec 3rd", "This is a Notification")
+            InboxNotification("Today", "This is a Notification", NOTIFICATION_TYPE_INBOX),
+            InboxNotification("Feb 3rd", "This is a Notification", NOTIFICATION_TYPE_INBOX),
+            InboxNotification("Jan 30th", "This is a Notification", NOTIFICATION_TYPE_INBOX),
+            InboxNotification("Jan 18th", "This is a Notification", NOTIFICATION_TYPE_INBOX),
+            InboxNotification("Dec 20th", "This is a Notification", NOTIFICATION_TYPE_INBOX),
+            InboxNotification("Dec 3rd", "This is a Notification", NOTIFICATION_TYPE_INBOX)
         )
-        notifications_rv.adapter = NotificationAdapter(inboxNotifications, false)
+        val adapter = NotificationAdapter()
+        adapter.submitList(inboxNotifications)
+        notificationsRv.adapter = adapter
     }
 }

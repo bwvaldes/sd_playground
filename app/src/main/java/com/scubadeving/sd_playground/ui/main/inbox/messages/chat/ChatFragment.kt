@@ -18,9 +18,8 @@ import com.scubadeving.sd_playground.data.model.ChatMessage.Companion.MESSAGE_TY
 import com.scubadeving.sd_playground.data.model.ChatMessage.Companion.MESSAGE_TYPE_HOST
 import com.scubadeving.sd_playground.data.model.diver.Certification
 import com.scubadeving.sd_playground.data.model.diver.Diver
+import com.scubadeving.sd_playground.databinding.FragmentChatBinding
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.ChatAdapter
-import kotlinx.android.synthetic.main.fragment_chat.chat_message_rv
-import kotlinx.android.synthetic.main.fragment_chat.chat_toolbar
 
 class ChatFragment : Fragment() {
 
@@ -34,25 +33,22 @@ class ChatFragment : Fragment() {
     ): View {
         chatViewModel = ViewModelProvider(this).get(ChatViewModel::class.java)
 
-        return inflater.inflate(R.layout.fragment_chat, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        configureChatRecyclerView()
-        chat_toolbar.apply {
-            setNavigationOnClickListener { findNavController().navigateUp() }
-            title = args.diverName
-            subtitle = "yesterday at 22:00"
-            setOnMenuItemClickListener { item ->
-                when (item.itemId) {
-                    R.id.action_details -> {
-                        navigateToChatDetail()
+        return FragmentChatBinding.inflate(inflater, container, false).apply {
+            configureChatRecyclerView()
+            chatToolbar.apply {
+                setNavigationOnClickListener { findNavController().navigateUp() }
+                title = args.diverName
+                subtitle = "yesterday at 22:00"
+                setOnMenuItemClickListener { item ->
+                    when (item.itemId) {
+                        R.id.action_details -> {
+                            navigateToChatDetail()
+                        }
                     }
+                    true
                 }
-                true
             }
-        }
+        }.root
     }
 
     private fun Toolbar.navigateToChatDetail() {
@@ -60,7 +56,7 @@ class ChatFragment : Fragment() {
         findNavController().navigate(directions)
     }
 
-    private fun configureChatRecyclerView() {
+    private fun FragmentChatBinding.configureChatRecyclerView() {
         val guestDiver = Diver(args.diverName, certifications = arrayListOf(Certification(certificationName = "Advanced Open Water")))
         val hostDiver = Diver(firstName = "Brian", certifications = arrayListOf(Certification(certificationName = "Advanced Open Water")))
         val chatMessages = mutableListOf(
@@ -100,12 +96,14 @@ class ChatFragment : Fragment() {
                 600
             )
         )
-        chat_message_rv.apply {
+        val targetAdapter = ChatAdapter()
+        targetAdapter.submitList(chatMessages)
+        chatMessageRv.apply {
             layoutManager = LinearLayoutManager(context, VERTICAL, false).apply {
                 stackFromEnd = true
                 isSmoothScrollbarEnabled = true
             }
-            adapter = ChatAdapter(chatMessages)
+            adapter = targetAdapter
         }
     }
 }

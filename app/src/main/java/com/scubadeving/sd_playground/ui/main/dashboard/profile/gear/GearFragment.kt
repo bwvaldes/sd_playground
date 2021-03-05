@@ -12,7 +12,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.scubadeving.sd_playground.data.model.diver.Diver
 import com.scubadeving.sd_playground.data.source.repository.DiverRepository
 import com.scubadeving.sd_playground.databinding.FragmentProfileGearBinding
-import com.scubadeving.sd_playground.ui.adapters.recyclerview.GearAdapter
+import com.scubadeving.sd_playground.ui.adapters.recyclerview.GearProfileAdapter
 
 class GearFragment : Fragment() {
 
@@ -38,13 +38,21 @@ class GearFragment : Fragment() {
     }
 
     private fun FragmentProfileGearBinding.configureGearProfileList(diver: Diver) {
-        gearProfilesRv.adapter = diver.gearProfiles?.let { GearAdapter(it, true) }
+        gearProfilesRv.adapter = diver.gearProfiles?.let {
+            val adapter = GearProfileAdapter()
+            adapter.submitList(it)
+            adapter
+        }
         gearProfileGearList.text = diver.gear.toString()
     }
 
     private fun FragmentProfileGearBinding.configureGearItems(diver: Diver) {
         gearFilteredRv.apply {
-            adapter = diver.gearProfiles?.let { GearAdapter(it, false) }
+            adapter = diver.gearProfiles?.let {
+                val adapter = GearProfileAdapter()
+                adapter.submitList(it)
+                adapter
+            }
             setOnClickListener {
                 Toast.makeText(context, "Just Clicked Gear Item!", Toast.LENGTH_SHORT).show()
             }

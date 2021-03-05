@@ -10,7 +10,7 @@ import androidx.lifecycle.Observer
 import com.google.firebase.firestore.FirebaseFirestore
 import com.scubadeving.sd_playground.data.source.repository.DiverRepository
 import com.scubadeving.sd_playground.databinding.FragmentProfileCertificationsBinding
-import com.scubadeving.sd_playground.ui.adapters.recyclerview.CertificationAdapter
+import com.scubadeving.sd_playground.ui.adapters.recyclerview.ProfileCertificationAdapter
 
 class CertificationsFragment : Fragment() {
 
@@ -28,7 +28,11 @@ class CertificationsFragment : Fragment() {
                 viewLifecycleOwner,
                 Observer { diver ->
                     certCardRv.adapter =
-                        diver?.certifications?.let { CertificationAdapter(emptyList(), it, false) }
+                        diver?.certifications?.let {
+                            val adapter = ProfileCertificationAdapter()
+                            adapter.submitList(it)
+                            adapter
+                        }
                 }
             )
         }.root

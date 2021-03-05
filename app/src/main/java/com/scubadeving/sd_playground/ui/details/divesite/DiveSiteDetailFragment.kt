@@ -8,8 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.RecyclerView.Adapter
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.scubadeving.sd_playground.data.model.DiveCenter
 import com.scubadeving.sd_playground.data.model.wildlife.Wildlife
 import com.scubadeving.sd_playground.databinding.FragmentDiveSiteDetailsBinding
@@ -47,7 +45,9 @@ class DiveSiteDetailFragment : Fragment() {
                 "Visibility: 15-30ft",
                 "Dive Type: Shore"
             )
-        diveSiteDetailConditionsRv.configureHorizontalRecyclerView(ItemDetailAdapter(conditions) as Adapter<ViewHolder>)
+        val adapter = ItemDetailAdapter()
+        adapter.submitList(conditions)
+        diveSiteDetailConditionsRv.configureHorizontalRecyclerView(adapter)
     }
 
     private fun FragmentDiveSiteDetailsBinding.configureDiveCenters() {
@@ -56,7 +56,9 @@ class DiveSiteDetailFragment : Fragment() {
                 DiveCenter("Newport Divers"),
                 DiveCenter("Eco Dive Center")
             )
-        diveSiteDetailDiveCentersRv.configureHorizontalRecyclerView(DiveCenterAdapter(diveCenters) as Adapter<ViewHolder>)
+        val adapter = DiveCenterAdapter()
+        adapter.submitList(diveCenters)
+        diveSiteDetailDiveCentersRv.configureHorizontalRecyclerView(DiveCenterAdapter())
     }
 
     private fun FragmentDiveSiteDetailsBinding.configureWildlife() {

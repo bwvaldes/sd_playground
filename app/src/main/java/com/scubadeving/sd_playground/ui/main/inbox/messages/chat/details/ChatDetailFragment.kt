@@ -8,12 +8,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.model.diver.Certification
 import com.scubadeving.sd_playground.data.model.diver.Diver
+import com.scubadeving.sd_playground.databinding.FragmentChatDetailsBinding
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.ChatMemberAdapter
-import kotlinx.android.synthetic.main.fragment_chat_details.chat_detail_members_rv
-import kotlinx.android.synthetic.main.fragment_chat_details.chat_detail_toolbar
 
 class ChatDetailFragment : Fragment() {
 
@@ -26,13 +24,12 @@ class ChatDetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         chatDetailViewModel = ViewModelProvider(this).get(ChatDetailViewModel::class.java)
-        return inflater.inflate(R.layout.fragment_chat_details, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        chat_detail_toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
-        val members = listOf(Diver(args.diverName, certifications = arrayListOf(Certification(certificationName = "Open Water"))))
-        chat_detail_members_rv.adapter = ChatMemberAdapter(members)
+        return FragmentChatDetailsBinding.inflate(inflater, container, false).apply {
+            chatDetailToolbar.setNavigationOnClickListener { findNavController().navigateUp() }
+            val members = listOf(Diver(args.diverName, certifications = arrayListOf(Certification(certificationName = "Open Water"))))
+            val adapter = ChatMemberAdapter()
+            adapter.submitList(members)
+            chatDetailMembersRv.adapter = adapter
+        }.root
     }
 }

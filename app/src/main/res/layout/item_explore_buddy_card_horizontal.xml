@@ -2,11 +2,23 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+
+        <variable
+            name="diver"
+            type="com.scubadeving.sd_playground.data.model.diver.Diver" />
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+    </data>
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cert_card_container"
         android:layout_width="375dp"
         android:layout_height="wrap_content"
         android:elevation="8dp"
+        android:onClick="@{clickListener}"
         app:cardBackgroundColor="@android:color/holo_red_dark"
         app:cardCornerRadius="5dp"
         app:cardPreventCornerOverlap="true"
@@ -85,8 +97,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="32 Buddies"
                 android:textColor="@color/white"
+                app:buddyCountText="@{diver.buddies}"
                 app:layout_constraintStart_toStartOf="@id/diver_card_horizontal_avatar"
                 app:layout_constraintTop_toBottomOf="@id/diver_card_horizontal_level" />
 

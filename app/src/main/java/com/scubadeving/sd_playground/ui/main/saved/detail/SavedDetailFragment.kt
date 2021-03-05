@@ -8,8 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.scubadeving.sd_playground.R
-import kotlinx.android.synthetic.main.fragment_saved_details.saved_detail_toolbar
+import com.scubadeving.sd_playground.databinding.FragmentSavedDetailsBinding
 
 class SavedDetailFragment : Fragment() {
 
@@ -23,14 +22,11 @@ class SavedDetailFragment : Fragment() {
     ): View? {
         savedDetailViewModel =
             ViewModelProvider(this).get(SavedDetailViewModel::class.java)
-        return inflater.inflate(R.layout.fragment_saved_details, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        saved_detail_toolbar.apply {
-            setNavigationOnClickListener { findNavController().navigateUp() }
-            title = args.savedListName
-        }
+        return FragmentSavedDetailsBinding.inflate(inflater, container, false).apply {
+            savedDetailToolbar.apply {
+                setNavigationOnClickListener { findNavController().navigateUp() }
+                title = args.savedListName
+            }
+        }.root
     }
 }

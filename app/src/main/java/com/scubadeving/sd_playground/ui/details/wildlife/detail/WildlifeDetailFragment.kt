@@ -8,8 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.recyclerview.widget.RecyclerView.Adapter
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.model.wildlife.ConservationStatus
 import com.scubadeving.sd_playground.data.model.wildlife.Wildlife
@@ -50,7 +48,9 @@ class WildlifeDetailFragment : Fragment() {
                 "Thailand:2",
                 "Phillipines:14"
             )
-        wildlifeDetailEncountersRv.configureHorizontalRecyclerView(ItemDetailAdapter(encounters) as Adapter<ViewHolder>)
+        val adapter = ItemDetailAdapter()
+        adapter.submitList(encounters)
+        wildlifeDetailEncountersRv.configureHorizontalRecyclerView(adapter)
     }
 
     private fun FragmentWildlifeDetailsBinding.configureWildlife() {

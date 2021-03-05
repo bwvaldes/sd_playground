@@ -19,6 +19,7 @@
         android:layout_width="344dp"
         android:layout_height="216dp"
         android:elevation="8dp"
+        android:onClick="@{clickListener}"
         app:cardBackgroundColor="@android:color/holo_orange_light"
         app:cardCornerRadius="5dp"
         app:cardPreventCornerOverlap="true"

@@ -4,90 +4,96 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.scubadeving.sd_playground.MainNavigationDirections
-import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.model.ChatMessage
 import com.scubadeving.sd_playground.data.model.ChatMessage.Companion.MESSAGE_TYPE_DATE
 import com.scubadeving.sd_playground.data.model.ChatMessage.Companion.MESSAGE_TYPE_GUEST
 import com.scubadeving.sd_playground.data.model.ChatMessage.Companion.MESSAGE_TYPE_HOST
 import com.scubadeving.sd_playground.data.model.diver.Diver
-import kotlinx.android.synthetic.main.item_chat_container_date.view.chat_date_message
-import kotlinx.android.synthetic.main.item_chat_container_guest.view.chat_guest_avatar
-import kotlinx.android.synthetic.main.item_chat_container_guest.view.chat_guest_message
-import kotlinx.android.synthetic.main.item_chat_container_guest.view.chat_guest_message_time
-import kotlinx.android.synthetic.main.item_chat_container_guest.view.chat_guest_name
-import kotlinx.android.synthetic.main.item_chat_container_host.view.chat_host_message
-import kotlinx.android.synthetic.main.item_chat_container_host.view.chat_host_message_time
+import com.scubadeving.sd_playground.databinding.ItemChatContainerDateBinding
+import com.scubadeving.sd_playground.databinding.ItemChatContainerGuestBinding
+import com.scubadeving.sd_playground.databinding.ItemChatContainerHostBinding
 import java.text.SimpleDateFormat
 import java.util.Locale
 
-class ChatAdapter(var chatMessages: MutableList<ChatMessage>) :
-    RecyclerView.Adapter<ChatAdapter.ChatMessageViewHolder<*>>() {
+class ChatAdapter : ListAdapter<ChatMessage, RecyclerView.ViewHolder>(ChatDiffCallback()) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatMessageViewHolder<*> {
-        val context = parent.context
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<*> {
         return when (viewType) {
             MESSAGE_TYPE_DATE -> {
-                val view = LayoutInflater.from(context)
-                    .inflate(R.layout.item_chat_container_date, parent, false)
-                ChatDateViewHolder(view)
+                ChatDateViewHolder(
+                    ItemChatContainerDateBinding.inflate(
+                        LayoutInflater.from(parent.context),
+                        parent,
+                        false
+                    )
+                )
             }
             MESSAGE_TYPE_HOST -> {
-                val view = LayoutInflater.from(context)
-                    .inflate(R.layout.item_chat_container_host, parent, false)
-                ChatHostMessageViewHolder(view)
+                ChatHostMessageViewHolder(
+                    ItemChatContainerHostBinding.inflate(
+                        LayoutInflater.from(parent.context),
+                        parent,
+                        false
+                    )
+                )
             }
             MESSAGE_TYPE_GUEST -> {
-                val view = LayoutInflater.from(parent.context)
-                    .inflate(R.layout.item_chat_container_guest, parent, false)
-                ChatGuestMessageViewHolder(view)
+                ChatGuestMessageViewHolder(
+                    ItemChatContainerGuestBinding.inflate(
+                        LayoutInflater.from(parent.context),
+                        parent,
+                        false
+                    )
+                )
             }
             else -> throw IllegalArgumentException("Invalid view type")
         }
     }
 
-    override fun onBindViewHolder(viewHolder: ChatMessageViewHolder<*>, position: Int) {
-        val chatMessage = chatMessages[position]
-        when (viewHolder) {
-            is ChatDateViewHolder -> viewHolder.bind(chatMessage)
-            is ChatHostMessageViewHolder -> viewHolder.bind(chatMessage)
-            is ChatGuestMessageViewHolder -> viewHolder.bind(chatMessage)
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        val chatMessage = getItem(position)
+        when (holder) {
+            is ChatDateViewHolder -> holder.bind(chatMessage)
+            is ChatHostMessageViewHolder -> holder.bind(chatMessage)
+            is ChatGuestMessageViewHolder -> holder.bind(chatMessage)
             else -> throw IllegalArgumentException()
         }
     }
 
-    override fun getItemCount(): Int = chatMessages.size
+    override fun getItemViewType(position: Int): Int = getItem(position).messageType
 
-    override fun getItemViewType(position: Int): Int = chatMessages[position].messageType
+    inner class ChatDateViewHolder(private val binding: ItemChatContainerDateBinding) :
+        BaseViewHolder<ChatMessage>(binding.root) {
 
-    inner class ChatDateViewHolder(val view: View) : ChatMessageViewHolder<ChatMessage>(view) {
+        override fun bind(chatMessage: ChatMessage) {
+            binding.chatDateMessage.text = chatMessage.content.plus(getChatMessageTime(chatMessage))
+        }
+    }
 
-        override fun bind(message: ChatMessage) {
-            itemView.apply {
-                chat_date_message.text = message.content.plus(getChatMessageTime(message))
+    inner class ChatHostMessageViewHolder(private val binding: ItemChatContainerHostBinding) :
+        BaseViewHolder<ChatMessage>(binding.root) {
+
+        override fun bind(chatMessage: ChatMessage) {
+            binding.apply {
+                chatHostMessage.text = chatMessage.content
+                chatHostMessageTime.text = getChatMessageTime(chatMessage)
             }
         }
     }
 
-    inner class ChatHostMessageViewHolder(val view: View) : ChatMessageViewHolder<ChatMessage>(view) {
+    inner class ChatGuestMessageViewHolder(private val binding: ItemChatContainerGuestBinding) :
+        BaseViewHolder<ChatMessage>(binding.root) {
 
-        override fun bind(message: ChatMessage) {
-            itemView.apply {
-                chat_host_message.text = message.content
-                chat_host_message_time.text = getChatMessageTime(message)
-            }
-        }
-    }
-
-    inner class ChatGuestMessageViewHolder(val view: View) : ChatMessageViewHolder<ChatMessage>(view) {
-
-        override fun bind(message: ChatMessage) {
-            itemView.apply {
-                chat_guest_avatar.setOnClickListener { navigateToProfile(it, message.diver!!) }
-                chat_guest_name.text = message.diver?.firstName
-                chat_guest_message.text = message.content
-                chat_guest_message_time.text = getChatMessageTime(message)
+        override fun bind(chatMessage: ChatMessage) {
+            binding.apply {
+                chatGuestAvatar.setOnClickListener { navigateToProfile(it, chatMessage.diver!!) }
+                chatGuestName.text = chatMessage.diver?.firstName
+                chatGuestMessage.text = chatMessage.content
+                chatGuestMessageTime.text = getChatMessageTime(chatMessage)
             }
         }
 
@@ -97,17 +103,23 @@ class ChatAdapter(var chatMessages: MutableList<ChatMessage>) :
         }
     }
 
-    abstract class ChatMessageViewHolder<in T>(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        abstract fun bind(message: T)
-    }
-
-    fun addMessage(message: ChatMessage) {
-        chatMessages.add(message)
-        notifyDataSetChanged()
-    }
-
     fun getChatMessageTime(message: ChatMessage): String {
         val format = SimpleDateFormat("hh:mm a", Locale.getDefault())
         return format.format(message.time)
+    }
+
+    fun addMessage(message: ChatMessage) {
+        currentList.add(message)
+    }
+
+    private class ChatDiffCallback : DiffUtil.ItemCallback<ChatMessage>() {
+
+        override fun areItemsTheSame(oldItem: ChatMessage, newItem: ChatMessage): Boolean {
+            return oldItem.diver == newItem.diver
+        }
+
+        override fun areContentsTheSame(oldItem: ChatMessage, newItem: ChatMessage): Boolean {
+            return oldItem == newItem
+        }
     }
 }

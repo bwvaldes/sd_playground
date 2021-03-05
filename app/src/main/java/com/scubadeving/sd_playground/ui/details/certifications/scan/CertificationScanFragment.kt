@@ -8,10 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.scubadeving.sd_playground.R
-import kotlinx.android.synthetic.main.fragment_certification_detail_scan.cert_scan_add_manually
-import kotlinx.android.synthetic.main.fragment_certification_detail_scan.cert_scan_cert
-import kotlinx.android.synthetic.main.fragment_certification_detail_scan.cert_scan_toolbar
+import com.scubadeving.sd_playground.databinding.FragmentCertificationDetailScanBinding
 
 class CertificationScanFragment : Fragment() {
 
@@ -23,17 +20,14 @@ class CertificationScanFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         certificationScanViewModel = ViewModelProvider(this).get(CertificationScanViewModel::class.java)
-        return inflater.inflate(R.layout.fragment_certification_detail_scan, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        cert_scan_toolbar.setNavigationOnClickListener { findNavController().navigateUp() }
-        cert_scan_cert.setOnClickListener {
-            Toast.makeText(activity, "Scan Cert", Toast.LENGTH_SHORT).show()
-        }
-        cert_scan_add_manually.setOnClickListener {
-            Toast.makeText(activity, "Just Clicked Add Cert Manually", Toast.LENGTH_SHORT).show()
-        }
+        return FragmentCertificationDetailScanBinding.inflate(inflater, container, false).apply {
+            certScanToolbar.setNavigationOnClickListener { findNavController().navigateUp() }
+            certScanCert.setOnClickListener {
+                Toast.makeText(activity, "Scan Cert", Toast.LENGTH_SHORT).show()
+            }
+            certScanAddManually.setOnClickListener {
+                Toast.makeText(activity, "Just Clicked Add Cert Manually", Toast.LENGTH_SHORT).show()
+            }
+        }.root
     }
 }

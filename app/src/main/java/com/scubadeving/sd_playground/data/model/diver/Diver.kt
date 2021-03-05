@@ -26,6 +26,12 @@ data class Diver(
     val stats: Stats? = null,
     val about: About? = null,
     val diveLogs: List<DiveLog>? = null,
-    val buddies: List<Buddy>? = null
+    val buddies: List<Buddy>? = null,
 //    val future : ???
-)
+    val diverType: Int = VIEW_TYPE_VERTICAL
+) {
+    companion object {
+        const val VIEW_TYPE_HORIZONTAL = 0
+        const val VIEW_TYPE_VERTICAL = 1
+    }
+}

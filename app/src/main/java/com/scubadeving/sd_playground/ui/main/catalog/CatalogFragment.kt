@@ -16,7 +16,7 @@ import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.model.certification.CatalogCertification
 import com.scubadeving.sd_playground.data.model.certification.Specialty
 import com.scubadeving.sd_playground.databinding.FragmentCertificationCatalogBinding
-import com.scubadeving.sd_playground.ui.adapters.recyclerview.CertificationAdapter
+import com.scubadeving.sd_playground.ui.adapters.recyclerview.CatalogCertificationAdapter
 
 class CatalogFragment : Fragment() {
 
@@ -156,8 +156,10 @@ class CatalogFragment : Fragment() {
 
     private fun FragmentCertificationCatalogBinding.configureCertificationRecyclerView() {
         certPathLevelRv.apply {
+            val targetAdapter = CatalogCertificationAdapter()
+            targetAdapter.submitList(padiCatalogCertifications)
             layoutManager = LinearLayoutManager(context)
-            adapter = CertificationAdapter(padiCatalogCertifications, emptyList())
+            adapter = targetAdapter
             val dividerItemDecoration = DividerItemDecoration(context, VERTICAL)
             addItemDecoration(dividerItemDecoration)
         }
@@ -173,11 +175,31 @@ class CatalogFragment : Fragment() {
             )
                 .show()
             certPathLevelRv.adapter = when (checkedId) {
-                R.id.chip_padi -> CertificationAdapter(padiCatalogCertifications, emptyList())
-                R.id.chip_sdi -> CertificationAdapter(sdiCatalogCertifications, emptyList())
-                R.id.chip_ssi -> CertificationAdapter(ssiCatalogCertifications, emptyList())
-                R.id.chip_tdi -> CertificationAdapter(tdiCatalogCertifications, emptyList())
-                else -> CertificationAdapter(padiCatalogCertifications, emptyList())
+                R.id.chip_padi -> {
+                    val targetAdapter = CatalogCertificationAdapter()
+                    targetAdapter.submitList(padiCatalogCertifications)
+                    targetAdapter
+                }
+                R.id.chip_sdi -> {
+                    val targetAdapter = CatalogCertificationAdapter()
+                    targetAdapter.submitList(sdiCatalogCertifications)
+                    targetAdapter
+                }
+                R.id.chip_ssi -> {
+                    val targetAdapter = CatalogCertificationAdapter()
+                    targetAdapter.submitList(ssiCatalogCertifications)
+                    targetAdapter
+                }
+                R.id.chip_tdi -> {
+                    val targetAdapter = CatalogCertificationAdapter()
+                    targetAdapter.submitList(tdiCatalogCertifications)
+                    targetAdapter
+                }
+                else -> {
+                    val targetAdapter = CatalogCertificationAdapter()
+                    targetAdapter.submitList(padiCatalogCertifications)
+                    targetAdapter
+                }
             }
         }
     }

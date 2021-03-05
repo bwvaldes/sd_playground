@@ -7,13 +7,11 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.RecyclerView.Adapter
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.model.divelog.DiveLog
+import com.scubadeving.sd_playground.databinding.FragmentLogbookDivesMapBinding
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.DiveLogAdapter
 import com.scubadeving.sd_playground.utils.configureHorizontalRecyclerView
-import kotlinx.android.synthetic.main.fragment_logbook_dives_map.logbook_map_rv
 
 class LogbookMapFragment : Fragment() {
 
@@ -25,15 +23,12 @@ class LogbookMapFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         logbookMapViewModel = ViewModelProvider(this).get(LogbookMapViewModel::class.java)
-        return inflater.inflate(R.layout.fragment_logbook_dives_map, container, false)
+        return FragmentLogbookDivesMapBinding.inflate(inflater, container, false).apply {
+            configureLoggedDives()
+        }.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        configureLoggedDives()
-    }
-
-    private fun configureLoggedDives() {
+    private fun FragmentLogbookDivesMapBinding.configureLoggedDives() {
         val diveLogs: ArrayList<DiveLog> =
             arrayListOf(
                 DiveLog(1, date = "January 23rd, 2020", depth = 63.toDouble(), bottomTime = 37.toDouble()),
@@ -50,6 +45,8 @@ class LogbookMapFragment : Fragment() {
         parentFragment?.view?.findViewById<Toolbar>(R.id.logbook_toolbar)?.setOnClickListener {
             diveLogs.asReversed()
         }
-        logbook_map_rv.configureHorizontalRecyclerView(DiveLogAdapter(diveLogs, false) as Adapter<ViewHolder>)
+        val adapter = DiveLogAdapter()
+        adapter.submitList(diveLogs)
+        logbookMapRv.configureHorizontalRecyclerView(adapter)
     }
 }

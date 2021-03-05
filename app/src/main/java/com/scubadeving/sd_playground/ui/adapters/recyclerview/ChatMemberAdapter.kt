@@ -1,39 +1,41 @@
 package com.scubadeving.sd_playground.ui.adapters.recyclerview
 
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.scubadeving.sd_playground.MainNavigationDirections
-import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.model.diver.Diver
-import com.scubadeving.sd_playground.utils.inflate
-import kotlinx.android.synthetic.main.item_chat_detail_container_member_.view.chat_detail_card_diver_name
-import kotlinx.android.synthetic.main.item_chat_detail_container_member_.view.chat_detail_card_diver_username
+import com.scubadeving.sd_playground.databinding.ItemChatDetailContainerMemberBinding
 
-class ChatMemberAdapter(
-    private val chatMembers: List<Diver>
-) : RecyclerView.Adapter<ChatMemberAdapter.ChatMemberViewHolder>() {
+class ChatMemberAdapter : ListAdapter<Diver, RecyclerView.ViewHolder>(ChatMemberDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatMemberViewHolder {
-        val inflatedView = parent.inflate(R.layout.item_chat_detail_container_member_, false)
-        return ChatMemberViewHolder(inflatedView)
+        return ChatMemberViewHolder(
+            ItemChatDetailContainerMemberBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
-    override fun getItemCount(): Int = chatMembers.size
-
-    override fun onBindViewHolder(holder: ChatMemberViewHolder, position: Int) {
-        val member = chatMembers[position]
-        holder.bind(member)
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        val chatMember = getItem(position)
+        (holder as ChatMemberViewHolder).bind(chatMember)
     }
 
-    inner class ChatMemberViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ChatMemberViewHolder(private val binding: ItemChatDetailContainerMemberBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(chatMember: Diver) {
-            itemView.apply {
-                setOnClickListener { navigateToProfile(it, chatMember) }
-                chat_detail_card_diver_name.text = chatMember.firstName
-                chat_detail_card_diver_username.text = "username"
+            binding.apply {
+                setClickListener { navigateToProfile(it, chatMember) }
+                chatDetailCardDiverName.text = chatMember.firstName
+                chatDetailCardDiverUsername.text = "username"
             }
         }
     }
@@ -41,5 +43,16 @@ class ChatMemberAdapter(
     private fun navigateToProfile(view: View, diver: Diver) {
         val directions = MainNavigationDirections.actionGlobalProfileFragment(diver.firstName!!)
         view.findNavController().navigate(directions)
+    }
+
+    private class ChatMemberDiffCallback : DiffUtil.ItemCallback<Diver>() {
+
+        override fun areItemsTheSame(oldItem: Diver, newItem: Diver): Boolean {
+            return oldItem.handle == newItem.handle
+        }
+
+        override fun areContentsTheSame(oldItem: Diver, newItem: Diver): Boolean {
+            return oldItem == newItem
+        }
     }
 }

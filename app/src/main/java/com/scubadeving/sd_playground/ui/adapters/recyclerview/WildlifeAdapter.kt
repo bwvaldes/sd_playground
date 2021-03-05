@@ -74,15 +74,15 @@ class WildlifeAdapter : ListAdapter<Wildlife, RecyclerView.ViewHolder>(WildlifeD
             view.findNavController().navigate(directions)
         }
     }
-}
 
-private class WildlifeDiffCallback : DiffUtil.ItemCallback<Wildlife>() {
+    private class WildlifeDiffCallback : DiffUtil.ItemCallback<Wildlife>() {
 
-    override fun areItemsTheSame(oldItem: Wildlife, newItem: Wildlife): Boolean {
-        return oldItem.commonName == newItem.commonName
-    }
+        override fun areItemsTheSame(oldItem: Wildlife, newItem: Wildlife): Boolean {
+            return oldItem.commonName == newItem.commonName
+        }
 
-    override fun areContentsTheSame(oldItem: Wildlife, newItem: Wildlife): Boolean {
-        return oldItem == newItem
+        override fun areContentsTheSame(oldItem: Wildlife, newItem: Wildlife): Boolean {
+            return oldItem == newItem
+        }
     }
 }

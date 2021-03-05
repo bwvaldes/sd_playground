@@ -23,8 +23,7 @@ class ExploreWildlifeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        exploreWildlifeViewModel =
-            ViewModelProvider(this).get(ExploreWildlifeViewModel::class.java)
+        exploreWildlifeViewModel = ViewModelProvider(this).get(ExploreWildlifeViewModel::class.java)
         return FragmentExploreWildlifeBinding.inflate(inflater, container, false).apply {
             configureExploreWildlifeFilter()
             configureExploreWildlifeNearby()
@@ -45,8 +44,10 @@ class ExploreWildlifeFragment : Fragment() {
                 ExploreFilter("Rays", true),
                 ExploreFilter("Reef", true)
             )
+        val targetAdapter = ExploreFilterAdapter()
+        targetAdapter.submitList(filters)
         exploreWildlifeFilterRv.apply {
-            adapter = ExploreFilterAdapter(filters)
+            adapter = targetAdapter
             addItemDecoration(GridSpacingItemDecoration())
         }
     }

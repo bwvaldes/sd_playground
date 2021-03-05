@@ -19,5 +19,11 @@ data class DiveLog(
     val buddies: List<Buddy>? = null,
     val notes: String? = null,
     val wildlife: List<String>? = null,
-    val photos: List<String>? = null
-)
+    val photos: List<String>? = null,
+    val viewType: Int = VIEW_TYPE_LOG
+) {
+    companion object {
+        const val VIEW_TYPE_LOG = 0
+        const val VIEW_TYPE_MAP = 1
+    }
+}
