@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.model.InboxNotification
@@ -16,8 +15,8 @@ import com.scubadeving.sd_playground.data.model.InboxNotification.Companion.NOTI
 import com.scubadeving.sd_playground.databinding.ItemInboxNotificationCardDashboardBinding
 import com.scubadeving.sd_playground.databinding.ItemInboxNotificationCardListBinding
 
-class NotificationAdapter :
-    ListAdapter<InboxNotification, RecyclerView.ViewHolder>(NotificationDiffCallback()) {
+class NotificationAdapter(val notifications: ArrayList<InboxNotification>) :
+    RecyclerView.Adapter<BaseViewHolder<*>>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<*> {
         return when (viewType) {
@@ -43,10 +42,12 @@ class NotificationAdapter :
         }
     }
 
-    override fun getItemViewType(position: Int): Int = getItem(position).notificationType
+    override fun getItemCount(): Int = notifications.size
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val notification = getItem(position)
+    override fun getItemViewType(position: Int): Int = notifications[position].notificationType
+
+    override fun onBindViewHolder(holder: BaseViewHolder<*>, position: Int) {
+        val notification = notifications[position]
         when (holder) {
             is NotificationsDashboardViewHolder -> holder.bind(notification)
             is NotificationsInboxViewHolder -> holder.bind(notification)
@@ -62,7 +63,7 @@ class NotificationAdapter :
                 notificationCardDashboardClear.setOnClickListener { dismissNotification(position) }
                 notificationCardDashboardDate.text = inboxNotification.date
                 notificationCardDashboardData.text = inboxNotification.data
-                notificationCardDashboardCount.text = currentList.size.toString()
+                notificationCardDashboardCount.text = notifications.size.toString()
                 setClickListener {
                     Log.d("RecyclerView", "CLICK!")
                     Toast.makeText(
@@ -101,9 +102,9 @@ class NotificationAdapter :
     }
 
     fun dismissNotification(position: Int) {
-        currentList.removeAt(position)
+        notifications.removeAt(position)
         notifyItemRemoved(position)
-        notifyItemRangeChanged(position, currentList.size)
+        notifyItemRangeChanged(position, notifications.size)
     }
 
     private class NotificationDiffCallback : DiffUtil.ItemCallback<InboxNotification>() {

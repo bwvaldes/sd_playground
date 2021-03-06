@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Adapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.RecyclerView
 import com.scubadeving.sd_playground.data.model.diver.Certification
 import com.scubadeving.sd_playground.data.model.diver.Diver
 import com.scubadeving.sd_playground.data.model.diver.Diver.Companion.VIEW_TYPE_HORIZONTAL
@@ -44,9 +46,7 @@ class ExploreBuddiesFragment : Fragment() {
                 Diver(firstName = "Bill", certifications = arrayListOf(Certification(certificationName = "Open Water")), diverType = VIEW_TYPE_HORIZONTAL),
                 Diver(firstName = "Greg", certifications = arrayListOf(Certification(certificationName = "Open Water")), diverType = VIEW_TYPE_HORIZONTAL)
             )
-        val adapter = BuddyAdapter()
-        adapter.submitList(nearbyDivers)
-        nearbyDiversRv.configureHorizontalRecyclerView(adapter)
+        nearbyDiversRv.configureHorizontalRecyclerView(BuddyAdapter(nearbyDivers) as RecyclerView.Adapter<RecyclerView.ViewHolder>)
     }
 
     private fun FragmentExploreBuddiesBinding.configureDiveCenterDivers() {
@@ -60,10 +60,8 @@ class ExploreBuddiesFragment : Fragment() {
                 Diver(firstName = "Karen", certifications = arrayListOf(Certification(certificationName = "Open Water"))),
                 Diver(firstName = "Molly", certifications = arrayListOf(Certification(certificationName = "Open Water")))
             )
-        val targetAdapter = BuddyAdapter()
-        targetAdapter.submitList(diveCenterDivers)
         diveCenterDiversRv.apply {
-            adapter = targetAdapter
+            adapter = BuddyAdapter(diveCenterDivers) as RecyclerView.Adapter<RecyclerView.ViewHolder>
             addItemDecoration(GridSpacingItemDecoration())
         }
         diveCenterDiversSeeAll.setOnClickListener {
@@ -83,10 +81,8 @@ class ExploreBuddiesFragment : Fragment() {
                 Diver(firstName = "Pedro", certifications = arrayListOf(Certification(certificationName = "Open Water"))),
                 Diver(firstName = "Nick", certifications = arrayListOf(Certification(certificationName = "Open Water")))
             )
-        val targetAdapter = BuddyAdapter()
-        targetAdapter.submitList(pastDivers)
         pastDiversRv.apply {
-            adapter = targetAdapter
+            adapter = BuddyAdapter(pastDivers) as RecyclerView.Adapter<RecyclerView.ViewHolder>
             addItemDecoration(GridSpacingItemDecoration())
         }
         diveCenterDiversSeeAll.setOnClickListener {

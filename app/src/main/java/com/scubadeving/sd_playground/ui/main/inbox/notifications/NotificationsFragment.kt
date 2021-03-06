@@ -35,8 +35,6 @@ class NotificationsFragment : Fragment() {
             InboxNotification("Dec 20th", "This is a Notification", NOTIFICATION_TYPE_INBOX),
             InboxNotification("Dec 3rd", "This is a Notification", NOTIFICATION_TYPE_INBOX)
         )
-        val adapter = NotificationAdapter()
-        adapter.submitList(inboxNotifications)
-        notificationsRv.adapter = adapter
+        notificationsRv.adapter = NotificationAdapter(inboxNotifications)
     }
 }

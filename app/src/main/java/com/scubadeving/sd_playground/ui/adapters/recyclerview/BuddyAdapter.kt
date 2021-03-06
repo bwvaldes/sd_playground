@@ -6,8 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.findNavController
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.scubadeving.sd_playground.MainNavigationDirections
 import com.scubadeving.sd_playground.R
@@ -17,7 +15,7 @@ import com.scubadeving.sd_playground.data.model.diver.Diver.Companion.VIEW_TYPE_
 import com.scubadeving.sd_playground.databinding.ItemExploreBuddyCardHorizontalBinding
 import com.scubadeving.sd_playground.databinding.ItemExploreBuddyCardVerticalBinding
 
-class BuddyAdapter : ListAdapter<Diver, RecyclerView.ViewHolder>(BuddyDiffCallback()) {
+class BuddyAdapter(val buddies: ArrayList<Diver>) : RecyclerView.Adapter<BaseViewHolder<*>>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<*> {
         return when (viewType) {
@@ -44,17 +42,17 @@ class BuddyAdapter : ListAdapter<Diver, RecyclerView.ViewHolder>(BuddyDiffCallba
     }
 
     override fun getItemCount(): Int {
-        return if (currentList.size > BUDDY_VERTICAL_LIMIT) {
+        return if (buddies.size > BUDDY_VERTICAL_LIMIT) {
             BUDDY_VERTICAL_LIMIT
         } else {
-            currentList.size
+            buddies.size
         }
     }
 
-    override fun getItemViewType(position: Int): Int = getItem(position).diverType
+    override fun getItemViewType(position: Int): Int = buddies[position].diverType
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val buddy = getItem(position)
+    override fun onBindViewHolder(holder: BaseViewHolder<*>, position: Int) {
+        val buddy = buddies[position]
         when (holder) {
             is BuddyHorizontalViewHolder -> holder.bind(buddy)
             is BuddyVerticalViewHolder -> holder.bind(buddy)
@@ -123,25 +121,14 @@ class BuddyAdapter : ListAdapter<Diver, RecyclerView.ViewHolder>(BuddyDiffCallba
     }
 
     private fun dismissBuddy(position: Int) {
-        currentList.removeAt(position)
+        buddies.removeAt(position)
         notifyItemRemoved(position)
-        notifyItemRangeChanged(position, currentList.size)
+        notifyItemRangeChanged(position, buddies.size)
     }
 
     private fun navigateToProfile(view: View, diver: Diver) {
         val directions = MainNavigationDirections.actionGlobalProfileFragment(diver.firstName!!)
         view.findNavController().navigate(directions)
-    }
-
-    private class BuddyDiffCallback : DiffUtil.ItemCallback<Diver>() {
-
-        override fun areItemsTheSame(oldItem: Diver, newItem: Diver): Boolean {
-            return oldItem.handle == newItem.handle
-        }
-
-        override fun areContentsTheSame(oldItem: Diver, newItem: Diver): Boolean {
-            return oldItem == newItem
-        }
     }
 
     companion object {

@@ -16,8 +16,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.scubadeving.sd_playground.MainNavigationDirections
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.model.sites.DiveSite
-import com.scubadeving.sd_playground.data.model.sites.DiveSite.Companion.VIEW_TYPE_EXPANDED
 import com.scubadeving.sd_playground.data.model.sites.DiveSite.Companion.VIEW_TYPE_COMPACT
+import com.scubadeving.sd_playground.data.model.sites.DiveSite.Companion.VIEW_TYPE_EXPANDED
 import com.scubadeving.sd_playground.databinding.ItemDiveSiteCardLargeBinding
 import com.scubadeving.sd_playground.databinding.ItemDiveSiteCardSmallBinding
 
