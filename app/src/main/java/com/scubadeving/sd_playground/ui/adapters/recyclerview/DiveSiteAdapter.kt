@@ -17,7 +17,7 @@ import com.scubadeving.sd_playground.MainNavigationDirections
 import com.scubadeving.sd_playground.R
 import com.scubadeving.sd_playground.data.model.sites.DiveSite
 import com.scubadeving.sd_playground.data.model.sites.DiveSite.Companion.VIEW_TYPE_EXPANDED
-import com.scubadeving.sd_playground.data.model.sites.DiveSite.Companion.VIEW_TYPE_SMALL
+import com.scubadeving.sd_playground.data.model.sites.DiveSite.Companion.VIEW_TYPE_COMPACT
 import com.scubadeving.sd_playground.databinding.ItemDiveSiteCardLargeBinding
 import com.scubadeving.sd_playground.databinding.ItemDiveSiteCardSmallBinding
 
@@ -25,8 +25,8 @@ class DiveSiteAdapter : ListAdapter<DiveSite, RecyclerView.ViewHolder>(DiveSiteD
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<*> {
         return when (viewType) {
-            VIEW_TYPE_SMALL -> {
-                DiveSiteSmallViewHolder(
+            VIEW_TYPE_COMPACT -> {
+                DiveSiteCompactViewHolder(
                     ItemDiveSiteCardSmallBinding.inflate(
                         LayoutInflater.from(parent.context),
                         parent,
@@ -35,7 +35,7 @@ class DiveSiteAdapter : ListAdapter<DiveSite, RecyclerView.ViewHolder>(DiveSiteD
                 )
             }
             VIEW_TYPE_EXPANDED -> {
-                DiveSiteLargeViewHolder(
+                DiveSiteExpandedViewHolder(
                     ItemDiveSiteCardLargeBinding.inflate(
                         LayoutInflater.from(parent.context),
                         parent,
@@ -47,17 +47,19 @@ class DiveSiteAdapter : ListAdapter<DiveSite, RecyclerView.ViewHolder>(DiveSiteD
         }
     }
 
+    override fun getItemViewType(position: Int): Int = getItem(position).viewType
+
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val diveSite = getItem(position)
         when (holder) {
-            is DiveSiteSmallViewHolder -> holder.bind(diveSite)
-            is DiveSiteLargeViewHolder -> holder.bind(diveSite)
+            is DiveSiteCompactViewHolder -> holder.bind(diveSite)
+            is DiveSiteExpandedViewHolder -> holder.bind(diveSite)
             else -> throw IllegalArgumentException()
         }
     }
 
-    inner class DiveSiteSmallViewHolder(private val binding: ItemDiveSiteCardSmallBinding) :
+    inner class DiveSiteCompactViewHolder(private val binding: ItemDiveSiteCardSmallBinding) :
         BaseViewHolder<DiveSite>(binding.root) {
 
         @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
@@ -108,7 +110,7 @@ class DiveSiteAdapter : ListAdapter<DiveSite, RecyclerView.ViewHolder>(DiveSiteD
         }
     }
 
-    inner class DiveSiteLargeViewHolder(private val binding: ItemDiveSiteCardLargeBinding) :
+    inner class DiveSiteExpandedViewHolder(private val binding: ItemDiveSiteCardLargeBinding) :
         BaseViewHolder<DiveSite>(binding.root) {
 
         @RequiresApi(Build.VERSION_CODES.LOLLIPOP)

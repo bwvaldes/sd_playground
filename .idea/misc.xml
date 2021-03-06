@@ -114,10 +114,10 @@
         <entry key="app/src/main/res/layout/item_dive_center_card.xml" value="0.5" />
         <entry key="app/src/main/res/layout/item_dive_site_card_large.xml" value="0.10138888888888889" />
         <entry key="app/src/main/res/layout/item_dive_site_card_small.xml" value="0.15732758620689655" />
-        <entry key="app/src/main/res/layout/item_divelog_card_horizontal.xml" value="0.1111111111111111" />
+        <entry key="app/src/main/res/layout/item_divelog_card_horizontal.xml" value="0.5" />
         <entry key="app/src/main/res/layout/item_divelog_card_vertical.xml" value="0.5" />
         <entry key="app/src/main/res/layout/item_explore_buddies_horizontal_card.xml" value="0.3489864864864865" />
-        <entry key="app/src/main/res/layout/item_explore_buddy_card_horizontal.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/item_explore_buddy_card_horizontal.xml" value="0.14791666666666667" />
         <entry key="app/src/main/res/layout/item_explore_buddy_card_vertical.xml" value="0.5" />
         <entry key="app/src/main/res/layout/item_explore_filter_card.xml" value="0.5" />
         <entry key="app/src/main/res/layout/item_gear_card.xml" value="0.5" />
@@ -132,9 +132,9 @@
         <entry key="app/src/main/res/layout/item_wildlife_card.xml" value="0.5" />
         <entry key="app/src/main/res/layout/item_wildlife_card_small.xml" value="0.5" />
         <entry key="app/src/main/res/layout/item_wildlife_encountered_card.xml" value="0.22508361204013377" />
-        <entry key="app/src/main/res/layout/view_dashboard_items.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/view_dashboard_items.xml" value="0.17364864864864865" />
         <entry key="app/src/main/res/layout/view_detail_card.xml" value="0.22508361204013377" />
-        <entry key="app/src/main/res/layout/view_infoview.xml" value="0.22508361204013377" />
+        <entry key="app/src/main/res/layout/view_infoview.xml" value="0.5" />
         <entry key="app/src/main/res/menu/menu_catalog.xml" value="0.16655405405405405" />
         <entry key="app/src/main/res/menu/menu_dashboard.xml" value="0.34548494983277594" />
         <entry key="app/src/main/res/menu/menu_profile.xml" value="0.3528428093645485" />

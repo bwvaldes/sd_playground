@@ -33,13 +33,13 @@ class LogbookWildlifeFragment : Fragment() {
     private fun FragmentLogbookWildlifeBinding.configureWildlife() {
         val wildLife: ArrayList<Wildlife> =
             arrayListOf(
-                Wildlife("Garibaldi"),
-                Wildlife("Halibut"),
-                Wildlife("Horn Shark"),
-                Wildlife("Sheephead"),
-                Wildlife("Bat Ray"),
-                Wildlife("Blennie"),
-                Wildlife("Moray Eel")
+                Wildlife(commonName = "Garibaldi"),
+                Wildlife(commonName = "Halibut"),
+                Wildlife(commonName = "Horn Shark"),
+                Wildlife(commonName = "Sheephead"),
+                Wildlife(commonName = "Bat Ray"),
+                Wildlife(commonName = "Blennie"),
+                Wildlife(commonName = "Moray Eel")
             )
         parentFragment?.view?.findViewById<Toolbar>(R.id.logbook_toolbar)?.setOnClickListener {
             wildLife.asReversed()

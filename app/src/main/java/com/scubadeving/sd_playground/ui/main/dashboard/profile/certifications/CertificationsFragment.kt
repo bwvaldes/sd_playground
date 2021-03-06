@@ -11,6 +11,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.scubadeving.sd_playground.data.source.repository.DiverRepository
 import com.scubadeving.sd_playground.databinding.FragmentProfileCertificationsBinding
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.ProfileCertificationAdapter
+import com.scubadeving.sd_playground.ui.adapters.recyclerview.decorations.GridSpacingItemDecoration
 
 class CertificationsFragment : Fragment() {
 
@@ -27,12 +28,15 @@ class CertificationsFragment : Fragment() {
             certificationsViewModel.currentDiver.observe(
                 viewLifecycleOwner,
                 Observer { diver ->
-                    certCardRv.adapter =
-                        diver?.certifications?.let {
-                            val adapter = ProfileCertificationAdapter()
-                            adapter.submitList(it)
-                            adapter
-                        }
+                    certCardRv.apply {
+                        adapter =
+                            diver?.certifications?.let {
+                                val targetAdapter = ProfileCertificationAdapter()
+                                targetAdapter.submitList(it)
+                                targetAdapter
+                            }
+                        addItemDecoration(GridSpacingItemDecoration())
+                    }
                 }
             )
         }.root

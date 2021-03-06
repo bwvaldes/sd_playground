@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.scubadeving.sd_playground.data.model.ExploreFilter
 import com.scubadeving.sd_playground.data.model.sites.DiveSite
+import com.scubadeving.sd_playground.data.model.sites.DiveSite.Companion.VIEW_TYPE_COMPACT
 import com.scubadeving.sd_playground.databinding.FragmentExploreSitesBinding
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.DiveSiteAdapter
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.ExploreFilterAdapter
@@ -55,9 +56,9 @@ class ExploreSitesFragment : Fragment() {
 
     private fun FragmentExploreSitesBinding.configureExploreNearbyDiveSites() {
         val nearbyDiveSites: List<DiveSite> = listOf(
-            DiveSite("Casino Point", rating = 3.2, reviews = 14),
-            DiveSite("Leo Carillo", rating = 4.75, reviews = 42),
-            DiveSite("Boat Dive 1", rating = 3.98, reviews = 8)
+            DiveSite("Casino Point", rating = 3.2, reviews = 14, viewType = VIEW_TYPE_COMPACT),
+            DiveSite("Leo Carillo", rating = 4.75, reviews = 42, viewType = VIEW_TYPE_COMPACT),
+            DiveSite("Boat Dive 1", rating = 3.98, reviews = 8, viewType = VIEW_TYPE_COMPACT)
         )
         val adapter = DiveSiteAdapter()
         adapter.submitList(nearbyDiveSites)

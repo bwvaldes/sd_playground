@@ -39,6 +39,8 @@ class DiveLogAdapter : ListAdapter<DiveLog, RecyclerView.ViewHolder>(DiveLogDiff
         }
     }
 
+    override fun getItemViewType(position: Int): Int = getItem(position).viewType
+
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val diveLog = getItem(position)
         when (holder) {

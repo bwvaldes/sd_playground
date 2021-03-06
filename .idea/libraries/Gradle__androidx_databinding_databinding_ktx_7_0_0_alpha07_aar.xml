@@ -1,17 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: androidx.databinding:databinding-ktx:7.0.0-alpha07@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/043e2219ed78f15f4cd9b54bb417a178/transformed/jetified-databinding-ktx-7.0.0-alpha07/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/891faad2168b6f9f25711d1d2266c68b/transformed/jetified-databinding-ktx-7.0.0-alpha07/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/2bc41ec312529c72807ff8fee34ad79f/transformed/jetified-databinding-ktx-7.0.0-alpha07/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/b5941ef2def42c8a142c591cfdd67857/transformed/jetified-databinding-ktx-7.0.0-alpha07/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/88553d757884865be87c4bb5ac114377/transformed/jetified-databinding-ktx-7.0.0-alpha07/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/2ef42d718343b9e9237b6c0580592a76/transformed/jetified-databinding-ktx-7.0.0-alpha07/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/9600111ce9a8f04a49a3bb63bcbd54cf/transformed/jetified-databinding-ktx-7.0.0-alpha07/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/bdd5895e8895f06ac505977de34763de/transformed/jetified-databinding-ktx-7.0.0-alpha07/res" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/f9395ba16cd04dad90750dbea2871f94/transformed/jetified-databinding-ktx-7.0.0-alpha07/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/f9395ba16cd04dad90750dbea2871f94/transformed/jetified-databinding-ktx-7.0.0-alpha07/AndroidManifest.xml" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/f9395ba16cd04dad90750dbea2871f94/transformed/jetified-databinding-ktx-7.0.0-alpha07/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/f9395ba16cd04dad90750dbea2871f94/transformed/jetified-databinding-ktx-7.0.0-alpha07/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

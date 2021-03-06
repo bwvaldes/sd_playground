@@ -1,17 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: androidx.navigation:navigation-runtime-ktx:2.3.3@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/f4af4bdd2ef9136e0072a96a25a28670/transformed/navigation-runtime-ktx-2.3.3/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/8a01fcc202ea4219e3d3fc1e5c00d802/transformed/navigation-runtime-ktx-2.3.3/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/50f628f2381e0050709524656f6c799c/transformed/navigation-runtime-ktx-2.3.3/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/43d588a90874275d22fb313f6e152fc6/transformed/navigation-runtime-ktx-2.3.3/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/964ce32c1af863351855a313ca44fd75/transformed/navigation-runtime-ktx-2.3.3/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/87af4a75ee62d16258f68f66bb9325cd/transformed/navigation-runtime-ktx-2.3.3/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/27650a095c106321d3100c405a2ef46b/transformed/navigation-runtime-ktx-2.3.3/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/adf4a4d70127cc1ce900f073507036d7/transformed/navigation-runtime-ktx-2.3.3/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/daa2ef0ae365cffca8c8d006bf2fa9fb/transformed/navigation-runtime-ktx-2.3.3/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/daa2ef0ae365cffca8c8d006bf2fa9fb/transformed/navigation-runtime-ktx-2.3.3/res" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/daa2ef0ae365cffca8c8d006bf2fa9fb/transformed/navigation-runtime-ktx-2.3.3/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/daa2ef0ae365cffca8c8d006bf2fa9fb/transformed/navigation-runtime-ktx-2.3.3/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/daa2ef0ae365cffca8c8d006bf2fa9fb/transformed/navigation-runtime-ktx-2.3.3/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

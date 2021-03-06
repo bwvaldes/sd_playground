@@ -12,7 +12,7 @@ data class DiveSite(
     val viewType: Int = VIEW_TYPE_EXPANDED
 ) {
     companion object {
-        const val VIEW_TYPE_SMALL = 0
+        const val VIEW_TYPE_COMPACT = 0
         const val VIEW_TYPE_EXPANDED = 1
     }
 }

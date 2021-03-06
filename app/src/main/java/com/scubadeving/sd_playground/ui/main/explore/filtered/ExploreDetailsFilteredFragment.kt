@@ -57,13 +57,13 @@ class ExploreDetailsFilteredFragment : Fragment() {
     private fun FragmentExploreFilteredDetailsBinding.configureExploreFilteredWildlife() {
         val filteredWildlife: ArrayList<Wildlife> =
             arrayListOf(
-                Wildlife("Garibaldi"),
-                Wildlife("Halibut"),
-                Wildlife("Horn Shark"),
-                Wildlife("Sheephead"),
-                Wildlife("Bat Ray"),
-                Wildlife("Blennie"),
-                Wildlife("Moray Eel")
+                Wildlife(commonName = "Garibaldi"),
+                Wildlife(commonName = "Halibut"),
+                Wildlife(commonName = "Horn Shark"),
+                Wildlife(commonName = "Sheephead"),
+                Wildlife(commonName = "Bat Ray"),
+                Wildlife(commonName = "Blennie"),
+                Wildlife(commonName = "Moray Eel")
             )
         val adapter = WildlifeAdapter()
         adapter.submitList(filteredWildlife)

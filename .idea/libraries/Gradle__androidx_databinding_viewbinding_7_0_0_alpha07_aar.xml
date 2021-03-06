@@ -1,17 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: androidx.databinding:viewbinding:7.0.0-alpha07@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/cfee62a5d5b1f3d791100f74fb3f4805/transformed/jetified-viewbinding-7.0.0-alpha07/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/e378521d95d29416dddf886ec83c4193/transformed/jetified-viewbinding-7.0.0-alpha07/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/369ba3a0f1bc41abd6049f4f71f14252/transformed/jetified-viewbinding-7.0.0-alpha07/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/311536bb18b067d3a8c53e4aff6976ff/transformed/jetified-viewbinding-7.0.0-alpha07/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/92d3f33b9f9af8953580ff5e979abd23/transformed/jetified-viewbinding-7.0.0-alpha07/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/6eafc7283a8b8219c0b898bd5572f200/transformed/jetified-viewbinding-7.0.0-alpha07/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/aaad7cc777d5885338c11f4021f12841/transformed/jetified-viewbinding-7.0.0-alpha07/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/54e5c70c88bdaf8739723e84f89560d5/transformed/jetified-viewbinding-7.0.0-alpha07/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/64c54453cbeafe11f78696bf3529af3d/transformed/jetified-viewbinding-7.0.0-alpha07/AndroidManifest.xml" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/64c54453cbeafe11f78696bf3529af3d/transformed/jetified-viewbinding-7.0.0-alpha07/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/64c54453cbeafe11f78696bf3529af3d/transformed/jetified-viewbinding-7.0.0-alpha07/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/64c54453cbeafe11f78696bf3529af3d/transformed/jetified-viewbinding-7.0.0-alpha07/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

@@ -15,6 +15,7 @@ import com.scubadeving.sd_playground.data.model.InboxNotification
 import com.scubadeving.sd_playground.data.model.InboxNotification.Companion.NOTIFICATION_TYPE_DASHBOARD
 import com.scubadeving.sd_playground.data.model.diver.Diver
 import com.scubadeving.sd_playground.data.model.sites.DiveSite
+import com.scubadeving.sd_playground.data.model.sites.DiveSite.Companion.VIEW_TYPE_COMPACT
 import com.scubadeving.sd_playground.data.source.repository.DiverRepository
 import com.scubadeving.sd_playground.databinding.FragmentDashboardBinding
 import com.scubadeving.sd_playground.ui.adapters.recyclerview.DiveSiteAdapter
@@ -78,11 +79,11 @@ class DashboardFragment : Fragment() {
 
     private fun FragmentDashboardBinding.configureUpcomingDivesRecyclerView() {
         val diveSites: List<DiveSite> = listOf(
-            DiveSite("Shaw's Cove", rating = 4.5, reviews = 112),
-            DiveSite("Casino Point", rating = 3.2, reviews = 14),
-            DiveSite("Se lion Point", rating = 4.8, reviews = 86),
-            DiveSite("Leo Carillo", rating = 4.75, reviews = 42),
-            DiveSite("Boat Dive 1", rating = 3.98, reviews = 8)
+            DiveSite("Shaw's Cove", rating = 4.5, reviews = 112, viewType = VIEW_TYPE_COMPACT),
+            DiveSite("Casino Point", rating = 3.2, reviews = 14, viewType = VIEW_TYPE_COMPACT),
+            DiveSite("Se lion Point", rating = 4.8, reviews = 86, viewType = VIEW_TYPE_COMPACT),
+            DiveSite("Leo Carillo", rating = 4.75, reviews = 42, viewType = VIEW_TYPE_COMPACT),
+            DiveSite("Boat Dive 1", rating = 3.98, reviews = 8, viewType = VIEW_TYPE_COMPACT)
         )
         val adapter = DiveSiteAdapter()
         adapter.submitList(diveSites)
